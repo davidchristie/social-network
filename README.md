@@ -64,3 +64,16 @@ Deploy the ConfigMap by executing:
 ```bash
 kubectl apply -f prisma/configmap.yml
 ```
+
+Apply Prisma server deployment definition:
+
+```bash
+kubectl apply -f prisma/deployment.yml
+```
+
+```console
+$ kubectl get pods --namespace prisma
+NAME                       READY     STATUS    RESTARTS   AGE
+database-69958ddb6-zvlml   1/1       Running   0          21m
+prisma-98b6b6cbd-q9b82     1/1       Running   0          43s
+```
