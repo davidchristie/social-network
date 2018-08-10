@@ -26,5 +26,19 @@ prisma          Active    2s
 Request a MySQL database by executing:
 
 ```console
-kubectl apply -f database.yml
+kubectl apply -f database/pvc.yml
+```
+
+Apply the MySQL deployment definition:
+
+```console
+kubectl apply -f database/deployment.yml
+```
+
+Check the Pod has been scheduled by executing:
+
+```console
+$ kubectl get pods --namespace prisma
+NAME                       READY     STATUS    RESTARTS   AGE
+database-69958ddb6-zvlml   1/1       Running   0          1m
 ```
