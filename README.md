@@ -71,9 +71,17 @@ Apply Prisma server deployment definition:
 kubectl apply -f prisma/deployment.yml
 ```
 
+To check that the Prisma server has been scheduled on the Kubernetes cluster, execute:
+
 ```console
 $ kubectl get pods --namespace prisma
 NAME                       READY     STATUS    RESTARTS   AGE
 database-69958ddb6-zvlml   1/1       Running   0          21m
 prisma-98b6b6cbd-q9b82     1/1       Running   0          43s
+```
+
+Apply the Prisma service definition by executing:
+
+```bash
+kubectl apply -f prisma/service.yml
 ```
