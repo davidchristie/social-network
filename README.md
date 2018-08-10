@@ -56,3 +56,11 @@ $ kubectl get services --namespace prisma
 NAME       TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
 database   ClusterIP   10.19.241.160   <none>        3306/TCP   33s
 ```
+
+### Prisma
+
+Deploy the ConfigMap by executing:
+
+```bash
+kubectl apply -f prisma/configmap.yml
+```
