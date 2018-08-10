@@ -6,7 +6,7 @@
 
 Apply the `prisma` namespace by executing:
 
-```console
+```bash
 kubectl apply -f namespace.yml
 ```
 
@@ -25,13 +25,13 @@ prisma          Active    2s
 
 Request a MySQL database by executing:
 
-```console
+```bash
 kubectl apply -f database/pvc.yml
 ```
 
 Apply the MySQL deployment definition:
 
-```console
+```bash
 kubectl apply -f database/deployment.yml
 ```
 
@@ -41,4 +41,18 @@ Check the Pod has been scheduled by executing:
 $ kubectl get pods --namespace prisma
 NAME                       READY     STATUS    RESTARTS   AGE
 database-69958ddb6-zvlml   1/1       Running   0          1m
+```
+
+Apply the MySQL service definition:
+
+```bash
+kubectl apply -f database/service.yml
+```
+
+To verify that the service is up, execute:
+
+```console
+$ kubectl get services --namespace prisma
+NAME       TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
+database   ClusterIP   10.19.241.160   <none>        3306/TCP   33s
 ```
