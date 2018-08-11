@@ -4,7 +4,8 @@
   "private": true,
   "repository": "git@github.com:davidchristie/social-network-template.git",
   "scripts": {
-    "data-model": "yarn workspace data-model"
+    "data-model": "yarn workspace data-model",
+    "kubernetes": "yarn workspace kubernetes"
   },
   "version": "1.0.0",
   "workspaces": [

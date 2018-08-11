@@ -1,0 +1,8 @@
+{
+  "name": "kubernetes",
+  "private": true,
+  "scripts": {
+    "deploy": "scripts/deploy.sh"
+  },
+  "version": "1.0.0"
+}
