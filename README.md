@@ -2,6 +2,10 @@
 
 ## Deployment
 
+### Kubernetes
+
+Create a Kubernetes cluster on Google Cloud Platform.
+
 ### Namespace
 
 Apply the `prisma` namespace by executing:
@@ -85,3 +89,12 @@ Apply the Prisma service definition by executing:
 ```bash
 kubectl apply -f prisma/service.yml
 ```
+
+### Connect
+
+To communicate with the Prisma server running in the Kubernetes cluster, perform the following steps:
+
+`kubectl get pods --namespace prisma` to identify the pod name
+`kubectl port-forward --namespace prisma <the-pod-name> 4467:4466` – This will forward from `127.0.0.1:4467` -> `kubernetes-cluster:4466`
+
+The Prisma server is now reachable via `http://localhost:4467`.
