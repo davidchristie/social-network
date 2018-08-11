@@ -1,0 +1,13 @@
+{
+  "author": "David Christie <davidchristie.nz@gmail.com>",
+  "name": "social-network-template",
+  "private": true,
+  "repository": "git@github.com:davidchristie/social-network-template.git",
+  "scripts": {
+    "data-model": "yarn workspace data-model"
+  },
+  "version": "1.0.0",
+  "workspaces": [
+    "packages/*"
+  ]
+}

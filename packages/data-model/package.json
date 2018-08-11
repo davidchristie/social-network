@@ -1,0 +1,12 @@
+{
+  "devDependencies": {
+    "prisma": "^1.13.7"
+  },
+  "name": "data-model",
+  "private": true,
+  "scripts": {
+    "deploy": "prisma deploy",
+    "playground": "prisma playground"
+  },
+  "version": "1.0.0"
+}
