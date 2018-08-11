@@ -10,11 +10,6 @@
   "rules": {
     "interface-name": false,
     "no-console": false,
-    "no-empty-interface": false,
-    "no-shadowed-variable": false,
-    "semicolon": [
-      true,
-      "always"
-    ]
+    "space-before-function-paren": true
   }
 }

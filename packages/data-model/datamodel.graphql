@@ -1,4 +1,6 @@
 type Account {
+  email: String! @unique
   id: ID! @unique
   name: String!
+  password: String!
 }

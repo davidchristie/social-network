@@ -8,8 +8,8 @@
   "name": "data-model",
   "private": true,
   "scripts": {
-    "deploy": "prisma deploy",
-    "playground": "prisma playground"
+    "deploy": "prisma deploy --env-file ../../.env",
+    "playground": "prisma playground --env-file ../../.env"
   },
   "version": "1.0.0"
 }

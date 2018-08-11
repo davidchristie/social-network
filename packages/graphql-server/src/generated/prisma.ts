@@ -50,8 +50,10 @@ export interface BindingConstructor<T> {
 */
 
 const typeDefs = `type Account implements Node {
+  email: String!
   id: ID!
   name: String!
+  password: String!
 }
 
 """A connection to a list of items."""
@@ -65,7 +67,9 @@ type AccountConnection {
 }
 
 input AccountCreateInput {
+  email: String!
   name: String!
+  password: String!
 }
 
 """An edge in a connection."""
@@ -78,10 +82,14 @@ type AccountEdge {
 }
 
 enum AccountOrderByInput {
+  email_ASC
+  email_DESC
   id_ASC
   id_DESC
   name_ASC
   name_DESC
+  password_ASC
+  password_DESC
   updatedAt_ASC
   updatedAt_DESC
   createdAt_ASC
@@ -89,8 +97,10 @@ enum AccountOrderByInput {
 }
 
 type AccountPreviousValues {
+  email: String!
   id: ID!
   name: String!
+  password: String!
 }
 
 type AccountSubscriptionPayload {
@@ -133,7 +143,9 @@ input AccountSubscriptionWhereInput {
 }
 
 input AccountUpdateInput {
+  email: String
   name: String
+  password: String
 }
 
 input AccountWhereInput {
@@ -145,6 +157,46 @@ input AccountWhereInput {
 
   """Logical NOT on all given filters combined by AND."""
   NOT: [AccountWhereInput!]
+  email: String
+
+  """All values that are not equal to given value."""
+  email_not: String
+
+  """All values that are contained in given list."""
+  email_in: [String!]
+
+  """All values that are not contained in given list."""
+  email_not_in: [String!]
+
+  """All values less than the given value."""
+  email_lt: String
+
+  """All values less than or equal the given value."""
+  email_lte: String
+
+  """All values greater than the given value."""
+  email_gt: String
+
+  """All values greater than or equal the given value."""
+  email_gte: String
+
+  """All values containing the given string."""
+  email_contains: String
+
+  """All values not containing the given string."""
+  email_not_contains: String
+
+  """All values starting with the given string."""
+  email_starts_with: String
+
+  """All values not starting with the given string."""
+  email_not_starts_with: String
+
+  """All values ending with the given string."""
+  email_ends_with: String
+
+  """All values not ending with the given string."""
+  email_not_ends_with: String
   id: ID
 
   """All values that are not equal to given value."""
@@ -225,9 +277,50 @@ input AccountWhereInput {
 
   """All values not ending with the given string."""
   name_not_ends_with: String
+  password: String
+
+  """All values that are not equal to given value."""
+  password_not: String
+
+  """All values that are contained in given list."""
+  password_in: [String!]
+
+  """All values that are not contained in given list."""
+  password_not_in: [String!]
+
+  """All values less than the given value."""
+  password_lt: String
+
+  """All values less than or equal the given value."""
+  password_lte: String
+
+  """All values greater than the given value."""
+  password_gt: String
+
+  """All values greater than or equal the given value."""
+  password_gte: String
+
+  """All values containing the given string."""
+  password_contains: String
+
+  """All values not containing the given string."""
+  password_not_contains: String
+
+  """All values starting with the given string."""
+  password_starts_with: String
+
+  """All values not starting with the given string."""
+  password_not_starts_with: String
+
+  """All values ending with the given string."""
+  password_ends_with: String
+
+  """All values not ending with the given string."""
+  password_not_ends_with: String
 }
 
 input AccountWhereUniqueInput {
+  email: String
   id: ID
 }
 
@@ -305,10 +398,14 @@ export const Prisma = makePrismaBindingClass<BindingConstructor<Prisma>>({typeDe
  * Types
 */
 
-export type AccountOrderByInput =   'id_ASC' |
+export type AccountOrderByInput =   'email_ASC' |
+  'email_DESC' |
+  'id_ASC' |
   'id_DESC' |
   'name_ASC' |
   'name_DESC' |
+  'password_ASC' |
+  'password_DESC' |
   'updatedAt_ASC' |
   'updatedAt_DESC' |
   'createdAt_ASC' |
@@ -319,15 +416,20 @@ export type MutationType =   'CREATED' |
   'DELETED'
 
 export interface AccountCreateInput {
+  email: String
   name: String
+  password: String
 }
 
 export interface AccountWhereUniqueInput {
+  email?: String
   id?: ID_Input
 }
 
 export interface AccountUpdateInput {
+  email?: String
   name?: String
+  password?: String
 }
 
 export interface AccountSubscriptionWhereInput {
@@ -345,6 +447,20 @@ export interface AccountWhereInput {
   AND?: AccountWhereInput[] | AccountWhereInput
   OR?: AccountWhereInput[] | AccountWhereInput
   NOT?: AccountWhereInput[] | AccountWhereInput
+  email?: String
+  email_not?: String
+  email_in?: String[] | String
+  email_not_in?: String[] | String
+  email_lt?: String
+  email_lte?: String
+  email_gt?: String
+  email_gte?: String
+  email_contains?: String
+  email_not_contains?: String
+  email_starts_with?: String
+  email_not_starts_with?: String
+  email_ends_with?: String
+  email_not_ends_with?: String
   id?: ID_Input
   id_not?: ID_Input
   id_in?: ID_Input[] | ID_Input
@@ -373,6 +489,20 @@ export interface AccountWhereInput {
   name_not_starts_with?: String
   name_ends_with?: String
   name_not_ends_with?: String
+  password?: String
+  password_not?: String
+  password_in?: String[] | String
+  password_not_in?: String[] | String
+  password_lt?: String
+  password_lte?: String
+  password_gt?: String
+  password_gte?: String
+  password_contains?: String
+  password_not_contains?: String
+  password_starts_with?: String
+  password_not_starts_with?: String
+  password_ends_with?: String
+  password_not_ends_with?: String
 }
 
 /*
@@ -384,8 +514,10 @@ export interface Node {
 }
 
 export interface AccountPreviousValues {
+  email: String
   id: ID_Output
   name: String
+  password: String
 }
 
 export interface BatchPayload {
@@ -411,8 +543,10 @@ export interface AccountSubscriptionPayload {
 }
 
 export interface Account extends Node {
+  email: String
   id: ID_Output
   name: String
+  password: String
 }
 
 /*
@@ -444,9 +578,10 @@ The `Boolean` scalar type represents `true` or `false`.
 export type Boolean = boolean
 
 /*
-The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.
+The `ID` scalar type represents a unique identifier, often used to refetch an object or as key for a cache. The ID type appears in a JSON response as a String; however, it is not intended to be human-readable. When expected as an input type, any string (such as `"4"`) or integer (such as `4`) input value will be accepted as an ID.
 */
-export type String = string
+export type ID_Input = string | number
+export type ID_Output = string
 
 /*
 The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1. 
@@ -460,7 +595,6 @@ Long can represent values between -(2^63) and 2^63 - 1.
 export type Long = string
 
 /*
-The `ID` scalar type represents a unique identifier, often used to refetch an object or as key for a cache. The ID type appears in a JSON response as a String; however, it is not intended to be human-readable. When expected as an input type, any string (such as `"4"`) or integer (such as `4`) input value will be accepted as an ID.
+The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.
 */
-export type ID_Input = string | number
-export type ID_Output = string
+export type String = string
