@@ -1,0 +1,2 @@
+endpoint: http://localhost:4467/social-network-template/staging
+datamodel: datamodel.graphql
