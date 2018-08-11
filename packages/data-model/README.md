@@ -1,6 +1,6 @@
 # Data Model
 
-## Script
+## Scripts
 
 ```bash
 yarn data-model deploy

@@ -5,6 +5,7 @@
   "repository": "git@github.com:davidchristie/social-network-template.git",
   "scripts": {
     "data-model": "yarn workspace data-model",
+    "graphql-server": "yarn workspace graphql-server",
     "kubernetes": "yarn workspace kubernetes"
   },
   "version": "1.0.0",

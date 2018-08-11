@@ -1,6 +1,9 @@
 {
   "devDependencies": {
-    "prisma": "^1.13.7"
+    "graphql": "^0.13.2",
+    "prisma": "^1.13.7",
+    "prisma-binding": "^2.1.4",
+    "typescript": "^3.0.1"
   },
   "name": "data-model",
   "private": true,

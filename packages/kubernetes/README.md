@@ -1,5 +1,13 @@
 # Kubernetes
 
+## Scripts
+
+```bash
+yarn kubernetes deploy
+```
+
+Deploy to a Kubernetes cluster.
+
 ## Deployment
 
 Create a Kubernetes cluster on Google Cloud Platform.

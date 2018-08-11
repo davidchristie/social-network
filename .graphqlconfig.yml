@@ -1,0 +1,10 @@
+projects:
+  data-model:
+    schemaPath: packages/graphql-server/src/generated/prisma.graphql
+    extensions:
+      prisma: prisma.yml
+      codegen:
+        - generator: prisma-binding
+          language: typescript
+          output:
+            binding: ../graphql-server/src/generated/prisma.ts

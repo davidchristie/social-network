@@ -1,2 +1,6 @@
 endpoint: http://localhost:4467/social-network-template/staging
 datamodel: datamodel.graphql
+hooks:
+  post-deploy:
+    - graphql get-schema --project data-model
+    - graphql codegen
