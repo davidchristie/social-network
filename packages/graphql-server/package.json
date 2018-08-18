@@ -9,12 +9,14 @@
     "@types/bcryptjs": "^2.4.1",
     "@types/jsonwebtoken": "^7.2.8",
     "nodemon": "^1.18.3",
+    "rimraf": "^2.6.2",
     "tslint": "^5.11.0",
     "typescript": "^3.0.1"
   },
   "name": "graphql-server",
   "private": true,
   "scripts": {
+    "build": "rimraf dist && tsc",
     "lint": "tslint --project .",
     "start": "nodemon -e ts,graphql -x ts-node -r dotenv/config src/index.ts dotenv_config_path=../../.env"
   },

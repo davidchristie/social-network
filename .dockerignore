@@ -1,4 +1,6 @@
 .env
-dist
+.git
+docker-compose.yml
 docker-compose.override.yml
+Dockerfile
 node_modules
