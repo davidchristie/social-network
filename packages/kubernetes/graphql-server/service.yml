@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: graphql-server
+  namespace: prisma
+spec:
+  ports:
+  - port: 4000
+    targetPort: 4000
+    protocol: TCP
+  selector:
+    stage: production
+    name: graphql-server
+    app: prisma
