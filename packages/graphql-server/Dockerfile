@@ -7,6 +7,7 @@ RUN yarn
 CMD [ "yarn", "workspace", "graphql-server", "build" ]
 
 FROM node:9.11.2
+EXPOSE 4000
 WORKDIR /app
 COPY --from=build /app/dist .
 COPY --from=build /app/node_modules node_modules

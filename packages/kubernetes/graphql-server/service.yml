@@ -1,14 +1,22 @@
 apiVersion: v1
 kind: Service
 metadata:
+  labels:
+    app: social-network-template
+    name: graphql-server
+    stage: production
   name: graphql-server
   namespace: prisma
 spec:
+  externalTrafficPolicy: Cluster
   ports:
-  - port: 4000
-    targetPort: 4000
+  - nodePort: 30022
+    port: 4000
     protocol: TCP
+    targetPort: 4000
   selector:
-    stage: production
+    app: social-network-template
     name: graphql-server
-    app: prisma
+    stage: production
+  sessionAffinity: None
+  type: LoadBalancer
