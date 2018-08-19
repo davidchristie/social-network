@@ -22,3 +22,8 @@ spec:
       - name: graphql-server
         image: davidchristie/graphql-server
         imagePullPolicy: Always
+        env:
+        - name: JWT_SECRET
+          value: 'jwt_secret123'
+        - name: PRISMA_ENDPOINT
+          value: 'http://prisma.prisma:4466/social-network-template/production'
