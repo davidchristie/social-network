@@ -25,3 +25,7 @@ kubectl apply -f prisma/deployment.yml
 echo "Apply Prisma service definition"
 
 kubectl apply -f prisma/service.yml
+
+echo "Apply graphql-server deployment definition"
+
+kubectl apply -f graphql-server/deployment.yml

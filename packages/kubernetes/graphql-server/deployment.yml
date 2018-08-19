@@ -1,0 +1,24 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: graphql-server
+  namespace: prisma
+  labels:
+    stage: production
+    name: graphql-server
+    app: social-network-template
+spec:
+  replicas: 2
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        stage: production
+        name: graphql-server
+        app: social-network-template
+    spec:
+      containers:
+      - name: graphql-server
+        image: davidchristie/graphql-server
+        imagePullPolicy: Always
