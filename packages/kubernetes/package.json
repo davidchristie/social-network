@@ -2,6 +2,7 @@
   "name": "kubernetes",
   "private": true,
   "scripts": {
+    "connect-to-prisma": "scripts/connect-to-prisma.sh",
     "deploy": "scripts/deploy.sh"
   },
   "version": "1.0.0"
