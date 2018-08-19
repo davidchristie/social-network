@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: graphql-server
-        image: davidchristie/graphql-server
+        image: davidchristie/graphql-server:v3
         imagePullPolicy: Always
         env:
         - name: JWT_SECRET
