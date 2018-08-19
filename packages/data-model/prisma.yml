@@ -1,4 +1,4 @@
-endpoint: http://localhost:4467/social-network-template/staging
+endpoint: ${env:PRISMA_ENDPOINT}
 datamodel: datamodel.graphql
 hooks:
   post-deploy:

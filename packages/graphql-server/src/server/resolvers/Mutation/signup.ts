@@ -17,6 +17,11 @@ export default async function signup (
         email,
         name,
         password: await getHash(password),
+        profile: {
+          create: {
+            name,
+          },
+        },
       },
     },
   );

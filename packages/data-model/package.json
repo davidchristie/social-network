@@ -9,6 +9,7 @@
   "private": true,
   "scripts": {
     "deploy": "prisma deploy --env-file ../../.env",
+    "delete": "prisma delete --env-file ../../.env",
     "playground": "prisma playground --env-file ../../.env"
   },
   "version": "1.0.0"

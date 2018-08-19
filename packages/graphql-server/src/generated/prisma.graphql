@@ -1,11 +1,12 @@
 # source: http://localhost:4467/social-network-template/staging
-# timestamp: Sat Aug 11 2018 19:23:03 GMT+1200 (New Zealand Standard Time)
+# timestamp: Sun Aug 19 2018 12:14:46 GMT+1200 (NZST)
 
 type Account implements Node {
   email: String!
   id: ID!
   name: String!
   password: String!
+  profile(where: ProfileWhereInput): Profile!
 }
 
 """A connection to a list of items."""
@@ -19,6 +20,18 @@ type AccountConnection {
 }
 
 input AccountCreateInput {
+  email: String!
+  name: String!
+  password: String!
+  profile: ProfileCreateOneWithoutAccountInput!
+}
+
+input AccountCreateOneWithoutProfileInput {
+  create: AccountCreateWithoutProfileInput
+  connect: AccountWhereUniqueInput
+}
+
+input AccountCreateWithoutProfileInput {
   email: String!
   name: String!
   password: String!
@@ -98,6 +111,26 @@ input AccountUpdateInput {
   email: String
   name: String
   password: String
+  profile: ProfileUpdateOneWithoutAccountInput
+}
+
+input AccountUpdateOneWithoutProfileInput {
+  create: AccountCreateWithoutProfileInput
+  connect: AccountWhereUniqueInput
+  delete: Boolean
+  update: AccountUpdateWithoutProfileDataInput
+  upsert: AccountUpsertWithoutProfileInput
+}
+
+input AccountUpdateWithoutProfileDataInput {
+  email: String
+  name: String
+  password: String
+}
+
+input AccountUpsertWithoutProfileInput {
+  update: AccountUpdateWithoutProfileDataInput!
+  create: AccountCreateWithoutProfileInput!
 }
 
 input AccountWhereInput {
@@ -269,6 +302,7 @@ input AccountWhereInput {
 
   """All values not ending with the given string."""
   password_not_ends_with: String
+  profile: ProfileWhereInput
 }
 
 input AccountWhereUniqueInput {
@@ -277,6 +311,10 @@ input AccountWhereUniqueInput {
 }
 
 type AggregateAccount {
+  count: Int!
+}
+
+type AggregateProfile {
   count: Int!
 }
 
@@ -293,11 +331,17 @@ scalar Long
 
 type Mutation {
   createAccount(data: AccountCreateInput!): Account!
+  createProfile(data: ProfileCreateInput!): Profile!
   updateAccount(data: AccountUpdateInput!, where: AccountWhereUniqueInput!): Account
+  updateProfile(data: ProfileUpdateInput!, where: ProfileWhereUniqueInput!): Profile
   deleteAccount(where: AccountWhereUniqueInput!): Account
+  deleteProfile(where: ProfileWhereUniqueInput!): Profile
   upsertAccount(where: AccountWhereUniqueInput!, create: AccountCreateInput!, update: AccountUpdateInput!): Account!
+  upsertProfile(where: ProfileWhereUniqueInput!, create: ProfileCreateInput!, update: ProfileUpdateInput!): Profile!
   updateManyAccounts(data: AccountUpdateInput!, where: AccountWhereInput): BatchPayload!
+  updateManyProfiles(data: ProfileUpdateInput!, where: ProfileWhereInput): BatchPayload!
   deleteManyAccounts(where: AccountWhereInput): BatchPayload!
+  deleteManyProfiles(where: ProfileWhereInput): BatchPayload!
 }
 
 enum MutationType {
@@ -327,10 +371,225 @@ type PageInfo {
   endCursor: String
 }
 
+type Profile implements Node {
+  account(where: AccountWhereInput): Account!
+  id: ID!
+  name: String!
+}
+
+"""A connection to a list of items."""
+type ProfileConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [ProfileEdge]!
+  aggregate: AggregateProfile!
+}
+
+input ProfileCreateInput {
+  name: String!
+  account: AccountCreateOneWithoutProfileInput!
+}
+
+input ProfileCreateOneWithoutAccountInput {
+  create: ProfileCreateWithoutAccountInput
+  connect: ProfileWhereUniqueInput
+}
+
+input ProfileCreateWithoutAccountInput {
+  name: String!
+}
+
+"""An edge in a connection."""
+type ProfileEdge {
+  """The item at the end of the edge."""
+  node: Profile!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+enum ProfileOrderByInput {
+  id_ASC
+  id_DESC
+  name_ASC
+  name_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
+}
+
+type ProfilePreviousValues {
+  id: ID!
+  name: String!
+}
+
+type ProfileSubscriptionPayload {
+  mutation: MutationType!
+  node: Profile
+  updatedFields: [String!]
+  previousValues: ProfilePreviousValues
+}
+
+input ProfileSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [ProfileSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [ProfileSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [ProfileSubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: ProfileWhereInput
+}
+
+input ProfileUpdateInput {
+  name: String
+  account: AccountUpdateOneWithoutProfileInput
+}
+
+input ProfileUpdateOneWithoutAccountInput {
+  create: ProfileCreateWithoutAccountInput
+  connect: ProfileWhereUniqueInput
+  delete: Boolean
+  update: ProfileUpdateWithoutAccountDataInput
+  upsert: ProfileUpsertWithoutAccountInput
+}
+
+input ProfileUpdateWithoutAccountDataInput {
+  name: String
+}
+
+input ProfileUpsertWithoutAccountInput {
+  update: ProfileUpdateWithoutAccountDataInput!
+  create: ProfileCreateWithoutAccountInput!
+}
+
+input ProfileWhereInput {
+  """Logical AND on all given filters."""
+  AND: [ProfileWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [ProfileWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [ProfileWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  name: String
+
+  """All values that are not equal to given value."""
+  name_not: String
+
+  """All values that are contained in given list."""
+  name_in: [String!]
+
+  """All values that are not contained in given list."""
+  name_not_in: [String!]
+
+  """All values less than the given value."""
+  name_lt: String
+
+  """All values less than or equal the given value."""
+  name_lte: String
+
+  """All values greater than the given value."""
+  name_gt: String
+
+  """All values greater than or equal the given value."""
+  name_gte: String
+
+  """All values containing the given string."""
+  name_contains: String
+
+  """All values not containing the given string."""
+  name_not_contains: String
+
+  """All values starting with the given string."""
+  name_starts_with: String
+
+  """All values not starting with the given string."""
+  name_not_starts_with: String
+
+  """All values ending with the given string."""
+  name_ends_with: String
+
+  """All values not ending with the given string."""
+  name_not_ends_with: String
+  account: AccountWhereInput
+}
+
+input ProfileWhereUniqueInput {
+  id: ID
+}
+
 type Query {
   accounts(where: AccountWhereInput, orderBy: AccountOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Account]!
+  profiles(where: ProfileWhereInput, orderBy: ProfileOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Profile]!
   account(where: AccountWhereUniqueInput!): Account
+  profile(where: ProfileWhereUniqueInput!): Profile
   accountsConnection(where: AccountWhereInput, orderBy: AccountOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): AccountConnection!
+  profilesConnection(where: ProfileWhereInput, orderBy: ProfileOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ProfileConnection!
 
   """Fetches an object given its ID"""
   node(
@@ -341,4 +600,5 @@ type Query {
 
 type Subscription {
   account(where: AccountSubscriptionWhereInput): AccountSubscriptionPayload
+  profile(where: ProfileSubscriptionWhereInput): ProfileSubscriptionPayload
 }

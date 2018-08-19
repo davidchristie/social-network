@@ -3,4 +3,11 @@ type Account {
   id: ID! @unique
   name: String!
   password: String!
+  profile: Profile! @relation(name: "AccountProfile")
+}
+
+type Profile {
+  account: Account! @relation(name: "AccountProfile")
+  id: ID! @unique
+  name: String!
 }

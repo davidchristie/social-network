@@ -1,4 +1,9 @@
-# import Account from "./generated/prisma.graphql"
+type Account {
+  email: String!
+  id: ID!
+  name: String!
+  profile: Profile!
+}
 
 type LoginPayload {
   token: String!
@@ -7,6 +12,11 @@ type LoginPayload {
 type Mutation {
   login(email: String!, password: String!): LoginPayload!
   signup(email: String!, name: String!, password: String!): LoginPayload!
+}
+
+type Profile {
+  id: ID!
+  name: String!
 }
 
 type Query {
