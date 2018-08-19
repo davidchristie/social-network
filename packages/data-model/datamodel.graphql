@@ -6,8 +6,15 @@ type Account {
   profile: Profile! @relation(name: "AccountProfile")
 }
 
+type Post {
+  createdBy: Profile! @relation(name: "ProfilePosts")
+  content: String!
+  id: ID! @unique
+}
+
 type Profile {
   account: Account! @relation(name: "AccountProfile")
   id: ID! @unique
   name: String!
+  posts: [Post!]! @relation(name: "ProfilePosts")
 }

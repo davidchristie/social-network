@@ -1,5 +1,5 @@
-# source: http://localhost:4467/social-network-template/staging
-# timestamp: Sun Aug 19 2018 12:14:46 GMT+1200 (NZST)
+# source: http://localhost:4467/social-network-template/production
+# timestamp: Sun Aug 19 2018 13:09:12 GMT+1200 (NZST)
 
 type Account implements Node {
   email: String!
@@ -314,6 +314,10 @@ type AggregateAccount {
   count: Int!
 }
 
+type AggregatePost {
+  count: Int!
+}
+
 type AggregateProfile {
   count: Int!
 }
@@ -331,16 +335,22 @@ scalar Long
 
 type Mutation {
   createAccount(data: AccountCreateInput!): Account!
+  createPost(data: PostCreateInput!): Post!
   createProfile(data: ProfileCreateInput!): Profile!
   updateAccount(data: AccountUpdateInput!, where: AccountWhereUniqueInput!): Account
+  updatePost(data: PostUpdateInput!, where: PostWhereUniqueInput!): Post
   updateProfile(data: ProfileUpdateInput!, where: ProfileWhereUniqueInput!): Profile
   deleteAccount(where: AccountWhereUniqueInput!): Account
+  deletePost(where: PostWhereUniqueInput!): Post
   deleteProfile(where: ProfileWhereUniqueInput!): Profile
   upsertAccount(where: AccountWhereUniqueInput!, create: AccountCreateInput!, update: AccountUpdateInput!): Account!
+  upsertPost(where: PostWhereUniqueInput!, create: PostCreateInput!, update: PostUpdateInput!): Post!
   upsertProfile(where: ProfileWhereUniqueInput!, create: ProfileCreateInput!, update: ProfileUpdateInput!): Profile!
   updateManyAccounts(data: AccountUpdateInput!, where: AccountWhereInput): BatchPayload!
+  updateManyPosts(data: PostUpdateInput!, where: PostWhereInput): BatchPayload!
   updateManyProfiles(data: ProfileUpdateInput!, where: ProfileWhereInput): BatchPayload!
   deleteManyAccounts(where: AccountWhereInput): BatchPayload!
+  deleteManyPosts(where: PostWhereInput): BatchPayload!
   deleteManyProfiles(where: ProfileWhereInput): BatchPayload!
 }
 
@@ -371,10 +381,230 @@ type PageInfo {
   endCursor: String
 }
 
+type Post implements Node {
+  createdBy(where: ProfileWhereInput): Profile!
+  content: String!
+  id: ID!
+}
+
+"""A connection to a list of items."""
+type PostConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [PostEdge]!
+  aggregate: AggregatePost!
+}
+
+input PostCreateInput {
+  content: String!
+  createdBy: ProfileCreateOneWithoutPostsInput!
+}
+
+input PostCreateManyWithoutCreatedByInput {
+  create: [PostCreateWithoutCreatedByInput!]
+  connect: [PostWhereUniqueInput!]
+}
+
+input PostCreateWithoutCreatedByInput {
+  content: String!
+}
+
+"""An edge in a connection."""
+type PostEdge {
+  """The item at the end of the edge."""
+  node: Post!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+enum PostOrderByInput {
+  content_ASC
+  content_DESC
+  id_ASC
+  id_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
+}
+
+type PostPreviousValues {
+  content: String!
+  id: ID!
+}
+
+type PostSubscriptionPayload {
+  mutation: MutationType!
+  node: Post
+  updatedFields: [String!]
+  previousValues: PostPreviousValues
+}
+
+input PostSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [PostSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [PostSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [PostSubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: PostWhereInput
+}
+
+input PostUpdateInput {
+  content: String
+  createdBy: ProfileUpdateOneWithoutPostsInput
+}
+
+input PostUpdateManyWithoutCreatedByInput {
+  create: [PostCreateWithoutCreatedByInput!]
+  connect: [PostWhereUniqueInput!]
+  disconnect: [PostWhereUniqueInput!]
+  delete: [PostWhereUniqueInput!]
+  update: [PostUpdateWithWhereUniqueWithoutCreatedByInput!]
+  upsert: [PostUpsertWithWhereUniqueWithoutCreatedByInput!]
+}
+
+input PostUpdateWithoutCreatedByDataInput {
+  content: String
+}
+
+input PostUpdateWithWhereUniqueWithoutCreatedByInput {
+  where: PostWhereUniqueInput!
+  data: PostUpdateWithoutCreatedByDataInput!
+}
+
+input PostUpsertWithWhereUniqueWithoutCreatedByInput {
+  where: PostWhereUniqueInput!
+  update: PostUpdateWithoutCreatedByDataInput!
+  create: PostCreateWithoutCreatedByInput!
+}
+
+input PostWhereInput {
+  """Logical AND on all given filters."""
+  AND: [PostWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [PostWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [PostWhereInput!]
+  content: String
+
+  """All values that are not equal to given value."""
+  content_not: String
+
+  """All values that are contained in given list."""
+  content_in: [String!]
+
+  """All values that are not contained in given list."""
+  content_not_in: [String!]
+
+  """All values less than the given value."""
+  content_lt: String
+
+  """All values less than or equal the given value."""
+  content_lte: String
+
+  """All values greater than the given value."""
+  content_gt: String
+
+  """All values greater than or equal the given value."""
+  content_gte: String
+
+  """All values containing the given string."""
+  content_contains: String
+
+  """All values not containing the given string."""
+  content_not_contains: String
+
+  """All values starting with the given string."""
+  content_starts_with: String
+
+  """All values not starting with the given string."""
+  content_not_starts_with: String
+
+  """All values ending with the given string."""
+  content_ends_with: String
+
+  """All values not ending with the given string."""
+  content_not_ends_with: String
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  createdBy: ProfileWhereInput
+}
+
+input PostWhereUniqueInput {
+  id: ID
+}
+
 type Profile implements Node {
   account(where: AccountWhereInput): Account!
   id: ID!
   name: String!
+  posts(where: PostWhereInput, orderBy: PostOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Post!]
 }
 
 """A connection to a list of items."""
@@ -390,6 +620,7 @@ type ProfileConnection {
 input ProfileCreateInput {
   name: String!
   account: AccountCreateOneWithoutProfileInput!
+  posts: PostCreateManyWithoutCreatedByInput
 }
 
 input ProfileCreateOneWithoutAccountInput {
@@ -397,8 +628,19 @@ input ProfileCreateOneWithoutAccountInput {
   connect: ProfileWhereUniqueInput
 }
 
+input ProfileCreateOneWithoutPostsInput {
+  create: ProfileCreateWithoutPostsInput
+  connect: ProfileWhereUniqueInput
+}
+
 input ProfileCreateWithoutAccountInput {
   name: String!
+  posts: PostCreateManyWithoutCreatedByInput
+}
+
+input ProfileCreateWithoutPostsInput {
+  name: String!
+  account: AccountCreateOneWithoutProfileInput!
 }
 
 """An edge in a connection."""
@@ -468,6 +710,7 @@ input ProfileSubscriptionWhereInput {
 input ProfileUpdateInput {
   name: String
   account: AccountUpdateOneWithoutProfileInput
+  posts: PostUpdateManyWithoutCreatedByInput
 }
 
 input ProfileUpdateOneWithoutAccountInput {
@@ -478,13 +721,32 @@ input ProfileUpdateOneWithoutAccountInput {
   upsert: ProfileUpsertWithoutAccountInput
 }
 
+input ProfileUpdateOneWithoutPostsInput {
+  create: ProfileCreateWithoutPostsInput
+  connect: ProfileWhereUniqueInput
+  delete: Boolean
+  update: ProfileUpdateWithoutPostsDataInput
+  upsert: ProfileUpsertWithoutPostsInput
+}
+
 input ProfileUpdateWithoutAccountDataInput {
   name: String
+  posts: PostUpdateManyWithoutCreatedByInput
+}
+
+input ProfileUpdateWithoutPostsDataInput {
+  name: String
+  account: AccountUpdateOneWithoutProfileInput
 }
 
 input ProfileUpsertWithoutAccountInput {
   update: ProfileUpdateWithoutAccountDataInput!
   create: ProfileCreateWithoutAccountInput!
+}
+
+input ProfileUpsertWithoutPostsInput {
+  update: ProfileUpdateWithoutPostsDataInput!
+  create: ProfileCreateWithoutPostsInput!
 }
 
 input ProfileWhereInput {
@@ -577,6 +839,9 @@ input ProfileWhereInput {
   """All values not ending with the given string."""
   name_not_ends_with: String
   account: AccountWhereInput
+  posts_every: PostWhereInput
+  posts_some: PostWhereInput
+  posts_none: PostWhereInput
 }
 
 input ProfileWhereUniqueInput {
@@ -585,10 +850,13 @@ input ProfileWhereUniqueInput {
 
 type Query {
   accounts(where: AccountWhereInput, orderBy: AccountOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Account]!
+  posts(where: PostWhereInput, orderBy: PostOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Post]!
   profiles(where: ProfileWhereInput, orderBy: ProfileOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Profile]!
   account(where: AccountWhereUniqueInput!): Account
+  post(where: PostWhereUniqueInput!): Post
   profile(where: ProfileWhereUniqueInput!): Profile
   accountsConnection(where: AccountWhereInput, orderBy: AccountOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): AccountConnection!
+  postsConnection(where: PostWhereInput, orderBy: PostOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): PostConnection!
   profilesConnection(where: ProfileWhereInput, orderBy: ProfileOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ProfileConnection!
 
   """Fetches an object given its ID"""
@@ -600,5 +868,6 @@ type Query {
 
 type Subscription {
   account(where: AccountSubscriptionWhereInput): AccountSubscriptionPayload
+  post(where: PostSubscriptionWhereInput): PostSubscriptionPayload
   profile(where: ProfileSubscriptionWhereInput): ProfileSubscriptionPayload
 }
