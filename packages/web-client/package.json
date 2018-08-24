@@ -13,14 +13,23 @@
     "react-scripts-ts": "2.16.0"
   },
   "devDependencies": {
+    "@types/enzyme": "^3.1.13",
     "@types/jest": "^23.1.1",
     "@types/node": "^10.3.5",
     "@types/prop-types": "^15.5.3",
     "@types/react": "^16.4.1",
     "@types/react-dom": "^16.0.6",
     "@types/react-router-dom": "^4.3.0",
+    "enzyme": "^3.4.4",
+    "enzyme-adapter-react-16": "^1.2.0",
+    "enzyme-to-json": "^3.3.4",
     "tslint": "^5.10.0",
     "typescript": "^2.9.2"
+  },
+  "jest": {
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
   },
   "name": "web-client",
   "private": true,
