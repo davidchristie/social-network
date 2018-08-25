@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ButtonLink component matches snapshot 1`] = `
+<Link
+  className="ButtonLink"
+  replace={false}
+  to="/test-route"
+>
+  <Button />
+</Link>
+`;
