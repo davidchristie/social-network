@@ -1,20 +1,20 @@
-import { shallow, ShallowWrapper } from 'enzyme'
-import React from 'react'
+import { shallow, ShallowWrapper } from "enzyme";
+import React from "react";
 
-import ButtonLink from './index'
+import ButtonLink from "./index";
 
-describe('ButtonLink component', () => {
-  const TO = '/test-route'
+describe("ButtonLink component", () => {
+  const TO = "/test-route";
 
-  let wrapper: ShallowWrapper
+  let wrapper: ShallowWrapper;
 
   beforeEach(() => {
     wrapper = shallow(
-      <ButtonLink to={TO} />
-    )
-  })
+      <ButtonLink to={TO} />,
+    );
+  });
 
-  it('matches snapshot', () => {
-    expect(wrapper).toMatchSnapshot()
-  })
-})
+  it("matches snapshot", () => {
+    expect(wrapper).toMatchSnapshot();
+  });
+});

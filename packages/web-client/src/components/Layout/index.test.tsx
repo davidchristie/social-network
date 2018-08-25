@@ -1,16 +1,16 @@
-import { shallow, ShallowWrapper } from 'enzyme'
-import React from 'react'
+import { shallow, ShallowWrapper } from "enzyme";
+import React from "react";
 
-import Layout from './index'
+import Layout from "./index";
 
-describe('Layout component', () => {
-  let wrapper: ShallowWrapper
+describe("Layout component", () => {
+  let wrapper: ShallowWrapper;
 
   beforeEach(() => {
-    wrapper = shallow(<Layout />)
-  })
+    wrapper = shallow(<Layout />);
+  });
 
-  it('matches snapshot', () => {
-    expect(wrapper).toMatchSnapshot()
-  })
-})
+  it("matches snapshot", () => {
+    expect(wrapper).toMatchSnapshot();
+  });
+});

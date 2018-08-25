@@ -6,10 +6,10 @@ import AccountQuery, {
   AccountData,
   AccountVariables,
 } from "../../queries/Account";
+import AccountPage from "../AccountPage";
 import Alert from "../Alert";
-import AccountPage from '../AccountPage'
-import LoginPage from '../LoginPage'
-import SignupPage from '../SignupPage'
+import LoginPage from "../LoginPage";
+import SignupPage from "../SignupPage";
 
 export default class Routes extends React.Component {
   public render () {

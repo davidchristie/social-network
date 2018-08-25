@@ -1,11 +1,11 @@
-import { shallow } from 'enzyme'
-import React from 'react'
+import { shallow } from "enzyme";
+import React from "react";
 
-import AccountPage from './index'
+import AccountPage from "./index";
 
-describe('AccountPage component', () => {
-  it('matches snapshot', () => {
-    const wrapper = shallow(<AccountPage />)
-    expect(wrapper).toMatchSnapshot()
-  })
-})
+describe("AccountPage component", () => {
+  it("matches snapshot", () => {
+    const wrapper = shallow(<AccountPage />);
+    expect(wrapper).toMatchSnapshot();
+  });
+});
