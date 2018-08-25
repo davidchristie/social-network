@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Section component with custom class matches snapshot 1`] = `
+<section
+  className="Section custom_class"
+/>
+`;
+
+exports[`Section component with no props matches snapshot 1`] = `
+<section
+  className="Section"
+/>
+`;
