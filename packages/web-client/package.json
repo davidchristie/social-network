@@ -35,9 +35,10 @@
   "private": true,
   "scripts": {
     "build": "react-scripts-ts build",
+    "coverage": "yarn test --coverage",
     "lint": "tslint --project .",
     "start": "react-scripts-ts start",
-    "test": "react-scripts-ts test --env=jsdom"
+    "test": "react-scripts-ts test --env=jsdom --verbose"
   },
   "version": "1.0.0"
 }
