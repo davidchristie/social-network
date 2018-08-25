@@ -6,7 +6,7 @@
   "scripts": {
     "data-model": "yarn workspace data-model",
     "graphql-server": "yarn workspace graphql-server",
-    "kubernetes": "yarn workspace kubernetes",
+    "infrastructure": "yarn workspace infrastructure",
     "web-client": "yarn workspace web-client"
   },
   "version": "1.0.0",

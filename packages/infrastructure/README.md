@@ -1,9 +1,9 @@
-# Kubernetes
+# Infrastructure
 
 ## Scripts
 
 ```bash
-yarn kubernetes deploy
+yarn infrastructure deploy
 ```
 
 Deploy to a Kubernetes cluster.

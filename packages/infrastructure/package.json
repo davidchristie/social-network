@@ -1,5 +1,5 @@
 {
-  "name": "kubernetes",
+  "name": "infrastructure",
   "private": true,
   "scripts": {
     "connect-to-prisma": "scripts/connect-to-prisma.sh",
