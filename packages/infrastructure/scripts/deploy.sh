@@ -1,3 +1,17 @@
+# Load environment variables
+export $(grep -v '^#' ../../.env | xargs)
+
+# Delete secrets
+kubectl delete secrets \
+  --namespace=social-network \
+  --all
+
+# Create secrets
+kubectl create secret generic authentication \
+  --namespace=social-network \
+  --from-literal=jwt-secret=$JWT_SECRET
+
+# Apply definitions
 kubectl apply -f namespace.yml
 kubectl apply -f database/pvc.yml
 kubectl apply -f database/deployment.yml

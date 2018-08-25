@@ -23,6 +23,9 @@ spec:
         image: davidchristie/public-api:v2
         env:
         - name: JWT_SECRET
-          value: 'jwt_secret123'
+          valueFrom:
+            secretKeyRef:
+              name: authentication
+              key: jwt-secret
         - name: PRISMA_ENDPOINT
           value: 'http://prisma.social-network:4466/social-network/production'
