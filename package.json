@@ -6,6 +6,7 @@
   "scripts": {
     "data-model": "yarn workspace data-model",
     "infrastructure": "yarn workspace infrastructure",
+    "postinstall": "scripts/postinstall.sh",
     "public-api": "yarn workspace public-api",
     "web-client": "yarn workspace web-client"
   },

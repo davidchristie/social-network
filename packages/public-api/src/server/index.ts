@@ -1,6 +1,6 @@
+import { Prisma } from "data-model";
 import { GraphQLServer } from "graphql-yoga";
 
-import { Prisma } from "../generated/prisma";
 import { Context } from "../types";
 import resolvers from "./resolvers";
 

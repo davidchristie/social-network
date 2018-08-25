@@ -3,14 +3,18 @@
     "graphql": "^0.13.2",
     "prisma": "^1.13.7",
     "prisma-binding": "^2.1.4",
+    "rimraf": "^2.6.2",
     "typescript": "^3.0.1"
   },
+  "main": "./dist/prisma.js",
   "name": "data-model",
   "private": true,
   "scripts": {
-    "deploy": "prisma deploy --env-file ../../.env",
+    "build": "rimraf dist && tsc",
     "delete": "prisma delete --env-file ../../.env",
+    "deploy": "prisma deploy --env-file ../../.env",
     "playground": "prisma playground --env-file ../../.env"
   },
+  "types": "./generated/prisma.ts",
   "version": "1.0.0"
 }

@@ -1,6 +1,5 @@
+import { Prisma } from "data-model";
 import { Request } from "express";
-
-import { Prisma } from "./generated/prisma";
 
 export interface Context {
   database: Prisma;

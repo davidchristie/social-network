@@ -1,5 +1,5 @@
-# source: http://localhost:4467/social-network-template/production
-# timestamp: Sun Aug 19 2018 13:09:12 GMT+1200 (NZST)
+# source: http://localhost:4467
+# timestamp: Sat Aug 25 2018 21:23:06 GMT+1200 (NZST)
 
 type Account implements Node {
   email: String!

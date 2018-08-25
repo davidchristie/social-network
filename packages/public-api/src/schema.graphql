@@ -1,4 +1,4 @@
-# import Post from "./generated/prisma.graphql"
+# import Post from "../../data-model/generated/prisma.graphql"
 
 type Account {
   email: String!

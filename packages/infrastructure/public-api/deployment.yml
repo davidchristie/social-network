@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: public-api
-        image: davidchristie/public-api:v1
+        image: davidchristie/public-api:v2
         imagePullPolicy: Always
         env:
         - name: JWT_SECRET

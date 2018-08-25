@@ -2,7 +2,7 @@ version: '3'
 
 services:
   public-api:
-    image: davidchristie/public-api:v1
+    image: davidchristie/public-api:v2
     build:
       context: .
       dockerfile: 'packages/public-api/Dockerfile'
