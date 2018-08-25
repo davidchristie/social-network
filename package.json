@@ -5,6 +5,7 @@
   "repository": "git@github.com:davidchristie/social-network-template.git",
   "scripts": {
     "data-model": "yarn workspace data-model",
+    "desktop-client": "yarn workspace desktop-client",
     "infrastructure": "yarn workspace infrastructure",
     "postinstall": "scripts/postinstall.sh",
     "public-api": "yarn workspace public-api",

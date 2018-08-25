@@ -1,0 +1,14 @@
+{
+  "devDependencies": {
+    "electron": "^2.0.8",
+    "electron-serve": "^0.2.0"
+  },
+  "main": "src/index.js",
+  "name": "desktop-client",
+  "private": true,
+  "scripts": {
+    "build": "scripts/build.sh",
+    "start": "electron ."
+  },
+  "version": "1.0.0"
+}
