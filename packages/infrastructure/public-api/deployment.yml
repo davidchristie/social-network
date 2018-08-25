@@ -1,11 +1,11 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: graphql-server
+  name: public-api
   namespace: prisma
   labels:
     stage: production
-    name: graphql-server
+    name: public-api
     app: social-network-template
 spec:
   replicas: 2
@@ -15,12 +15,12 @@ spec:
     metadata:
       labels:
         stage: production
-        name: graphql-server
+        name: public-api
         app: social-network-template
     spec:
       containers:
-      - name: graphql-server
-        image: davidchristie/graphql-server:v3
+      - name: public-api
+        image: davidchristie/public-api:v1
         imagePullPolicy: Always
         env:
         - name: JWT_SECRET

@@ -1,11 +1,11 @@
 version: '3'
 
 services:
-  graphql-server:
-    image: davidchristie/graphql-server:v3
+  public-api:
+    image: davidchristie/public-api:v1
     build:
       context: .
-      dockerfile: 'packages/graphql-server/Dockerfile'
+      dockerfile: 'packages/public-api/Dockerfile'
     ports:
       - '4000:4000'
     volumes:

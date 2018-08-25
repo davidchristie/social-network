@@ -1,14 +1,14 @@
 projects:
   data-model:
-    schemaPath: packages/graphql-server/src/generated/prisma.graphql
+    schemaPath: packages/public-api/src/generated/prisma.graphql
     extensions:
       prisma: prisma.yml
       codegen:
         - generator: prisma-binding
           language: typescript
           output:
-            binding: ../graphql-server/src/generated/prisma.ts
-  graphql-server:
+            binding: ../public-api/src/generated/prisma.ts
+  public-api:
     schemaPath: src/schema.graphql
     extensions:
       endpoints:

@@ -3,9 +3,9 @@ kind: Service
 metadata:
   labels:
     app: social-network-template
-    name: graphql-server
+    name: public-api
     stage: production
-  name: graphql-server
+  name: public-api
   namespace: prisma
 spec:
   externalTrafficPolicy: Cluster
@@ -16,7 +16,7 @@ spec:
     targetPort: 4000
   selector:
     app: social-network-template
-    name: graphql-server
+    name: public-api
     stage: production
   sessionAffinity: None
   type: LoadBalancer
