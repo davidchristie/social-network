@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button component with custom class matches snapshot 1`] = `
+<button
+  className="Button custom_class"
+/>
+`;
+
+exports[`Button component with no props matches snapshot 1`] = `
+<button
+  className="Button"
+/>
+`;
