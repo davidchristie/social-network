@@ -2,7 +2,7 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: database
-  namespace: prisma
+  namespace: social-network
   labels:
     stage: production
     name: database

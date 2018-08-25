@@ -2,7 +2,7 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: public-api
-  namespace: prisma
+  namespace: social-network
   labels:
     stage: production
     name: public-api
@@ -25,4 +25,4 @@ spec:
         - name: JWT_SECRET
           value: 'jwt_secret123'
         - name: PRISMA_ENDPOINT
-          value: 'http://prisma.prisma:4466/social-network-template/production'
+          value: 'http://prisma.social-network:4466/social-network/production'

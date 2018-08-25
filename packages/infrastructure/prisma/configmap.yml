@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: prisma-configmap
-  namespace: prisma
+  namespace: social-network
   labels:
     stage: production
     name: prisma
