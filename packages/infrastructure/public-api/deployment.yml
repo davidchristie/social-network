@@ -8,9 +8,9 @@ metadata:
     name: public-api
     app: social-network-template
 spec:
-  replicas: 2
+  replicas: 3
   strategy:
-    type: Recreate
+    type: RollingUpdate
   template:
     metadata:
       labels:
@@ -21,7 +21,6 @@ spec:
       containers:
       - name: public-api
         image: davidchristie/public-api:v2
-        imagePullPolicy: Always
         env:
         - name: JWT_SECRET
           value: 'jwt_secret123'
