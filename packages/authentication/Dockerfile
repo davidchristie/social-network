@@ -1,7 +1,7 @@
 FROM davidchristie/social-network:v1
 
-EXPOSE 4000
+EXPOSE 5000
 
-WORKDIR /app/packages/public-api
+WORKDIR /app/packages/authentication
 
 CMD ["node", "dist/index.js"]

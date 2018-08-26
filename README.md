@@ -2,6 +2,7 @@
 
 ## Packages
 
+* [Authentication](https://github.com/davidchristie/social-network-template/tree/master/packages/authentication)
 * [Data Model](https://github.com/davidchristie/social-network-template/tree/master/packages/data-model)
 * [Desktop Client](https://github.com/davidchristie/social-network-template/tree/master/packages/desktop-client)
 * [Infrastructure](https://github.com/davidchristie/social-network-template/tree/master/packages/infrastructure)

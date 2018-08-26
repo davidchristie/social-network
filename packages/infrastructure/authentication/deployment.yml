@@ -1,11 +1,11 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: public-api
+  name: authentication
   namespace: social-network
   labels:
     stage: production
-    name: public-api
+    name: authentication
     app: social-network-template
 spec:
   replicas: 3
@@ -15,15 +15,13 @@ spec:
     metadata:
       labels:
         stage: production
-        name: public-api
+        name: authentication
         app: social-network-template
     spec:
       containers:
-      - name: public-api
-        image: davidchristie/public-api:v3
+      - name: authentication
+        image: davidchristie/authentication:v2
         env:
-        - name: AUTHENTICATION_ENDPOINT
-          value: 'http://authentication.social-network:5000'
         - name: JWT_SECRET
           valueFrom:
             secretKeyRef:

@@ -4,10 +4,11 @@
   "private": true,
   "repository": "git@github.com:davidchristie/social-network-template.git",
   "scripts": {
+    "authentication": "yarn workspace authentication",
+    "build": "scripts/build.sh",
     "data-model": "yarn workspace data-model",
     "desktop-client": "yarn workspace desktop-client",
     "infrastructure": "yarn workspace infrastructure",
-    "postinstall": "scripts/postinstall.sh",
     "public-api": "yarn workspace public-api",
     "web-client": "yarn workspace web-client"
   },

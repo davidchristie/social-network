@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: authentication
+  namespace: social-network
+  labels:
+    stage: production
+    name: authentication
+    app: social-network-template
+spec:
+  ports:
+  - port: 5000
+    targetPort: 5000
+    protocol: TCP
+  selector:
+    app: social-network-template
+    name: authentication
+    stage: production
