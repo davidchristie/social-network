@@ -8,6 +8,7 @@ import AccountQuery, {
 } from "../../queries/Account";
 import AccountPage from "../AccountPage";
 import Alert from "../Alert";
+import HomePage from "../HomePage";
 import LoginPage from "../LoginPage";
 import SignupPage from "../SignupPage";
 
@@ -28,9 +29,14 @@ export default class Routes extends React.Component {
             ? (
               <Switch>
                 <Route
-                  component={AccountPage}
+                  component={HomePage}
                   exact={true}
                   path="/"
+                />
+                <Route
+                  component={AccountPage}
+                  exact={true}
+                  path="/account"
                 />
                 <Route
                   path="*"

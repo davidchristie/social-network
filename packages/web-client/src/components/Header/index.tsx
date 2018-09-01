@@ -34,6 +34,9 @@ export default class Header extends React.Component {
                   data!.account
                     ? (
                       <React.Fragment>
+                        <ButtonLink to="/account">
+                          Account
+                        </ButtonLink>
                         <LogoutButton />
                       </React.Fragment>
                     )
