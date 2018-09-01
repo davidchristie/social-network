@@ -24,4 +24,5 @@ type Profile {
 
 type Query {
   account: Account
+  profile(id: String!): Profile!
 }

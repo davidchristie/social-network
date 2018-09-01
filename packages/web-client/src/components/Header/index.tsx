@@ -24,6 +24,7 @@ export default class Header extends React.Component {
           if (error) {
             return <Alert>{error.message}</Alert>;
           }
+          const { account } = data!;
           return (
             <header className="Header">
               <div>
@@ -31,9 +32,14 @@ export default class Header extends React.Component {
               </div>
               <div>
                 {
-                  data!.account
+                  account
                     ? (
                       <React.Fragment>
+                        <ButtonLink
+                          to={`profile/${account.profile.id}`}
+                        >
+                          Profile
+                        </ButtonLink>
                         <ButtonLink to="/account">
                           Account
                         </ButtonLink>

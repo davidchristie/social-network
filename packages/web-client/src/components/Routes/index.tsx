@@ -10,6 +10,7 @@ import AccountPage from "../AccountPage";
 import Alert from "../Alert";
 import HomePage from "../HomePage";
 import LoginPage from "../LoginPage";
+import ProfilePage from "../ProfilePage";
 import SignupPage from "../SignupPage";
 
 export default class Routes extends React.Component {
@@ -37,6 +38,11 @@ export default class Routes extends React.Component {
                   component={AccountPage}
                   exact={true}
                   path="/account"
+                />
+                <Route
+                  component={ProfilePage}
+                  exact={true}
+                  path="/profile/:id"
                 />
                 <Route
                   path="*"

@@ -1,17 +1,10 @@
 {
   "extends": [
-    "../../tslint.json",
-    "tslint-react",
-    "tslint-config-prettier"
+    "../../tslint.json"
   ],
   "linterOptions": {
     "exclude": [
       "coverage/**/*"
     ]
-  },
-  "rules": {
-    "jsx-no-lambda": false,
-    "jsx-no-multiline-js": false,
-    "no-empty-interface": false
   }
 }
