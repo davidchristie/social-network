@@ -6,6 +6,7 @@ import ProfileQuery, {
   ProfileVariables
 } from "../../queries/Profile";
 import Alert from "../Alert";
+import DeletePostButton from "../DeletePostButton";
 import "./index.css";
 
 interface Props {
@@ -32,11 +33,15 @@ export default class ProfilePosts extends React.Component<Props> {
           return (
             <div className="ProfilePosts">
               {
-                profile.posts.map(post => (
-                  <div className="Post" key={post.id}>
-                    {post.text}
-                  </div>
-                ))
+                profile.posts
+                  .map(post => (
+                    <div className="Post" key={post.id}>
+                      {post.text}
+                      <hr />
+                      <DeletePostButton postId={post.id} />
+                    </div>
+                  ))
+                  .reverse()
               }
             </div>
           );

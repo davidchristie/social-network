@@ -1,10 +1,16 @@
 import React from "react";
-import { Mutation } from "react-apollo";
+import { Mutation, Query } from "react-apollo";
 
 import CreatePostMutation, {
   CreatePostData,
   CreatePostVariables,
 } from "../../mutations/CreatePost";
+import AccountQuery, {
+  AccountData,
+  AccountVariables
+} from "../../queries/Account";
+import ProfileQuery from "../../queries/Profile";
+import Alert from "../Alert";
 import Button from "../Button";
 import Input from "../Input";
 import Section from "../Section";
@@ -20,39 +26,62 @@ export default class CreatePostForm extends React.Component<{}, State> {
 
   public render () {
     return (
-      <Mutation<CreatePostData, CreatePostVariables>
-        mutation={CreatePostMutation}
-        onCompleted={() => {
-          this.setState({
-            text: "",
-          });
-        }}
-        variables={{
-          text: this.state.text,
-        }}
+      <Query<AccountData, AccountVariables>
+        query={AccountQuery}
       >
-        {(createPost) => (
-          <Section>
-            <form
-              onSubmit={(event: React.FormEvent) => {
-                event.preventDefault();
-                createPost();
+        {({ data, error, loading }) => {
+          if (loading) {
+            return "Loading";
+          }
+          if (error) {
+            return <Alert>{error.message}</Alert>;
+          }
+          const { account } = data!;
+          return (
+            <Mutation<CreatePostData, CreatePostVariables>
+              mutation={CreatePostMutation}
+              onCompleted={() => {
+                this.setState({
+                  text: "",
+                });
+              }}
+              refetchQueries={[
+                {
+                  query: ProfileQuery,
+                  variables: {
+                    id: account.profile.id,
+                  },
+                },
+              ]}
+              variables={{
+                text: this.state.text,
               }}
             >
-              <h2>Create Post</h2>
-              <div>
-                <Input
-                  name="text"
-                  onChange={this.textChanged}
-                  required={true}
-                  value={this.state.text}
-                />
-              </div>
-              <Button>Create</Button>
-            </form>
-          </Section>
-        )}
-      </Mutation>
+              {(createPost) => (
+                <Section>
+                  <form
+                    onSubmit={(event: React.FormEvent) => {
+                      event.preventDefault();
+                      createPost();
+                    }}
+                  >
+                    <h2>Create Post</h2>
+                    <div>
+                      <Input
+                        name="text"
+                        onChange={this.textChanged}
+                        required={true}
+                        value={this.state.text}
+                      />
+                    </div>
+                    <Button>Create</Button>
+                  </form>
+                </Section>
+              )}
+            </Mutation>
+          );
+        }}
+      </Query>
     );
   }
 
