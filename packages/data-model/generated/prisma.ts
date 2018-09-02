@@ -453,8 +453,8 @@ type PageInfo {
 
 type Post implements Node {
   createdBy(where: ProfileWhereInput): Profile!
-  content: String!
   id: ID!
+  text: String!
 }
 
 """A connection to a list of items."""
@@ -468,7 +468,7 @@ type PostConnection {
 }
 
 input PostCreateInput {
-  content: String!
+  text: String!
   createdBy: ProfileCreateOneWithoutPostsInput!
 }
 
@@ -478,7 +478,7 @@ input PostCreateManyWithoutCreatedByInput {
 }
 
 input PostCreateWithoutCreatedByInput {
-  content: String!
+  text: String!
 }
 
 """An edge in a connection."""
@@ -491,10 +491,10 @@ type PostEdge {
 }
 
 enum PostOrderByInput {
-  content_ASC
-  content_DESC
   id_ASC
   id_DESC
+  text_ASC
+  text_DESC
   updatedAt_ASC
   updatedAt_DESC
   createdAt_ASC
@@ -502,8 +502,8 @@ enum PostOrderByInput {
 }
 
 type PostPreviousValues {
-  content: String!
   id: ID!
+  text: String!
 }
 
 type PostSubscriptionPayload {
@@ -546,7 +546,7 @@ input PostSubscriptionWhereInput {
 }
 
 input PostUpdateInput {
-  content: String
+  text: String
   createdBy: ProfileUpdateOneWithoutPostsInput
 }
 
@@ -560,7 +560,7 @@ input PostUpdateManyWithoutCreatedByInput {
 }
 
 input PostUpdateWithoutCreatedByDataInput {
-  content: String
+  text: String
 }
 
 input PostUpdateWithWhereUniqueWithoutCreatedByInput {
@@ -583,46 +583,6 @@ input PostWhereInput {
 
   """Logical NOT on all given filters combined by AND."""
   NOT: [PostWhereInput!]
-  content: String
-
-  """All values that are not equal to given value."""
-  content_not: String
-
-  """All values that are contained in given list."""
-  content_in: [String!]
-
-  """All values that are not contained in given list."""
-  content_not_in: [String!]
-
-  """All values less than the given value."""
-  content_lt: String
-
-  """All values less than or equal the given value."""
-  content_lte: String
-
-  """All values greater than the given value."""
-  content_gt: String
-
-  """All values greater than or equal the given value."""
-  content_gte: String
-
-  """All values containing the given string."""
-  content_contains: String
-
-  """All values not containing the given string."""
-  content_not_contains: String
-
-  """All values starting with the given string."""
-  content_starts_with: String
-
-  """All values not starting with the given string."""
-  content_not_starts_with: String
-
-  """All values ending with the given string."""
-  content_ends_with: String
-
-  """All values not ending with the given string."""
-  content_not_ends_with: String
   id: ID
 
   """All values that are not equal to given value."""
@@ -663,6 +623,46 @@ input PostWhereInput {
 
   """All values not ending with the given string."""
   id_not_ends_with: ID
+  text: String
+
+  """All values that are not equal to given value."""
+  text_not: String
+
+  """All values that are contained in given list."""
+  text_in: [String!]
+
+  """All values that are not contained in given list."""
+  text_not_in: [String!]
+
+  """All values less than the given value."""
+  text_lt: String
+
+  """All values less than or equal the given value."""
+  text_lte: String
+
+  """All values greater than the given value."""
+  text_gt: String
+
+  """All values greater than or equal the given value."""
+  text_gte: String
+
+  """All values containing the given string."""
+  text_contains: String
+
+  """All values not containing the given string."""
+  text_not_contains: String
+
+  """All values starting with the given string."""
+  text_starts_with: String
+
+  """All values not starting with the given string."""
+  text_not_starts_with: String
+
+  """All values ending with the given string."""
+  text_ends_with: String
+
+  """All values not ending with the given string."""
+  text_not_ends_with: String
   createdBy: ProfileWhereInput
 }
 
@@ -962,10 +962,10 @@ export type AccountOrderByInput =   'email_ASC' |
   'createdAt_ASC' |
   'createdAt_DESC'
 
-export type PostOrderByInput =   'content_ASC' |
-  'content_DESC' |
-  'id_ASC' |
+export type PostOrderByInput =   'id_ASC' |
   'id_DESC' |
+  'text_ASC' |
+  'text_DESC' |
   'updatedAt_ASC' |
   'updatedAt_DESC' |
   'createdAt_ASC' |
@@ -1053,7 +1053,7 @@ export interface AccountWhereInput {
 }
 
 export interface PostUpdateInput {
-  content?: String
+  text?: String
   createdBy?: ProfileUpdateOneWithoutPostsInput
 }
 
@@ -1143,7 +1143,7 @@ export interface ProfileUpdateInput {
 }
 
 export interface PostCreateWithoutCreatedByInput {
-  content: String
+  text: String
 }
 
 export interface AccountUpsertWithoutProfileInput {
@@ -1152,7 +1152,7 @@ export interface AccountUpsertWithoutProfileInput {
 }
 
 export interface PostCreateInput {
-  content: String
+  text: String
   createdBy: ProfileCreateOneWithoutPostsInput
 }
 
@@ -1165,7 +1165,7 @@ export interface AccountUpdateOneWithoutProfileInput {
 }
 
 export interface PostUpdateWithoutCreatedByDataInput {
-  content?: String
+  text?: String
 }
 
 export interface ProfileUpdateOneWithoutPostsInput {
@@ -1185,20 +1185,6 @@ export interface PostWhereInput {
   AND?: PostWhereInput[] | PostWhereInput
   OR?: PostWhereInput[] | PostWhereInput
   NOT?: PostWhereInput[] | PostWhereInput
-  content?: String
-  content_not?: String
-  content_in?: String[] | String
-  content_not_in?: String[] | String
-  content_lt?: String
-  content_lte?: String
-  content_gt?: String
-  content_gte?: String
-  content_contains?: String
-  content_not_contains?: String
-  content_starts_with?: String
-  content_not_starts_with?: String
-  content_ends_with?: String
-  content_not_ends_with?: String
   id?: ID_Input
   id_not?: ID_Input
   id_in?: ID_Input[] | ID_Input
@@ -1213,6 +1199,20 @@ export interface PostWhereInput {
   id_not_starts_with?: ID_Input
   id_ends_with?: ID_Input
   id_not_ends_with?: ID_Input
+  text?: String
+  text_not?: String
+  text_in?: String[] | String
+  text_not_in?: String[] | String
+  text_lt?: String
+  text_lte?: String
+  text_gt?: String
+  text_gte?: String
+  text_contains?: String
+  text_not_contains?: String
+  text_starts_with?: String
+  text_not_starts_with?: String
+  text_ends_with?: String
+  text_not_ends_with?: String
   createdBy?: ProfileWhereInput
 }
 
@@ -1419,8 +1419,8 @@ export interface AccountEdge {
 
 export interface Post extends Node {
   createdBy: Profile
-  content: String
   id: ID_Output
+  text: String
 }
 
 export interface AccountPreviousValues {
@@ -1438,8 +1438,8 @@ export interface AccountSubscriptionPayload {
 }
 
 export interface PostPreviousValues {
-  content: String
   id: ID_Output
+  text: String
 }
 
 export interface ProfileSubscriptionPayload {

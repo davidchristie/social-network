@@ -12,6 +12,7 @@ type LoginPayload {
 }
 
 type Mutation {
+  createPost(text: String!): Post!
   login(email: String!, password: String!): LoginPayload!
   signup(email: String!, name: String!, password: String!): LoginPayload!
 }

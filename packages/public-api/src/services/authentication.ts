@@ -1,3 +1,4 @@
+import { Account } from "data-model";
 import { Request } from "express";
 import fetch from "node-fetch";
 
@@ -14,9 +15,7 @@ interface SignupInput {
   password: string;
 }
 
-type AccountOutput = Promise<{
-  id: string;
-}>;
+type AccountOutput = Promise<Account>;
 
 type LoginOutput = Promise<{
   token: string;

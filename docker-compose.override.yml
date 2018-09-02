@@ -3,6 +3,10 @@ services:
   authentication:
     build:
       dockerfile: 'packages/authentication/development.Dockerfile'
+    volumes:
+      - './packages/authentication:/app/packages/authentication'
   public-api:
     build:
       dockerfile: 'packages/public-api/development.Dockerfile'
+    volumes:
+      - './packages/public-api:/app/packages/public-api'

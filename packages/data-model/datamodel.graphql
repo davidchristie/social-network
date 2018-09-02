@@ -8,8 +8,8 @@ type Account {
 
 type Post {
   createdBy: Profile! @relation(name: "ProfilePosts")
-  content: String!
   id: ID! @unique
+  text: String!
 }
 
 type Profile {
