@@ -1,0 +1,8 @@
+version: '3'
+services:
+  authentication:
+    build:
+      dockerfile: 'packages/authentication/development.Dockerfile'
+  public-api:
+    build:
+      dockerfile: 'packages/public-api/development.Dockerfile'

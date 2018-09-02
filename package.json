@@ -8,7 +8,9 @@
     "build": "scripts/build.sh",
     "data-model": "yarn workspace data-model",
     "desktop-client": "yarn workspace desktop-client",
+    "development": "scripts/development.sh",
     "infrastructure": "yarn workspace infrastructure",
+    "production": "scripts/production.sh",
     "public-api": "yarn workspace public-api",
     "web-client": "yarn workspace web-client"
   },

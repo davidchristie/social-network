@@ -8,7 +8,7 @@ services:
     image: davidchristie/authentication:v2
     build:
       context: .
-      dockerfile: 'packages/authentication/Dockerfile'
+      dockerfile: 'packages/authentication/production.Dockerfile'
     ports:
       - '5000:5000'
     environment:
@@ -41,7 +41,7 @@ services:
     image: davidchristie/public-api:v3
     build:
       context: .
-      dockerfile: 'packages/public-api/Dockerfile'
+      dockerfile: 'packages/public-api/production.Dockerfile'
     ports:
       - '4000:4000'
     environment:
