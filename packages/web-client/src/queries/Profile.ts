@@ -4,6 +4,10 @@ export interface ProfileData {
   profile: {
     id: string;
     name: string;
+    posts: Array<{
+      id: string;
+      text: string;
+    }>
   };
 }
 
@@ -16,6 +20,10 @@ export default gql`
     profile(id: $id) {
       id
       name
+      posts {
+        id
+        text
+      }
     }
   }
 `;
