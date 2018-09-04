@@ -1,0 +1,20 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: ingress
+  namespace: social-network
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+
+  rules:
+    - http:
+        paths:
+        - path: /
+          backend:
+            serviceName: web-client
+            servicePort: 3000
+        - path: /graphql
+          backend:
+            serviceName: public-api
+            servicePort: 4000

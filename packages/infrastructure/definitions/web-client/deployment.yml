@@ -1,0 +1,23 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: web-client
+  namespace: social-network
+  labels:
+    stage: production
+    name: web-client
+    app: social-network-template
+spec:
+  replicas: 3
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        stage: production
+        name: web-client
+        app: social-network-template
+    spec:
+      containers:
+      - name: web-client
+        image: davidchristie/web-client:v2

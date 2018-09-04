@@ -37,7 +37,7 @@ services:
             password: prisma
             migrations: true
   public-api:
-    image: davidchristie/public-api:v3
+    image: davidchristie/public-api:v4
     build:
       context: .
     ports:
@@ -46,7 +46,7 @@ services:
       - 'AUTHENTICATION_ENDPOINT=http://authentication:5000'
       - 'PRISMA_ENDPOINT=http://prisma:4466/social-network/production'
   web-client:
-    image: davidchristie/web-client:v1
+    image: davidchristie/web-client:v2
     build:
       context: .
     ports:

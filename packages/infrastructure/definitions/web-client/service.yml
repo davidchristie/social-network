@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-client
+  namespace: social-network
+  labels:
+    stage: production
+    name: web-client
+    app: social-network-template
+spec:
+  ports:
+  - port: 3000
+    targetPort: 3000
+    protocol: TCP
+  selector:
+    app: social-network-template
+    name: web-client
+    stage: production
