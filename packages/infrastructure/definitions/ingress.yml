@@ -6,15 +6,16 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
-
+  tls:
+  - secretName: tls
   rules:
-    - http:
-        paths:
-        - path: /
-          backend:
-            serviceName: web-client
-            servicePort: 3000
-        - path: /graphql
-          backend:
-            serviceName: public-api
-            servicePort: 4000
+  - http:
+      paths:
+      - path: /
+        backend:
+          serviceName: web-client
+          servicePort: 3000
+      - path: /graphql
+        backend:
+          serviceName: public-api
+          servicePort: 4000

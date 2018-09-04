@@ -1,4 +1,10 @@
-kubectl apply -f definitions/namespace.yml
+# Create namespace
+scripts/create-namespace.sh
+
+# Deploy NGINX
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/mandatory.yaml
+
+# Apply definitions
 kubectl apply -f definitions/authentication/deployment.yml
 kubectl apply -f definitions/authentication/service.yml
 kubectl apply -f definitions/database/pvc.yml
