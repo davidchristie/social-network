@@ -8,7 +8,6 @@ services:
     image: davidchristie/authentication:v2
     build:
       context: .
-      dockerfile: 'packages/authentication/production.Dockerfile'
     ports:
       - '5000:5000'
     environment:
@@ -41,16 +40,15 @@ services:
     image: davidchristie/public-api:v3
     build:
       context: .
-      dockerfile: 'packages/public-api/production.Dockerfile'
     ports:
       - '4000:4000'
     environment:
       - 'AUTHENTICATION_ENDPOINT=http://authentication:5000'
       - 'PRISMA_ENDPOINT=http://prisma:4466/social-network/production'
   web-client:
+    image: davidchristie/web-client:v1
     build:
       context: .
-      dockerfile: 'packages/web-client/production.Dockerfile'
     ports:
       - '3000:3000'
     environment:

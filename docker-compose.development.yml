@@ -1,5 +1,8 @@
 version: '3'
 services:
+  social-network:
+    volumes:
+      - '/app/node_modules'
   authentication:
     build:
       dockerfile: 'packages/authentication/development.Dockerfile'

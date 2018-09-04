@@ -1,0 +1,11 @@
+version: '3'
+services:
+  authentication:
+    build:
+      dockerfile: 'packages/authentication/production.Dockerfile'
+  public-api:
+    build:
+      dockerfile: 'packages/public-api/production.Dockerfile'
+  web-client:
+    build:
+      dockerfile: 'packages/web-client/production.Dockerfile'

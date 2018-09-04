@@ -4,6 +4,6 @@
 build
 dist
 docker-compose.yml
-docker-compose.override.yml
+docker-compose.*.yml
 Dockerfile
 node_modules
