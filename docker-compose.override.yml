@@ -10,3 +10,8 @@ services:
       dockerfile: 'packages/public-api/development.Dockerfile'
     volumes:
       - './packages/public-api:/app/packages/public-api'
+  web-client:
+    build:
+      dockerfile: 'packages/web-client/development.Dockerfile'
+    volumes:
+      - './packages/web-client:/app/packages/web-client'

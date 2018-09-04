@@ -1,7 +1,7 @@
 version: '3'
 services:
   social-network:
-    image: davidchristie/social-network:v1
+    image: davidchristie/social-network
     build:
       context: .
   authentication:
@@ -47,5 +47,13 @@ services:
     environment:
       - 'AUTHENTICATION_ENDPOINT=http://authentication:5000'
       - 'PRISMA_ENDPOINT=http://prisma:4466/social-network/production'
+  web-client:
+    build:
+      context: .
+      dockerfile: 'packages/web-client/production.Dockerfile'
+    ports:
+      - '3000:3000'
+    environment:
+      - 'API_ENDPOINT=http://localhost:4000'
 volumes:
   mysql:

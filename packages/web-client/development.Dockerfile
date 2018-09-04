@@ -1,7 +1,7 @@
 FROM davidchristie/social-network
 
-EXPOSE 5000
+EXPOSE 3000
 
-WORKDIR /app/packages/authentication
+WORKDIR /app/packages/web-client
 
 CMD ["yarn", "start"]

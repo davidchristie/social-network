@@ -1,4 +1,4 @@
-FROM davidchristie/social-network:v1
+FROM davidchristie/social-network
 
 EXPOSE 5000
 
