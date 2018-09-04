@@ -1,0 +1,9 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: public-api-ingress
+  namespace: social-network
+spec:
+  backend:
+    serviceName: public-api
+    servicePort: 4000
