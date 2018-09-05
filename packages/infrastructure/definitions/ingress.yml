@@ -7,9 +7,12 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   tls:
-  - secretName: tls
+  - hosts:
+    - www.social-network.com
+    secretName: tls
   rules:
-  - http:
+  - host: www.social-network.com
+    http:
       paths:
       - path: /
         backend:
