@@ -9,9 +9,11 @@
     "data-model": "yarn workspace data-model",
     "desktop-client": "yarn workspace desktop-client",
     "development": "scripts/development.sh",
+    "end-to-end": "yarn workspace end-to-end",
     "infrastructure": "yarn workspace infrastructure",
     "production": "scripts/production.sh",
     "public-api": "yarn workspace public-api",
+    "test": "scripts/test.sh",
     "web-client": "yarn workspace web-client"
   },
   "version": "1.0.0",
