@@ -7,8 +7,8 @@ import AccountQuery, {
 } from "../../queries/Account";
 import Alert from "../Alert";
 import ButtonLink from "../ButtonLink";
+import Dropdown from "../Dropdown";
 import LogoutButton from "../LogoutButton";
-import Overlay from "../Overlay";
 import "./index.css";
 
 interface State {
@@ -36,29 +36,25 @@ export default class AccountMenu extends React.Component<{}, State> {
           return (
             <div className="AccountMenu">
               <div className="avatar" onClick={this.openDropdown} />
-              {
-                this.state.isDropdownOpen && (
-                  <React.Fragment>
-                    <Overlay onClick={this.closeDropdown} />
-                    <div className="dropdown">
-                      <ButtonLink
-                        onClick={this.closeDropdown}
-                        to={`profile/${account.profile.id}`}
-                      >
-                        Profile
-                      </ButtonLink>
-                      <ButtonLink
-                        onClick={this.closeDropdown}
-                        to="/account"
-                      >
-                        Account
-                      </ButtonLink>
-                      <hr />
-                      <LogoutButton />
-                    </div>
-                  </React.Fragment>
-                )
-              }
+              <Dropdown
+                onClose={this.closeDropdown}
+                open={this.state.isDropdownOpen}
+              >
+                <ButtonLink
+                  onClick={this.closeDropdown}
+                  to={`profile/${account.profile.id}`}
+                >
+                  Profile
+                </ButtonLink>
+                <ButtonLink
+                  onClick={this.closeDropdown}
+                  to="/account"
+                >
+                  Account
+                </ButtonLink>
+                <hr />
+                <LogoutButton />
+              </Dropdown>
             </div>
           );
         }}
@@ -78,6 +74,3 @@ export default class AccountMenu extends React.Component<{}, State> {
     });
   }
 }
-
-
-

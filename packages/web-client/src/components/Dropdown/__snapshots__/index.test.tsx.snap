@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dropdown component when closed matches snapshot 1`] = `""`;
+
+exports[`Dropdown component when open matches snapshot 1`] = `
+<Fragment>
+  <Overlay
+    onClick={
+      [MockFunction] {
+        "calls": Array [
+          Array [],
+        ],
+      }
+    }
+  />
+  <div
+    className="Dropdown"
+  />
+</Fragment>
+`;

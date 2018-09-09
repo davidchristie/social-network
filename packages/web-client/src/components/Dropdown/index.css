@@ -1,0 +1,13 @@
+.Dropdown {
+  background: white;
+  border: 1px solid black;
+  box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.4);
+  padding: 1em;
+  position: absolute;
+  right: 0;
+  top: 100%;
+}
+
+.Dropdown * {
+  width: 100%;
+}
