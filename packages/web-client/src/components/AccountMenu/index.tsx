@@ -8,6 +8,7 @@ import AccountQuery, {
 import Alert from "../Alert";
 import ButtonLink from "../ButtonLink";
 import LogoutButton from "../LogoutButton";
+import Overlay from "../Overlay";
 import "./index.css";
 
 interface State {
@@ -35,38 +36,29 @@ export default class AccountMenu extends React.Component<{}, State> {
           return (
             <div className="AccountMenu">
               <div className="avatar" onClick={this.openDropdown} />
-              <div
-                className="overlay"
-                onClick={this.closeDropdown}
-                style={{
-                  display: this.state.isDropdownOpen
-                    ? "inherit"
-                    : "none",
-                }}
-              />
-              <div
-                className="dropdown"
-                style={{
-                  display: this.state.isDropdownOpen
-                    ? "inherit"
-                    : "none",
-                }}
-              >
-                <ButtonLink
-                  onClick={this.closeDropdown}
-                  to={`profile/${account.profile.id}`}
-                >
-                  Profile
-                </ButtonLink>
-                <ButtonLink
-                  onClick={this.closeDropdown}
-                  to="/account"
-                >
-                  Account
-                </ButtonLink>
-                <hr />
-                <LogoutButton />
-              </div>
+              {
+                this.state.isDropdownOpen && (
+                  <React.Fragment>
+                    <Overlay onClick={this.closeDropdown} />
+                    <div className="dropdown">
+                      <ButtonLink
+                        onClick={this.closeDropdown}
+                        to={`profile/${account.profile.id}`}
+                      >
+                        Profile
+                      </ButtonLink>
+                      <ButtonLink
+                        onClick={this.closeDropdown}
+                        to="/account"
+                      >
+                        Account
+                      </ButtonLink>
+                      <hr />
+                      <LogoutButton />
+                    </div>
+                  </React.Fragment>
+                )
+              }
             </div>
           );
         }}
