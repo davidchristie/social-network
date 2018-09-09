@@ -12,8 +12,8 @@ import AccountQuery, {
 import ProfileQuery from "../../queries/Profile";
 import Alert from "../Alert";
 import Button from "../Button";
-import Input from "../Input";
 import Section from "../Section";
+import TextArea from "../TextArea";
 
 interface State {
   text: string;
@@ -67,7 +67,7 @@ export default class CreatePostForm extends React.Component<{}, State> {
                   >
                     <h2>Create Post</h2>
                     <div>
-                      <Input
+                      <TextArea
                         name="text"
                         onChange={this.textChanged}
                         required={true}
@@ -85,7 +85,7 @@ export default class CreatePostForm extends React.Component<{}, State> {
     );
   }
 
-  private textChanged = (event: React.ChangeEvent<HTMLInputElement>) => {
+  private textChanged = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     this.setState({
       text: event.target.value,
     });

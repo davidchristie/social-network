@@ -1,0 +1,6 @@
+.TextArea {
+  font-size: 1.4em;
+  min-height: 100px;
+  resize: vertical;
+  width: 100%;
+}
