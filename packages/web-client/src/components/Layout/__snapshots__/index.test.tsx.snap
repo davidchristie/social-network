@@ -5,5 +5,10 @@ exports[`Layout component matches snapshot 1`] = `
   className="Layout"
 >
   <Header />
+  <div
+    className="page-content"
+  >
+    <Container />
+  </div>
 </div>
 `;

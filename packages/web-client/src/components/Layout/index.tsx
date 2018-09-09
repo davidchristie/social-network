@@ -1,5 +1,6 @@
 import React from "react";
 
+import Container from "../Container";
 import Header from "../Header";
 import "./index.css";
 
@@ -8,7 +9,11 @@ export default class Layout extends React.Component {
     return (
       <div className="Layout">
         <Header />
-        {this.props.children}
+        <div className="page-content">
+          <Container>
+            {this.props.children}
+          </Container>
+        </div>
       </div>
     );
   }

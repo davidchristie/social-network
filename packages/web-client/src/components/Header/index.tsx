@@ -8,6 +8,7 @@ import AccountQuery, {
 } from "../../queries/Account";
 import Alert from "../Alert";
 import ButtonLink from "../ButtonLink";
+import Container from "../Container";
 import LogoutButton from "../LogoutButton";
 import "./index.css";
 
@@ -27,37 +28,42 @@ export default class Header extends React.Component {
           const { account } = data!;
           return (
             <header className="Header">
-              <div>
-                <Link to="/">Social Network</Link>
-              </div>
-              <div>
-                {
-                  account
-                    ? (
-                      <React.Fragment>
-                        <ButtonLink
-                          to={`profile/${account.profile.id}`}
-                        >
-                          Profile
+              <Container>
+                <Link
+                  className="logo"
+                  to="/"
+                >
+                  Social Network
+                </Link>
+                <div>
+                  {
+                    account
+                      ? (
+                        <React.Fragment>
+                          <ButtonLink
+                            to={`profile/${account.profile.id}`}
+                          >
+                            Profile
                         </ButtonLink>
-                        <ButtonLink to="/account">
-                          Account
+                          <ButtonLink to="/account">
+                            Account
                         </ButtonLink>
-                        <LogoutButton />
-                      </React.Fragment>
-                    )
-                    : (
-                      <React.Fragment>
-                        <ButtonLink to="/signup">
-                          Signup
+                          <LogoutButton />
+                        </React.Fragment>
+                      )
+                      : (
+                        <React.Fragment>
+                          <ButtonLink to="/signup">
+                            Signup
                         </ButtonLink>
-                        <ButtonLink to="/login">
-                          Login
+                          <ButtonLink to="/login">
+                            Login
                         </ButtonLink>
-                      </React.Fragment>
-                    )
-                }
-              </div>
+                        </React.Fragment>
+                      )
+                  }
+                </div>
+              </Container>
             </header>
           );
         }}

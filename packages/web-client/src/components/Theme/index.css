@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Lato');
 
 .Theme {
+  --theme-header-height: 60px;
   --theme-primary: rgb(40, 60, 75);
   --theme-primary-contrast: white;
   --theme-secondary: rgb(230, 230, 230);

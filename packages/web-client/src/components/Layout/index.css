@@ -1,5 +1,9 @@
 .Layout {
   background: var(--theme-secondary, white);
   color: var(--theme-secondary-contrast, black);
-  height: 100vh;
+  min-height: 100vh;
+}
+
+.Layout .page-content {
+  padding-top: var(--theme-header-height, 30px);
 }
