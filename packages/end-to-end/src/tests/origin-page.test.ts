@@ -1,15 +1,22 @@
-import launchPuppeteer from "../utilities/launchPuppeteer";
+import puppeteer, { Browser, Page } from "puppeteer";
 
 import { ORIGIN } from "../constants";
 
-launchPuppeteer({ url: ORIGIN }, context => {
-  describe("origin page", () => {
-    it(`redirects to "/login"`, async () => {
-      expect(await context.page.url()).toEqual(`${ORIGIN}/login`);
-    });
+describe("origin page", () => {
+  let browser: Browser;
+  let page: Page;
 
-    it("renders LoginPage component", async () => {
-      expect(await context.page.$(".LoginPage")).not.toBeNull();
-    });
+  beforeAll(async () => {
+    browser = await puppeteer.launch();
+    page = await browser.newPage();
+    await page.goto(ORIGIN);
+  });
+
+  it(`redirects to "/login"`, async () => {
+    expect(await page.url()).toEqual(`${ORIGIN}/login`);
+  });
+
+  it("renders LoginPage component", async () => {
+    expect(await page.$(".LoginPage")).not.toBeNull();
   });
 });

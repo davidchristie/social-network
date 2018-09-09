@@ -6,7 +6,7 @@ import Section from "../Section";
 export default class HomePage extends React.Component {
   public render () {
     return (
-      <Container>
+      <Container className="HomePage">
         <Section>
           <h1>Home</h1>
         </Section>

@@ -56,7 +56,7 @@ export default class SignupForm extends React.Component<{}, State> {
         }}
       >
         {(signup) => (
-          <Section>
+          <Section className="SignupForm">
             <form
               onSubmit={(event: React.FormEvent) => {
                 event.preventDefault();
@@ -74,9 +74,9 @@ export default class SignupForm extends React.Component<{}, State> {
                 )
               }
               <div>
-                <label htmlFor="create-account-name">Name</label>
+                <label htmlFor="signup-name">Name</label>
                 <Input
-                  id="create-account-name"
+                  id="signup-name"
                   name="name"
                   onChange={this.nameChanged}
                   required={true}
@@ -84,9 +84,9 @@ export default class SignupForm extends React.Component<{}, State> {
                 />
               </div>
               <div>
-                <label htmlFor="create-account-email">Email</label>
+                <label htmlFor="signup-email">Email</label>
                 <Input
-                  id="create-account-email"
+                  id="signup-email"
                   name="email"
                   onChange={this.emailChanged}
                   required={true}
@@ -95,9 +95,9 @@ export default class SignupForm extends React.Component<{}, State> {
                 />
               </div>
               <div>
-                <label htmlFor="create-account-password">Password</label>
+                <label htmlFor="signup-password">Password</label>
                 <Input
-                  id="create-account-password"
+                  id="signup-password"
                   name="password"
                   onChange={this.passwordChanged}
                   required={true}
@@ -105,7 +105,7 @@ export default class SignupForm extends React.Component<{}, State> {
                   value={this.state.password}
                 />
               </div>
-              <Button>Submit</Button>
+              <Button type="submit">Submit</Button>
             </form>
           </Section>
         )}

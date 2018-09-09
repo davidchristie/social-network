@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`HomePage component matches snapshot 1`] = `
-<Container>
+<Container
+  className="HomePage"
+>
   <Section>
     <h1>
       Home

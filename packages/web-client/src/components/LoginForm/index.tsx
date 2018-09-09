@@ -71,9 +71,9 @@ export default class LoginForm extends React.Component<{}, State> {
                 )
               }
               <div>
-                <label htmlFor="access-account-email">Email</label>
+                <label htmlFor="login-email">Email</label>
                 <Input
-                  id="access-account-email"
+                  id="login-email"
                   name="email"
                   onChange={this.emailChanged}
                   required={true}
@@ -82,9 +82,9 @@ export default class LoginForm extends React.Component<{}, State> {
                 />
               </div>
               <div>
-                <label htmlFor="access-account-password">Password</label>
+                <label htmlFor="login-password">Password</label>
                 <Input
-                  id="access-account-password"
+                  id="login-password"
                   name="password"
                   onChange={this.passwordChanged}
                   required={true}
