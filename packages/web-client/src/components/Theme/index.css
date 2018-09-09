@@ -8,3 +8,7 @@
   --theme-secondary-contrast: black;
   font-family: 'Lato', sans-serif;
 }
+
+.Theme a {
+  color: inherit;
+}
