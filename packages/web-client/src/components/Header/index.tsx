@@ -6,10 +6,10 @@ import AccountQuery, {
   AccountData,
   AccountVariables,
 } from "../../queries/Account";
+import AccountMenu from "../AccountMenu";
 import Alert from "../Alert";
 import ButtonLink from "../ButtonLink";
 import Container from "../Container";
-import LogoutButton from "../LogoutButton";
 import "./index.css";
 
 export default class Header extends React.Component {
@@ -38,27 +38,15 @@ export default class Header extends React.Component {
                 <div>
                   {
                     account
-                      ? (
-                        <React.Fragment>
-                          <ButtonLink
-                            to={`profile/${account.profile.id}`}
-                          >
-                            Profile
-                        </ButtonLink>
-                          <ButtonLink to="/account">
-                            Account
-                        </ButtonLink>
-                          <LogoutButton />
-                        </React.Fragment>
-                      )
+                      ? <AccountMenu />
                       : (
                         <React.Fragment>
-                          <ButtonLink to="/signup">
-                            Signup
-                        </ButtonLink>
                           <ButtonLink to="/login">
                             Login
-                        </ButtonLink>
+                          </ButtonLink>
+                          <ButtonLink to="/signup">
+                            Signup
+                          </ButtonLink>
                         </React.Fragment>
                       )
                   }
