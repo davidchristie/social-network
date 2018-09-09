@@ -7,8 +7,6 @@ exports[`Layout component matches snapshot 1`] = `
   <Header />
   <div
     className="page-content"
-  >
-    <Container />
-  </div>
+  />
 </div>
 `;

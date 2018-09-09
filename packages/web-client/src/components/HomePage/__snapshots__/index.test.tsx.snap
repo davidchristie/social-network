@@ -1,11 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`HomePage component matches snapshot 1`] = `
-<div>
+<Container>
   <Section>
     <h1>
       Home
     </h1>
   </Section>
-</div>
+</Container>
 `;

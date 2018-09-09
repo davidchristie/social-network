@@ -6,7 +6,10 @@ describe("origin page", () => {
   let page: Page;
 
   beforeAll(async () => {
-    browser = await puppeteer.launch();
+    browser = await puppeteer.launch({
+      headless: false,
+      slowMo: 80,
+    });
     page = await browser.newPage();
     await page.goto("http://localhost:3000");
   });
@@ -16,15 +19,10 @@ describe("origin page", () => {
   });
 
   it(`redirects to "/login"`, async () => {
-    await page.waitForNavigation();
     expect(await page.url()).toEqual("http://localhost:3000/login");
   });
 
   it("renders LoginPage component", async () => {
     expect(await page.$(".LoginPage")).not.toBeNull();
-  });
-
-  it("matches snapshot", async () => {
-    expect(await page.content()).toMatchSnapshot();
   });
 });

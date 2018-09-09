@@ -6,6 +6,7 @@ import ProfileQuery, {
   ProfileVariables
 } from "../../queries/Profile";
 import Alert from "../Alert";
+import Container from "../Container";
 import CreatePostForm from "../CreatePostForm";
 import ProfilePosts from "../ProfilePosts";
 import Section from "../Section";
@@ -36,7 +37,7 @@ export default class ProfilePage extends React.Component<Props> {
           }
           const { profile } = data!;
           return (
-            <div>
+            <Container>
               <Section>
                 <h1>{profile.name}</h1>
               </Section>
@@ -44,7 +45,7 @@ export default class ProfilePage extends React.Component<Props> {
                 <CreatePostForm />
                 <ProfilePosts profileId={profile.id} />
               </Section>
-            </div>
+            </Container>
           );
         }}
       </Query>

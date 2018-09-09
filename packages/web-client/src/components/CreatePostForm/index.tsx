@@ -65,7 +65,6 @@ export default class CreatePostForm extends React.Component<{}, State> {
                       createPost();
                     }}
                   >
-                    <h2>Create Post</h2>
                     <div>
                       <TextArea
                         name="text"
@@ -74,7 +73,7 @@ export default class CreatePostForm extends React.Component<{}, State> {
                         value={this.state.text}
                       />
                     </div>
-                    <Button>Create</Button>
+                    <Button>Post</Button>
                   </form>
                 </Section>
               )}
