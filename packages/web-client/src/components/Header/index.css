@@ -1,6 +1,7 @@
 .Header {
   align-items: center;
-  border: 2px solid black;
+  background: var(--theme-primary, white);
+  color: var(--theme-primary-contrast, black);
   display: flex;
   justify-content: space-between;
   padding: 1em;

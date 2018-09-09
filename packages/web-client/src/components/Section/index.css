@@ -1,5 +1,7 @@
 .Section {
   border: solid black 2px;
+  background: white;
+  color: black;
   padding: 1em;
 }
 

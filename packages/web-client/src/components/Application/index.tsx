@@ -5,6 +5,7 @@ import { BrowserRouter } from "react-router-dom";
 import apollo from "../../apollo";
 import Layout from "../Layout";
 import Routes from "../Routes";
+import Theme from "../Theme";
 import "./index.css";
 
 export default class Application extends React.Component {
@@ -13,9 +14,11 @@ export default class Application extends React.Component {
       <div className="Application">
         <ApolloProvider client={apollo}>
           <BrowserRouter>
-            <Layout>
-              <Routes />
-            </Layout>
+            <Theme>
+              <Layout>
+                <Routes />
+              </Layout>
+            </Theme>
           </BrowserRouter>
         </ApolloProvider>
       </div>
