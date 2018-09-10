@@ -3,3 +3,8 @@
   margin-top: 1em;
   padding: 2em;
 }
+
+.Post .header {
+  display: flex;
+  justify-content: space-between;
+}

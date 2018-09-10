@@ -33,7 +33,7 @@ export default class ProfilePosts extends React.Component<Props> {
             <div className="ProfilePosts">
               {
                 profile.posts
-                  .map(post => <PostSummary post={post} />)
+                  .map(post => <PostSummary key={post.id} post={post} />)
                   .reverse()
               }
             </div>
