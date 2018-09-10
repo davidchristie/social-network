@@ -1,12 +1,14 @@
+import { ProfileUpdateInput } from "data-model";
+
 import { Context } from "../../../types";
 
 interface Arguments {
-  text: string;
+  data: ProfileUpdateInput;
 }
 
-export default async function createPost (
+export default async function updateProfile (
   { },
-  { text }: Arguments,
+  { data }: Arguments,
   context: Context
 ) {
   const [profile] = await context.database.query.profiles({
@@ -16,14 +18,10 @@ export default async function createPost (
       },
     },
   });
-  return context.database.mutation.createPost({
-    data: {
-      createdBy: {
-        connect: {
-          id: profile.id,
-        },
-      },
-      text,
+  return context.database.mutation.updateProfile({
+    data,
+    where: {
+      id: profile.id,
     },
   });
 }

@@ -7,7 +7,8 @@ interface Arguments {
 export default async function createPost (
   { },
   { id }: Arguments,
-  context: Context) {
+  context: Context
+) {
   const canDeletePost = await context.database.exists.Post({
     AND: [
       {
