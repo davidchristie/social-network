@@ -1,6 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import { PostSummaryData } from "../../fragments/PostSummary";
+import Avatar from "../Avatar";
 import PostMenu from "../PostMenu";
 import RelativeDate from "../RelativeDate";
 import "./index.css";
@@ -15,15 +17,27 @@ export default class PostSummary extends React.Component<Props> {
     return (
       <div className="Post">
         <div className="header">
-          <div>
+          <div className="profile">
+            <Link to={`/profile/${post.createdBy.id}`} style={{ height: 0 }}>
+              <Avatar
+                image={post.createdBy.avatar.url}
+                size="small"
+              />
+            </Link>
             <div>
-              <strong>{post.createdBy.name}</strong>
-            </div>
-            <div>
-              <RelativeDate value={post.createdAt} />
+              <div>
+                <Link to={`/profile/${post.createdBy.id}`}>
+                  <strong>{post.createdBy.name}</strong>
+                </Link>
+              </div>
+              <div>
+                <small><RelativeDate value={post.createdAt} /></small>
+              </div>
             </div>
           </div>
-          <PostMenu postId={post.id} />
+          <div>
+            <PostMenu postId={post.id} />
+          </div>
         </div>
         <hr />
         {post.text}
@@ -31,3 +45,4 @@ export default class PostSummary extends React.Component<Props> {
     );
   }
 }
+

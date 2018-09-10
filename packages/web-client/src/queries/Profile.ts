@@ -1,14 +1,19 @@
 import gql from "graphql-tag";
 
+import ImageFragment, {
+  ImageData
+} from "../fragments/Image";
 import PostSummaryFragment from "../fragments/PostSummary";
 
 export interface ProfileData {
   profile: {
+    avatar: ImageData;
     id: string;
     name: string;
     posts: Array<{
       createdAt: string;
       createdBy: {
+        avatar: ImageData;
         id: string;
         name: string;
       };
@@ -23,9 +28,13 @@ export interface ProfileVariables {
 }
 
 export default gql`
+  ${ImageFragment}
   ${PostSummaryFragment}
   query Profile($id: String!) {
     profile(id: $id) {
+      avatar {
+        ...Image
+      }
       id
       name
       posts {

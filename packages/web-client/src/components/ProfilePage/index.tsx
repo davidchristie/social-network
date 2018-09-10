@@ -6,6 +6,7 @@ import ProfileQuery, {
   ProfileVariables
 } from "../../queries/Profile";
 import Alert from "../Alert";
+import Avatar from "../Avatar";
 import Container from "../Container";
 import CreatePostForm from "../CreatePostForm";
 import ProfilePosts from "../ProfilePosts";
@@ -39,6 +40,7 @@ export default class ProfilePage extends React.Component<Props> {
           return (
             <Container>
               <Section>
+                <Avatar image={profile.avatar.url} size="large" />
                 <h1>{profile.name}</h1>
               </Section>
               <Section>

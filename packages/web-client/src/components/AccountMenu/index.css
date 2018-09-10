@@ -1,10 +1,5 @@
 .AccountMenu {
+  align-content: center;
+  display: flex;
   position: relative;
-}
-
-.AccountMenu .avatar {
-  background: white;
-  border-radius: 50%;
-  height: 35px;
-  width: 35px;
 }

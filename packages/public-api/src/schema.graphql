@@ -7,6 +7,10 @@ type Account {
   profile: Profile!
 }
 
+type Image {
+  url: String!
+}
+
 type LoginPayload {
   token: String!
 }
@@ -19,6 +23,7 @@ type Mutation {
 }
 
 type Profile {
+  avatar: Image!
   id: ID!
   name: String!
   posts: [Post!]!

@@ -8,3 +8,19 @@
   display: flex;
   justify-content: space-between;
 }
+
+.Post .profile {
+  display: flex;
+}
+
+.Post .profile a {
+  text-decoration: none;
+}
+
+.Post .profile a:hover {
+  text-decoration: underline;
+}
+
+.Post .profile .Avatar {
+  margin-right: 5px;
+}

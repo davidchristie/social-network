@@ -6,6 +6,7 @@ import AccountQuery, {
   AccountVariables
 } from "../../queries/Account";
 import Alert from "../Alert";
+import Avatar from "../Avatar";
 import ButtonLink from "../ButtonLink";
 import Dropdown from "../Dropdown";
 import LogoutButton from "../LogoutButton";
@@ -35,7 +36,11 @@ export default class AccountMenu extends React.Component<{}, State> {
           const { account } = data!;
           return (
             <div className="AccountMenu">
-              <div className="avatar" onClick={this.openDropdown} />
+              <Avatar
+                image={account.profile.avatar.url}
+                onClick={this.openDropdown}
+                size="small"
+              />
               <Dropdown
                 onClose={this.closeDropdown}
                 open={this.state.isDropdownOpen}
