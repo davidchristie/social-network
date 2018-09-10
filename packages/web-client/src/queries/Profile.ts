@@ -1,5 +1,7 @@
 import gql from "graphql-tag";
 
+import PostSummaryFragment from "../fragments/PostSummary";
+
 export interface ProfileData {
   profile: {
     id: string;
@@ -21,18 +23,13 @@ export interface ProfileVariables {
 }
 
 export default gql`
+  ${PostSummaryFragment}
   query Profile($id: String!) {
     profile(id: $id) {
       id
       name
       posts {
-        createdAt
-        createdBy {
-          id
-          name
-        }
-        id
-        text
+        ...PostSummary
       }
     }
   }

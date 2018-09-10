@@ -5,10 +5,9 @@
   display: inline-flex;
   font-size: 1.1em;
   opacity: 0.6;
-  transition: all 200ms ease-in-out;
+  transition: opacity 200ms ease-in-out;
 }
 
 .Button:hover {
   opacity: 1;
-  transform: scale(1.02);
 }
