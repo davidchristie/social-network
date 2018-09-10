@@ -5,12 +5,15 @@ import { makePrismaBindingClass, BasePrismaOptions } from 'prisma-binding'
 
 export interface Query {
     accounts: <T = Account[]>(args: { where?: AccountWhereInput, orderBy?: AccountOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    images: <T = Image[]>(args: { where?: ImageWhereInput, orderBy?: ImageOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     posts: <T = Post[]>(args: { where?: PostWhereInput, orderBy?: PostOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     profiles: <T = Profile[]>(args: { where?: ProfileWhereInput, orderBy?: ProfileOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     account: <T = Account | null>(args: { where: AccountWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    image: <T = Image | null>(args: { where: ImageWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     post: <T = Post | null>(args: { where: PostWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     profile: <T = Profile | null>(args: { where: ProfileWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     accountsConnection: <T = AccountConnection>(args: { where?: AccountWhereInput, orderBy?: AccountOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    imagesConnection: <T = ImageConnection>(args: { where?: ImageWhereInput, orderBy?: ImageOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     postsConnection: <T = PostConnection>(args: { where?: PostWhereInput, orderBy?: PostOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     profilesConnection: <T = ProfileConnection>(args: { where?: ProfileWhereInput, orderBy?: ProfileOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     node: <T = Node | null>(args: { id: ID_Output }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> 
@@ -18,33 +21,41 @@ export interface Query {
 
 export interface Mutation {
     createAccount: <T = Account>(args: { data: AccountCreateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    createImage: <T = Image>(args: { data: ImageCreateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     createPost: <T = Post>(args: { data: PostCreateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     createProfile: <T = Profile>(args: { data: ProfileCreateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     updateAccount: <T = Account | null>(args: { data: AccountUpdateInput, where: AccountWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    updateImage: <T = Image | null>(args: { data: ImageUpdateInput, where: ImageWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     updatePost: <T = Post | null>(args: { data: PostUpdateInput, where: PostWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     updateProfile: <T = Profile | null>(args: { data: ProfileUpdateInput, where: ProfileWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     deleteAccount: <T = Account | null>(args: { where: AccountWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    deleteImage: <T = Image | null>(args: { where: ImageWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     deletePost: <T = Post | null>(args: { where: PostWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     deleteProfile: <T = Profile | null>(args: { where: ProfileWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     upsertAccount: <T = Account>(args: { where: AccountWhereUniqueInput, create: AccountCreateInput, update: AccountUpdateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    upsertImage: <T = Image>(args: { where: ImageWhereUniqueInput, create: ImageCreateInput, update: ImageUpdateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     upsertPost: <T = Post>(args: { where: PostWhereUniqueInput, create: PostCreateInput, update: PostUpdateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     upsertProfile: <T = Profile>(args: { where: ProfileWhereUniqueInput, create: ProfileCreateInput, update: ProfileUpdateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     updateManyAccounts: <T = BatchPayload>(args: { data: AccountUpdateInput, where?: AccountWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    updateManyImages: <T = BatchPayload>(args: { data: ImageUpdateInput, where?: ImageWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     updateManyPosts: <T = BatchPayload>(args: { data: PostUpdateInput, where?: PostWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     updateManyProfiles: <T = BatchPayload>(args: { data: ProfileUpdateInput, where?: ProfileWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     deleteManyAccounts: <T = BatchPayload>(args: { where?: AccountWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    deleteManyImages: <T = BatchPayload>(args: { where?: ImageWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     deleteManyPosts: <T = BatchPayload>(args: { where?: PostWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     deleteManyProfiles: <T = BatchPayload>(args: { where?: ProfileWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> 
   }
 
 export interface Subscription {
     account: <T = AccountSubscriptionPayload | null>(args: { where?: AccountSubscriptionWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T>> ,
+    image: <T = ImageSubscriptionPayload | null>(args: { where?: ImageSubscriptionWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T>> ,
     post: <T = PostSubscriptionPayload | null>(args: { where?: PostSubscriptionWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T>> ,
     profile: <T = ProfileSubscriptionPayload | null>(args: { where?: ProfileSubscriptionWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T>> 
   }
 
 export interface Exists {
   Account: (where?: AccountWhereInput) => Promise<boolean>
+  Image: (where?: ImageWhereInput) => Promise<boolean>
   Post: (where?: PostWhereInput) => Promise<boolean>
   Profile: (where?: ProfileWhereInput) => Promise<boolean>
 }
@@ -384,6 +395,10 @@ type AggregateAccount {
   count: Int!
 }
 
+type AggregateImage {
+  count: Int!
+}
+
 type AggregatePost {
   count: Int!
 }
@@ -399,6 +414,211 @@ type BatchPayload {
 
 scalar DateTime
 
+type Image implements Node {
+  id: ID!
+  url: String!
+}
+
+"""A connection to a list of items."""
+type ImageConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [ImageEdge]!
+  aggregate: AggregateImage!
+}
+
+input ImageCreateInput {
+  url: String!
+}
+
+input ImageCreateOneInput {
+  create: ImageCreateInput
+  connect: ImageWhereUniqueInput
+}
+
+"""An edge in a connection."""
+type ImageEdge {
+  """The item at the end of the edge."""
+  node: Image!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+enum ImageOrderByInput {
+  id_ASC
+  id_DESC
+  url_ASC
+  url_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
+}
+
+type ImagePreviousValues {
+  id: ID!
+  url: String!
+}
+
+type ImageSubscriptionPayload {
+  mutation: MutationType!
+  node: Image
+  updatedFields: [String!]
+  previousValues: ImagePreviousValues
+}
+
+input ImageSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [ImageSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [ImageSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [ImageSubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: ImageWhereInput
+}
+
+input ImageUpdateDataInput {
+  url: String
+}
+
+input ImageUpdateInput {
+  url: String
+}
+
+input ImageUpdateOneInput {
+  create: ImageCreateInput
+  connect: ImageWhereUniqueInput
+  disconnect: Boolean
+  delete: Boolean
+  update: ImageUpdateDataInput
+  upsert: ImageUpsertNestedInput
+}
+
+input ImageUpsertNestedInput {
+  update: ImageUpdateDataInput!
+  create: ImageCreateInput!
+}
+
+input ImageWhereInput {
+  """Logical AND on all given filters."""
+  AND: [ImageWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [ImageWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [ImageWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  url: String
+
+  """All values that are not equal to given value."""
+  url_not: String
+
+  """All values that are contained in given list."""
+  url_in: [String!]
+
+  """All values that are not contained in given list."""
+  url_not_in: [String!]
+
+  """All values less than the given value."""
+  url_lt: String
+
+  """All values less than or equal the given value."""
+  url_lte: String
+
+  """All values greater than the given value."""
+  url_gt: String
+
+  """All values greater than or equal the given value."""
+  url_gte: String
+
+  """All values containing the given string."""
+  url_contains: String
+
+  """All values not containing the given string."""
+  url_not_contains: String
+
+  """All values starting with the given string."""
+  url_starts_with: String
+
+  """All values not starting with the given string."""
+  url_not_starts_with: String
+
+  """All values ending with the given string."""
+  url_ends_with: String
+
+  """All values not ending with the given string."""
+  url_not_ends_with: String
+}
+
+input ImageWhereUniqueInput {
+  id: ID
+}
+
 """
 The \`Long\` scalar type represents non-fractional signed whole numeric values.
 Long can represent values between -(2^63) and 2^63 - 1.
@@ -407,21 +627,27 @@ scalar Long
 
 type Mutation {
   createAccount(data: AccountCreateInput!): Account!
+  createImage(data: ImageCreateInput!): Image!
   createPost(data: PostCreateInput!): Post!
   createProfile(data: ProfileCreateInput!): Profile!
   updateAccount(data: AccountUpdateInput!, where: AccountWhereUniqueInput!): Account
+  updateImage(data: ImageUpdateInput!, where: ImageWhereUniqueInput!): Image
   updatePost(data: PostUpdateInput!, where: PostWhereUniqueInput!): Post
   updateProfile(data: ProfileUpdateInput!, where: ProfileWhereUniqueInput!): Profile
   deleteAccount(where: AccountWhereUniqueInput!): Account
+  deleteImage(where: ImageWhereUniqueInput!): Image
   deletePost(where: PostWhereUniqueInput!): Post
   deleteProfile(where: ProfileWhereUniqueInput!): Profile
   upsertAccount(where: AccountWhereUniqueInput!, create: AccountCreateInput!, update: AccountUpdateInput!): Account!
+  upsertImage(where: ImageWhereUniqueInput!, create: ImageCreateInput!, update: ImageUpdateInput!): Image!
   upsertPost(where: PostWhereUniqueInput!, create: PostCreateInput!, update: PostUpdateInput!): Post!
   upsertProfile(where: ProfileWhereUniqueInput!, create: ProfileCreateInput!, update: ProfileUpdateInput!): Profile!
   updateManyAccounts(data: AccountUpdateInput!, where: AccountWhereInput): BatchPayload!
+  updateManyImages(data: ImageUpdateInput!, where: ImageWhereInput): BatchPayload!
   updateManyPosts(data: PostUpdateInput!, where: PostWhereInput): BatchPayload!
   updateManyProfiles(data: ProfileUpdateInput!, where: ProfileWhereInput): BatchPayload!
   deleteManyAccounts(where: AccountWhereInput): BatchPayload!
+  deleteManyImages(where: ImageWhereInput): BatchPayload!
   deleteManyPosts(where: PostWhereInput): BatchPayload!
   deleteManyProfiles(where: ProfileWhereInput): BatchPayload!
 }
@@ -698,6 +924,7 @@ input PostWhereUniqueInput {
 
 type Profile implements Node {
   account(where: AccountWhereInput): Account!
+  avatar(where: ImageWhereInput): Image
   id: ID!
   name: String!
   posts(where: PostWhereInput, orderBy: PostOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Post!]
@@ -716,6 +943,7 @@ type ProfileConnection {
 input ProfileCreateInput {
   name: String!
   account: AccountCreateOneWithoutProfileInput!
+  avatar: ImageCreateOneInput
   posts: PostCreateManyWithoutCreatedByInput
 }
 
@@ -731,12 +959,14 @@ input ProfileCreateOneWithoutPostsInput {
 
 input ProfileCreateWithoutAccountInput {
   name: String!
+  avatar: ImageCreateOneInput
   posts: PostCreateManyWithoutCreatedByInput
 }
 
 input ProfileCreateWithoutPostsInput {
   name: String!
   account: AccountCreateOneWithoutProfileInput!
+  avatar: ImageCreateOneInput
 }
 
 """An edge in a connection."""
@@ -806,6 +1036,7 @@ input ProfileSubscriptionWhereInput {
 input ProfileUpdateInput {
   name: String
   account: AccountUpdateOneWithoutProfileInput
+  avatar: ImageUpdateOneInput
   posts: PostUpdateManyWithoutCreatedByInput
 }
 
@@ -827,12 +1058,14 @@ input ProfileUpdateOneWithoutPostsInput {
 
 input ProfileUpdateWithoutAccountDataInput {
   name: String
+  avatar: ImageUpdateOneInput
   posts: PostUpdateManyWithoutCreatedByInput
 }
 
 input ProfileUpdateWithoutPostsDataInput {
   name: String
   account: AccountUpdateOneWithoutProfileInput
+  avatar: ImageUpdateOneInput
 }
 
 input ProfileUpsertWithoutAccountInput {
@@ -935,6 +1168,7 @@ input ProfileWhereInput {
   """All values not ending with the given string."""
   name_not_ends_with: String
   account: AccountWhereInput
+  avatar: ImageWhereInput
   posts_every: PostWhereInput
   posts_some: PostWhereInput
   posts_none: PostWhereInput
@@ -946,12 +1180,15 @@ input ProfileWhereUniqueInput {
 
 type Query {
   accounts(where: AccountWhereInput, orderBy: AccountOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Account]!
+  images(where: ImageWhereInput, orderBy: ImageOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Image]!
   posts(where: PostWhereInput, orderBy: PostOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Post]!
   profiles(where: ProfileWhereInput, orderBy: ProfileOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Profile]!
   account(where: AccountWhereUniqueInput!): Account
+  image(where: ImageWhereUniqueInput!): Image
   post(where: PostWhereUniqueInput!): Post
   profile(where: ProfileWhereUniqueInput!): Profile
   accountsConnection(where: AccountWhereInput, orderBy: AccountOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): AccountConnection!
+  imagesConnection(where: ImageWhereInput, orderBy: ImageOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ImageConnection!
   postsConnection(where: PostWhereInput, orderBy: PostOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): PostConnection!
   profilesConnection(where: ProfileWhereInput, orderBy: ProfileOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ProfileConnection!
 
@@ -964,6 +1201,7 @@ type Query {
 
 type Subscription {
   account(where: AccountSubscriptionWhereInput): AccountSubscriptionPayload
+  image(where: ImageSubscriptionWhereInput): ImageSubscriptionPayload
   post(where: PostSubscriptionWhereInput): PostSubscriptionPayload
   profile(where: ProfileSubscriptionWhereInput): ProfileSubscriptionPayload
 }
@@ -997,6 +1235,15 @@ export type PostOrderByInput =   'createdAt_ASC' |
   'updatedAt_ASC' |
   'updatedAt_DESC'
 
+export type ImageOrderByInput =   'id_ASC' |
+  'id_DESC' |
+  'url_ASC' |
+  'url_DESC' |
+  'updatedAt_ASC' |
+  'updatedAt_DESC' |
+  'createdAt_ASC' |
+  'createdAt_DESC'
+
 export type ProfileOrderByInput =   'id_ASC' |
   'id_DESC' |
   'name_ASC' |
@@ -1010,9 +1257,8 @@ export type MutationType =   'CREATED' |
   'UPDATED' |
   'DELETED'
 
-export interface PostCreateInput {
+export interface PostCreateWithoutCreatedByInput {
   text: String
-  createdBy: ProfileCreateOneWithoutPostsInput
 }
 
 export interface AccountWhereInput {
@@ -1078,19 +1324,24 @@ export interface AccountWhereInput {
   profile?: ProfileWhereInput
 }
 
-export interface PostUpdateInput {
-  text?: String
-  createdBy?: ProfileUpdateOneWithoutPostsInput
-}
-
-export interface ProfileUpdateWithoutAccountDataInput {
-  name?: String
-  posts?: PostUpdateManyWithoutCreatedByInput
-}
-
 export interface ProfileUpsertWithoutAccountInput {
   update: ProfileUpdateWithoutAccountDataInput
   create: ProfileCreateWithoutAccountInput
+}
+
+export interface ImageUpdateOneInput {
+  create?: ImageCreateInput
+  connect?: ImageWhereUniqueInput
+  disconnect?: Boolean
+  delete?: Boolean
+  update?: ImageUpdateDataInput
+  upsert?: ImageUpsertNestedInput
+}
+
+export interface PostUpsertWithWhereUniqueWithoutCreatedByInput {
+  where: PostWhereUniqueInput
+  update: PostUpdateWithoutCreatedByDataInput
+  create: PostCreateWithoutCreatedByInput
 }
 
 export interface AccountCreateOneWithoutProfileInput {
@@ -1098,10 +1349,166 @@ export interface AccountCreateOneWithoutProfileInput {
   connect?: AccountWhereUniqueInput
 }
 
-export interface PostUpsertWithWhereUniqueWithoutCreatedByInput {
+export interface PostUpdateWithoutCreatedByDataInput {
+  text?: String
+}
+
+export interface ImageSubscriptionWhereInput {
+  AND?: ImageSubscriptionWhereInput[] | ImageSubscriptionWhereInput
+  OR?: ImageSubscriptionWhereInput[] | ImageSubscriptionWhereInput
+  NOT?: ImageSubscriptionWhereInput[] | ImageSubscriptionWhereInput
+  mutation_in?: MutationType[] | MutationType
+  updatedFields_contains?: String
+  updatedFields_contains_every?: String[] | String
+  updatedFields_contains_some?: String[] | String
+  node?: ImageWhereInput
+}
+
+export interface PostUpdateWithWhereUniqueWithoutCreatedByInput {
   where: PostWhereUniqueInput
-  update: PostUpdateWithoutCreatedByDataInput
-  create: PostCreateWithoutCreatedByInput
+  data: PostUpdateWithoutCreatedByDataInput
+}
+
+export interface AccountSubscriptionWhereInput {
+  AND?: AccountSubscriptionWhereInput[] | AccountSubscriptionWhereInput
+  OR?: AccountSubscriptionWhereInput[] | AccountSubscriptionWhereInput
+  NOT?: AccountSubscriptionWhereInput[] | AccountSubscriptionWhereInput
+  mutation_in?: MutationType[] | MutationType
+  updatedFields_contains?: String
+  updatedFields_contains_every?: String[] | String
+  updatedFields_contains_some?: String[] | String
+  node?: AccountWhereInput
+}
+
+export interface PostUpdateManyWithoutCreatedByInput {
+  create?: PostCreateWithoutCreatedByInput[] | PostCreateWithoutCreatedByInput
+  connect?: PostWhereUniqueInput[] | PostWhereUniqueInput
+  disconnect?: PostWhereUniqueInput[] | PostWhereUniqueInput
+  delete?: PostWhereUniqueInput[] | PostWhereUniqueInput
+  update?: PostUpdateWithWhereUniqueWithoutCreatedByInput[] | PostUpdateWithWhereUniqueWithoutCreatedByInput
+  upsert?: PostUpsertWithWhereUniqueWithoutCreatedByInput[] | PostUpsertWithWhereUniqueWithoutCreatedByInput
+}
+
+export interface ProfileWhereInput {
+  AND?: ProfileWhereInput[] | ProfileWhereInput
+  OR?: ProfileWhereInput[] | ProfileWhereInput
+  NOT?: ProfileWhereInput[] | ProfileWhereInput
+  id?: ID_Input
+  id_not?: ID_Input
+  id_in?: ID_Input[] | ID_Input
+  id_not_in?: ID_Input[] | ID_Input
+  id_lt?: ID_Input
+  id_lte?: ID_Input
+  id_gt?: ID_Input
+  id_gte?: ID_Input
+  id_contains?: ID_Input
+  id_not_contains?: ID_Input
+  id_starts_with?: ID_Input
+  id_not_starts_with?: ID_Input
+  id_ends_with?: ID_Input
+  id_not_ends_with?: ID_Input
+  name?: String
+  name_not?: String
+  name_in?: String[] | String
+  name_not_in?: String[] | String
+  name_lt?: String
+  name_lte?: String
+  name_gt?: String
+  name_gte?: String
+  name_contains?: String
+  name_not_contains?: String
+  name_starts_with?: String
+  name_not_starts_with?: String
+  name_ends_with?: String
+  name_not_ends_with?: String
+  account?: AccountWhereInput
+  avatar?: ImageWhereInput
+  posts_every?: PostWhereInput
+  posts_some?: PostWhereInput
+  posts_none?: PostWhereInput
+}
+
+export interface AccountCreateInput {
+  email: String
+  name: String
+  password: String
+  profile: ProfileCreateOneWithoutAccountInput
+}
+
+export interface ImageWhereUniqueInput {
+  id?: ID_Input
+}
+
+export interface ProfileCreateOneWithoutAccountInput {
+  create?: ProfileCreateWithoutAccountInput
+  connect?: ProfileWhereUniqueInput
+}
+
+export interface ProfileWhereUniqueInput {
+  id?: ID_Input
+}
+
+export interface ProfileCreateWithoutAccountInput {
+  name: String
+  avatar?: ImageCreateOneInput
+  posts?: PostCreateManyWithoutCreatedByInput
+}
+
+export interface ProfileUpsertWithoutPostsInput {
+  update: ProfileUpdateWithoutPostsDataInput
+  create: ProfileCreateWithoutPostsInput
+}
+
+export interface ImageCreateOneInput {
+  create?: ImageCreateInput
+  connect?: ImageWhereUniqueInput
+}
+
+export interface AccountUpdateWithoutProfileDataInput {
+  email?: String
+  name?: String
+  password?: String
+}
+
+export interface ImageCreateInput {
+  url: String
+}
+
+export interface ProfileUpdateWithoutPostsDataInput {
+  name?: String
+  account?: AccountUpdateOneWithoutProfileInput
+  avatar?: ImageUpdateOneInput
+}
+
+export interface PostCreateManyWithoutCreatedByInput {
+  create?: PostCreateWithoutCreatedByInput[] | PostCreateWithoutCreatedByInput
+  connect?: PostWhereUniqueInput[] | PostWhereUniqueInput
+}
+
+export interface PostUpdateInput {
+  text?: String
+  createdBy?: ProfileUpdateOneWithoutPostsInput
+}
+
+export interface ImageUpsertNestedInput {
+  update: ImageUpdateDataInput
+  create: ImageCreateInput
+}
+
+export interface ProfileSubscriptionWhereInput {
+  AND?: ProfileSubscriptionWhereInput[] | ProfileSubscriptionWhereInput
+  OR?: ProfileSubscriptionWhereInput[] | ProfileSubscriptionWhereInput
+  NOT?: ProfileSubscriptionWhereInput[] | ProfileSubscriptionWhereInput
+  mutation_in?: MutationType[] | MutationType
+  updatedFields_contains?: String
+  updatedFields_contains_every?: String[] | String
+  updatedFields_contains_some?: String[] | String
+  node?: ProfileWhereInput
+}
+
+export interface PostCreateInput {
+  text: String
+  createdBy: ProfileCreateOneWithoutPostsInput
 }
 
 export interface PostWhereInput {
@@ -1147,121 +1554,6 @@ export interface PostWhereInput {
   createdBy?: ProfileWhereInput
 }
 
-export interface PostUpdateWithoutCreatedByDataInput {
-  text?: String
-}
-
-export interface ProfileWhereInput {
-  AND?: ProfileWhereInput[] | ProfileWhereInput
-  OR?: ProfileWhereInput[] | ProfileWhereInput
-  NOT?: ProfileWhereInput[] | ProfileWhereInput
-  id?: ID_Input
-  id_not?: ID_Input
-  id_in?: ID_Input[] | ID_Input
-  id_not_in?: ID_Input[] | ID_Input
-  id_lt?: ID_Input
-  id_lte?: ID_Input
-  id_gt?: ID_Input
-  id_gte?: ID_Input
-  id_contains?: ID_Input
-  id_not_contains?: ID_Input
-  id_starts_with?: ID_Input
-  id_not_starts_with?: ID_Input
-  id_ends_with?: ID_Input
-  id_not_ends_with?: ID_Input
-  name?: String
-  name_not?: String
-  name_in?: String[] | String
-  name_not_in?: String[] | String
-  name_lt?: String
-  name_lte?: String
-  name_gt?: String
-  name_gte?: String
-  name_contains?: String
-  name_not_contains?: String
-  name_starts_with?: String
-  name_not_starts_with?: String
-  name_ends_with?: String
-  name_not_ends_with?: String
-  account?: AccountWhereInput
-  posts_every?: PostWhereInput
-  posts_some?: PostWhereInput
-  posts_none?: PostWhereInput
-}
-
-export interface AccountCreateInput {
-  email: String
-  name: String
-  password: String
-  profile: ProfileCreateOneWithoutAccountInput
-}
-
-export interface PostWhereUniqueInput {
-  id?: ID_Input
-}
-
-export interface ProfileCreateOneWithoutAccountInput {
-  create?: ProfileCreateWithoutAccountInput
-  connect?: ProfileWhereUniqueInput
-}
-
-export interface ProfileUpdateInput {
-  name?: String
-  account?: AccountUpdateOneWithoutProfileInput
-  posts?: PostUpdateManyWithoutCreatedByInput
-}
-
-export interface ProfileCreateWithoutAccountInput {
-  name: String
-  posts?: PostCreateManyWithoutCreatedByInput
-}
-
-export interface AccountUpsertWithoutProfileInput {
-  update: AccountUpdateWithoutProfileDataInput
-  create: AccountCreateWithoutProfileInput
-}
-
-export interface PostCreateManyWithoutCreatedByInput {
-  create?: PostCreateWithoutCreatedByInput[] | PostCreateWithoutCreatedByInput
-  connect?: PostWhereUniqueInput[] | PostWhereUniqueInput
-}
-
-export interface AccountUpdateOneWithoutProfileInput {
-  create?: AccountCreateWithoutProfileInput
-  connect?: AccountWhereUniqueInput
-  delete?: Boolean
-  update?: AccountUpdateWithoutProfileDataInput
-  upsert?: AccountUpsertWithoutProfileInput
-}
-
-export interface PostCreateWithoutCreatedByInput {
-  text: String
-}
-
-export interface ProfileUpdateOneWithoutPostsInput {
-  create?: ProfileCreateWithoutPostsInput
-  connect?: ProfileWhereUniqueInput
-  delete?: Boolean
-  update?: ProfileUpdateWithoutPostsDataInput
-  upsert?: ProfileUpsertWithoutPostsInput
-}
-
-export interface PostUpdateWithWhereUniqueWithoutCreatedByInput {
-  where: PostWhereUniqueInput
-  data: PostUpdateWithoutCreatedByDataInput
-}
-
-export interface PostSubscriptionWhereInput {
-  AND?: PostSubscriptionWhereInput[] | PostSubscriptionWhereInput
-  OR?: PostSubscriptionWhereInput[] | PostSubscriptionWhereInput
-  NOT?: PostSubscriptionWhereInput[] | PostSubscriptionWhereInput
-  mutation_in?: MutationType[] | MutationType
-  updatedFields_contains?: String
-  updatedFields_contains_every?: String[] | String
-  updatedFields_contains_some?: String[] | String
-  node?: PostWhereInput
-}
-
 export interface ProfileCreateOneWithoutPostsInput {
   create?: ProfileCreateWithoutPostsInput
   connect?: ProfileWhereUniqueInput
@@ -1275,25 +1567,42 @@ export interface AccountWhereUniqueInput {
 export interface ProfileCreateWithoutPostsInput {
   name: String
   account: AccountCreateOneWithoutProfileInput
+  avatar?: ImageCreateOneInput
 }
 
-export interface ProfileUpsertWithoutPostsInput {
-  update: ProfileUpdateWithoutPostsDataInput
-  create: ProfileCreateWithoutPostsInput
-}
-
-export interface PostUpdateManyWithoutCreatedByInput {
-  create?: PostCreateWithoutCreatedByInput[] | PostCreateWithoutCreatedByInput
-  connect?: PostWhereUniqueInput[] | PostWhereUniqueInput
-  disconnect?: PostWhereUniqueInput[] | PostWhereUniqueInput
-  delete?: PostWhereUniqueInput[] | PostWhereUniqueInput
-  update?: PostUpdateWithWhereUniqueWithoutCreatedByInput[] | PostUpdateWithWhereUniqueWithoutCreatedByInput
-  upsert?: PostUpsertWithWhereUniqueWithoutCreatedByInput[] | PostUpsertWithWhereUniqueWithoutCreatedByInput
-}
-
-export interface ProfileUpdateWithoutPostsDataInput {
+export interface ProfileUpdateInput {
   name?: String
   account?: AccountUpdateOneWithoutProfileInput
+  avatar?: ImageUpdateOneInput
+  posts?: PostUpdateManyWithoutCreatedByInput
+}
+
+export interface ImageUpdateDataInput {
+  url?: String
+}
+
+export interface AccountUpdateOneWithoutProfileInput {
+  create?: AccountCreateWithoutProfileInput
+  connect?: AccountWhereUniqueInput
+  delete?: Boolean
+  update?: AccountUpdateWithoutProfileDataInput
+  upsert?: AccountUpsertWithoutProfileInput
+}
+
+export interface AccountCreateWithoutProfileInput {
+  email: String
+  name: String
+  password: String
+}
+
+export interface ImageUpdateInput {
+  url?: String
+}
+
+export interface ProfileUpdateWithoutAccountDataInput {
+  name?: String
+  avatar?: ImageUpdateOneInput
+  posts?: PostUpdateManyWithoutCreatedByInput
 }
 
 export interface ProfileUpdateOneWithoutAccountInput {
@@ -1314,45 +1623,70 @@ export interface AccountUpdateInput {
 export interface ProfileCreateInput {
   name: String
   account: AccountCreateOneWithoutProfileInput
+  avatar?: ImageCreateOneInput
   posts?: PostCreateManyWithoutCreatedByInput
 }
 
-export interface AccountCreateWithoutProfileInput {
-  email: String
-  name: String
-  password: String
-}
-
-export interface ProfileSubscriptionWhereInput {
-  AND?: ProfileSubscriptionWhereInput[] | ProfileSubscriptionWhereInput
-  OR?: ProfileSubscriptionWhereInput[] | ProfileSubscriptionWhereInput
-  NOT?: ProfileSubscriptionWhereInput[] | ProfileSubscriptionWhereInput
+export interface PostSubscriptionWhereInput {
+  AND?: PostSubscriptionWhereInput[] | PostSubscriptionWhereInput
+  OR?: PostSubscriptionWhereInput[] | PostSubscriptionWhereInput
+  NOT?: PostSubscriptionWhereInput[] | PostSubscriptionWhereInput
   mutation_in?: MutationType[] | MutationType
   updatedFields_contains?: String
   updatedFields_contains_every?: String[] | String
   updatedFields_contains_some?: String[] | String
-  node?: ProfileWhereInput
+  node?: PostWhereInput
 }
 
-export interface AccountUpdateWithoutProfileDataInput {
-  email?: String
-  name?: String
-  password?: String
+export interface ProfileUpdateOneWithoutPostsInput {
+  create?: ProfileCreateWithoutPostsInput
+  connect?: ProfileWhereUniqueInput
+  delete?: Boolean
+  update?: ProfileUpdateWithoutPostsDataInput
+  upsert?: ProfileUpsertWithoutPostsInput
 }
 
-export interface ProfileWhereUniqueInput {
+export interface AccountUpsertWithoutProfileInput {
+  update: AccountUpdateWithoutProfileDataInput
+  create: AccountCreateWithoutProfileInput
+}
+
+export interface PostWhereUniqueInput {
   id?: ID_Input
 }
 
-export interface AccountSubscriptionWhereInput {
-  AND?: AccountSubscriptionWhereInput[] | AccountSubscriptionWhereInput
-  OR?: AccountSubscriptionWhereInput[] | AccountSubscriptionWhereInput
-  NOT?: AccountSubscriptionWhereInput[] | AccountSubscriptionWhereInput
-  mutation_in?: MutationType[] | MutationType
-  updatedFields_contains?: String
-  updatedFields_contains_every?: String[] | String
-  updatedFields_contains_some?: String[] | String
-  node?: AccountWhereInput
+export interface ImageWhereInput {
+  AND?: ImageWhereInput[] | ImageWhereInput
+  OR?: ImageWhereInput[] | ImageWhereInput
+  NOT?: ImageWhereInput[] | ImageWhereInput
+  id?: ID_Input
+  id_not?: ID_Input
+  id_in?: ID_Input[] | ID_Input
+  id_not_in?: ID_Input[] | ID_Input
+  id_lt?: ID_Input
+  id_lte?: ID_Input
+  id_gt?: ID_Input
+  id_gte?: ID_Input
+  id_contains?: ID_Input
+  id_not_contains?: ID_Input
+  id_starts_with?: ID_Input
+  id_not_starts_with?: ID_Input
+  id_ends_with?: ID_Input
+  id_not_ends_with?: ID_Input
+  url?: String
+  url_not?: String
+  url_in?: String[] | String
+  url_not_in?: String[] | String
+  url_lt?: String
+  url_lte?: String
+  url_gt?: String
+  url_gte?: String
+  url_contains?: String
+  url_not_contains?: String
+  url_starts_with?: String
+  url_not_starts_with?: String
+  url_ends_with?: String
+  url_not_ends_with?: String
 }
 
 /*
@@ -1377,6 +1711,7 @@ export interface ProfileSubscriptionPayload {
 
 export interface Profile extends Node {
   account: Account
+  avatar?: Image
   id: ID_Output
   name: String
   posts?: Post[]
@@ -1444,27 +1779,20 @@ export interface PostConnection {
   aggregate: AggregatePost
 }
 
+export interface Post extends Node {
+  createdAt: DateTime
+  createdBy: Profile
+  id: ID_Output
+  text: String
+}
+
 /*
  * An edge in a connection.
 
  */
-export interface AccountEdge {
-  node: Account
+export interface ImageEdge {
+  node: Image
   cursor: String
-}
-
-export interface AccountPreviousValues {
-  email: String
-  id: ID_Output
-  name: String
-  password: String
-}
-
-export interface AccountSubscriptionPayload {
-  mutation: MutationType
-  node?: Account
-  updatedFields?: String[]
-  previousValues?: AccountPreviousValues
 }
 
 export interface PostSubscriptionPayload {
@@ -1474,18 +1802,18 @@ export interface PostSubscriptionPayload {
   previousValues?: PostPreviousValues
 }
 
-export interface Post extends Node {
-  createdAt: DateTime
-  createdBy: Profile
-  id: ID_Output
-  text: String
-}
-
-export interface AggregateProfile {
+export interface AggregateAccount {
   count: Int
 }
 
-export interface AggregateAccount {
+export interface AccountSubscriptionPayload {
+  mutation: MutationType
+  node?: Account
+  updatedFields?: String[]
+  previousValues?: AccountPreviousValues
+}
+
+export interface AggregateProfile {
   count: Int
 }
 
@@ -1498,6 +1826,34 @@ export interface PostEdge {
   cursor: String
 }
 
+export interface ImagePreviousValues {
+  id: ID_Output
+  url: String
+}
+
+export interface ImageSubscriptionPayload {
+  mutation: MutationType
+  node?: Image
+  updatedFields?: String[]
+  previousValues?: ImagePreviousValues
+}
+
+export interface Image extends Node {
+  id: ID_Output
+  url: String
+}
+
+export interface AccountPreviousValues {
+  email: String
+  id: ID_Output
+  name: String
+  password: String
+}
+
+export interface AggregateImage {
+  count: Int
+}
+
 /*
  * A connection to a list of items.
 
@@ -1506,6 +1862,25 @@ export interface ProfileConnection {
   pageInfo: PageInfo
   edges: ProfileEdge[]
   aggregate: AggregateProfile
+}
+
+/*
+ * An edge in a connection.
+
+ */
+export interface AccountEdge {
+  node: Account
+  cursor: String
+}
+
+/*
+ * A connection to a list of items.
+
+ */
+export interface ImageConnection {
+  pageInfo: PageInfo
+  edges: ImageEdge[]
+  aggregate: AggregateImage
 }
 
 export type DateTime = Date | string

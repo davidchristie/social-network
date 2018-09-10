@@ -20,7 +20,7 @@ export default class PostSummary extends React.Component<Props> {
           <div className="profile">
             <Link to={`/profile/${post.createdBy.id}`} style={{ height: 0 }}>
               <Avatar
-                image={post.createdBy.avatar.url}
+                image={post.createdBy.avatar ? post.createdBy.avatar.url : undefined}
                 size="small"
               />
             </Link>

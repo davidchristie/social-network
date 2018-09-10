@@ -37,7 +37,7 @@ export default class AccountMenu extends React.Component<{}, State> {
           return (
             <div className="AccountMenu">
               <Avatar
-                image={account.profile.avatar.url}
+                image={account.profile.avatar ? account.profile.avatar.url : undefined}
                 onClick={this.openDropdown}
                 size="small"
               />

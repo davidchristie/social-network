@@ -6,6 +6,11 @@ type Account {
   profile: Profile! @relation(name: "AccountProfile")
 }
 
+type Image {
+  id: ID! @unique
+  url: String!
+}
+
 type Post {
   createdAt: DateTime!
   createdBy: Profile! @relation(name: "ProfilePosts")
@@ -15,6 +20,7 @@ type Post {
 
 type Profile {
   account: Account! @relation(name: "AccountProfile")
+  avatar: Image @relation(name: "ProfileAvatar")
   id: ID! @unique
   name: String!
   posts: [Post!]! @relation(name: "ProfilePosts")

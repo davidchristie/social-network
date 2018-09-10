@@ -1,6 +1,8 @@
+# import Image from "../../data-model/generated/prisma.graphql"
 # import Post from "../../data-model/generated/prisma.graphql"
 
 input ProfileUpdateInput {
+  avatarUrl: String
   name: String
 }
 
@@ -9,10 +11,6 @@ type Account {
   id: ID!
   name: String!
   profile: Profile!
-}
-
-type Image {
-  url: String!
 }
 
 type LoginPayload {
@@ -28,7 +26,7 @@ type Mutation {
 }
 
 type Profile {
-  avatar: Image!
+  avatar: Image
   id: ID!
   name: String!
   posts: [Post!]!

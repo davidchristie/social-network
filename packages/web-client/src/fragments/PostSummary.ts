@@ -5,7 +5,7 @@ import { ImageData } from "../fragments/Image";
 export interface PostSummaryData {
   createdAt: string;
   createdBy: {
-    avatar: ImageData;
+    avatar: ImageData | null;
     id: string;
     name: string;
   };

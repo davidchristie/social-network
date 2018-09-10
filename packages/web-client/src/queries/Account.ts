@@ -10,7 +10,7 @@ export interface AccountData {
     id: string;
     name: string;
     profile: {
-      avatar: ImageData;
+      avatar: ImageData | null;
       id: string;
       name: string;
     };

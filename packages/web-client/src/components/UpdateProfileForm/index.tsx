@@ -19,11 +19,15 @@ interface Props {
 }
 
 interface State {
+  avatarUrl: string;
   name: string;
 }
 
 class UpdateProfileForm extends React.Component<Props, State> {
   public state: State = {
+    avatarUrl: this.props.data.account.profile.avatar
+      ? this.props.data.account.profile.avatar.url
+      : "",
     name: this.props.data.account.profile.name,
   };
 
@@ -33,6 +37,9 @@ class UpdateProfileForm extends React.Component<Props, State> {
         mutation={UpdateProfileMutation}
         variables={{
           data: {
+            avatarUrl: this.state.avatarUrl.trim().length > 0
+              ? this.state.avatarUrl
+              : null,
             name: this.state.name,
           },
         }}
@@ -47,13 +54,23 @@ class UpdateProfileForm extends React.Component<Props, State> {
             >
               <h2>Profile</h2>
               <div>
-                <label htmlFor="signup-name">Name</label>
+                <label htmlFor="update-profile-name">Name</label>
                 <Input
-                  id="signup-name"
+                  id="update-profile-name"
                   name="name"
                   onChange={this.nameChanged}
                   required={true}
                   value={this.state.name}
+                />
+              </div>
+              <div>
+                <label htmlFor="update-profile-avatar-url">Avatar</label>
+                <Input
+                  id="update-profile-avatar-url"
+                  name="avatar-url"
+                  onChange={this.avatarUrlChanged}
+                  type="url"
+                  value={this.state.avatarUrl}
                 />
               </div>
               <Button type="submit">Save</Button>
@@ -62,6 +79,12 @@ class UpdateProfileForm extends React.Component<Props, State> {
         )}
       </Mutation>
     );
+  }
+
+  private avatarUrlChanged = (event: React.ChangeEvent<HTMLInputElement>) => {
+    this.setState({
+      avatarUrl: event.target.value,
+    });
   }
 
   private nameChanged = (event: React.ChangeEvent<HTMLInputElement>) => {

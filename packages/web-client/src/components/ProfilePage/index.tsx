@@ -40,7 +40,10 @@ export default class ProfilePage extends React.Component<Props> {
           return (
             <Container>
               <Section>
-                <Avatar image={profile.avatar.url} size="large" />
+                <Avatar
+                  image={profile.avatar ? profile.avatar.url : undefined}
+                  size="large"
+                />
                 <h1>{profile.name}</h1>
               </Section>
               <Section>

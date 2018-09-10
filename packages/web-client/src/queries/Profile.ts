@@ -7,13 +7,13 @@ import PostSummaryFragment from "../fragments/PostSummary";
 
 export interface ProfileData {
   profile: {
-    avatar: ImageData;
+    avatar: ImageData | null;
     id: string;
     name: string;
     posts: Array<{
       createdAt: string;
       createdBy: {
-        avatar: ImageData;
+        avatar: ImageData | null;
         id: string;
         name: string;
       };
