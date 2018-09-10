@@ -7,6 +7,7 @@ import ProfileQuery, {
 } from "../../queries/Profile";
 import Alert from "../Alert";
 import DeletePostButton from "../DeletePostButton";
+import RelativeDate from "../RelativeDate";
 import "./index.css";
 
 interface Props {
@@ -36,6 +37,13 @@ export default class ProfilePosts extends React.Component<Props> {
                 profile.posts
                   .map(post => (
                     <div className="Post" key={post.id}>
+                      <div>
+                        <strong>{post.createdBy.name}</strong>
+                      </div>
+                      <div>
+                        <RelativeDate value={post.createdAt} />
+                      </div>
+                      <hr />
                       {post.text}
                       <hr />
                       <DeletePostButton postId={post.id} />

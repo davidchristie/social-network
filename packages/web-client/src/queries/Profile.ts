@@ -5,6 +5,11 @@ export interface ProfileData {
     id: string;
     name: string;
     posts: Array<{
+      createdAt: string;
+      createdBy: {
+        id: string;
+        name: string;
+      };
       id: string;
       text: string;
     }>
@@ -21,6 +26,11 @@ export default gql`
       id
       name
       posts {
+        createdAt
+        createdBy {
+          id
+          name
+        }
         id
         text
       }

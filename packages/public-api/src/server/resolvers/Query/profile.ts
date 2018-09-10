@@ -1,4 +1,3 @@
-import authentication from "../../../services/authentication";
 import { Context } from "../../../types";
 
 interface Arguments {
