@@ -3,11 +3,14 @@
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
-    "jsonwebtoken": "^8.3.0"
+    "jsonwebtoken": "^8.3.0",
+    "morgan": "^1.9.1"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.1",
     "@types/jsonwebtoken": "^7.2.8",
+    "@types/morgan": "^1.7.35",
+    "nodemon": "^1.18.4",
     "rimraf": "^2.6.2",
     "typescript": "^3.0.1"
   },
@@ -15,7 +18,7 @@
   "private": true,
   "scripts": {
     "build": "rimraf dist && tsc",
-    "start": "ts-node src/index.ts"
+    "start": "nodemon -x ts-node src/index.ts"
   },
   "version": "1.0.0"
 }

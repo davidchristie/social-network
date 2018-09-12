@@ -5,6 +5,11 @@ input AccountUpdateInput {
   email: String
 }
 
+input PasswordUpdateInput {
+  currentPassword: String!
+  newPassword: String!
+}
+
 input ProfileUpdateInput {
   avatarUrl: String
   name: String
@@ -27,6 +32,7 @@ type Mutation {
   login(email: String!, password: String!): LoginPayload!
   signup(email: String!, name: String!, password: String!): LoginPayload!
   updateAccount(data: AccountUpdateInput): Account!
+  updatePassword(data: PasswordUpdateInput): Account!
   updateProfile(data: ProfileUpdateInput!): Profile!
 }
 

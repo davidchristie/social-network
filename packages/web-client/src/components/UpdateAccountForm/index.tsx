@@ -37,13 +37,13 @@ class UpdateAccountForm extends React.Component<Props, State> {
           },
         }}
       >
-        {(updateProfile) => (
+        {(updateAccount) => (
           <Section className="UpdateAccountForm">
             <h2>Account</h2>
             <form
               onSubmit={(event: React.FormEvent) => {
                 event.preventDefault();
-                updateProfile();
+                updateAccount();
               }}
             >
               <div>

@@ -15,6 +15,12 @@ interface SignupInput {
   password: string;
 }
 
+interface UpdatePasswordInput {
+  accountId: string;
+  currentPassword: string;
+  newPassword: string;
+}
+
 type AccountOutput = Promise<Account>;
 
 type LoginOutput = Promise<{
@@ -62,5 +68,20 @@ export default {
       },
     );
     return response.json() as SignupOutput;
+  },
+  async updatePassword (input: UpdatePasswordInput) {
+    const response = await fetch(
+      `${path}/update_password`,
+      {
+        body: JSON.stringify(input),
+        headers: {
+          "Content-Type": "application/json",
+        },
+        method: "post",
+      },
+    );
+    if (response.status !== 200) {
+      throw new Error("Error updating password");
+    }
   },
 };
