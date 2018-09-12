@@ -1,6 +1,10 @@
 # import Image from "../../data-model/generated/prisma.graphql"
 # import Post from "../../data-model/generated/prisma.graphql"
 
+input AccountUpdateInput {
+  email: String
+}
+
 input ProfileUpdateInput {
   avatarUrl: String
   name: String
@@ -22,6 +26,7 @@ type Mutation {
   deletePost(id: ID!): Post!
   login(email: String!, password: String!): LoginPayload!
   signup(email: String!, name: String!, password: String!): LoginPayload!
+  updateAccount(data: AccountUpdateInput): Account!
   updateProfile(data: ProfileUpdateInput!): Profile!
 }
 
