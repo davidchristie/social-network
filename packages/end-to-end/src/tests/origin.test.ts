@@ -2,7 +2,7 @@ import puppeteer, { Browser, Page } from "puppeteer";
 
 import { ORIGIN } from "../constants";
 
-describe("origin page", () => {
+describe("origin", () => {
   let browser: Browser;
   let page: Page;
 

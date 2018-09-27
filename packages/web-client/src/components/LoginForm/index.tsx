@@ -55,7 +55,7 @@ export default class LoginForm extends React.Component<{}, State> {
         }}
       >
         {(login) => (
-          <Section>
+          <Section className="LoginForm">
             <form
               onSubmit={async (event: React.FormEvent) => {
                 event.preventDefault();
@@ -92,7 +92,7 @@ export default class LoginForm extends React.Component<{}, State> {
                   value={this.state.password}
                 />
               </div>
-              <Button>Submit</Button>
+              <Button type="submit">Submit</Button>
             </form>
           </Section>
         )}

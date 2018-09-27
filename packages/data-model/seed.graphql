@@ -1,0 +1,23 @@
+mutation {
+  createAccount(data: {
+    email: "test_user1@email.com"
+    name: "Test User 1"
+    password: "$2a$10$OmZZ8hj1x8zpqmJEItdh5uU8vE4XgJSCQF7t42pJFclpAuA76doaK" # plaintext: "test_user1password"
+    profile: {
+      create: {
+        name: "Test User 1"
+        posts: {
+          create: [{
+            text: "Post 1"
+          }, {
+            text: "Post 2"
+          }, {
+            text: "Post 3"
+          }]
+        }
+      }
+    }
+  }) {
+    id
+  }
+}
