@@ -1,7 +1,7 @@
 import { Router } from "express";
 
-import getHash from "authentication/src/utilities/getHash";
 import prisma from "../../services/prisma";
+import getHash from "../../utilities/getHash";
 import isPassword from "../../utilities/isPassword";
 
 const router = Router();
