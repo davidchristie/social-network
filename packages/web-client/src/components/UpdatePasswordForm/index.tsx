@@ -109,18 +109,20 @@ class UpdatePasswordForm extends React.Component<Props, State> {
   }
 }
 
-export default () => (
-  <Query<AccountData, AccountVariables>
-    query={AccountQuery}
-  >
-    {({ data, error, loading }) => {
-      if (error) {
-        return <Alert>{error.message}</Alert>;
-      }
-      if (loading) {
-        return "Loading";
-      }
-      return <UpdatePasswordForm data={data!} />;
-    }}
-  </Query>
-);
+export default function UpdatePasswordFormContainer () {
+  return (
+    <Query<AccountData, AccountVariables>
+      query={AccountQuery}
+    >
+      {({ data, error, loading }) => {
+        if (error) {
+          return <Alert>{error.message}</Alert>;
+        }
+        if (loading) {
+          return "Loading";
+        }
+        return <UpdatePasswordForm data={data!} />;
+      }}
+    </Query>
+  );
+}

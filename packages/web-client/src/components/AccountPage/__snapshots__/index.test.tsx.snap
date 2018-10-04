@@ -6,6 +6,9 @@ exports[`AccountPage component matches snapshot 1`] = `
     <h1>
       Account
     </h1>
+    <UpdateProfileFormContainer />
+    <UpdateAccountFormContainer />
+    <UpdatePasswordFormContainer />
   </Section>
 </Container>
 `;
