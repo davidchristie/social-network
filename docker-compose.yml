@@ -17,6 +17,8 @@ services:
       - 'JWT_SECRET=jwt_secret123'
       - 'PRISMA_ENDPOINT=http://prisma:4466/social-network/production'
     volumes: *volumes
+    depends_on:
+      - social-network
   mysql:
     image: mysql:5.7
     restart: always
@@ -50,6 +52,8 @@ services:
       - 'AUTHENTICATION_ENDPOINT=http://authentication:5000'
       - 'PRISMA_ENDPOINT=http://prisma:4466/social-network/production'
     volumes: *volumes
+    depends_on:
+      - social-network
   web-client:
     image: davidchristie/web-client:v2
     build:
@@ -59,5 +63,7 @@ services:
     environment:
       - 'REACT_APP_API_ENDPOINT=http://localhost:4000'
     volumes: *volumes
+    depends_on:
+      - social-network
 volumes:
   mysql:
