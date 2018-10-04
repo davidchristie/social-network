@@ -72,18 +72,20 @@ class UpdateAccountForm extends React.Component<Props, State> {
   }
 }
 
-export default () => (
-  <Query<AccountData, AccountVariables>
-    query={AccountQuery}
-  >
-    {({ data, error, loading }) => {
-      if (error) {
-        return <Alert>{error.message}</Alert>;
-      }
-      if (loading) {
-        return "Loading";
-      }
-      return <UpdateAccountForm data={data!} />;
-    }}
-  </Query>
-);
+export default function UpdateAccountFormContainer () {
+  return (
+    <Query<AccountData, AccountVariables>
+      query={AccountQuery}
+    >
+      {({ data, error, loading }) => {
+        if (error) {
+          return <Alert>{error.message}</Alert>;
+        }
+        if (loading) {
+          return "Loading";
+        }
+        return <UpdateAccountForm data={data!} />;
+      }}
+    </Query>
+  );
+}

@@ -94,18 +94,20 @@ class UpdateProfileForm extends React.Component<Props, State> {
   }
 }
 
-export default () => (
-  <Query<AccountData, AccountVariables>
-    query={AccountQuery}
-  >
-    {({ data, error, loading }) => {
-      if (error) {
-        return <Alert>{error.message}</Alert>;
-      }
-      if (loading) {
-        return "Loading";
-      }
-      return <UpdateProfileForm data={data!} />;
-    }}
-  </Query>
-);
+export default function UpdateProfileFormContainer () {
+  return (
+    <Query<AccountData, AccountVariables>
+      query={AccountQuery}
+    >
+      {({ data, error, loading }) => {
+        if (error) {
+          return <Alert>{error.message}</Alert>;
+        }
+        if (loading) {
+          return "Loading";
+        }
+        return <UpdateProfileForm data={data!} />;
+      }}
+    </Query>
+  );
+}
