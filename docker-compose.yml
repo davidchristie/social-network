@@ -6,7 +6,7 @@ services:
       context: .
       dockerfile: build.Dockerfile
     volumes: &volumes
-      - '../social-network-template:/app'
+      - '.:/app'
   authentication:
     image: davidchristie/authentication:v2
     build:
