@@ -22,4 +22,5 @@ jobs:
       - run: yarn production
       - run: sleep 15
       - run: docker-compose ps
+      - run: docker network ls
       - run: yarn test:end-to-end
