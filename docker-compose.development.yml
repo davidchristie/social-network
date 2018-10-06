@@ -7,6 +7,8 @@ services:
     build:
       dockerfile: 'packages/authentication/development.Dockerfile'
     volumes: *volumes
+  data-model:
+    volumes: *volumes
   public-api:
     build:
       dockerfile: 'packages/public-api/development.Dockerfile'

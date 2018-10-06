@@ -1,3 +1,3 @@
 FROM davidchristie/social-network
 
-CMD ["yarn", "data-model", "deploy"]
+CMD ["sh", "-c", "yarn data-model deploy && yarn data-model seed"]
