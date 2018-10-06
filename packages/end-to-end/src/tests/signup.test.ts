@@ -21,10 +21,12 @@ describe("on success", () => {
     await page.type("#signup-password", faker.internet.password());
     await page.click(`.SignupForm button[type="submit"]`);
     await page.waitForNavigation();
-    console.log('PAGE CONTENT', await page.content())
   }, 10000);
 
   afterAll(async () => {
+    console.log();
+    console.log('PAGE CONTENT', await page.content());
+    console.log();
     browser.close();
   });
 
