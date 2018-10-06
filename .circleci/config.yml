@@ -21,7 +21,6 @@ jobs:
       - setup_remote_docker:
           docker_layer_caching: true
       - run: yarn production
-      - run: sleep 15
       - run: docker-compose ps
       - run: docker network ls
       - run: docker build --file packages/end-to-end/Dockerfile --tag  davidchristie/end-to-end .
