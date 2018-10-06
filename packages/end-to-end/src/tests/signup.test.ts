@@ -21,11 +21,12 @@ describe("on success", () => {
     await page.type("#signup-password", faker.internet.password());
     await page.click(`.SignupForm button[type="submit"]`);
     await page.waitForNavigation();
+    console.log('PAGE CONTENT', await page.content())
   });
 
   afterAll(async () => {
-    browser.close()
-  })
+    browser.close();
+  });
 
   it(`redirects to "/"`, async () => {
     expect(await page.url()).toEqual(`${ORIGIN}/`);

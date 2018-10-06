@@ -15,12 +15,11 @@ describe("origin", () => {
     });
     page = await browser.newPage();
     await page.goto(ORIGIN);
-    console.log('PAGE CONTENT', await page.content())
   });
 
   afterAll(async () => {
-    browser.close()
-  })
+    browser.close();
+  });
 
   it(`redirects to "/login"`, async () => {
     expect(await page.url()).toEqual(`${ORIGIN}/login`);
