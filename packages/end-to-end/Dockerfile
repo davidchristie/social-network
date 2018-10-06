@@ -6,6 +6,4 @@ WORKDIR /app
 
 COPY . .
 
-RUN curl http://web-client:3000
-
 CMD ["sh", "-c", "yarn end-to-end test"]
