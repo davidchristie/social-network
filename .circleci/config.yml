@@ -22,6 +22,5 @@ jobs:
       - run: yarn production
       - run: sleep 15
       - run: docker-compose ps
-      - run: yarn data-model deploy
       - run: yarn data-model seed
       - run: yarn test:end-to-end
