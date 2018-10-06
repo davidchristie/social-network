@@ -6,7 +6,3 @@ services:
       dockerfile: 'packages/end-to-end/Dockerfile'
     environment:
       - 'ORIGIN=http://web-client:3000'
-networks:
-  default:
-    external:
-      name: default
