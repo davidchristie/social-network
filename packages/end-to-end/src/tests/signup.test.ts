@@ -30,6 +30,10 @@ describe("on success", () => {
     browser.close();
   });
 
+  it(`does not show alert message`, async () => {
+    expect(await page.$(".Alert")).toBeNull();
+  });
+
   it(`redirects to "/"`, async () => {
     expect(await page.url()).toEqual(`${ORIGIN}/`);
   }, 10000);
