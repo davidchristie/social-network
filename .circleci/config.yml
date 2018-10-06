@@ -30,7 +30,7 @@ jobs:
                   --file packages/data-model/Dockerfile \
                   --tag davidchristie/data-model .
               docker run \
-                  --network social-network-template_default \
+                  --network repo_default \
                   --env "PRISMA_ENDPOINT=http://prisma:4466/social-network/production" \
                   davidchristie/data-model
       - run: docker build --file packages/end-to-end/Dockerfile --tag  davidchristie/end-to-end .
