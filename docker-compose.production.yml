@@ -7,6 +7,15 @@ services:
   authentication:
     build:
       dockerfile: 'packages/authentication/production.Dockerfile'
+  end-to-end:
+    build:
+      context: .
+      dockerfile: 'packages/end-to-end/Dockerfile'
+    environment:
+      - 'ORIGIN=http://web-client:3000'
+    depends_on:
+      - public-api
+      - web-client
   public-api:
     build:
       dockerfile: 'packages/public-api/production.Dockerfile'
