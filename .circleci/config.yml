@@ -23,3 +23,6 @@ jobs:
       - run: yarn production
       - run: sleep 15
       - run: docker-compose ps
+      - run: docker build \
+              --file packages/end-to-end/Dockerfile \
+              --tag  davidchristie/end-to-end .

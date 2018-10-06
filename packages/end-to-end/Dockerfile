@@ -4,6 +4,8 @@ ENV  PATH="${PATH}:/node_modules/.bin"
 
 WORKDIR /app
 
-COPY . .
+COPY ./packages/end-to-end/src ./src
+COPY ./packages/end-to-end/package.json .
+COPY ./packages/end-to-end/tsconfig.json .
 
-CMD ["sh", "-c", "yarn end-to-end test"]
+CMD ["sh", "-c", "yarn test"]
