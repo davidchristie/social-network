@@ -5,4 +5,4 @@ WORKDIR /app
 ENV NODE_PATH=/node_modules
 ENV PATH=$PATH:/node_modules/.bin
 
-CMD ["sh", "-c", "yarn build"]
+RUN yarn build

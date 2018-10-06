@@ -7,4 +7,4 @@ ENV PATH=$PATH:/node_modules/.bin
 
 COPY . .
 
-CMD ["sh", "-c", "yarn build"]
+RUN yarn build
