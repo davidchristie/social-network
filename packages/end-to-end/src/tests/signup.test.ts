@@ -22,7 +22,7 @@ describe("on success", () => {
     await page.click(`.SignupForm button[type="submit"]`);
     await page.waitForNavigation();
     console.log('PAGE CONTENT', await page.content())
-  });
+  }, 10000);
 
   afterAll(async () => {
     browser.close();
@@ -30,9 +30,9 @@ describe("on success", () => {
 
   it(`redirects to "/"`, async () => {
     expect(await page.url()).toEqual(`${ORIGIN}/`);
-  });
+  }, 10000);
 
   it("renders HomePage component", async () => {
     expect(await page.$(".HomePage")).not.toBeNull();
-  });
+  }, 10000);
 });
