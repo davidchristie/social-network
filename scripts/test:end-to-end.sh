@@ -2,9 +2,14 @@ docker-compose \
   -f docker-compose.yml \
   -f docker-compose.production.yml \
   -f docker-compose.testing.yml \
-  build end-to-end
+  up --detach
 docker-compose \
   -f docker-compose.yml \
   -f docker-compose.production.yml \
   -f docker-compose.testing.yml \
-  up end-to-end
+  ps
+docker-compose \
+  -f docker-compose.yml \
+  -f docker-compose.production.yml \
+  -f docker-compose.testing.yml \
+  logs end-to-end
