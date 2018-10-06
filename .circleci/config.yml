@@ -20,6 +20,8 @@ jobs:
       - run: yarn test:unit
       - setup_remote_docker
       - run: yarn production
+      - run: sleep 15
+      - run: docker ps
       - run: yarn data-model deploy
       - run: yarn data-model seed
       - run: yarn test:end-to-end
