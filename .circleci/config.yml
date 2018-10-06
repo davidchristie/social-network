@@ -22,8 +22,17 @@ jobs:
           docker_layer_caching: true
       - run: yarn production
       - run: docker-compose ps
-      - run: docker-compose up data-model
       - run: docker network ls
+      - run:
+          name: Deploy Prisma data-model
+          command: |
+              docker build \
+                  --file packages/data-model/Dockerfile \
+                  --tag davidchristie/data-model .
+              docker run \
+                  --network social-network-template_default \
+                  --env "PRISMA_ENDPOINT=http://prisma:4466/social-network/production" \
+                  davidchristie/data-model
       - run: docker build --file packages/end-to-end/Dockerfile --tag  davidchristie/end-to-end .
       - run: docker run --network repo_default davidchristie/end-to-end curl http://web-client:3000
       - run: docker run --env "ORIGIN=http://web-client:3000" --network repo_default davidchristie/end-to-end
