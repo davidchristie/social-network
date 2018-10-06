@@ -16,6 +16,8 @@ services:
       - 'PRISMA_ENDPOINT=http://prisma:4466/social-network/production'
     depends_on:
       - social-network
+    networks:
+      - default
   data-model:
     build:
       context: .
@@ -25,6 +27,8 @@ services:
     depends_on:
       - prisma
       - social-network
+    networks:
+      - default
   mysql:
     image: mysql:5.7
     restart: always
@@ -32,6 +36,8 @@ services:
       MYSQL_ROOT_PASSWORD: prisma
     volumes:
       - mysql:/var/lib/mysql
+    networks:
+      - default
   prisma:
     image: prismagraphql/prisma:1.8
     restart: always
@@ -48,6 +54,8 @@ services:
             user: root
             password: prisma
             migrations: true
+    networks:
+      - default
   public-api:
     image: davidchristie/public-api:v4
     build:
@@ -59,6 +67,8 @@ services:
       - 'PRISMA_ENDPOINT=http://prisma:4466/social-network/production'
     depends_on:
       - social-network
+    networks:
+      - default
   web-client:
     image: davidchristie/web-client:v2
     build:
@@ -69,5 +79,9 @@ services:
       - 'REACT_APP_API_ENDPOINT=http://127.0.0.1:4000'
     depends_on:
       - social-network
+    networks:
+      - default
+networks:
+  default:
 volumes:
   mysql:

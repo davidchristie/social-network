@@ -9,4 +9,4 @@ services:
 networks:
   default:
     external:
-      name: social-network-template_default
+      name: default
