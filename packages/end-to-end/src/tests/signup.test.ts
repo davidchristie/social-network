@@ -21,6 +21,7 @@ describe("on success", () => {
     await page.type("#signup-password", faker.internet.password());
     await page.click(`.SignupForm button[type="submit"]`);
     await page.waitForNavigation();
+    await page.waitForSelector('.HomePage')
   }, 10000);
 
   afterAll(async () => {
