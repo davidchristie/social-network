@@ -1,4 +1,8 @@
 docker-compose \
   -f docker-compose.yml \
   -f docker-compose.production.yml \
-  up --build --detach
+  build --no-cache
+docker-compose \
+  -f docker-compose.yml \
+  -f docker-compose.production.yml \
+  up --detach

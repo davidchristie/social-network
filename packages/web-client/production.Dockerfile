@@ -1,5 +1,9 @@
 FROM davidchristie/social-network AS build
 
+ARG REACT_APP_API_ENDPOINT
+
+ENV REACT_APP_API_ENDPOINT=$REACT_APP_API_ENDPOINT
+
 RUN yarn web-client build
 
 FROM nginx:stable

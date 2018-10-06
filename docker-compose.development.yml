@@ -1,11 +1,17 @@
 version: '3'
 services:
+  social-network:
+    volumes: &volumes
+      - '.:/app'
   authentication:
     build:
       dockerfile: 'packages/authentication/development.Dockerfile'
+    volumes: *volumes
   public-api:
     build:
       dockerfile: 'packages/public-api/development.Dockerfile'
+    volumes: *volumes
   web-client:
     build:
       dockerfile: 'packages/web-client/development.Dockerfile'
+    volumes: *volumes

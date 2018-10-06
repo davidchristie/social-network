@@ -19,7 +19,7 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
       - run: yarn test:unit
       - setup_remote_docker
-      - run: yarn development
+      - run: yarn production
       - run: yarn data-model deploy
       - run: yarn data-model seed
       - run: yarn test:end-to-end
