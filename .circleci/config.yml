@@ -25,4 +25,4 @@ jobs:
       - run: docker network ls
       - run: docker build --file packages/end-to-end/Dockerfile --tag  davidchristie/end-to-end .
       - run: docker run --network repo_default davidchristie/end-to-end curl http://web-client:3000
-      - run: docker run --network repo_default davidchristie/end-to-end
+      - run: docker run --env "ORIGIN=http:web-client:3000" --network repo_default davidchristie/end-to-end
