@@ -1,4 +1,3 @@
-import faker from "faker";
 import puppeteer, { Browser, Page } from "puppeteer";
 
 import { ORIGIN } from "../constants";
