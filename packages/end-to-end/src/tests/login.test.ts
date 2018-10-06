@@ -22,6 +22,10 @@ describe("on success", () => {
     await page.waitForNavigation();
   }, 10000);
 
+  afterAll(async () => {
+    browser.close()
+  })
+
   it(`redirects to "/"`, async () => {
     expect(await page.url()).toEqual(`${ORIGIN}/`);
   }, 10000);
