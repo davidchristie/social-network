@@ -1,8 +1,0 @@
-version: '3'
-services:
-  end-to-end:
-    build:
-      context: .
-      dockerfile: 'packages/end-to-end/Dockerfile'
-    environment:
-      - 'ORIGIN=http://web-client:3000'

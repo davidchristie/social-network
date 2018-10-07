@@ -13,7 +13,7 @@
     "infrastructure": "yarn workspace infrastructure",
     "production": "scripts/production.sh",
     "public-api": "yarn workspace public-api",
-    "test:end-to-end": "scripts/test:end-to-end.sh",
+    "test:end-to-end": "yarn end-to-end test",
     "test:unit": "CI=true yarn web-client test",
     "web-client": "yarn workspace web-client"
   },
