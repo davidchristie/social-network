@@ -16,19 +16,16 @@ describe("on success", () => {
     });
     page = await browser.newPage();
     await page.goto(`${ORIGIN}/signup`);
-    await page.waitForSelector('.SignupForm')
+    await page.waitForSelector(".SignupForm");
     await page.type("#signup-name", faker.name.firstName());
     await page.type("#signup-email", faker.internet.email());
     await page.type("#signup-password", faker.internet.password());
     await page.click(`.SignupForm button[type="submit"]`);
     await page.waitForNavigation();
-    await page.waitForSelector('.HomePage')
+    await page.waitForSelector(".HomePage");
   }, 10000);
 
   afterAll(async () => {
-    console.log();
-    console.log('PAGE CONTENT', await page.content());
-    console.log();
     browser.close();
   });
 

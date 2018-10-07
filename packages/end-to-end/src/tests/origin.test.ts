@@ -15,6 +15,7 @@ describe("origin", () => {
     });
     page = await browser.newPage();
     await page.goto(ORIGIN);
+    await page.waitForNavigation();
   });
 
   afterAll(async () => {
