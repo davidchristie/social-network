@@ -1,20 +1,14 @@
 import faker from "faker";
-import puppeteer, { Browser, Page } from "puppeteer";
+import { Page } from "puppeteer";
 
 import { ORIGIN } from "../constants";
+import newPage from "../utilities/newPage";
 
 describe("on success", () => {
-  let browser: Browser;
   let page: Page;
 
   beforeAll(async () => {
-    browser = await puppeteer.launch({
-      args: [
-        "--no-sandbox",
-        "--disable-setuid-sandbox",
-      ],
-    });
-    page = await browser.newPage();
+    page = await newPage();
     await page.goto(`${ORIGIN}/signup`);
     await page.waitForSelector(".SignupForm");
     await page.type("#signup-name", faker.name.firstName());
@@ -23,10 +17,6 @@ describe("on success", () => {
     await page.click(`.SignupForm button[type="submit"]`);
     await page.waitForNavigation();
     await page.waitForSelector(".HomePage");
-  }, 10000);
-
-  afterAll(async () => {
-    browser.close();
   });
 
   it(`does not show alert messages`, async () => {
@@ -35,9 +25,9 @@ describe("on success", () => {
 
   it(`redirects to "/"`, async () => {
     expect(await page.url()).toEqual(`${ORIGIN}/`);
-  }, 10000);
+  });
 
   it("renders HomePage component", async () => {
     expect(await page.$(".HomePage")).not.toBeNull();
-  }, 10000);
+  });
 });
