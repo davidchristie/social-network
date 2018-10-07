@@ -25,7 +25,7 @@ describe("on success", () => {
     browser.close();
   });
 
-  it(`does not show alert message`, async () => {
+  it(`does not show alert messages`, async () => {
     expect(await page.$(".Alert")).toBeNull();
   });
 

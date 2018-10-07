@@ -12,17 +12,21 @@ jobs:
           - v1-dependencies-{{ checksum "package.json" }}
           # Fallback to using the latest cache if no exact match is found.
           - v1-dependencies-
-      - run: yarn install
+      - run:
+          name: Install dependencies
+          command: yarn install
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-      - run: yarn test:unit
+      - run:
+          name: Run unit tests
+          command: yarn test:unit
       - setup_remote_docker:
           docker_layer_caching: true
-      - run: yarn production
-      - run: docker-compose ps
-      - run: docker network ls
+      - run:
+          name: Start microservices
+          command: yarn production
       - run:
           name: Deploy Prisma data-model
           command: |
@@ -33,7 +37,12 @@ jobs:
                   --network repo_default \
                   --env "PRISMA_ENDPOINT=http://prisma:4466/social-network/production" \
                   davidchristie/data-model
-      - run: docker build --file packages/end-to-end/Dockerfile --tag  davidchristie/end-to-end .
-      - run: docker run --network repo_default davidchristie/end-to-end curl http://web-client:3000
-      - run: docker run --network repo_default davidchristie/end-to-end curl http://public-api:4000
-      - run: docker run --env "ORIGIN=http://web-client:3000" --network repo_default davidchristie/end-to-end
+      - run:
+          name: Run end-to-end tests
+          command: |
+              docker build \
+                  --file packages/end-to-end/Dockerfile \
+                  --tag  davidchristie/end-to-end .
+              docker run \
+                  --env "ORIGIN=http://web-client:3000" \
+                  --network repo_default davidchristie/end-to-end
