@@ -2,6 +2,7 @@ import { Page } from "puppeteer";
 
 import { ORIGIN } from "../constants";
 import newPage from "../utilities/newPage";
+import waitForLoading from "../utilities/waitForLoading";
 
 describe("origin", () => {
   let page: Page;
@@ -9,9 +10,7 @@ describe("origin", () => {
   beforeAll(async () => {
     page = await newPage();
     await page.goto(ORIGIN);
-    await page.waitFor(() => {
-      return !document.body.textContent.includes("Loading");
-    });
+    await waitForLoading(page);
   });
 
   it(`redirects to "/login"`, async () => {
