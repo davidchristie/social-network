@@ -17,15 +17,6 @@ services:
     depends_on:
       - prisma
       - social-network
-  # data-model:
-  #   build:
-  #     context: .
-  #     dockerfile: packages/data-model/Dockerfile
-  #   environment:
-  #     - 'PRISMA_ENDPOINT=http://prisma:4466/social-network/production'
-  #   depends_on:
-  #     - prisma
-  #     - social-network
   mysql:
     image: mysql:5.7
     restart: always
