@@ -14,7 +14,8 @@
     "delete": "prisma delete",
     "deploy": "prisma deploy --no-seed",
     "playground": "prisma playground",
-    "seed": "prisma seed"
+    "seed": "prisma seed",
+    "wait-for-prisma": "scripts/wait-for-prisma.sh"
   },
   "types": "./generated/prisma.ts",
   "version": "1.0.0"

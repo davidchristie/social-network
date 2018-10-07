@@ -7,6 +7,15 @@ services:
     build:
       dockerfile: 'packages/authentication/development.Dockerfile'
     volumes: *volumes
+  data-model:
+    build:
+      context: .
+      dockerfile: 'packages/data-model/Dockerfile'
+    environment:
+      - 'PRISMA_ENDPOINT=http://prisma:4466/social-network/production'
+    depends_on:
+      - prisma
+      - social-network
   public-api:
     build:
       dockerfile: 'packages/public-api/development.Dockerfile'
@@ -14,4 +23,6 @@ services:
   web-client:
     build:
       dockerfile: 'packages/web-client/development.Dockerfile'
+    environment:
+      - 'REACT_APP_API_ENDPOINT=http://localhost:4000'
     volumes: *volumes
