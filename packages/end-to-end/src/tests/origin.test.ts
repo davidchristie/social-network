@@ -12,13 +12,13 @@ describe("origin", () => {
     await page.waitFor(() => {
       return !document.body.textContent.includes("Loading");
     });
-  }, 10000);
+  });
 
   it(`redirects to "/login"`, async () => {
     expect(await page.url()).toEqual(`${ORIGIN}/login`);
-  }, 10000);
+  });
 
   it("renders LoginPage component", async () => {
     expect(await page.$(".LoginPage")).not.toBeNull();
-  }, 10000);
+  });
 });

@@ -19,6 +19,9 @@
       "ts",
       "tsx"
     ],
+    "setupFiles": [
+      "<rootDir>/src/setupTests.ts"
+    ],
     "testMatch": [
       "**/*.test.+(js|ts|tsx)"
     ],

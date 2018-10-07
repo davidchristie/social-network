@@ -17,17 +17,17 @@ describe("on success", () => {
     await page.click(`.SignupForm button[type="submit"]`);
     await page.waitForNavigation();
     await page.waitForSelector(".HomePage");
-  }, 10000);
+  });
 
   it(`does not show alert messages`, async () => {
     expect(await page.$(".Alert")).toBeNull();
-  }, 10000);
+  });
 
   it(`redirects to "/"`, async () => {
     expect(await page.url()).toEqual(`${ORIGIN}/`);
-  }, 10000);
+  });
 
   it("renders HomePage component", async () => {
     expect(await page.$(".HomePage")).not.toBeNull();
-  }, 10000);
+  });
 });
