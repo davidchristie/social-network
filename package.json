@@ -16,6 +16,7 @@
     "test:end-to-end": "yarn end-to-end test",
     "test:unit": "CI=true yarn web-client test",
     "wait-for-prisma": "scripts/wait-for-prisma.sh",
+    "wait-for-web-client": "scripts/wait-for-web-client.sh",
     "web-client": "yarn workspace web-client"
   },
   "version": "1.0.0",
