@@ -16,6 +16,7 @@ describe("on success", () => {
     });
     page = await browser.newPage();
     await page.goto(`${ORIGIN}/signup`);
+    await page.waitForSelector('.SignupForm')
     await page.type("#signup-name", faker.name.firstName());
     await page.type("#signup-email", faker.internet.email());
     await page.type("#signup-password", faker.internet.password());
