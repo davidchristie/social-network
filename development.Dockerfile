@@ -5,4 +5,6 @@ WORKDIR /app
 ENV NODE_PATH=/node_modules
 ENV PATH=$PATH:/node_modules/.bin
 
+COPY . .
+
 RUN yarn build
