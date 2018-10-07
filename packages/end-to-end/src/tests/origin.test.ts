@@ -16,7 +16,7 @@ describe("origin", () => {
     page = await browser.newPage();
     await page.goto(ORIGIN);
     await page.waitForNavigation();
-  });
+  }, 10000);
 
   afterAll(async () => {
     browser.close();
@@ -24,9 +24,9 @@ describe("origin", () => {
 
   it(`redirects to "/login"`, async () => {
     expect(await page.url()).toEqual(`${ORIGIN}/login`);
-  });
+  }, 10000);
 
   it("renders LoginPage component", async () => {
     expect(await page.$(".LoginPage")).not.toBeNull();
-  });
+  }, 10000);
 });
