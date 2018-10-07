@@ -7,16 +7,26 @@ describe("origin", () => {
   let page: Page;
 
   beforeAll(async () => {
-    browser = await puppeteer.launch();
+    browser = await puppeteer.launch({
+      args: [
+        "--no-sandbox",
+        "--disable-setuid-sandbox",
+      ],
+    });
     page = await browser.newPage();
     await page.goto(ORIGIN);
+    await page.waitForNavigation();
+  }, 10000);
+
+  afterAll(async () => {
+    browser.close();
   });
 
   it(`redirects to "/login"`, async () => {
     expect(await page.url()).toEqual(`${ORIGIN}/login`);
-  });
+  }, 10000);
 
   it("renders LoginPage component", async () => {
     expect(await page.$(".LoginPage")).not.toBeNull();
-  });
+  }, 10000);
 });

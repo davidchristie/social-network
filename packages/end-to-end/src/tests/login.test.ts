@@ -1,4 +1,3 @@
-import faker from "faker";
 import puppeteer, { Browser, Page } from "puppeteer";
 
 import { ORIGIN } from "../constants";
@@ -8,7 +7,12 @@ describe("on success", () => {
   let page: Page;
 
   beforeAll(async () => {
-    browser = await puppeteer.launch();
+    browser = await puppeteer.launch({
+      args: [
+        "--no-sandbox",
+        "--disable-setuid-sandbox",
+      ],
+    });
     page = await browser.newPage();
     await page.goto(`${ORIGIN}/login`);
     await page.type("#login-email", "test_user1@email.com");
@@ -16,6 +20,14 @@ describe("on success", () => {
     await page.click(`.LoginForm button[type="submit"]`);
     await page.waitForNavigation();
   }, 10000);
+
+  afterAll(async () => {
+    browser.close();
+  });
+
+  it(`does not show alert messages`, async () => {
+    expect(await page.$(".Alert")).toBeNull();
+  });
 
   it(`redirects to "/"`, async () => {
     expect(await page.url()).toEqual(`${ORIGIN}/`);

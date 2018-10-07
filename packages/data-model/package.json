@@ -11,10 +11,10 @@
   "private": true,
   "scripts": {
     "build": "rimraf dist && tsc",
-    "delete": "prisma delete --env-file ../../.env",
-    "deploy": "prisma deploy --env-file ../../.env --no-seed",
-    "playground": "prisma playground --env-file ../../.env",
-    "seed": "prisma seed --env-file ../../.env"
+    "delete": "prisma delete",
+    "deploy": "prisma deploy --no-seed",
+    "playground": "prisma playground",
+    "seed": "prisma seed"
   },
   "types": "./generated/prisma.ts",
   "version": "1.0.0"
