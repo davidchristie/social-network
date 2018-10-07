@@ -15,7 +15,9 @@ describe("origin", () => {
     });
     page = await browser.newPage();
     await page.goto(ORIGIN);
-    await page.waitForNavigation();
+    await page.waitFor(() => {
+      return !document.body.textContent.includes("Loading");
+    });
   }, 10000);
 
   afterAll(async () => {
