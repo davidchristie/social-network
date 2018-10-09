@@ -26,7 +26,9 @@ jobs:
           docker_layer_caching: true
       - run:
           name: Start microservices
-          command: yarn production
+          command: |
+              yarn production build --no-cache \
+              yarn production up --detach
       - run:
           name: Deploy Prisma data-model
           command: |
