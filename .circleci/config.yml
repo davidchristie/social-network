@@ -27,7 +27,7 @@ jobs:
       - run:
           name: Start microservices
           command: |
-              yarn production build --no-cache \
+              yarn production build --no-cache
               yarn production up --detach
       - run:
           name: Deploy Prisma data-model
