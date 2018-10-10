@@ -30,6 +30,9 @@ jobs:
               yarn production build --no-cache
               yarn production up --detach
       - run:
+          name: List production images
+          command: yarn production images
+      - run:
           name: Deploy Prisma data-model
           command: |
               docker build \
