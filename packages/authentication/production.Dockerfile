@@ -1,4 +1,4 @@
-FROM node:9.11.2 AS build
+FROM node:9.11.2-alpine AS build
 
 WORKDIR /app
 
@@ -12,7 +12,7 @@ RUN yarn --frozen-lockfile
 RUN yarn data-model build
 RUN yarn authentication build
 
-FROM node:9.11.2
+FROM node:9.11.2-alpine
 
 EXPOSE 5000
 
