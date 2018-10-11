@@ -64,8 +64,8 @@ jobs:
                   --file docker/puppeteer.Dockerfile \
                   --tag  puppeteer .
               docker build \
-                  --file packages/end-to-end/Dockerfile \
-                  --tag  end-to-end .
+                  --file docker/end-to-end-tests.Dockerfile \
+                  --tag  end-to-end-tests .
               docker run \
                   --env "ORIGIN=http://web-client:3000" \
-                  --network repo_default end-to-end
+                  --network repo_default end-to-end-tests
