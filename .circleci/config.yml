@@ -61,8 +61,11 @@ jobs:
           name: Run end-to-end tests
           command: |
               docker build \
+                  --file docker/puppeteer.Dockerfile \
+                  --tag  puppeteer .
+              docker build \
                   --file packages/end-to-end/Dockerfile \
-                  --tag  davidchristie/end-to-end .
+                  --tag  end-to-end .
               docker run \
                   --env "ORIGIN=http://web-client:3000" \
-                  --network repo_default davidchristie/end-to-end
+                  --network repo_default end-to-end

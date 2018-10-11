@@ -1,4 +1,4 @@
-FROM buildkite/puppeteer:v1.9.0
+FROM puppeteer
 
 ENV  PATH="${PATH}:/node_modules/.bin"
 
