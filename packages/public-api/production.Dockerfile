@@ -2,11 +2,11 @@ FROM build-packages AS build
 
 WORKDIR /app
 
-COPY --from=build ./packages/data-model ./packages/data-model
-COPY --from=build ./packages/public-api ./packages/public-api
-COPY --from=build ./package.json .
-COPY --from=build ./tsconfig.json .
-COPY --from=build ./yarn.lock .
+COPY --from=build /app/packages/data-model ./packages/data-model
+COPY --from=build /app/packages/public-api ./packages/public-api
+COPY --from=build /app/package.json .
+COPY --from=build /app/tsconfig.json .
+COPY --from=build /app/yarn.lock .
 
 RUN yarn --frozen-lockfile --production
 
