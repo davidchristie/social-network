@@ -1,4 +1,4 @@
-FROM davidchristie/social-network
+FROM build-packages
 
 EXPOSE 4000
 
