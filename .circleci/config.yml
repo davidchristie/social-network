@@ -1,4 +1,5 @@
 version: 2
+
 jobs:
   build:
     docker:
@@ -6,32 +7,45 @@ jobs:
     working_directory: ~/repo
     steps:
       - checkout
+
       # Download and cache dependencies.
       - restore_cache:
           keys:
           - v1-dependencies-{{ checksum "package.json" }}
           # Fallback to using the latest cache if no exact match is found.
           - v1-dependencies-
+
       - run:
           name: Install dependencies
           command: yarn install
+
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
+
       - run:
           name: Run unit tests
           command: yarn test:unit
+
       - setup_remote_docker:
           docker_layer_caching: true
+
       - run:
           name: Start microservices
           command: |
               yarn production build --no-cache
               yarn production up --detach
+              yarn production logs
+
       - run:
           name: List production images
           command: yarn production images
+
+      - run:
+          name: List production containers
+          command: yarn production ps
+
       - run:
           name: Deploy Prisma data-model
           command: |
@@ -42,6 +56,7 @@ jobs:
                   --network repo_default \
                   --env "PRISMA_ENDPOINT=http://prisma:4466/social-network/production" \
                   davidchristie/data-model
+
       - run:
           name: Run end-to-end tests
           command: |
