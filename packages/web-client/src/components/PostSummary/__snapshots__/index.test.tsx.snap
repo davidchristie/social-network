@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`PostSummary component with image matches snapshot 1`] = `
+exports[`PostSummary component with avatar image matches snapshot 1`] = `
 <div
   className="Post"
 >
@@ -17,9 +17,10 @@ exports[`PostSummary component with image matches snapshot 1`] = `
             "height": 0,
           }
         }
-        to="/profile/"
+        to="/profile/cjn5pm4wm000r0a4239rvnn8i"
       >
         <Avatar
+          image="https:cdn.social-network.com/images/default-avatar.png"
           size="small"
         />
       </Link>
@@ -27,7 +28,7 @@ exports[`PostSummary component with image matches snapshot 1`] = `
         <div>
           <Link
             replace={false}
-            to="/profile/"
+            to="/profile/cjn5pm4wm000r0a4239rvnn8i"
           >
             <strong>
               User 1
@@ -37,7 +38,7 @@ exports[`PostSummary component with image matches snapshot 1`] = `
         <div>
           <small>
             <RelativeDate
-              value=""
+              value="2018-10-12T07:48:03.948Z"
             />
           </small>
         </div>
@@ -45,7 +46,7 @@ exports[`PostSummary component with image matches snapshot 1`] = `
     </div>
     <div>
       <PostMenu
-        postId="POST ID"
+        postId="cjn5pmj1b000y0a42mds0fa37"
       />
     </div>
   </div>
