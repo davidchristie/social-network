@@ -15,4 +15,14 @@ describe("Avatar component", () => {
       expect(wrapper).toMatchSnapshot();
     });
   });
+
+  describe("small", () => {
+    beforeEach(() => {
+      wrapper = shallow(<Avatar size="small" />);
+    });
+
+    it("matches snapshot", () => {
+      expect(wrapper).toMatchSnapshot();
+    });
+  });
 });
