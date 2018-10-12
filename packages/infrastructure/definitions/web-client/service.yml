@@ -6,13 +6,13 @@ metadata:
   labels:
     stage: production
     name: web-client
-    app: social-network-template
+    app: social-network
 spec:
   ports:
   - port: 3000
     targetPort: 3000
     protocol: TCP
   selector:
-    app: social-network-template
+    app: social-network
     name: web-client
     stage: production

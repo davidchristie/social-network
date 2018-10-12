@@ -1,4 +1,4 @@
-# Social Network Template
+# Social Network
 
 ## Packages
 
