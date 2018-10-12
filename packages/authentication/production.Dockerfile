@@ -8,9 +8,7 @@ COPY ./package.json .
 COPY ./tsconfig.json .
 COPY ./yarn.lock .
 
-RUN yarn --frozen-lockfile
-RUN yarn data-model build
-RUN yarn authentication build
+RUN yarn --frozen-lockfile --production
 
 FROM node:9.11.2-alpine
 
