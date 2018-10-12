@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RelativeDate component matches snapshot 1`] = `"21 minutes"`;
