@@ -6,7 +6,7 @@ metadata:
   labels:
     stage: production
     name: web-client
-    app: social-network-template
+    app: social-network
 spec:
   replicas: 3
   strategy:
@@ -16,7 +16,7 @@ spec:
       labels:
         stage: production
         name: web-client
-        app: social-network-template
+        app: social-network
     spec:
       containers:
       - name: web-client

@@ -1,8 +1,8 @@
 {
   "author": "David Christie <davidchristie.nz@gmail.com>",
-  "name": "social-network-template",
+  "name": "social-network",
   "private": true,
-  "repository": "git@github.com:davidchristie/social-network-template.git",
+  "repository": "git@github.com:davidchristie/social-network.git",
   "scripts": {
     "authentication": "yarn workspace authentication",
     "build": "scripts/build.sh",
