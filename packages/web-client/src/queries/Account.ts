@@ -19,7 +19,7 @@ export interface AccountData {
 
 export interface AccountVariables { }
 
-export default gql`
+const Account = gql`
   ${ImageFragment}
   query Account {
     account {
@@ -36,3 +36,5 @@ export default gql`
     }
   }
 `;
+
+export default Account;
