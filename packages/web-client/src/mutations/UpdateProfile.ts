@@ -20,7 +20,7 @@ export interface UpdateProfileVariables {
   };
 }
 
-export default gql`
+const UpdateProfile = gql`
   ${ImageFragment}
   mutation UpdateProfile($data: ProfileUpdateInput!) {
     updateProfile(data: $data) {
@@ -32,3 +32,5 @@ export default gql`
     }
   }
 `;
+
+export default UpdateProfile;
