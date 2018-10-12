@@ -1,6 +1,6 @@
 FROM build-packages AS build
 
-FROM puppeteer
+FROM davidchristie/puppeteer
 
 WORKDIR /app
 
