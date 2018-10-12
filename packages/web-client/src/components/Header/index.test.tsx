@@ -7,23 +7,40 @@ import Header from ".";
 import AccountQuery from "../../queries/Account";
 import wait from "../../utilities/wait";
 
-const mocks = [
-  {
-    request: {
-      query: AccountQuery,
-    },
-    result: {
-      data: {
-        account: null,
-      },
-    },
-  },
-];
-
 describe("Header component", () => {
-  it("when logged out", async () => {
+  it("while loading", async () => {
+    const mocks = [
+      {
+        request: {
+          query: AccountQuery,
+        },
+      },
+    ];
     const wrapper = mount(
-      <MockedProvider addTypename={true} mocks={mocks}>
+      <MockedProvider mocks={mocks}>
+        <MemoryRouter>
+          <Header />
+        </MemoryRouter>
+      </MockedProvider>
+    );
+    expect(wrapper.find(Header)).toMatchSnapshot();
+  });
+
+  it("when logged out", async () => {
+    const mocks = [
+      {
+        request: {
+          query: AccountQuery,
+        },
+        result: {
+          data: {
+            account: null,
+          },
+        },
+      },
+    ];
+    const wrapper = mount(
+      <MockedProvider mocks={mocks}>
         <MemoryRouter>
           <Header />
         </MemoryRouter>
