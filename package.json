@@ -11,7 +11,7 @@
     "development": "scripts/development.sh",
     "end-to-end": "yarn workspace end-to-end",
     "infrastructure": "yarn workspace infrastructure",
-    "production": "scripts/production.sh",
+    "production": "docker-compose -f docker-compose.yml -f docker-compose.production.yml",
     "public-api": "yarn workspace public-api",
     "test:end-to-end": "yarn end-to-end test",
     "test:unit": "CI=true yarn web-client test",
