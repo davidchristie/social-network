@@ -3,6 +3,7 @@ FROM node:9.11.2-alpine AS build
 WORKDIR /app
 
 COPY ./packages/data-model ./packages/data-model
+COPY ./scripts ./scripts
 COPY ./package.json .
 COPY ./tsconfig.json .
 COPY ./yarn.lock .
