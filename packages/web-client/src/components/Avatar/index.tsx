@@ -10,7 +10,6 @@ interface Props {
 
 export default class Avatar extends React.Component<Props> {
   public render () {
-    console.log(this.props.image);
     return (
       <img
         className={`Avatar ${this.props.size}`}

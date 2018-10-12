@@ -1,0 +1,110 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PostSummary component with avatar image matches snapshot 1`] = `
+<div
+  className="Post"
+>
+  <div
+    className="header"
+  >
+    <div
+      className="profile"
+    >
+      <Link
+        replace={false}
+        style={
+          Object {
+            "height": 0,
+          }
+        }
+        to="/profile/cjn5pm4wm000r0a4239rvnn8i"
+      >
+        <Avatar
+          image="https:cdn.social-network.com/images/default-avatar.png"
+          size="small"
+        />
+      </Link>
+      <div>
+        <div>
+          <Link
+            replace={false}
+            to="/profile/cjn5pm4wm000r0a4239rvnn8i"
+          >
+            <strong>
+              User 1
+            </strong>
+          </Link>
+        </div>
+        <div>
+          <small>
+            <RelativeDate
+              value="2018-10-12T07:48:03.948Z"
+            />
+          </small>
+        </div>
+      </div>
+    </div>
+    <div>
+      <PostMenu
+        postId="cjn5pmj1b000y0a42mds0fa37"
+      />
+    </div>
+  </div>
+  <hr />
+  Post 1
+</div>
+`;
+
+exports[`PostSummary component without avatar image matches snapshot 1`] = `
+<div
+  className="Post"
+>
+  <div
+    className="header"
+  >
+    <div
+      className="profile"
+    >
+      <Link
+        replace={false}
+        style={
+          Object {
+            "height": 0,
+          }
+        }
+        to="/profile/cjn5pm4wm000r0a4239rvnn8i"
+      >
+        <Avatar
+          size="small"
+        />
+      </Link>
+      <div>
+        <div>
+          <Link
+            replace={false}
+            to="/profile/cjn5pm4wm000r0a4239rvnn8i"
+          >
+            <strong>
+              User 1
+            </strong>
+          </Link>
+        </div>
+        <div>
+          <small>
+            <RelativeDate
+              value="2018-10-12T07:48:03.948Z"
+            />
+          </small>
+        </div>
+      </div>
+    </div>
+    <div>
+      <PostMenu
+        postId="cjn5pmj1b000y0a42mds0fa37"
+      />
+    </div>
+  </div>
+  <hr />
+  Post 1
+</div>
+`;

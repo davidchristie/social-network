@@ -1,13 +1,16 @@
 import gql from "graphql-tag";
 
 export interface ImageData {
+  __typename: "ImageData";
   id: string;
   url: string;
 }
 
-export default gql`
+const Image = gql`
   fragment Image on Image {
     id
     url
   }
 `;
+
+export default Image;

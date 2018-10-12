@@ -6,10 +6,12 @@ import ImageFragment, {
 
 export interface AccountData {
   account: {
+    __typename: "Account";
     email: string;
     id: string;
     name: string;
     profile: {
+      __typename: "Profile";
       avatar: ImageData | null;
       id: string;
       name: string;
@@ -19,7 +21,7 @@ export interface AccountData {
 
 export interface AccountVariables { }
 
-export default gql`
+const Account = gql`
   ${ImageFragment}
   query Account {
     account {
@@ -36,3 +38,5 @@ export default gql`
     }
   }
 `;
+
+export default Account;

@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Avatar component large matches snapshot 1`] = `
+<img
+  className="Avatar large"
+/>
+`;
+
+exports[`Avatar component small matches snapshot 1`] = `
+<img
+  className="Avatar small"
+/>
+`;

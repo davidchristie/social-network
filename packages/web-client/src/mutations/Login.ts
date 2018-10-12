@@ -11,10 +11,12 @@ export interface LoginVariables {
   password: string;
 }
 
-export default gql`
+const Login = gql`
   mutation Login($email: String! $password: String!) {
     login(email: $email, password: $password) {
       token
     }
   }
 `;
+
+export default Login;

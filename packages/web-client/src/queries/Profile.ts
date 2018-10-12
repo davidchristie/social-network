@@ -27,7 +27,7 @@ export interface ProfileVariables {
   id: string;
 }
 
-export default gql`
+const Profile = gql`
   ${ImageFragment}
   ${PostSummaryFragment}
   query Profile($id: String!) {
@@ -43,3 +43,5 @@ export default gql`
     }
   }
 `;
+
+export default Profile;

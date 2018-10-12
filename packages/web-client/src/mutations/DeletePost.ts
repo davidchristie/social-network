@@ -10,10 +10,12 @@ export interface DeletePostVariables {
   id: string;
 }
 
-export default gql`
+const DeletePost = gql`
   mutation DeletePost($id: ID!) {
     deletePost(id: $id) {
       id
     }
   }
 `;
+
+export default DeletePost;

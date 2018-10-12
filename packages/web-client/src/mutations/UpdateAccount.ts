@@ -13,7 +13,7 @@ export interface UpdateAccountVariables {
   };
 }
 
-export default gql`
+const UpdateAccount = gql`
   mutation UpdateAccount($data: AccountUpdateInput!) {
     updateAccount(data: $data) {
       email
@@ -21,3 +21,5 @@ export default gql`
     }
   }
 `;
+
+export default UpdateAccount;

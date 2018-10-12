@@ -13,10 +13,12 @@ export interface UpdatePasswordVariables {
   };
 }
 
-export default gql`
+const UpdatePassword = gql`
   mutation UpdatePassword($data: PasswordUpdateInput!) {
     updatePassword(data: $data) {
       id
     }
   }
 `;
+
+export default UpdatePassword;

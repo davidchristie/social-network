@@ -13,7 +13,7 @@ export interface PostSummaryData {
   text: string;
 }
 
-export default gql`
+const PostSummary = gql`
   fragment PostSummary on Post {
     createdAt
     createdBy {
@@ -27,3 +27,5 @@ export default gql`
     text
   }
 `;
+
+export default PostSummary;

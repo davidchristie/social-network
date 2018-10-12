@@ -29,6 +29,14 @@
     "typescript": "^2.9.2"
   },
   "jest": {
+    "coverageThreshold": {
+      "global": {
+        "branches": 30,
+        "functions": 40,
+        "lines": 45,
+        "statements": 50
+      }
+    },
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
     ]
@@ -37,10 +45,9 @@
   "private": true,
   "scripts": {
     "build": "react-scripts-ts build",
-    "coverage": "yarn test --coverage",
     "lint": "tslint --project .",
     "start": "react-scripts-ts start",
-    "test": "react-scripts-ts test --env=jsdom --verbose"
+    "test": "react-scripts-ts test --coverage --env=jsdom --maxWorkers 2 --verbose"
   },
   "version": "1.0.0"
 }
