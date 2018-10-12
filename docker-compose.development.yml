@@ -6,8 +6,14 @@ services:
       dockerfile: 'packages/authentication/development.Dockerfile'
     volumes: &volumes
       - '.:/app'
+    depends_on:
+      - build-packages
 
   build-packages:
+    image: build-packages
+    build:
+      context: .
+      dockerfile: docker/build-packages.Dockerfile
     volumes: *volumes
 
   data-model:
@@ -24,6 +30,8 @@ services:
     build:
       dockerfile: 'packages/public-api/development.Dockerfile'
     volumes: *volumes
+    depends_on:
+      - build-packages
 
   web-client:
     build:
@@ -31,3 +39,5 @@ services:
     environment:
       - 'REACT_APP_API_ENDPOINT=http://localhost:4000'
     volumes: *volumes
+    depends_on:
+      - build-packages
