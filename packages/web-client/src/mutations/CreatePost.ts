@@ -11,7 +11,7 @@ export interface CreatePostVariables {
   text: string;
 }
 
-export default gql`
+const CreatePost = gql`
   mutation CreatePost($text: String!) {
     createPost(text: $text) {
       id
@@ -19,3 +19,5 @@ export default gql`
     }
   }
 `;
+
+export default CreatePost;
