@@ -8,6 +8,7 @@ const post: PostSummaryData = {
   createdAt: "2018-10-12T07:48:03.948Z",
   createdBy: {
     avatar: {
+      __typename: "ImageData",
       id: "cjn5pxfvg001h0a42hqjvgo11",
       url: "https:cdn.social-network.com/images/default-avatar.png",
     },
