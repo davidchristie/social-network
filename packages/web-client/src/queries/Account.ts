@@ -6,10 +6,12 @@ import ImageFragment, {
 
 export interface AccountData {
   account: {
+    __typename: "Account";
     email: string;
     id: string;
     name: string;
     profile: {
+      __typename: "Profile";
       avatar: ImageData | null;
       id: string;
       name: string;
