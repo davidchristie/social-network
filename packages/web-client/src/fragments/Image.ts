@@ -5,9 +5,11 @@ export interface ImageData {
   url: string;
 }
 
-export default gql`
+const Image = gql`
   fragment Image on Image {
     id
     url
   }
 `;
+
+export default Image;
