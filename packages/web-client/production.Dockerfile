@@ -9,6 +9,7 @@ WORKDIR /app
 COPY ./packages/web-client ./packages/web-client
 COPY ./package.json .
 COPY ./tsconfig.json .
+COPY ./tslint.json .
 COPY ./yarn.lock .
 
 RUN yarn --frozen-lockfile
