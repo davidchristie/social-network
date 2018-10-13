@@ -4,4 +4,4 @@ EXPOSE 3000
 
 WORKDIR /app/packages/web-client
 
-CMD ["yarn", "start"]
+ENTRYPOINT ["yarn", "start"]

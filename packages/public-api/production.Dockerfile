@@ -1,12 +1,12 @@
-FROM build-packages AS build
+FROM node:9.11.2-alpine AS build
 
 WORKDIR /app
 
-COPY --from=build /app/packages/data-model ./packages/data-model
-COPY --from=build /app/packages/public-api ./packages/public-api
-COPY --from=build /app/package.json .
-COPY --from=build /app/tsconfig.json .
-COPY --from=build /app/yarn.lock .
+COPY ./packages/data-model ./packages/data-model
+COPY ./packages/public-api ./packages/public-api
+COPY ./package.json .
+COPY ./tsconfig.json .
+COPY ./yarn.lock .
 
 RUN yarn --frozen-lockfile --production
 
@@ -18,4 +18,4 @@ COPY --from=build /app /app
 
 WORKDIR /app/packages/public-api
 
-CMD ["node", "dist/index.js"]
+ENTRYPOINT ["node", "dist/index.js"]

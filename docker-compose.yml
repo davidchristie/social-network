@@ -11,14 +11,7 @@ services:
       - 'JWT_SECRET=jwt_secret123'
       - 'PRISMA_ENDPOINT=http://prisma:4466/social-network/production'
     depends_on:
-      - build-packages
       - prisma
-
-  build-packages:
-    image: build-packages
-    build:
-      context: .
-      dockerfile: docker/build-packages.Dockerfile
 
   mysql:
     image: mysql:5.7
@@ -58,7 +51,6 @@ services:
       - 'PRISMA_ENDPOINT=http://prisma:4466/social-network/production'
     depends_on:
       - authentication
-      - build-packages
       - prisma
 
   web-client:
@@ -68,7 +60,6 @@ services:
     ports:
       - '3000:3000'
     depends_on:
-      - build-packages
       - public-api
 
 volumes:

@@ -38,9 +38,8 @@ jobs:
       - run:
           name: Start microservices
           command: |
-              yarn production build --no-cache
+              yarn production build
               yarn production up --detach
-              yarn production logs
 
       - run:
           name: List production images
@@ -65,11 +64,60 @@ jobs:
           name: Run end-to-end tests
           command: |
               docker build \
-                  --file docker/puppeteer.Dockerfile \
-                  --tag  puppeteer .
-              docker build \
                   --file docker/end-to-end-tests.Dockerfile \
-                  --tag  end-to-end-tests .
+                  --tag end-to-end-tests .
               docker run \
                   --env "ORIGIN=http://web-client:3000" \
                   --network repo_default end-to-end-tests
+
+  puppeteer:
+    docker:
+      - image: circleci/node:9.11
+    working_directory: ~/repo
+    steps:
+      - checkout
+
+      - run:
+          name: Check for changes
+          command: |
+              if [ -z $(git diff --name-only HEAD~ docker/puppeteer.Dockerfile) ]
+              then
+                echo "No changes in the last commit"
+                circleci step halt
+              else
+                echo "Was changed in the last commit"
+              fi
+
+      - setup_remote_docker
+
+      - run:
+          name: Log in to docker
+          command: |
+              docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+
+      - run:
+          name: Set image name
+          command: |
+              echo 'TAG="$(git rev-parse --short HEAD)"' >> $BASH_ENV
+              echo 'NAME="$DOCKER_USERNAME/puppeteer:$TAG"' >> $BASH_ENV
+
+      - run:
+          name: Build image
+          command: |
+              docker build \
+                  --file docker/puppeteer.Dockerfile \
+                  --tag $NAME .
+
+      - run:
+          name: Push image
+          command: |
+              docker push $NAME
+
+workflows:
+  version: 2
+  build-test-deploy:
+    jobs:
+      - build:
+          requires:
+            - puppeteer
+      - puppeteer

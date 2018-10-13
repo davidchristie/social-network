@@ -1,9 +1,18 @@
-FROM build-packages AS build
+FROM node:9.11.2-alpine AS build
 
-ARG REACT_APP_API_ENDPOINT
+ARG API_ENDPOINT
 
-ENV REACT_APP_API_ENDPOINT=$REACT_APP_API_ENDPOINT
+ENV REACT_APP_API_ENDPOINT=$API_ENDPOINT
 
+WORKDIR /app
+
+COPY ./packages/web-client ./packages/web-client
+COPY ./package.json .
+COPY ./tsconfig.json .
+COPY ./tslint.json .
+COPY ./yarn.lock .
+
+RUN yarn --frozen-lockfile
 RUN yarn web-client build
 
 FROM nginx:stable
@@ -15,4 +24,4 @@ WORKDIR /app
 COPY --from=build /app/packages/web-client/nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=build /app/packages/web-client/build .
 
-CMD ["nginx", "-g", "daemon off;"]
+ENTRYPOINT ["nginx", "-g", "daemon off;"]

@@ -1,8 +1,7 @@
-*.Dockerfile
+node_modules
+*.log
+*Dockerfile
 .env
 .git
-build
-dist
-docker-compose.yml
-docker-compose.*.yml
-Dockerfile
+docker-compose*
+README.md
