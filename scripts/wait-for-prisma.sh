@@ -1,3 +1,5 @@
+set -e
+
 printf "Waiting for Prisma server"
 
 until curl $PRISMA_ENDPOINT --silent; do

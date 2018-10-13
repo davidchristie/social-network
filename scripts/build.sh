@@ -1,3 +1,5 @@
+set -e
+
 yarn authentication build
 yarn data-model build
 yarn public-api build
