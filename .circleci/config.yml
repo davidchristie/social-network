@@ -77,27 +77,41 @@ jobs:
     steps:
       - checkout
 
-      - setup_remote_docker
-
       - run:
           name: Check for changes
           command: |
               if [ -z $(git diff --name-only HEAD~ docker/puppeteer.Dockerfile) ]
               then
                 echo "No changes in the last commit"
+                circleci step halt
               else
-                echo "Has changed in the last commit"
-
-                GIT_SHORT="$(git rev-parse --short HEAD)"
-
-                docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-
-                docker build \
-                  --file docker/puppeteer.Dockerfile \
-                  --tag davidchristie/puppeteer:$GIT_SHORT .
-
-                docker push davidchristie/puppeteer:$GIT_SHORT
+                echo "Was changed in the last commit"
               fi
+
+      - setup_remote_docker
+
+      - run:
+          name: Log in to docker
+          command: |
+              docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+
+      - run:
+          name: Set image name
+          command: |
+              TAG="$(git rev-parse --short HEAD)"
+              NAME="$DOCKER_USERNAME/puppeteer:$TAG"
+
+      - run:
+          name: Build image
+          command: |
+              docker build \
+                  --file docker/puppeteer.Dockerfile \
+                  --tag davidchristie/puppeteer:$TAG .
+
+      - run:
+          name: Push image
+          command: |
+              docker push davidchristie/puppeteer:$TAG
 
 workflows:
   version: 2
