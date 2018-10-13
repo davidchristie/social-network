@@ -85,6 +85,14 @@ jobs:
                 echo "No changes in the last commit"
               else
                 echo "Has changed in the last commit"
+
+                docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+
+                docker build \
+                  --file docker/puppeteer.Dockerfile \
+                  --tag davidchristie/puppeteer .
+
+                docker push davidchristie/puppeteer
               fi
 
 workflows:
