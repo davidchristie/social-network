@@ -1,5 +1,3 @@
-# Test comment 1
-
 # Copied from https://github.com/GoogleChrome/puppeteer/blob/master/docs/troubleshooting.md#running-puppeteer-in-docker
 
 FROM node:9.11.2-slim

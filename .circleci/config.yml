@@ -94,7 +94,9 @@ jobs:
                   --file docker/puppeteer.Dockerfile \
                   --tag davidchristie/puppeteer .
 
-                docker push davidchristie/puppeteer
+                GIT_SHORT="$(git rev-parse --short HEAD)"
+
+                docker push davidchristie/puppeteer:$GIT_SHORT
               fi
 
 workflows:
