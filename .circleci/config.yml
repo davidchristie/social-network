@@ -11,6 +11,9 @@ jobs:
           keys:
           - v1-dependencies-{{ checksum "package.json" }}
       - run:
+          name: Link dependencies
+          command: yarn
+      - run:
           name: Build packages
           command: yarn build
       - run:
