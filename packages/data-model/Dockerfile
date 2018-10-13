@@ -8,7 +8,7 @@ COPY ./package.json .
 COPY ./tsconfig.json .
 COPY ./yarn.lock .
 
-RUN yarn --frozen-lockfile --production
+RUN yarn --frozen-lockfile
 
 FROM node:9.11.2-slim
 
