@@ -4,4 +4,4 @@ WORKDIR /app
 
 COPY . .
 
-CMD ["sh", "-c", "yarn end-to-end test"]
+ENTRYPOINT ["yarn", "end-to-end" "test"]

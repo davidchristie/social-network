@@ -19,4 +19,4 @@ WORKDIR /app
 ENV NODE_PATH=/node_modules
 ENV PATH=$PATH:/node_modules/.bin
 
-CMD ["sh", "-c", "yarn wait-for-prisma && yarn data-model deploy && yarn data-model seed"]
+ENTRYPOINT ["sh", "-c", "yarn wait-for-prisma && yarn data-model deploy && yarn data-model seed"]

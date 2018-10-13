@@ -18,4 +18,4 @@ COPY --from=build /app /app
 
 WORKDIR /app/packages/authentication
 
-CMD ["node", "dist/index.js"]
+ENTRYPOINT ["node", "dist/index.js"]
