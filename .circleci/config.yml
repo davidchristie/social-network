@@ -98,20 +98,20 @@ jobs:
       - run:
           name: Set image name
           command: |
-              TAG="$(git rev-parse --short HEAD)"
-              NAME="$DOCKER_USERNAME/puppeteer:$TAG"
+              export TAG="$(git rev-parse --short HEAD)"
+              export NAME="$DOCKER_USERNAME/puppeteer:$TAG"
 
       - run:
           name: Build image
           command: |
               docker build \
                   --file docker/puppeteer.Dockerfile \
-                  --tag davidchristie/puppeteer:$TAG .
+                  --tag $NAME .
 
       - run:
           name: Push image
           command: |
-              docker push davidchristie/puppeteer:$TAG
+              docker push $NAME
 
 workflows:
   version: 2
