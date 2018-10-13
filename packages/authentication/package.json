@@ -18,6 +18,9 @@
     "typescript": "^3.0.1"
   },
   "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,ts}"
+    ],
     "globals": {
       "ts-jest": {
         "tsConfigFile": "tsconfig.json"
