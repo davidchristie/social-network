@@ -7,48 +7,28 @@ jobs:
     working_directory: ~/repo
     steps:
       - checkout
-
-      # Download and cache dependencies.
       - restore_cache:
           keys:
           - v1-dependencies-{{ checksum "package.json" }}
-          # Fallback to using the latest cache if no exact match is found.
-          - v1-dependencies-
-
-      - run:
-          name: Install dependencies
-          command: yarn install
-
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
-
       - run:
           name: Build packages
           command: yarn build
-
       - run:
           name: Run unit tests
           command: yarn test:unit
-
       - setup_remote_docker:
           docker_layer_caching: true
-
       - run:
           name: Start microservices
           command: |
               yarn production build
               yarn production up --detach
-
       - run:
           name: List production images
           command: yarn production images
-
       - run:
           name: List production containers
           command: yarn production ps
-
       - run:
           name: Deploy Prisma data-model
           command: |
@@ -59,7 +39,6 @@ jobs:
                   --network repo_default \
                   --env "PRISMA_ENDPOINT=http://prisma:4466/social-network/production" \
                   davidchristie/data-model
-
       - run:
           name: Run end-to-end tests
           command: |
@@ -70,13 +49,32 @@ jobs:
                   --env "ORIGIN=http://web-client:3000" \
                   --network repo_default end-to-end-tests
 
+  install:
+    docker:
+      - image: circleci/node:9.11
+    working_directory: ~/repo
+    steps:
+      - checkout
+      # Download and cache dependencies.
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          # Fallback to using the latest cache if no exact match is found.
+          - v1-dependencies-
+      - run:
+          name: Install dependencies
+          command: yarn install
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+
   puppeteer:
     docker:
       - image: circleci/node:9.11
     working_directory: ~/repo
     steps:
       - checkout
-
       - run:
           name: Check for changes
           command: |
@@ -87,27 +85,22 @@ jobs:
               else
                 echo "Was changed in the last commit"
               fi
-
       - setup_remote_docker
-
       - run:
           name: Log in to docker
           command: |
               docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-
       - run:
           name: Set image name
           command: |
               echo 'TAG="$(git rev-parse --short HEAD)"' >> $BASH_ENV
               echo 'NAME="$DOCKER_USERNAME/puppeteer:$TAG"' >> $BASH_ENV
-
       - run:
           name: Build image
           command: |
               docker build \
                   --file docker/puppeteer.Dockerfile \
                   --tag $NAME .
-
       - run:
           name: Push image
           command: |
@@ -119,5 +112,7 @@ workflows:
     jobs:
       - build:
           requires:
+            - install
             - puppeteer
+      - install
       - puppeteer
