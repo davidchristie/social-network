@@ -98,8 +98,8 @@ jobs:
       - run:
           name: Set image name
           command: |
-              export TAG="$(git rev-parse --short HEAD)"
-              export NAME="$DOCKER_USERNAME/puppeteer:$TAG"
+              echo 'TAG="$(git rev-parse --short HEAD)"' >> $BASH_ENV
+              echo 'NAME="$DOCKER_USERNAME/puppeteer:$TAG"' >> $BASH_ENV
 
       - run:
           name: Build image
