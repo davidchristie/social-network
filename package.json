@@ -21,10 +21,6 @@
   },
   "version": "1.0.0",
   "workspaces": {
-    "nohoist": [
-      "**/authentication",
-      "**/authentication/**"
-    ],
     "packages": [
       "packages/*"
     ]
