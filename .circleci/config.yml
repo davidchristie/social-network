@@ -38,7 +38,7 @@ jobs:
       - run:
           name: Start microservices
           command: |
-              yarn production build --no-cache
+              yarn production build
               yarn production up --detach
 
       - run:
