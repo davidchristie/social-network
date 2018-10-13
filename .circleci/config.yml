@@ -9,7 +9,7 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-          - v1-dependencies-{{ checksum "yarn.lock" }}
+          - dependencies-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
       - run:
           name: Link dependencies
           command: yarn
@@ -61,9 +61,11 @@ jobs:
       # Download and cache dependencies.
       - restore_cache:
           keys:
-          - v1-dependencies-{{ checksum "yarn.lock" }}
-          # Fallback to using the latest cache if no exact match is found.
-          - v1-dependencies-
+            # When lock file changes, use increasingly general patterns to
+            # restore cache.
+            - dependencies-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - dependencies-v1-{{ .Branch }}-
+            - dependencies-v1-
       - run:
           name: Install dependencies
           command: yarn install
@@ -71,7 +73,7 @@ jobs:
           paths:
             - node_modules
             - ~/.cache/yarn
-          key: v1-dependencies-{{ checksum "yarn.lock" }}
+          key: dependencies-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
 
   puppeteer:
     docker:
