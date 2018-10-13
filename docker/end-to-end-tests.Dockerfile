@@ -7,7 +7,7 @@ COPY ./scripts ./scripts
 COPY ./package.json .
 COPY ./yarn.lock .
 
-RUN yarn --frozen-lockfile --production
+RUN yarn --frozen-lockfile
 
 FROM davidchristie/puppeteer
 
