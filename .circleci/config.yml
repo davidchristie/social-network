@@ -40,7 +40,6 @@ jobs:
           command: |
               yarn production build --no-cache
               yarn production up --detach
-              yarn production logs
 
       - run:
           name: List production images
