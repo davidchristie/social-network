@@ -93,18 +93,20 @@ jobs:
       - run:
           name: Set image name
           command: |
-              echo 'TAG="$(git rev-parse --short HEAD)"' >> $BASH_ENV
-              echo 'NAME="$DOCKER_USERNAME/puppeteer:$TAG"' >> $BASH_ENV
+              echo 'IMAGE="$DOCKER_USERNAME/puppeteer"' >> $BASH_ENV
+              echo 'VERSION="$(git rev-parse --short HEAD)"' >> $BASH_ENV
       - run:
           name: Build image
           command: |
               docker build \
                   --file docker/puppeteer.Dockerfile \
-                  --tag $NAME .
+                  --tag $IMAGE:latest \
+                  --tag $IMAGE:$VERSION \
+                  .
       - run:
           name: Push image
           command: |
-              docker push $NAME
+              docker push $IMAGE
 
 workflows:
   version: 2
