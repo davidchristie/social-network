@@ -77,6 +77,16 @@ jobs:
     steps:
       - checkout
 
+      - run:
+          name: Check for changes
+          command: |
+              if [ -z $(git diff --name-only docker/puppeteer.Dockerfile HEAD~) ]
+              then
+                echo "No changes in the last commit"
+              else
+                echo "Has changed in the last commit"
+              fi
+
 workflows:
   version: 2
   build-test-deploy:
