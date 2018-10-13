@@ -86,7 +86,7 @@ jobs:
               else
                 echo "Has changed in the last commit"
 
-                docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+                docker login -u $DOCKER_USERNAME --password-stdin $DOCKER_PASSWORD
 
                 docker build \
                   --file docker/puppeteer.Dockerfile \
