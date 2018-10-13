@@ -80,7 +80,7 @@ jobs:
       - run:
           name: Check for changes
           command: |
-              if [ -z $(git diff --name-only docker/puppeteer.Dockerfile HEAD~) ]
+              if [ -z $(git diff --name-only HEAD~ docker/puppeteer.Dockerfile) ]
               then
                 echo "No changes in the last commit"
               else
