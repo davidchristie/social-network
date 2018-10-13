@@ -70,6 +70,7 @@ jobs:
       - save_cache:
           paths:
             - node_modules
+            - ~/.cache/yarn
           key: v1-dependencies-{{ checksum "yarn.lock" }}
 
   puppeteer:
