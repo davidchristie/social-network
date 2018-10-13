@@ -42,7 +42,7 @@
   "scripts": {
     "build": "rimraf dist && tsc",
     "start": "nodemon -x ts-node src/index.ts",
-    "test": "jest --verbose"
+    "test": "jest --coverage --maxWorkers 2 --verbose"
   },
   "version": "1.0.0"
 }

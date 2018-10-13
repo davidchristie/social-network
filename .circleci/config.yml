@@ -111,6 +111,22 @@ jobs:
           command: |
               docker push $IMAGE
 
+  test-authentication:
+    docker:
+      - image: circleci/node:9.11
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+          - dependencies-v2-{{ .Branch }}-{{ checksum "yarn.lock" }}
+      - run:
+          name: Link dependencies
+          command: yarn install --offline
+      - run:
+          name: Run unit tests
+          command: yarn authentication test
+
   test-web-client:
     docker:
       - image: circleci/node:9.11
@@ -133,11 +149,15 @@ workflows:
     jobs:
       - build:
           requires:
+            - test-authentication
             - test-web-client
       - install:
           requires:
             - puppeteer
       - puppeteer
+      - test-authentication:
+          requires:
+            - install
       - test-web-client:
           requires:
             - install
