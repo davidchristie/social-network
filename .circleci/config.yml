@@ -88,13 +88,13 @@ jobs:
               else
                 echo "Has changed in the last commit"
 
+                GIT_SHORT="$(git rev-parse --short HEAD)"
+
                 docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 
                 docker build \
                   --file docker/puppeteer.Dockerfile \
-                  --tag davidchristie/puppeteer .
-
-                GIT_SHORT="$(git rev-parse --short HEAD)"
+                  --tag davidchristie/puppeteer:$GIT_SHORT .
 
                 docker push davidchristie/puppeteer:$GIT_SHORT
               fi
