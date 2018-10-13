@@ -7,48 +7,31 @@ jobs:
     working_directory: ~/repo
     steps:
       - checkout
-
-      # Download and cache dependencies.
       - restore_cache:
           keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          # Fallback to using the latest cache if no exact match is found.
-          - v1-dependencies-
-
+          - dependencies-v2-{{ .Branch }}-{{ checksum "yarn.lock" }}
       - run:
-          name: Install dependencies
-          command: yarn install
-
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
-
+          name: Link dependencies
+          command: yarn install --offline
       - run:
           name: Build packages
           command: yarn build
-
       - run:
           name: Run unit tests
           command: yarn test:unit
-
       - setup_remote_docker:
           docker_layer_caching: true
-
       - run:
           name: Start microservices
           command: |
               yarn production build
               yarn production up --detach
-
       - run:
           name: List production images
           command: yarn production images
-
       - run:
           name: List production containers
           command: yarn production ps
-
       - run:
           name: Deploy Prisma data-model
           command: |
@@ -59,7 +42,6 @@ jobs:
                   --network repo_default \
                   --env "PRISMA_ENDPOINT=http://prisma:4466/social-network/production" \
                   davidchristie/data-model
-
       - run:
           name: Run end-to-end tests
           command: |
@@ -70,13 +52,35 @@ jobs:
                   --env "ORIGIN=http://web-client:3000" \
                   --network repo_default end-to-end-tests
 
+  install:
+    docker:
+      - image: circleci/node:9.11
+    working_directory: ~/repo
+    steps:
+      - checkout
+      # Download and cache dependencies.
+      - restore_cache:
+          keys:
+            # When lock file changes, use increasingly general patterns to
+            # restore cache.
+            - dependencies-v2-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - dependencies-v2-{{ .Branch }}-
+            - dependencies-v2-
+      - run:
+          name: Install dependencies
+          command: yarn install --frozen-lockfile
+      - save_cache:
+          paths:
+            - node_modules
+            - ~/.cache/yarn
+          key: dependencies-v2-{{ .Branch }}-{{ checksum "yarn.lock" }}
+
   puppeteer:
     docker:
       - image: circleci/node:9.11
     working_directory: ~/repo
     steps:
       - checkout
-
       - run:
           name: Check for changes
           command: |
@@ -87,20 +91,16 @@ jobs:
               else
                 echo "Was changed in the last commit"
               fi
-
       - setup_remote_docker
-
       - run:
           name: Log in to docker
           command: |
               docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-
       - run:
           name: Set image name
           command: |
               echo 'IMAGE="$DOCKER_USERNAME/puppeteer"' >> $BASH_ENV
               echo 'VERSION="$(git rev-parse --short HEAD)"' >> $BASH_ENV
-
       - run:
           name: Build image
           command: |
@@ -109,7 +109,6 @@ jobs:
                   --tag $IMAGE:latest \
                   --tag $IMAGE:$VERSION \
                   .
-
       - run:
           name: Push image
           command: |
@@ -121,5 +120,7 @@ workflows:
     jobs:
       - build:
           requires:
+            - install
             - puppeteer
+      - install
       - puppeteer

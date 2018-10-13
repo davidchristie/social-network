@@ -1,3 +1,5 @@
+set -e
+
 printf "Waiting for web client"
 
 until curl http://localhost:3000 --silent; do
