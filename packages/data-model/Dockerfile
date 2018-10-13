@@ -10,7 +10,7 @@ COPY ./yarn.lock .
 
 RUN yarn --frozen-lockfile --production
 
-FROM node:9.11.2-alpine
+FROM node:9.11.2-slim
 
 COPY --from=build /app /app
 
