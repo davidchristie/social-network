@@ -4,4 +4,4 @@ WORKDIR /app
 
 COPY . .
 
-ENTRYPOINT ["yarn", "end-to-end" "test"]
+ENTRYPOINT ["sh", "-c", "yarn", "end-to-end" "test"]
