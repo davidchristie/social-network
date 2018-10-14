@@ -57,7 +57,7 @@ references:
           command: yarn build
       - setup_remote_docker
       - run:
-          name: Build production image
+          name: Build task image
           command: |
               yarn tasks build $NAME
       - run:
@@ -237,11 +237,8 @@ jobs:
           command: |
               yarn production up --detach
       - run:
-          name: List production images
-          command: yarn production images
-      - run:
-          name: List production containers
-          command: yarn production ps
+          name: List docker images
+          command: docker images
       - run:
           name: Deploy Prisma data-model
           command: yarn tasks up deploy-data-model
