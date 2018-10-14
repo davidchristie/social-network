@@ -291,12 +291,8 @@ workflows:
           requires:
             - upload-coverage
       - check-puppeteer
-      - download-test-reporter:
-          requires:
-            - puppeteer-image
-      - install-dependencies:
-          requires:
-            - puppeteer-image
+      - download-test-reporter
+      - install-dependencies
       - integration-tests:
           requires:
             - build-authentication
