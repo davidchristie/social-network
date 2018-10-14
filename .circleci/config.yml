@@ -1,7 +1,7 @@
 version: 2
 
 references:
-  default-job: &default-job
+  defaults: &defaults
     docker:
     - image: circleci/node:9.11
     working_directory: ~/repo
@@ -43,7 +43,7 @@ references:
 
 jobs:
   build:
-    <<: *default-job
+    <<: *defaults
     steps:
       - checkout
       - *restore-cache
@@ -84,7 +84,7 @@ jobs:
                   --network repo_default end-to-end-tests
 
   download-test-reporter:
-    <<: *default-job
+    <<: *defaults
     steps:
       - run:
           name:  Download test reporter
@@ -98,7 +98,7 @@ jobs:
             - test-reporter
 
   install-dependencies:
-    <<: *default-job
+    <<: *defaults
     steps:
       - checkout
       - *restore-cache
@@ -112,7 +112,7 @@ jobs:
           key: v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
 
   puppeteer-image:
-    <<: *default-job
+    <<: *defaults
     steps:
       - checkout
       - run:
@@ -149,25 +149,25 @@ jobs:
               docker push $IMAGE
 
   test-authentication:
-    <<: *default-job
+    <<: *defaults
     <<: *test-package
     environment:
       PACKAGE: authentication
 
   test-public-api:
-    <<: *default-job
+    <<: *defaults
     <<: *test-package
     environment:
       PACKAGE: public-api
 
   test-web-client:
-    <<: *default-job
+    <<: *defaults
     <<: *test-package
     environment:
       PACKAGE: web-client
 
   upload-coverage:
-    <<: *default-job
+    <<: *defaults
     steps:
       - attach_workspace:
           at: ~/repo/tmp
