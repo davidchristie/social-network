@@ -64,7 +64,7 @@ references:
           name: Save image to workspace
           command: |
               mkdir -p tmp/images
-              docker save --output tmp/images/$FILE.tar $NAME
+              docker save --output tmp/images/$NAME.tar $NAME
       - persist_to_workspace:
           root: tmp
           paths:
@@ -128,8 +128,13 @@ jobs:
     <<: *defaults
     <<: *build-task
     environment:
-      FILE: deploy-data-model
       NAME: deploy-data-model
+
+  build-integration-tests:
+    <<: *defaults
+    <<: *build-task
+    environment:
+      NAME: integration-tests
 
   build-public-api:
     <<: *defaults
@@ -310,6 +315,7 @@ workflows:
       - build-authentication:
           requires:
             - upload-coverage
+      - build-integration-tests
       - build-deploy-data-model
       - build-public-api:
           requires:
@@ -324,6 +330,7 @@ workflows:
           requires:
             - build-authentication
             - build-deploy-data-model
+            - build-integration-tests
             - build-public-api
             - build-web-client
             - pull-mysql
