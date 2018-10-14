@@ -1,10 +1,8 @@
 version: 2
 
 references:
-  defaults: &defaults
-    docker:
-    - image: circleci/node:9.11
-    working_directory: ~/repo
+
+  # Steps
 
   link-dependencies: &link-dependencies
     run:
@@ -19,6 +17,28 @@ references:
         - v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
         - v1-{{ .Branch }}-
         - v1-
+
+  # Jobs
+
+  defaults: &defaults
+    docker:
+    - image: circleci/node:9.11
+    working_directory: ~/repo
+
+  build-package: &build-package
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/repo/tmp
+      - *restore-cache
+      - *link-dependencies
+      - run:
+          name: Build packages
+          command: yarn build
+      - run:
+          name: Build production image
+          command: |
+              yarn production build $PACKAGE
 
   test-package: &test-package
     steps:
@@ -82,6 +102,24 @@ jobs:
               docker run \
                   --env "ORIGIN=http://web-client:3000" \
                   --network repo_default end-to-end-tests
+
+  build-authentication:
+    <<: *defaults
+    <<: *build-package
+    environment:
+      PACKAGE: authentication
+
+  build-public-api:
+    <<: *defaults
+    <<: *build-package
+    environment:
+      PACKAGE: public-api
+
+  build-web-client:
+    <<: *defaults
+    <<: *build-package
+    environment:
+      PACKAGE: web-client
 
   download-test-reporter:
     <<: *defaults
@@ -187,9 +225,18 @@ workflows:
     jobs:
       - build:
           requires:
-            - test-authentication
-            - test-public-api
-            - test-web-client
+            - build-authentication
+            - build-public-api
+            - build-web-client
+      - build-authentication:
+          requires:
+            - upload-coverage
+      - build-public-api:
+          requires:
+            - upload-coverage
+      - build-web-client:
+          requires:
+            - upload-coverage
       - download-test-reporter:
           requires:
             - puppeteer-image
