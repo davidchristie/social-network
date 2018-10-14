@@ -20,10 +20,25 @@ references:
 
   # Jobs
 
-  defaults: &defaults
-    docker:
-    - image: circleci/node:9.11
-    working_directory: ~/repo
+  build-image: &build-image
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/repo/tmp
+      - setup_remote_docker
+      - run:
+          name: Build image
+          command: |
+              docker build --tag $NAME $PATH
+      - run:
+          name: Save image to workspace
+          command: |
+              mkdir -p tmp/images
+              docker save --output tmp/images/$FILE.tar $NAME
+      - persist_to_workspace:
+          root: tmp
+          paths:
+            - images/*.tar
 
   build-package: &build-package
     steps:
@@ -49,6 +64,11 @@ references:
           root: tmp
           paths:
             - images/*.tar
+
+  defaults: &defaults
+    docker:
+    - image: circleci/node:9.11
+    working_directory: ~/repo
 
   pull-image: &pull-image
     steps:
@@ -98,6 +118,14 @@ jobs:
     <<: *build-package
     environment:
       PACKAGE: authentication
+
+  build-deploy-data-model:
+    <<: *defaults
+    <<: *build-image
+    environment:
+      FILE: deploy-data-model
+      NAME: deploy-data-model
+      PATH: packages/tasks/deploy-data-model
 
   build-public-api:
     <<: *defaults
@@ -188,6 +216,7 @@ jobs:
           name: Load images from workspace
           command: |
               docker load < tmp/images/authentication.tar
+              docker load < tmp/images/deploy-data-model.tar
               docker load < tmp/images/mysql.tar
               docker load < tmp/images/prisma.tar
               docker load < tmp/images/public-api.tar
@@ -277,6 +306,7 @@ workflows:
       - build-authentication:
           requires:
             - upload-coverage
+      - build-deploy-data-model
       - build-public-api:
           requires:
             - upload-coverage
@@ -289,6 +319,7 @@ workflows:
       - integration-tests:
           requires:
             - build-authentication
+            - build-deploy-data-model
             - build-public-api
             - build-web-client
             - pull-mysql
