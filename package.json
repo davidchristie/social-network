@@ -13,6 +13,7 @@
     "infrastructure": "yarn workspace infrastructure",
     "production": "docker-compose -f docker-compose.yml -f docker-compose.production.yml",
     "public-api": "yarn workspace public-api",
+    "tasks": "docker-compose -f docker-compose.yml -f docker-compose.tasks.yml",
     "test:end-to-end": "yarn end-to-end test",
     "test:unit": "CI=true yarn web-client test",
     "wait-for-prisma": "scripts/wait-for-prisma.sh",

@@ -111,6 +111,42 @@ jobs:
     environment:
       PACKAGE: web-client
 
+  check-puppeteer:
+    <<: *defaults
+    steps:
+      - checkout
+      - run:
+          name: Check for changes
+          command: |
+              if [ -z $(git diff --name-only HEAD~ images/puppeteer) ]
+              then
+                echo "No changes in the last commit"
+                circleci step halt
+              else
+                echo "Was changed in the last commit"
+              fi
+      - setup_remote_docker
+      - run:
+          name: Log in to docker
+          command: |
+              docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+      - run:
+          name: Set image name
+          command: |
+              echo 'IMAGE="$DOCKER_USERNAME/puppeteer"' >> $BASH_ENV
+              echo 'VERSION="$(git rev-parse --short HEAD)"' >> $BASH_ENV
+      - run:
+          name: Build image
+          command: |
+              docker build \
+                  --tag $IMAGE:latest \
+                  --tag $IMAGE:$VERSION \
+                  images/puppeteer
+      - run:
+          name: Push image
+          command: |
+              docker push $IMAGE
+
   download-test-reporter:
     <<: *defaults
     steps:
@@ -169,14 +205,7 @@ jobs:
           command: yarn production ps
       - run:
           name: Deploy Prisma data-model
-          command: |
-              docker build \
-                  --file packages/data-model/Dockerfile \
-                  --tag davidchristie/data-model .
-              docker run \
-                  --network repo_default \
-                  --env "PRISMA_ENDPOINT=http://prisma:4466/social-network/production" \
-                  davidchristie/data-model
+          command: yarn tasks up deploy-data-model
       - run:
           name: Run end-to-end tests
           command: |
@@ -207,42 +236,6 @@ jobs:
     environment:
       FILE: puppeteer
       NAME: davidchristie/puppeteer
-
-  check-puppeteer:
-    <<: *defaults
-    steps:
-      - checkout
-      - run:
-          name: Check for changes
-          command: |
-              if [ -z $(git diff --name-only HEAD~ images/puppeteer) ]
-              then
-                echo "No changes in the last commit"
-                circleci step halt
-              else
-                echo "Was changed in the last commit"
-              fi
-      - setup_remote_docker
-      - run:
-          name: Log in to docker
-          command: |
-              docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-      - run:
-          name: Set image name
-          command: |
-              echo 'IMAGE="$DOCKER_USERNAME/puppeteer"' >> $BASH_ENV
-              echo 'VERSION="$(git rev-parse --short HEAD)"' >> $BASH_ENV
-      - run:
-          name: Build image
-          command: |
-              docker build \
-                  --tag $IMAGE:latest \
-                  --tag $IMAGE:$VERSION \
-                  images/puppeteer
-      - run:
-          name: Push image
-          command: |
-              docker push $IMAGE
 
   test-authentication:
     <<: *defaults

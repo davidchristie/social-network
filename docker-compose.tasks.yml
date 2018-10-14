@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  deploy-data-model:
+    image: deploy-data-model
+    build:
+      context: .
+      dockerfile: packages/tasks/deploy-data-model/Dockerfile
+    environment:
+      - PRISMA_ENDPOINT=http://prisma:4466/social-network/production
