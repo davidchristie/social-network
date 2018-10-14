@@ -2,7 +2,7 @@ FROM node:9.11.2-alpine AS build
 
 WORKDIR /app
 
-COPY ./packages/end-to-end ./packages/end-to-end
+COPY ./packages/tasks/integration-tests ./packages/tasks/integration-tests
 COPY ./scripts ./scripts
 COPY ./package.json .
 COPY ./tsconfig.json .
@@ -16,4 +16,4 @@ WORKDIR /app
 
 COPY --from=build /app .
 
-ENTRYPOINT ["sh", "-c", "yarn end-to-end test"]
+ENTRYPOINT ["sh", "-c", "yarn integration-tests test"]
