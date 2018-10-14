@@ -1,14 +1,15 @@
 version: 2
 
 references:
-  test-package: &test-package
+  default-job: &default-job
     docker:
-      - image: circleci/node:9.11
-    environment:
-      PACKAGE: authentication
+    - image: circleci/node:9.11
     working_directory: ~/repo
     steps:
       - checkout
+
+  test-package: &test-package
+    steps:
       - restore_cache:
           keys:
           - dependencies-v2-{{ .Branch }}-{{ checksum "yarn.lock" }}
@@ -21,11 +22,8 @@ references:
 
 jobs:
   build:
-    docker:
-      - image: circleci/node:9.11
-    working_directory: ~/repo
+    <<: *default-job
     steps:
-      - checkout
       - restore_cache:
           keys:
           - dependencies-v2-{{ .Branch }}-{{ checksum "yarn.lock" }}
@@ -69,11 +67,8 @@ jobs:
                   --network repo_default end-to-end-tests
 
   install:
-    docker:
-      - image: circleci/node:9.11
-    working_directory: ~/repo
+    <<: *default-job
     steps:
-      - checkout
       # Download and cache dependencies.
       - restore_cache:
           keys:
@@ -92,11 +87,8 @@ jobs:
           key: dependencies-v2-{{ .Branch }}-{{ checksum "yarn.lock" }}
 
   puppeteer:
-    docker:
-      - image: circleci/node:9.11
-    working_directory: ~/repo
+    <<: *default-job
     steps:
-      - checkout
       - run:
           name: Check for changes
           command: |
@@ -131,16 +123,19 @@ jobs:
               docker push $IMAGE
 
   test-authentication:
+    <<: *default-job
     <<: *test-package
     environment:
       PACKAGE: authentication
 
   test-public-api:
+    <<: *default-job
     <<: *test-package
     environment:
       PACKAGE: public-api
 
   test-web-client:
+    <<: *default-job
     <<: *test-package
     environment:
       PACKAGE: web-client
