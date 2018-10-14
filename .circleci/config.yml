@@ -226,6 +226,7 @@ jobs:
           command: |
               docker load < tmp/images/authentication.tar
               docker load < tmp/images/deploy-data-model.tar
+              docker load < tmp/images/integration-tests.tar
               docker load < tmp/images/mysql.tar
               docker load < tmp/images/prisma.tar
               docker load < tmp/images/public-api.tar
@@ -245,14 +246,8 @@ jobs:
           name: Deploy Prisma data-model
           command: yarn tasks up deploy-data-model
       - run:
-          name: Run end-to-end tests
-          command: |
-              docker build \
-                  --file docker/end-to-end-tests.Dockerfile \
-                  --tag end-to-end-tests .
-              docker run \
-                  --env "ORIGIN=http://web-client:3000" \
-                  --network repo_default end-to-end-tests
+          name: Run integration tests
+          command: yarn tasks up integration-tests
 
   pull-mysql:
     <<: *defaults
