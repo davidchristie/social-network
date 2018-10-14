@@ -278,6 +278,7 @@ workflows:
             - build-authentication
             - build-public-api
             - build-web-client
+            - pull-mysql
             - pull-prisma
       - build-authentication:
           requires:
@@ -294,6 +295,7 @@ workflows:
       - install-dependencies:
           requires:
             - puppeteer-image
+      - pull-mysql
       - pull-prisma
       - puppeteer-image
       - test-authentication:
