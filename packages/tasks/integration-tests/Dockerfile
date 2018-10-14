@@ -16,4 +16,4 @@ WORKDIR /app
 
 COPY --from=build /app .
 
-ENTRYPOINT ["sh", "-c", "yarn integration-tests test"]
+ENTRYPOINT ["sh", "-c", "yarn integration-tests start"]
