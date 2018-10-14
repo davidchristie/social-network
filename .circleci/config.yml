@@ -155,6 +155,7 @@ jobs:
               docker load < tmp/images/mysql.tar
               docker load < tmp/images/prisma.tar
               docker load < tmp/images/public-api.tar
+              docker load < tmp/images/puppeteer.tar
               docker load < tmp/images/web-client.tar
       - run:
           name: Start production services
@@ -200,14 +201,21 @@ jobs:
       FILE: prisma
       NAME: prismagraphql/prisma:1.8
 
-  puppeteer-image:
+  pull-puppeteer:
+    <<: *defaults
+    <<: *pull-image
+    environment:
+      FILE: puppeteer
+      NAME: davidchristie/puppeteer
+
+  check-puppeteer:
     <<: *defaults
     steps:
       - checkout
       - run:
           name: Check for changes
           command: |
-              if [ -z $(git diff --name-only HEAD~ docker/puppeteer.Dockerfile) ]
+              if [ -z $(git diff --name-only HEAD~ images/puppeteer) ]
               then
                 echo "No changes in the last commit"
                 circleci step halt
@@ -228,10 +236,9 @@ jobs:
           name: Build image
           command: |
               docker build \
-                  --file docker/puppeteer.Dockerfile \
                   --tag $IMAGE:latest \
                   --tag $IMAGE:$VERSION \
-                  .
+                  images/puppeteer
       - run:
           name: Push image
           command: |
@@ -283,6 +290,7 @@ workflows:
       - build-web-client:
           requires:
             - upload-coverage
+      - check-puppeteer
       - download-test-reporter:
           requires:
             - puppeteer-image
@@ -296,9 +304,12 @@ workflows:
             - build-web-client
             - pull-mysql
             - pull-prisma
+            - pull-puppeteer
       - pull-mysql
       - pull-prisma
-      - puppeteer-image
+      - pull-puppeteer:
+          requires:
+            - check-puppeteer
       - test-authentication:
           requires:
             - download-test-reporter
