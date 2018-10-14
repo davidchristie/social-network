@@ -1,7 +1,7 @@
 version: 2
 
 references:
-  default-job: &default-job
+  defaults: &defaults
     docker:
     - image: circleci/node:9.11
     working_directory: ~/repo
@@ -23,15 +23,27 @@ references:
   test-package: &test-package
     steps:
       - checkout
+      - attach_workspace:
+          at: ~/repo/tmp
       - *restore-cache
       - *link-dependencies
       - run:
           name: Run unit tests
           command: yarn $PACKAGE test
+      - run:
+          name: Format coverage report
+          command: |
+              ./tmp/test-reporter format-coverage -t lcov \
+                  -o tmp/coverage.$PACKAGE.json \
+                  packages/$PACKAGE/coverage/lcov.info
+      - persist_to_workspace:
+          root: tmp
+          paths:
+            - coverage.*.json
 
 jobs:
   build:
-    <<: *default-job
+    <<: *defaults
     steps:
       - checkout
       - *restore-cache
@@ -71,8 +83,22 @@ jobs:
                   --env "ORIGIN=http://web-client:3000" \
                   --network repo_default end-to-end-tests
 
+  download-test-reporter:
+    <<: *defaults
+    steps:
+      - run:
+          name:  Download test reporter
+          command: |
+            mkdir -p tmp/
+            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./tmp/test-reporter
+            chmod +x ./tmp/test-reporter
+      - persist_to_workspace:
+          root: tmp
+          paths:
+            - test-reporter
+
   install-dependencies:
-    <<: *default-job
+    <<: *defaults
     steps:
       - checkout
       - *restore-cache
@@ -86,7 +112,7 @@ jobs:
           key: v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
 
   puppeteer-image:
-    <<: *default-job
+    <<: *defaults
     steps:
       - checkout
       - run:
@@ -123,22 +149,37 @@ jobs:
               docker push $IMAGE
 
   test-authentication:
-    <<: *default-job
+    <<: *defaults
     <<: *test-package
     environment:
       PACKAGE: authentication
 
   test-public-api:
-    <<: *default-job
+    <<: *defaults
     <<: *test-package
     environment:
       PACKAGE: public-api
 
   test-web-client:
-    <<: *default-job
+    <<: *defaults
     <<: *test-package
     environment:
       PACKAGE: web-client
+
+  upload-coverage:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/repo/tmp
+      - run:
+          name: Upload coverage results to Code Climate
+          command: |
+            ./tmp/test-reporter sum-coverage tmp/coverage.*.json \
+                --parts 3 \
+                --output tmp/coverage.total.json
+            ./tmp/test-reporter upload-coverage \
+              --id $CODE_CLIMATE_TEST_REPORTER_ID \
+              --input tmp/coverage.total.json
 
 workflows:
   version: 2
@@ -149,16 +190,27 @@ workflows:
             - test-authentication
             - test-public-api
             - test-web-client
+      - download-test-reporter:
+          requires:
+            - puppeteer-image
       - install-dependencies:
           requires:
             - puppeteer-image
       - puppeteer-image
       - test-authentication:
           requires:
+            - download-test-reporter
             - install-dependencies
       - test-public-api:
           requires:
+            - download-test-reporter
             - install-dependencies
       - test-web-client:
           requires:
+            - download-test-reporter
             - install-dependencies
+      - upload-coverage:
+          requires:
+            - test-authentication
+            - test-public-api
+            - test-web-client
