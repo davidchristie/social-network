@@ -23,6 +23,8 @@ references:
   test-package: &test-package
     steps:
       - checkout
+      - attach_workspace:
+          at: ~/repo/tmp
       - *restore-cache
       - *link-dependencies
       - run:
