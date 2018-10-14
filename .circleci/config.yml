@@ -36,14 +36,10 @@ references:
               ./tmp/test-reporter format-coverage -t lcov \
                   -o tmp/coverage.$PACKAGE.json \
                   packages/$PACKAGE/coverage/lcov.info
-      - run:
-          name: Add PACKAGE environment variable to shell
-          command: |
-              echo 'export PACKAGE="$PACKAGE"' >> $BASH_ENV
       - persist_to_workspace:
           root: tmp
           paths:
-            - coverage.$PACKAGE.json
+            - coverage.*.json
 
 jobs:
   build:
