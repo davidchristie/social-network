@@ -1,26 +1,45 @@
 version: 2
 
-jobs:
-  build:
+references:
+  default-job: &default-job
     docker:
-      - image: circleci/node:9.11
+    - image: circleci/node:9.11
     working_directory: ~/repo
+
+  link-dependencies: &link-dependencies
+    run:
+      name: Link dependencies
+      command: yarn install --offline
+
+  restore-cache: &restore-cache
+    restore_cache:
+      keys:
+        # When lock file changes, use increasingly general patterns to
+        # restore cache.
+        - v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
+        - v1-{{ .Branch }}-
+        - v1-
+
+  test-package: &test-package
     steps:
       - checkout
-      - restore_cache:
-          keys:
-          - dependencies-v2-{{ .Branch }}-{{ checksum "yarn.lock" }}
+      - *restore-cache
+      - *link-dependencies
       - run:
-          name: Link dependencies
-          command: yarn install --offline
+          name: Run unit tests
+          command: yarn $PACKAGE test
+
+jobs:
+  build:
+    <<: *default-job
+    steps:
+      - checkout
+      - *restore-cache
+      - *link-dependencies
       - run:
           name: Build packages
           command: yarn build
-      - run:
-          name: Run unit tests
-          command: yarn test:unit
-      - setup_remote_docker:
-          docker_layer_caching: true
+      - setup_remote_docker
       - run:
           name: Start microservices
           command: |
@@ -52,20 +71,11 @@ jobs:
                   --env "ORIGIN=http://web-client:3000" \
                   --network repo_default end-to-end-tests
 
-  install:
-    docker:
-      - image: circleci/node:9.11
-    working_directory: ~/repo
+  install-dependencies:
+    <<: *default-job
     steps:
       - checkout
-      # Download and cache dependencies.
-      - restore_cache:
-          keys:
-            # When lock file changes, use increasingly general patterns to
-            # restore cache.
-            - dependencies-v2-{{ .Branch }}-{{ checksum "yarn.lock" }}
-            - dependencies-v2-{{ .Branch }}-
-            - dependencies-v2-
+      - *restore-cache
       - run:
           name: Install dependencies
           command: yarn install --frozen-lockfile
@@ -73,12 +83,10 @@ jobs:
           paths:
             - node_modules
             - ~/.cache/yarn
-          key: dependencies-v2-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          key: v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
 
-  puppeteer:
-    docker:
-      - image: circleci/node:9.11
-    working_directory: ~/repo
+  puppeteer-image:
+    <<: *default-job
     steps:
       - checkout
       - run:
@@ -114,13 +122,43 @@ jobs:
           command: |
               docker push $IMAGE
 
+  test-authentication:
+    <<: *default-job
+    <<: *test-package
+    environment:
+      PACKAGE: authentication
+
+  test-public-api:
+    <<: *default-job
+    <<: *test-package
+    environment:
+      PACKAGE: public-api
+
+  test-web-client:
+    <<: *default-job
+    <<: *test-package
+    environment:
+      PACKAGE: web-client
+
 workflows:
   version: 2
   build-test-deploy:
     jobs:
       - build:
           requires:
-            - install
-            - puppeteer
-      - install
-      - puppeteer
+            - test-authentication
+            - test-public-api
+            - test-web-client
+      - install-dependencies:
+          requires:
+            - puppeteer-image
+      - puppeteer-image
+      - test-authentication:
+          requires:
+            - install-dependencies
+      - test-public-api:
+          requires:
+            - install-dependencies
+      - test-web-client:
+          requires:
+            - install-dependencies

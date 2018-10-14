@@ -20,7 +20,9 @@
     "web-client": "yarn workspace web-client"
   },
   "version": "1.0.0",
-  "workspaces": [
-    "packages/*"
-  ]
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  }
 }

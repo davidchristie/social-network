@@ -8,17 +8,44 @@
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.1",
+    "@types/jest": "^23.3.5",
     "@types/jsonwebtoken": "^7.2.8",
     "@types/morgan": "^1.7.35",
+    "jest": "^22.4.4",
     "nodemon": "^1.18.4",
     "rimraf": "^2.6.2",
+    "ts-jest": "^23.10.4",
     "typescript": "^3.0.1"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,ts}"
+    ],
+    "globals": {
+      "ts-jest": {
+        "tsConfig": "tsconfig.json"
+      }
+    },
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts",
+      "tsx"
+    ],
+    "testEnvironment": "node",
+    "testMatch": [
+      "**/*.test.+(js|ts|tsx)"
+    ],
+    "transform": {
+      "^.+\\.(ts|tsx)$": "ts-jest"
+    }
   },
   "name": "authentication",
   "private": true,
   "scripts": {
     "build": "rimraf dist && tsc",
-    "start": "nodemon -x ts-node src/index.ts"
+    "start": "nodemon -x ts-node src/index.ts",
+    "test": "jest --coverage --maxWorkers 2 --verbose"
   },
   "version": "1.0.0"
 }
