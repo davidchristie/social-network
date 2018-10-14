@@ -50,6 +50,26 @@ references:
           paths:
             - images/*.tar
 
+  pull-image: &pull-image
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/repo/tmp
+      - setup_remote_docker
+      - run:
+          name: Pull image
+          command: |
+              docker pull $NAME
+      - run:
+          name: Save image to workspace
+          command: |
+              mkdir -p tmp/images
+              docker save --output tmp/images/$NAME.tar $NAME
+      - persist_to_workspace:
+          root: tmp
+          paths:
+            - images/*.tar
+
   test-package: &test-package
     steps:
       - checkout
@@ -82,11 +102,12 @@ jobs:
       - *link-dependencies
       - setup_remote_docker
       - run:
-          name: Load production images from workspace
+          name: Load images from workspace
           command: |
               docker load < tmp/images/authentication.tar
               docker load < tmp/images/public-api.tar
               docker load < tmp/images/web-client.tar
+              docker load < tmp/images/prismagraphql/prisma:1.8.tar
       - run:
           name: Start production services
           command: |
@@ -162,6 +183,12 @@ jobs:
             - node_modules
             - ~/.cache/yarn
           key: v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
+
+  pull-prisma:
+    <<: *defaults
+    <<: *pull-image
+    environment:
+      NAME: prismagraphql/prisma:1.8
 
   puppeteer-image:
     <<: *defaults
@@ -242,6 +269,7 @@ workflows:
             - build-authentication
             - build-public-api
             - build-web-client
+            - pull-prisma
       - build-authentication:
           requires:
             - upload-coverage
@@ -257,6 +285,7 @@ workflows:
       - install-dependencies:
           requires:
             - puppeteer-image
+      - pull-prisma
       - puppeteer-image
       - test-authentication:
           requires:
