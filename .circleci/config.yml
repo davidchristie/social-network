@@ -71,6 +71,20 @@ jobs:
                   --env "ORIGIN=http://web-client:3000" \
                   --network repo_default end-to-end-tests
 
+  download-test-reporter:
+    <<: *default-job
+    steps:
+      - run:
+          name:  Download test reporter
+          command: |
+            mkdir -p tmp/
+            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./tmp/test-reporter
+            chmod +x ./tmp/test-reporter
+      - persist_to_workspace:
+          root: tmp
+          paths:
+            - test-reporter
+
   install-dependencies:
     <<: *default-job
     steps:
@@ -149,16 +163,19 @@ workflows:
             - test-authentication
             - test-public-api
             - test-web-client
+      - download-test-reporter:
+          requires:
+            - install-dependencies
       - install-dependencies:
           requires:
             - puppeteer-image
       - puppeteer-image
       - test-authentication:
           requires:
-            - install-dependencies
+            - download-test-reporter
       - test-public-api:
           requires:
-            - install-dependencies
+            - download-test-reporter
       - test-web-client:
           requires:
-            - install-dependencies
+            - download-test-reporter
