@@ -105,6 +105,7 @@ jobs:
           name: Load images from workspace
           command: |
               docker load < tmp/images/authentication.tar
+              docker load < tmp/images/mysql.tar
               docker load < tmp/images/prisma.tar
               docker load < tmp/images/public-api.tar
               docker load < tmp/images/web-client.tar
@@ -183,6 +184,13 @@ jobs:
             - node_modules
             - ~/.cache/yarn
           key: v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
+
+  pull-mysql:
+    <<: *defaults
+    <<: *pull-image
+    environment:
+      FILE: mysql
+      NAME: mysql:5.7
 
   pull-prisma:
     <<: *defaults
