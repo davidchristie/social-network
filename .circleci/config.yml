@@ -76,16 +76,20 @@ jobs:
     <<: *defaults
     steps:
       - checkout
+      - attach_workspace:
+          at: ~/repo/tmp
       - *restore-cache
       - *link-dependencies
-      - run:
-          name: Build packages
-          command: yarn build
       - setup_remote_docker
       - run:
-          name: Start microservices
+          name: Load production images from workspace
           command: |
-              yarn production build
+              docker load < tmp/images/authentication.tar
+              docker load < tmp/images/public-api.tar
+              docker load < tmp/images/web-client.tar
+      - run:
+          name: Start production services
+          command: |
               yarn production up --detach
       - run:
           name: List production images
