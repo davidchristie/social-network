@@ -92,52 +92,6 @@ references:
             - coverage.*.json
 
 jobs:
-  build:
-    <<: *defaults
-    steps:
-      - checkout
-      - attach_workspace:
-          at: ~/repo/tmp
-      - *restore-cache
-      - *link-dependencies
-      - setup_remote_docker
-      - run:
-          name: Load images from workspace
-          command: |
-              docker load < tmp/images/authentication.tar
-              docker load < tmp/images/mysql.tar
-              docker load < tmp/images/prisma.tar
-              docker load < tmp/images/public-api.tar
-              docker load < tmp/images/web-client.tar
-      - run:
-          name: Start production services
-          command: |
-              yarn production up --detach
-      - run:
-          name: List production images
-          command: yarn production images
-      - run:
-          name: List production containers
-          command: yarn production ps
-      - run:
-          name: Deploy Prisma data-model
-          command: |
-              docker build \
-                  --file packages/data-model/Dockerfile \
-                  --tag davidchristie/data-model .
-              docker run \
-                  --network repo_default \
-                  --env "PRISMA_ENDPOINT=http://prisma:4466/social-network/production" \
-                  davidchristie/data-model
-      - run:
-          name: Run end-to-end tests
-          command: |
-              docker build \
-                  --file docker/end-to-end-tests.Dockerfile \
-                  --tag end-to-end-tests .
-              docker run \
-                  --env "ORIGIN=http://web-client:3000" \
-                  --network repo_default end-to-end-tests
 
   build-authentication:
     <<: *defaults
@@ -184,6 +138,53 @@ jobs:
             - node_modules
             - ~/.cache/yarn
           key: v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
+
+  integration-tests:
+    <<: *defaults
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/repo/tmp
+      - *restore-cache
+      - *link-dependencies
+      - setup_remote_docker
+      - run:
+          name: Load images from workspace
+          command: |
+              docker load < tmp/images/authentication.tar
+              docker load < tmp/images/mysql.tar
+              docker load < tmp/images/prisma.tar
+              docker load < tmp/images/public-api.tar
+              docker load < tmp/images/web-client.tar
+      - run:
+          name: Start production services
+          command: |
+              yarn production up --detach
+      - run:
+          name: List production images
+          command: yarn production images
+      - run:
+          name: List production containers
+          command: yarn production ps
+      - run:
+          name: Deploy Prisma data-model
+          command: |
+              docker build \
+                  --file packages/data-model/Dockerfile \
+                  --tag davidchristie/data-model .
+              docker run \
+                  --network repo_default \
+                  --env "PRISMA_ENDPOINT=http://prisma:4466/social-network/production" \
+                  davidchristie/data-model
+      - run:
+          name: Run end-to-end tests
+          command: |
+              docker build \
+                  --file docker/end-to-end-tests.Dockerfile \
+                  --tag end-to-end-tests .
+              docker run \
+                  --env "ORIGIN=http://web-client:3000" \
+                  --network repo_default end-to-end-tests
 
   pull-mysql:
     <<: *defaults
@@ -273,13 +274,6 @@ workflows:
   version: 2
   build-test-deploy:
     jobs:
-      - build:
-          requires:
-            - build-authentication
-            - build-public-api
-            - build-web-client
-            - pull-mysql
-            - pull-prisma
       - build-authentication:
           requires:
             - upload-coverage
@@ -295,6 +289,13 @@ workflows:
       - install-dependencies:
           requires:
             - puppeteer-image
+      - integration-tests:
+          requires:
+            - build-authentication
+            - build-public-api
+            - build-web-client
+            - pull-mysql
+            - pull-prisma
       - pull-mysql
       - pull-prisma
       - puppeteer-image
