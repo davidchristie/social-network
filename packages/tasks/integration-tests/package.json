@@ -31,10 +31,10 @@
       "^.+\\.(ts|tsx)$": "ts-jest"
     }
   },
-  "name": "end-to-end",
+  "name": "integration-tests",
   "private": true,
   "scripts": {
-    "test": "jest --verbose"
+    "start": "jest --verbose"
   },
   "version": "1.0.0"
 }

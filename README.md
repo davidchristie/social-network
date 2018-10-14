@@ -9,7 +9,11 @@
 * [Authentication](packages/authentication)
 * [Data Model](packages/data-model)
 * [Desktop Client](packages/desktop-client)
-* [End-to-End](packages/end-to-end)
 * [Infrastructure](packages/infrastructure)
 * [Public API](packages/public-api)
 * [Web Client](packages/web-client)
+
+### Tasks
+
+* [Deploy Data Model](packages/tasks/deploy-data-model)
+* [Integration Tests](packages/tasks/integration-tests)

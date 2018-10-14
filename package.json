@@ -9,12 +9,11 @@
     "data-model": "yarn workspace data-model",
     "desktop-client": "yarn workspace desktop-client",
     "development": "scripts/development.sh",
-    "end-to-end": "yarn workspace end-to-end",
     "infrastructure": "yarn workspace infrastructure",
+    "integration-tests": "yarn workspace integration-tests",
     "production": "docker-compose -f docker-compose.yml -f docker-compose.production.yml",
     "public-api": "yarn workspace public-api",
-    "test:end-to-end": "yarn end-to-end test",
-    "test:unit": "CI=true yarn web-client test",
+    "tasks": "docker-compose -f docker-compose.yml -f docker-compose.tasks.yml",
     "wait-for-prisma": "scripts/wait-for-prisma.sh",
     "wait-for-web-client": "scripts/wait-for-web-client.sh",
     "web-client": "yarn workspace web-client"
@@ -22,7 +21,8 @@
   "version": "1.0.0",
   "workspaces": {
     "packages": [
-      "packages/*"
+      "packages/*",
+      "packages/tasks/*"
     ]
   }
 }

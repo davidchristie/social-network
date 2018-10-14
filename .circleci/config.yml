@@ -20,11 +20,6 @@ references:
 
   # Jobs
 
-  defaults: &defaults
-    docker:
-    - image: circleci/node:9.11
-    working_directory: ~/repo
-
   build-package: &build-package
     steps:
       - checkout
@@ -49,6 +44,36 @@ references:
           root: tmp
           paths:
             - images/*.tar
+
+  build-task: &build-task
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/repo/tmp
+      - *restore-cache
+      - *link-dependencies
+      - run:
+          name: Build packages
+          command: yarn build
+      - setup_remote_docker
+      - run:
+          name: Build task image
+          command: |
+              yarn tasks build $NAME
+      - run:
+          name: Save image to workspace
+          command: |
+              mkdir -p tmp/images
+              docker save --output tmp/images/$NAME.tar $NAME
+      - persist_to_workspace:
+          root: tmp
+          paths:
+            - images/*.tar
+
+  defaults: &defaults
+    docker:
+    - image: circleci/node:9.11
+    working_directory: ~/repo
 
   pull-image: &pull-image
     steps:
@@ -99,6 +124,18 @@ jobs:
     environment:
       PACKAGE: authentication
 
+  build-deploy-data-model:
+    <<: *defaults
+    <<: *build-task
+    environment:
+      NAME: deploy-data-model
+
+  build-integration-tests:
+    <<: *defaults
+    <<: *build-task
+    environment:
+      NAME: integration-tests
+
   build-public-api:
     <<: *defaults
     <<: *build-package
@@ -110,6 +147,42 @@ jobs:
     <<: *build-package
     environment:
       PACKAGE: web-client
+
+  check-puppeteer:
+    <<: *defaults
+    steps:
+      - checkout
+      - run:
+          name: Check for changes
+          command: |
+              if [ -z $(git diff --name-only HEAD~ images/puppeteer) ]
+              then
+                echo "No changes in the last commit"
+                circleci step halt
+              else
+                echo "Was changed in the last commit"
+              fi
+      - setup_remote_docker
+      - run:
+          name: Log in to docker
+          command: |
+              docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+      - run:
+          name: Set image name
+          command: |
+              echo 'IMAGE="$DOCKER_USERNAME/puppeteer"' >> $BASH_ENV
+              echo 'VERSION="$(git rev-parse --short HEAD)"' >> $BASH_ENV
+      - run:
+          name: Build image
+          command: |
+              docker build \
+                  --tag $IMAGE:latest \
+                  --tag $IMAGE:$VERSION \
+                  images/puppeteer
+      - run:
+          name: Push image
+          command: |
+              docker push $IMAGE
 
   download-test-reporter:
     <<: *defaults
@@ -152,39 +225,26 @@ jobs:
           name: Load images from workspace
           command: |
               docker load < tmp/images/authentication.tar
+              docker load < tmp/images/deploy-data-model.tar
+              docker load < tmp/images/integration-tests.tar
               docker load < tmp/images/mysql.tar
               docker load < tmp/images/prisma.tar
               docker load < tmp/images/public-api.tar
+              docker load < tmp/images/puppeteer.tar
               docker load < tmp/images/web-client.tar
       - run:
           name: Start production services
           command: |
               yarn production up --detach
       - run:
-          name: List production images
-          command: yarn production images
-      - run:
-          name: List production containers
-          command: yarn production ps
+          name: List docker images
+          command: docker images
       - run:
           name: Deploy Prisma data-model
-          command: |
-              docker build \
-                  --file packages/data-model/Dockerfile \
-                  --tag davidchristie/data-model .
-              docker run \
-                  --network repo_default \
-                  --env "PRISMA_ENDPOINT=http://prisma:4466/social-network/production" \
-                  davidchristie/data-model
+          command: yarn tasks up deploy-data-model
       - run:
-          name: Run end-to-end tests
-          command: |
-              docker build \
-                  --file docker/end-to-end-tests.Dockerfile \
-                  --tag end-to-end-tests .
-              docker run \
-                  --env "ORIGIN=http://web-client:3000" \
-                  --network repo_default end-to-end-tests
+          name: Run integration tests
+          command: yarn tasks up integration-tests
 
   pull-mysql:
     <<: *defaults
@@ -200,42 +260,12 @@ jobs:
       FILE: prisma
       NAME: prismagraphql/prisma:1.8
 
-  puppeteer-image:
+  pull-puppeteer:
     <<: *defaults
-    steps:
-      - checkout
-      - run:
-          name: Check for changes
-          command: |
-              if [ -z $(git diff --name-only HEAD~ docker/puppeteer.Dockerfile) ]
-              then
-                echo "No changes in the last commit"
-                circleci step halt
-              else
-                echo "Was changed in the last commit"
-              fi
-      - setup_remote_docker
-      - run:
-          name: Log in to docker
-          command: |
-              docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-      - run:
-          name: Set image name
-          command: |
-              echo 'IMAGE="$DOCKER_USERNAME/puppeteer"' >> $BASH_ENV
-              echo 'VERSION="$(git rev-parse --short HEAD)"' >> $BASH_ENV
-      - run:
-          name: Build image
-          command: |
-              docker build \
-                  --file docker/puppeteer.Dockerfile \
-                  --tag $IMAGE:latest \
-                  --tag $IMAGE:$VERSION \
-                  .
-      - run:
-          name: Push image
-          command: |
-              docker push $IMAGE
+    <<: *pull-image
+    environment:
+      FILE: puppeteer
+      NAME: davidchristie/puppeteer
 
   test-authentication:
     <<: *defaults
@@ -277,28 +307,32 @@ workflows:
       - build-authentication:
           requires:
             - upload-coverage
+      - build-integration-tests
+      - build-deploy-data-model
       - build-public-api:
           requires:
             - upload-coverage
       - build-web-client:
           requires:
             - upload-coverage
-      - download-test-reporter:
-          requires:
-            - puppeteer-image
-      - install-dependencies:
-          requires:
-            - puppeteer-image
+      - check-puppeteer
+      - download-test-reporter
+      - install-dependencies
       - integration-tests:
           requires:
             - build-authentication
+            - build-deploy-data-model
+            - build-integration-tests
             - build-public-api
             - build-web-client
             - pull-mysql
             - pull-prisma
+            - pull-puppeteer
       - pull-mysql
       - pull-prisma
-      - puppeteer-image
+      - pull-puppeteer:
+          requires:
+            - check-puppeteer
       - test-authentication:
           requires:
             - download-test-reporter
