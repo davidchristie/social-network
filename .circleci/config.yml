@@ -6,12 +6,19 @@ references:
     - image: circleci/node:9.11
     working_directory: ~/repo
 
+  restore-cache: &restore-cache
+    restore_cache:
+      keys:
+        # When lock file changes, use increasingly general patterns to
+        # restore cache.
+        - dependencies-v2-{{ .Branch }}-{{ checksum "yarn.lock" }}
+        - dependencies-v2-{{ .Branch }}-
+        - dependencies-v2-
+
   test-package: &test-package
     steps:
       - checkout
-      - restore_cache:
-          keys:
-          - dependencies-v2-{{ .Branch }}-{{ checksum "yarn.lock" }}
+      - *restore-cache
       - run:
           name: Link dependencies
           command: yarn install --offline
@@ -24,9 +31,7 @@ jobs:
     <<: *default-job
     steps:
       - checkout
-      - restore_cache:
-          keys:
-          - dependencies-v2-{{ .Branch }}-{{ checksum "yarn.lock" }}
+      - *restore-cache
       - run:
           name: Link dependencies
           command: yarn install --offline
@@ -70,14 +75,7 @@ jobs:
     <<: *default-job
     steps:
       - checkout
-      # Download and cache dependencies.
-      - restore_cache:
-          keys:
-            # When lock file changes, use increasingly general patterns to
-            # restore cache.
-            - dependencies-v2-{{ .Branch }}-{{ checksum "yarn.lock" }}
-            - dependencies-v2-{{ .Branch }}-
-            - dependencies-v2-
+      - *restore-cache
       - run:
           name: Install dependencies
           command: yarn install --frozen-lockfile
