@@ -173,7 +173,7 @@ workflows:
             - test-web-client
       - download-test-reporter:
           requires:
-            - install-dependencies
+            - puppeteer-image
       - install-dependencies:
           requires:
             - puppeteer-image
@@ -181,9 +181,12 @@ workflows:
       - test-authentication:
           requires:
             - download-test-reporter
+            - install-dependencies
       - test-public-api:
           requires:
             - download-test-reporter
+            - install-dependencies
       - test-web-client:
           requires:
             - download-test-reporter
+            - install-dependencies
