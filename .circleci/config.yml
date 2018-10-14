@@ -301,12 +301,8 @@ workflows:
             - pull-mysql
             - pull-prisma
             - pull-puppeteer
-      - pull-mysql:
-          requires:
-            - check-puppeteer
-      - pull-prisma:
-          requires:
-            - check-puppeteer
+      - pull-mysql
+      - pull-prisma
       - pull-puppeteer:
           requires:
             - check-puppeteer
