@@ -28,6 +28,12 @@ references:
       - run:
           name: Run unit tests
           command: yarn $PACKAGE test
+      - run:
+          name: Format coverage report
+          command: |
+              ./tmp/test-reporter format-coverage -t lcov \
+                  -o tmp/coverage.$PACKAGE.json \
+                  packages/$PACKAGE/coverage/lcov.info
 
 jobs:
   build:
