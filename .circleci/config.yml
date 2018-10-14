@@ -20,26 +20,6 @@ references:
 
   # Jobs
 
-  build-image: &build-image
-    steps:
-      - checkout
-      - attach_workspace:
-          at: ~/repo/tmp
-      - setup_remote_docker
-      - run:
-          name: Build image
-          command: |
-              docker build --tag $NAME $PATH
-      - run:
-          name: Save image to workspace
-          command: |
-              mkdir -p tmp/images
-              docker save --output tmp/images/$FILE.tar $NAME
-      - persist_to_workspace:
-          root: tmp
-          paths:
-            - images/*.tar
-
   build-package: &build-package
     steps:
       - checkout
@@ -60,6 +40,31 @@ references:
           command: |
               mkdir -p tmp/images
               docker save --output tmp/images/$PACKAGE.tar davidchristie/$PACKAGE
+      - persist_to_workspace:
+          root: tmp
+          paths:
+            - images/*.tar
+
+  build-task: &build-task
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/repo/tmp
+      - *restore-cache
+      - *link-dependencies
+      - run:
+          name: Build packages
+          command: yarn build
+      - setup_remote_docker
+      - run:
+          name: Build production image
+          command: |
+              yarn task build $NAME
+      - run:
+          name: Save image to workspace
+          command: |
+              mkdir -p tmp/images
+              docker save --output tmp/images/$FILE.tar $NAME
       - persist_to_workspace:
           root: tmp
           paths:
@@ -121,11 +126,10 @@ jobs:
 
   build-deploy-data-model:
     <<: *defaults
-    <<: *build-image
+    <<: *build-task
     environment:
       FILE: deploy-data-model
       NAME: deploy-data-model
-      PATH: packages/tasks/deploy-data-model
 
   build-public-api:
     <<: *defaults
