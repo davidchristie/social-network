@@ -175,7 +175,7 @@ jobs:
           name: Upload coverage results to Code Climate
           command: |
             CC_TEST_REPORTER_ID=$CODE_CLIMATE_TEST_REPORTER_ID
-            ./tmp/test-reporter sum-coverage tmp/coverage.*.json -p 2 \
+            ./tmp/test-reporter sum-coverage tmp/coverage.*.json -p 3 \
                 -o tmp/coverage.total.json
             ./tmp/test-reporter upload-coverage -i tmp/coverage.total.json
 
