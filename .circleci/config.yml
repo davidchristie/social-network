@@ -71,7 +71,7 @@ jobs:
                   --env "ORIGIN=http://web-client:3000" \
                   --network repo_default end-to-end-tests
 
-  install:
+  install-dependencies:
     <<: *default-job
     steps:
       - checkout
@@ -149,16 +149,16 @@ workflows:
             - test-authentication
             - test-public-api
             - test-web-client
-      - install:
+      - install-dependencies:
           requires:
             - puppeteer-image
       - puppeteer-image
       - test-authentication:
           requires:
-            - install
+            - install-dependencies
       - test-public-api:
           requires:
-            - install
+            - install-dependencies
       - test-web-client:
           requires:
-            - install
+            - install-dependencies
