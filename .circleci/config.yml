@@ -59,7 +59,7 @@ references:
       - run:
           name: Build production image
           command: |
-              yarn task build $NAME
+              yarn tasks build $NAME
       - run:
           name: Save image to workspace
           command: |
