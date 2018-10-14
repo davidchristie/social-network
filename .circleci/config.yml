@@ -40,6 +40,15 @@ references:
           name: Build production image
           command: |
               yarn production build $PACKAGE
+      - run:
+          name: Save image to workspace
+          command: |
+              mkdir -p tmp/images
+              docker save --output tmp/images/$PACKAGE.tar davidchristie/$PACKAGE
+      - persist_to_workspace:
+          root: tmp
+          paths:
+            - images/*.tar
 
   test-package: &test-package
     steps:
