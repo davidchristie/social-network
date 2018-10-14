@@ -35,6 +35,7 @@ references:
       - run:
           name: Build packages
           command: yarn build
+      - setup_remote_docker
       - run:
           name: Build production image
           command: |
