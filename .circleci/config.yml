@@ -36,6 +36,10 @@ references:
               ./tmp/test-reporter format-coverage -t lcov \
                   -o tmp/coverage.$PACKAGE.json \
                   packages/$PACKAGE/coverage/lcov.info
+      - persist_to_workspace:
+          root: tmp
+          paths:
+            - coverage.$PACKAGE.json
 
 jobs:
   build:
