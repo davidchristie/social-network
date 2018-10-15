@@ -91,6 +91,22 @@ jobs:
       - checkout
       - *restore-cached-dependencies
       - *link-dependencies
+      - restore_cache:
+          keys:
+            - v1-images-davidchristie/puppeteer:a03090d
+      - run:
+          name: Pull puppeteer image
+          command: |
+              if [ ! -f tmp/images/puppeteer.tar ]; then
+                docker pull davidchristie/puppeteer:a03090d
+                docker save --output tmp/images/puppeteer.tar \
+                    davidchristie/puppeteer:a03090d
+              fi
+      - save_cache:
+          name: Cache puppeteer image
+          key: v1-images-davidchristie/puppeteer:a03090d
+          paths:
+            - tmp/images/puppeteer.tar
       - run:
           name: Build packages
           command: yarn build
@@ -204,9 +220,6 @@ jobs:
             - v1-images-prismagraphql/prisma:1.8
       - restore_cache:
           keys:
-            - v1-images-davidchristie/puppeteer:a03090d
-      - restore_cache:
-          keys:
             - v1-images-tasks-{{ .Environment.CIRCLE_SHA1 }}
       - setup_remote_docker
       - run:
@@ -252,12 +265,6 @@ jobs:
           command: |
               docker pull prismagraphql/prisma:1.8
               docker save --output tmp/images/prisma.tar prismagraphql/prisma:1.8
-      - run:
-          name: Pull puppeteer image
-          command: |
-              docker pull davidchristie/puppeteer:a03090d
-              docker save --output tmp/images/puppeteer.tar \
-                  davidchristie/puppeteer:a03090d
       - save_cache:
           name: Cache mysql image
           key: v1-images-mysql:5.7
@@ -268,11 +275,6 @@ jobs:
           key: v1-images-prismagraphql/prisma:1.8
           paths:
             - tmp/images/prisma.tar
-      - save_cache:
-          name: Cache puppeteer image
-          key: v1-images-davidchristie/puppeteer:a03090d
-          paths:
-            - tmp/images/puppeteer.tar
 
   test-authentication:
     <<: *defaults
