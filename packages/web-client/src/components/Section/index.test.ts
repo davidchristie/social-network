@@ -1,9 +1,9 @@
 import describeWithCustomClass from "../../testing/describeWithCustomClass";
 import describeWithNoProps from "../../testing/describeWithNoProps";
-import TextArea from "./index";
+import Section from "./index";
 
-describe("TextArea component", () => {
-  describeWithNoProps(TextArea);
+describe("Section component", () => {
+  describeWithNoProps(Section);
 
-  describeWithCustomClass(TextArea);
+  describeWithCustomClass(Section);
 });

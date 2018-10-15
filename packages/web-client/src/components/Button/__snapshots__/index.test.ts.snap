@@ -2,7 +2,7 @@
 
 exports[`Button component with custom class matches snapshot 1`] = `
 <button
-  className="Button custom_class"
+  className="Button CUSTOM_CLASS"
 />
 `;
 

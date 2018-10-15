@@ -2,7 +2,7 @@
 
 exports[`Alert component with custom class matches snapshot 1`] = `
 <div
-  className="Alert custom_class"
+  className="Alert CUSTOM_CLASS"
 />
 `;
 

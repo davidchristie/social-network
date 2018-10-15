@@ -1,15 +1,11 @@
 import { shallow } from "enzyme";
 import React from "react";
 
+import describeWithNoProps from "../../testing/describeWithNoProps";
 import Overlay from "./index";
 
 describe("Overlay component", () => {
-  describe("with no props", () => {
-    it("matches snapshot", () => {
-      const wrapper = shallow(<Overlay />);
-      expect(wrapper).toMatchSnapshot();
-    });
-  });
+  describeWithNoProps(Overlay);
 
   describe("with big prop", () => {
     it("matches snapshot", () => {

@@ -2,7 +2,7 @@
 
 exports[`Input component with custom class matches snapshot 1`] = `
 <input
-  className="Input custom_class"
+  className="Input CUSTOM_CLASS"
 />
 `;
 
