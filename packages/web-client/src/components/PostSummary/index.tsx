@@ -17,30 +17,37 @@ export default class PostSummary extends React.Component<Props> {
     return (
       <div className="Post">
         <div className="header">
-          <div className="profile">
-            <Link to={`/profile/${post.createdBy.id}`} style={{ height: 0 }}>
-              <Avatar
-                image={post.createdBy.avatar ? post.createdBy.avatar.url : undefined}
-                size="small"
-              />
-            </Link>
-            <div>
-              <div>
-                <Link to={`/profile/${post.createdBy.id}`}>
-                  <strong>{post.createdBy.name}</strong>
-                </Link>
-              </div>
-              <div>
-                <small><RelativeDate value={post.createdAt} /></small>
-              </div>
-            </div>
-          </div>
+          {this.renderProfile()}
           <div>
             <PostMenu postId={post.id} />
           </div>
         </div>
         <hr />
         {post.text}
+      </div>
+    );
+  }
+
+  private renderProfile = () => {
+    const { post } = this.props;
+    return (
+      <div className="profile">
+        <Link to={`/profile/${post.createdBy.id}`} style={{ height: 0 }}>
+          <Avatar
+            image={post.createdBy.avatar ? post.createdBy.avatar.url : undefined}
+            size="small"
+          />
+        </Link>
+        <div>
+          <div>
+            <Link to={`/profile/${post.createdBy.id}`}>
+              <strong>{post.createdBy.name}</strong>
+            </Link>
+          </div>
+          <div>
+            <small><RelativeDate value={post.createdAt} /></small>
+          </div>
+        </div>
       </div>
     );
   }
