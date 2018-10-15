@@ -2,7 +2,7 @@
 
 exports[`Section component with custom class matches snapshot 1`] = `
 <section
-  className="Section custom_class"
+  className="Section CUSTOM_CLASS"
 />
 `;
 

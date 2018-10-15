@@ -2,7 +2,7 @@
 
 exports[`TextArea component with custom class matches snapshot 1`] = `
 <textarea
-  className="TextArea custom_class"
+  className="TextArea CUSTOM_CLASS"
 />
 `;
 

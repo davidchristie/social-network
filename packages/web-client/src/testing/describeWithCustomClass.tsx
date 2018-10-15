@@ -1,20 +1,21 @@
 import { shallow, ShallowWrapper } from "enzyme";
 import React from "react";
 
-import describeWithNoProps from "../../testings/describeWithNoProps";
-import Input from "./index";
+interface Props {
+  className?: string;
+}
 
-describe("Input component", () => {
-  let wrapper: ShallowWrapper;
-
-  describeWithNoProps(Input);
-
+export default function describeWithCustomClass (
+  Component: React.ComponentType<Props>
+) {
   describe("with custom class", () => {
-    const CUSTOM_CLASS = "custom_class";
+    const CUSTOM_CLASS = "CUSTOM_CLASS";
+
+    let wrapper: ShallowWrapper;
 
     beforeEach(() => {
       wrapper = shallow(
-        <Input className={CUSTOM_CLASS} />,
+        <Component className={CUSTOM_CLASS} />,
       );
     });
 
@@ -26,4 +27,4 @@ describe("Input component", () => {
       expect(wrapper).toMatchSnapshot();
     });
   });
-});
+}

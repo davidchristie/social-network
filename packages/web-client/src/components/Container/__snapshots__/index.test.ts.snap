@@ -2,7 +2,7 @@
 
 exports[`Container component with custom class matches snapshot 1`] = `
 <div
-  className="Container custom_class"
+  className="Container CUSTOM_CLASS"
 />
 `;
 
