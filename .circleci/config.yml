@@ -116,9 +116,13 @@ jobs:
           command: yarn build
       - setup_remote_docker
       - run:
-          name: Build task images
+          name: Build deploy-data-model image
           command: |
-              yarn tasks build
+              yarn tasks build deploy-data-model
+      - run:
+          name: Build integration-tests image
+          command: |
+              yarn tasks build integration-tests
       - run:
           name: Save images to workspace
           command: |
