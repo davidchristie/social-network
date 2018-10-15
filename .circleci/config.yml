@@ -89,6 +89,7 @@ jobs:
     <<: *defaults
     steps:
       - checkout
+      - setup_remote_docker
       - *restore-cached-dependencies
       - *link-dependencies
       - restore_cache:
@@ -113,7 +114,6 @@ jobs:
       - run:
           name: Build packages
           command: yarn build
-      - setup_remote_docker
       - run:
           name: Build deploy-data-model image
           command: |
