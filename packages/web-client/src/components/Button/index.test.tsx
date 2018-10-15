@@ -1,20 +1,13 @@
 import { shallow, ShallowWrapper } from "enzyme";
 import React from "react";
 
+import describeWithNoProps from "../../testings/describeWithNoProps";
 import Button from "./index";
 
 describe("Button component", () => {
   let wrapper: ShallowWrapper;
 
-  describe("with no props", () => {
-    beforeEach(() => {
-      wrapper = shallow(<Button />);
-    });
-
-    it("matches snapshot", () => {
-      expect(wrapper).toMatchSnapshot();
-    });
-  });
+  describeWithNoProps(Button);
 
   describe("with custom class", () => {
     const CUSTOM_CLASS = "custom_class";
