@@ -301,7 +301,9 @@ workflows:
       - build-authentication:
           requires:
             - upload-coverage
-      - build-tasks
+      - build-tasks:
+          requires:
+            - install-dependencies
       - build-public-api:
           requires:
             - upload-coverage
