@@ -14,9 +14,9 @@ references:
       keys:
         # When lock file changes, use increasingly general patterns to
         # restore cache.
-        - v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
-        - v1-{{ .Branch }}-
-        - v1-
+        - v1-dependencies-{{ .Branch }}-{{ checksum "yarn.lock" }}
+        - v1-dependencies-{{ .Branch }}-
+        - v1-dependencies
 
   # Jobs
 
@@ -40,31 +40,6 @@ references:
           command: |
               mkdir -p tmp/images
               docker save --output tmp/images/$PACKAGE.tar davidchristie/$PACKAGE
-      - persist_to_workspace:
-          root: tmp
-          paths:
-            - images/*.tar
-
-  build-task: &build-task
-    steps:
-      - checkout
-      - attach_workspace:
-          at: ~/repo/tmp
-      - *restore-cache
-      - *link-dependencies
-      - run:
-          name: Build packages
-          command: yarn build
-      - setup_remote_docker
-      - run:
-          name: Build task image
-          command: |
-              yarn tasks build $NAME
-      - run:
-          name: Save image to workspace
-          command: |
-              mkdir -p tmp/images
-              docker save --output tmp/images/$NAME.tar $NAME
       - persist_to_workspace:
           root: tmp
           paths:
@@ -124,23 +99,39 @@ jobs:
     environment:
       PACKAGE: authentication
 
-  build-deploy-data-model:
-    <<: *defaults
-    <<: *build-task
-    environment:
-      NAME: deploy-data-model
-
-  build-integration-tests:
-    <<: *defaults
-    <<: *build-task
-    environment:
-      NAME: integration-tests
-
   build-public-api:
     <<: *defaults
     <<: *build-package
     environment:
       PACKAGE: public-api
+
+  build-tasks:
+    <<: *defaults
+    steps:
+      - checkout
+      - *restore-cache
+      - *link-dependencies
+      - run:
+          name: Build packages
+          command: yarn build
+      - setup_remote_docker
+      - run:
+          name: Build task images
+          command: |
+              yarn tasks build
+      - run:
+          name: Save images to workspace
+          command: |
+              mkdir -p tmp/images
+              docker save --output tmp/images/deploy-data-model.tar \
+                  deploy-data-model
+              docker save --output tmp/images/integration-tests.tar \
+                  integration-tests
+      - save_cache:
+          paths:
+            - tmp/images/deploy-data-model.tar
+            - tmp/images/integration-tests.tar
+          key: v1-images-tasks-{{ .Environment.CIRCLE_SHA1 }}
 
   build-web-client:
     <<: *defaults
@@ -210,7 +201,7 @@ jobs:
           paths:
             - node_modules
             - ~/.cache/yarn
-          key: v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          key: v1-dependencies-{{ .Branch }}-{{ checksum "yarn.lock" }}
 
   integration-tests:
     <<: *defaults
@@ -220,6 +211,9 @@ jobs:
           at: ~/repo/tmp
       - *restore-cache
       - *link-dependencies
+      - restore_cache:
+          keys:
+            - v1-images-tasks-{{ .Environment.CIRCLE_SHA1 }}
       - setup_remote_docker
       - run:
           name: Load images from workspace
@@ -307,8 +301,7 @@ workflows:
       - build-authentication:
           requires:
             - upload-coverage
-      - build-integration-tests
-      - build-deploy-data-model
+      - build-tasks
       - build-public-api:
           requires:
             - upload-coverage
@@ -321,9 +314,8 @@ workflows:
       - integration-tests:
           requires:
             - build-authentication
-            - build-deploy-data-model
-            - build-integration-tests
             - build-public-api
+            - build-tasks
             - build-web-client
             - pull-mysql
             - pull-prisma
