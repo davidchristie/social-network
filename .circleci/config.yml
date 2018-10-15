@@ -9,14 +9,14 @@ references:
       name: Link dependencies
       command: yarn install --offline
 
-  restore-cache: &restore-cache
+  restore-cached-dependencies: &restore-cached-dependencies
     restore_cache:
       keys:
         # When lock file changes, use increasingly general patterns to
         # restore cache.
-        - v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
-        - v1-{{ .Branch }}-
-        - v1-
+        - v1-dependencies-{{ .Branch }}-{{ checksum "yarn.lock" }}
+        - v1-dependencies-{{ .Branch }}-
+        - v1-dependencies
 
   # Jobs
 
@@ -25,7 +25,7 @@ references:
       - checkout
       - attach_workspace:
           at: ~/repo/tmp
-      - *restore-cache
+      - *restore-cached-dependencies
       - *link-dependencies
       - run:
           name: Build packages
@@ -45,62 +45,17 @@ references:
           paths:
             - images/*.tar
 
-  build-task: &build-task
-    steps:
-      - checkout
-      - attach_workspace:
-          at: ~/repo/tmp
-      - *restore-cache
-      - *link-dependencies
-      - run:
-          name: Build packages
-          command: yarn build
-      - setup_remote_docker
-      - run:
-          name: Build task image
-          command: |
-              yarn tasks build $NAME
-      - run:
-          name: Save image to workspace
-          command: |
-              mkdir -p tmp/images
-              docker save --output tmp/images/$NAME.tar $NAME
-      - persist_to_workspace:
-          root: tmp
-          paths:
-            - images/*.tar
-
   defaults: &defaults
     docker:
     - image: circleci/node:9.11
     working_directory: ~/repo
-
-  pull-image: &pull-image
-    steps:
-      - checkout
-      - attach_workspace:
-          at: ~/repo/tmp
-      - setup_remote_docker
-      - run:
-          name: Pull image
-          command: |
-              docker pull $NAME
-      - run:
-          name: Save image to workspace
-          command: |
-              mkdir -p tmp/images
-              docker save --output tmp/images/$FILE.tar $NAME
-      - persist_to_workspace:
-          root: tmp
-          paths:
-            - images/*.tar
 
   test-package: &test-package
     steps:
       - checkout
       - attach_workspace:
           at: ~/repo/tmp
-      - *restore-cache
+      - *restore-cached-dependencies
       - *link-dependencies
       - run:
           name: Run unit tests
@@ -124,23 +79,63 @@ jobs:
     environment:
       PACKAGE: authentication
 
-  build-deploy-data-model:
-    <<: *defaults
-    <<: *build-task
-    environment:
-      NAME: deploy-data-model
-
-  build-integration-tests:
-    <<: *defaults
-    <<: *build-task
-    environment:
-      NAME: integration-tests
-
   build-public-api:
     <<: *defaults
     <<: *build-package
     environment:
       PACKAGE: public-api
+
+  build-tasks:
+    <<: *defaults
+    steps:
+      - checkout
+      - setup_remote_docker
+      - *restore-cached-dependencies
+      - *link-dependencies
+      - restore_cache:
+          keys:
+            - v1-images-davidchristie/puppeteer:a03090d
+      - run:
+          name: Load puppeteer image
+          command: |
+              if [ -f tmp/images/puppeteer.tar ];
+              then
+                docker load < tmp/images/puppeteer.tar
+              else
+                docker pull davidchristie/puppeteer:a03090d
+                docker save --output tmp/images/puppeteer.tar \
+                    davidchristie/puppeteer:a03090d
+              fi
+      - save_cache:
+          name: Cache puppeteer image
+          key: v1-images-davidchristie/puppeteer:a03090d
+          paths:
+            - tmp/images/puppeteer.tar
+      - run:
+          name: Build packages
+          command: yarn build
+      - run:
+          name: Build deploy-data-model image
+          command: |
+              yarn tasks build deploy-data-model
+      - run:
+          name: Build integration-tests image
+          command: |
+              yarn tasks build integration-tests
+      - run:
+          name: Save images
+          command: |
+              mkdir -p tmp/images
+              docker save --output tmp/images/deploy-data-model.tar \
+                  deploy-data-model
+              docker save --output tmp/images/integration-tests.tar \
+                  integration-tests
+      - save_cache:
+          name: Cache images
+          paths:
+            - tmp/images/deploy-data-model.tar
+            - tmp/images/integration-tests.tar
+          key: v1-images-tasks-{{ .Environment.CIRCLE_SHA1 }}
 
   build-web-client:
     <<: *defaults
@@ -202,7 +197,7 @@ jobs:
     <<: *defaults
     steps:
       - checkout
-      - *restore-cache
+      - *restore-cached-dependencies
       - run:
           name: Install dependencies
           command: yarn install --frozen-lockfile
@@ -210,7 +205,7 @@ jobs:
           paths:
             - node_modules
             - ~/.cache/yarn
-          key: v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          key: v1-dependencies-{{ .Branch }}-{{ checksum "yarn.lock" }}
 
   integration-tests:
     <<: *defaults
@@ -218,8 +213,17 @@ jobs:
       - checkout
       - attach_workspace:
           at: ~/repo/tmp
-      - *restore-cache
+      - *restore-cached-dependencies
       - *link-dependencies
+      - restore_cache:
+          keys:
+            - v1-images-mysql:5.7
+      - restore_cache:
+          keys:
+            - v1-images-prismagraphql/prisma:1.8
+      - restore_cache:
+          keys:
+            - v1-images-tasks-{{ .Environment.CIRCLE_SHA1 }}
       - setup_remote_docker
       - run:
           name: Load images from workspace
@@ -230,7 +234,6 @@ jobs:
               docker load < tmp/images/mysql.tar
               docker load < tmp/images/prisma.tar
               docker load < tmp/images/public-api.tar
-              docker load < tmp/images/puppeteer.tar
               docker load < tmp/images/web-client.tar
       - run:
           name: Start production services
@@ -246,26 +249,34 @@ jobs:
           name: Run integration tests
           command: yarn tasks up integration-tests
 
-  pull-mysql:
+  pull-images:
     <<: *defaults
-    <<: *pull-image
-    environment:
-      FILE: mysql
-      NAME: mysql:5.7
-
-  pull-prisma:
-    <<: *defaults
-    <<: *pull-image
-    environment:
-      FILE: prisma
-      NAME: prismagraphql/prisma:1.8
-
-  pull-puppeteer:
-    <<: *defaults
-    <<: *pull-image
-    environment:
-      FILE: puppeteer
-      NAME: davidchristie/puppeteer
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: Make tmp/images directory
+          command: mkdir -p tmp/images
+      - run:
+          name: Pull mysql image
+          command: |
+              docker pull mysql:5.7
+              docker save --output tmp/images/mysql.tar mysql:5.7
+      - run:
+          name: Pull prisma image
+          command: |
+              docker pull prismagraphql/prisma:1.8
+              docker save --output tmp/images/prisma.tar prismagraphql/prisma:1.8
+      - save_cache:
+          name: Cache mysql image
+          key: v1-images-mysql:5.7
+          paths:
+            - tmp/images/mysql.tar
+      - save_cache:
+          name: Cache prisma image
+          key: v1-images-prismagraphql/prisma:1.8
+          paths:
+            - tmp/images/prisma.tar
 
   test-authentication:
     <<: *defaults
@@ -307,8 +318,9 @@ workflows:
       - build-authentication:
           requires:
             - upload-coverage
-      - build-integration-tests
-      - build-deploy-data-model
+      - build-tasks:
+          requires:
+            - install-dependencies
       - build-public-api:
           requires:
             - upload-coverage
@@ -321,18 +333,11 @@ workflows:
       - integration-tests:
           requires:
             - build-authentication
-            - build-deploy-data-model
-            - build-integration-tests
             - build-public-api
+            - build-tasks
             - build-web-client
-            - pull-mysql
-            - pull-prisma
-            - pull-puppeteer
-      - pull-mysql
-      - pull-prisma
-      - pull-puppeteer:
-          requires:
-            - check-puppeteer
+            - pull-images
+      - pull-images
       - test-authentication:
           requires:
             - download-test-reporter
