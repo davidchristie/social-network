@@ -95,9 +95,12 @@ jobs:
           keys:
             - v1-images-davidchristie/puppeteer:a03090d
       - run:
-          name: Pull puppeteer image
+          name: Load puppeteer image
           command: |
-              if [ ! -f tmp/images/puppeteer.tar ]; then
+              if [ -f tmp/images/puppeteer.tar ];
+              then
+                docker load < tmp/images/puppeteer.tar
+              else
                 docker pull davidchristie/puppeteer:a03090d
                 docker save --output tmp/images/puppeteer.tar \
                     davidchristie/puppeteer:a03090d
@@ -231,7 +234,6 @@ jobs:
               docker load < tmp/images/mysql.tar
               docker load < tmp/images/prisma.tar
               docker load < tmp/images/public-api.tar
-              docker load < tmp/images/puppeteer.tar
               docker load < tmp/images/web-client.tar
       - run:
           name: Start production services
