@@ -9,7 +9,7 @@ references:
       name: Link dependencies
       command: yarn install --offline
 
-  restore-cache: &restore-cache
+  restore-cached-dependencies: &restore-cached-dependencies
     restore_cache:
       keys:
         # When lock file changes, use increasingly general patterns to
@@ -25,7 +25,7 @@ references:
       - checkout
       - attach_workspace:
           at: ~/repo/tmp
-      - *restore-cache
+      - *restore-cached-dependencies
       - *link-dependencies
       - run:
           name: Build packages
@@ -50,32 +50,12 @@ references:
     - image: circleci/node:9.11
     working_directory: ~/repo
 
-  pull-image: &pull-image
-    steps:
-      - checkout
-      - attach_workspace:
-          at: ~/repo/tmp
-      - setup_remote_docker
-      - run:
-          name: Pull image
-          command: |
-              docker pull $NAME
-      - run:
-          name: Save image to workspace
-          command: |
-              mkdir -p tmp/images
-              docker save --output tmp/images/$FILE.tar $NAME
-      - persist_to_workspace:
-          root: tmp
-          paths:
-            - images/*.tar
-
   test-package: &test-package
     steps:
       - checkout
       - attach_workspace:
           at: ~/repo/tmp
-      - *restore-cache
+      - *restore-cached-dependencies
       - *link-dependencies
       - run:
           name: Run unit tests
@@ -109,7 +89,7 @@ jobs:
     <<: *defaults
     steps:
       - checkout
-      - *restore-cache
+      - *restore-cached-dependencies
       - *link-dependencies
       - run:
           name: Build packages
@@ -124,7 +104,7 @@ jobs:
           command: |
               yarn tasks build integration-tests
       - run:
-          name: Save images to workspace
+          name: Save images
           command: |
               mkdir -p tmp/images
               docker save --output tmp/images/deploy-data-model.tar \
@@ -132,6 +112,7 @@ jobs:
               docker save --output tmp/images/integration-tests.tar \
                   integration-tests
       - save_cache:
+          name: Cache images
           paths:
             - tmp/images/deploy-data-model.tar
             - tmp/images/integration-tests.tar
@@ -197,7 +178,7 @@ jobs:
     <<: *defaults
     steps:
       - checkout
-      - *restore-cache
+      - *restore-cached-dependencies
       - run:
           name: Install dependencies
           command: yarn install --frozen-lockfile
@@ -213,8 +194,17 @@ jobs:
       - checkout
       - attach_workspace:
           at: ~/repo/tmp
-      - *restore-cache
+      - *restore-cached-dependencies
       - *link-dependencies
+      - restore_cache:
+          keys:
+            - v1-images-mysql:5.7
+      - restore_cache:
+          keys:
+            - v1-images-prismagraphql/prisma:1.8
+      - restore_cache:
+          keys:
+            - v1-images-davidchristie/puppeteer:a03090d
       - restore_cache:
           keys:
             - v1-images-tasks-{{ .Environment.CIRCLE_SHA1 }}
@@ -244,26 +234,45 @@ jobs:
           name: Run integration tests
           command: yarn tasks up integration-tests
 
-  pull-mysql:
+  pull-images:
     <<: *defaults
-    <<: *pull-image
-    environment:
-      FILE: mysql
-      NAME: mysql:5.7
-
-  pull-prisma:
-    <<: *defaults
-    <<: *pull-image
-    environment:
-      FILE: prisma
-      NAME: prismagraphql/prisma:1.8
-
-  pull-puppeteer:
-    <<: *defaults
-    <<: *pull-image
-    environment:
-      FILE: puppeteer
-      NAME: davidchristie/puppeteer
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: Make tmp/images directory
+          command: mkdir -p tmp/images
+      - run:
+          name: Pull mysql image
+          command: |
+              docker pull mysql:5.7
+              docker save --output tmp/images/mysql.tar mysql:5.7
+      - run:
+          name: Pull prisma image
+          command: |
+              docker pull prismagraphql/prisma:1.8
+              docker save --output tmp/images/prisma.tar prismagraphql/prisma:1.8
+      - run:
+          name: Pull puppeteer image
+          command: |
+              docker pull davidchristie/puppeteer:a03090d
+              docker save --output tmp/images/puppeteer.tar \
+                  davidchristie/puppeteer:a03090d
+      - save_cache:
+          name: Cache mysql image
+          key: v1-images-mysql:5.7
+          paths:
+            - tmp/images/mysql.tar
+      - save_cache:
+          name: Cache prisma image
+          key: v1-images-prismagraphql/prisma:1.8
+          paths:
+            - tmp/images/prisma.tar
+      - save_cache:
+          name: Cache puppeteer image
+          key: v1-images-davidchristie/puppeteer:a03090d
+          paths:
+            - tmp/images/puppeteer.tar
 
   test-authentication:
     <<: *defaults
@@ -323,14 +332,8 @@ workflows:
             - build-public-api
             - build-tasks
             - build-web-client
-            - pull-mysql
-            - pull-prisma
-            - pull-puppeteer
-      - pull-mysql
-      - pull-prisma
-      - pull-puppeteer:
-          requires:
-            - check-puppeteer
+            - pull-images
+      - pull-images
       - test-authentication:
           requires:
             - download-test-reporter
