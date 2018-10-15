@@ -1,13 +1,11 @@
-import { shallow } from "enzyme";
 import React from "react";
+
+import itMatchesSnapshot from "./itMatchesSnapshot";
 
 export default function describeWithNoProps (
   Component: React.ComponentType
 ) {
   describe("with no props", () => {
-    it("matches snapshot", () => {
-      const wrapper = shallow(<Component />);
-      expect(wrapper).toMatchSnapshot();
-    });
+    itMatchesSnapshot(<Component />);
   });
 }

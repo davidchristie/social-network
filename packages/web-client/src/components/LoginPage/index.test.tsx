@@ -1,11 +1,8 @@
-import { shallow } from "enzyme";
 import React from "react";
 
 import LoginPage from ".";
+import itMatchesSnapshot from "../../testing/itMatchesSnapshot";
 
 describe("LoginPage component", () => {
-  it("matches snapshot", () => {
-    const wrapper = shallow(<LoginPage />);
-    expect(wrapper).toMatchSnapshot();
-  });
+  itMatchesSnapshot(<LoginPage />);
 });
