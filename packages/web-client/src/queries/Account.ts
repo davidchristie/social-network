@@ -16,7 +16,7 @@ export interface AccountData {
       id: string;
       name: string;
     };
-  };
+  } | null;
 }
 
 export interface AccountVariables { }

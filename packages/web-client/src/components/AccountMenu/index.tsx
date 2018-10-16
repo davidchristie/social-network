@@ -1,10 +1,7 @@
 import React from "react";
-import { Query } from "react-apollo";
 
-import AccountQuery, {
-  AccountData,
-  AccountVariables
-} from "../../queries/Account";
+import { ImageData } from "../../fragments/Image";
+import AccountQuery, { Result } from "../AccountQuery";
 import Alert from "../Alert";
 import Avatar from "../Avatar";
 import ButtonLink from "../ButtonLink";
@@ -16,54 +13,25 @@ interface State {
   isDropdownOpen: boolean;
 }
 
-export default class AccountMenu extends React.Component<{}, State> {
+export class AccountMenuContent extends React.Component<Result, State> {
   public state = {
     isDropdownOpen: false,
   };
 
   public render () {
+    const { data, error, loading } = this.props;
+    if (loading || !data || !data.account) {
+      return "Loading";
+    }
+    if (error) {
+      return <Alert>{error.message}</Alert>;
+    }
+    const { account } = data;
     return (
-      <Query<AccountData, AccountVariables>
-        query={AccountQuery}
-      >
-        {({ data, error, loading }) => {
-          if (loading) {
-            return "Loading";
-          }
-          if (error) {
-            return <Alert>{error.message}</Alert>;
-          }
-          const { account } = data!;
-          return (
-            <div className="AccountMenu">
-              <Avatar
-                image={account.profile.avatar ? account.profile.avatar.url : undefined}
-                onClick={this.openDropdown}
-                size="small"
-              />
-              <Dropdown
-                onClose={this.closeDropdown}
-                open={this.state.isDropdownOpen}
-              >
-                <ButtonLink
-                  onClick={this.closeDropdown}
-                  to={`profile/${account.profile.id}`}
-                >
-                  Profile
-                </ButtonLink>
-                <ButtonLink
-                  onClick={this.closeDropdown}
-                  to="/account"
-                >
-                  Account
-                </ButtonLink>
-                <hr />
-                <LogoutButton />
-              </Dropdown>
-            </div>
-          );
-        }}
-      </Query>
+      <div className="AccountMenu">
+        {this.renderAvatar(account)}
+        {this.renderDropdown(account)}
+      </div>
     );
   }
 
@@ -73,9 +41,73 @@ export default class AccountMenu extends React.Component<{}, State> {
     });
   }
 
+  private renderAccountButton = () => {
+    return (
+      <ButtonLink
+        onClick={this.closeDropdown}
+        to="/account"
+      >
+        Account
+      </ButtonLink>
+    );
+  }
+
+  private renderAvatar = (
+    account: { profile: { avatar: ImageData | null } }
+  ) => {
+    const { profile: { avatar } } = account;
+    const image = avatar ? avatar.url : undefined;
+    return (
+      <Avatar
+        image={image}
+        onClick={this.openDropdown}
+        size="small"
+      />
+    );
+  }
+
+  private renderDropdown = (
+    account: { profile: { id: string } }
+  ) => {
+    return (
+      <Dropdown
+        onClose={this.closeDropdown}
+        open={this.state.isDropdownOpen}
+      >
+        {this.renderProfileButton(account)}
+        {this.renderAccountButton()}
+        <hr />
+        <LogoutButton />
+      </Dropdown>
+    );
+  }
+
+  private renderProfileButton = (
+    account: { profile: { id: string } }
+  ) => {
+    return (
+      <ButtonLink
+        onClick={this.closeDropdown}
+        to={`profile/${account.profile.id}`}
+      >
+        Profile
+      </ButtonLink>
+    );
+  }
+
   private openDropdown = () => {
     this.setState({
       isDropdownOpen: true,
     });
   }
 }
+
+const AccountMenu = () => (
+  <AccountQuery>
+    {result => {
+      return <AccountMenuContent {...result} />;
+    }}
+  </AccountQuery>
+);
+
+export default AccountMenu;

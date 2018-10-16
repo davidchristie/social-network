@@ -24,7 +24,7 @@ interface State {
 
 class UpdateAccountForm extends React.Component<Props, State> {
   public state: State = {
-    email: this.props.data.account.email,
+    email: this.props.data.account!.email,
   };
 
   public render () {
