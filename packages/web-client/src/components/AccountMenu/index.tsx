@@ -37,12 +37,7 @@ export default class AccountMenu extends React.Component<{}, State> {
                 open={this.state.isDropdownOpen}
               >
                 {this.renderProfileButton(account)}
-                <ButtonLink
-                  onClick={this.closeDropdown}
-                  to="/account"
-                >
-                  Account
-                </ButtonLink>
+                {this.renderAccountButton()}
                 <hr />
                 <LogoutButton />
               </Dropdown>
@@ -57,6 +52,17 @@ export default class AccountMenu extends React.Component<{}, State> {
     this.setState({
       isDropdownOpen: false,
     });
+  }
+
+  private renderAccountButton = () => {
+    return (
+      <ButtonLink
+        onClick={this.closeDropdown}
+        to="/account"
+      >
+        Account
+      </ButtonLink>
+    );
   }
 
   private renderAvatar = (
