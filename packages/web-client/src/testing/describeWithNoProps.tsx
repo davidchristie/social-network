@@ -1,11 +1,9 @@
 import React from "react";
 
-import itMatchesSnapshot from "./itMatchesSnapshot";
+import describeWithProps from "./describeWithProps";
 
 export default function describeWithNoProps (
   Component: React.ComponentType
 ) {
-  describe("with no props", () => {
-    itMatchesSnapshot(<Component />);
-  });
+  describeWithProps("with no props", Component, {});
 }

@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Modal component when closed matches snapshot 1`] = `""`;
+
+exports[`Modal component when open matches snapshot 1`] = `
+<Overlay
+  dark={true}
+>
+  <div
+    className="Modal"
+    onClick={[Function]}
+  />
+</Overlay>
+`;
