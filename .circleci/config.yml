@@ -85,58 +85,6 @@ jobs:
     environment:
       PACKAGE: public-api
 
-  build-tasks:
-    <<: *defaults
-    steps:
-      - checkout
-      - setup_remote_docker
-      - *restore-cached-dependencies
-      - *link-dependencies
-      - restore_cache:
-          keys:
-            - v1-images-davidchristie/puppeteer:a03090d
-      - run:
-          name: Load puppeteer image
-          command: |
-              if [ -f tmp/images/puppeteer.tar ];
-              then
-                docker load < tmp/images/puppeteer.tar
-              else
-                docker pull davidchristie/puppeteer:a03090d
-                docker save --output tmp/images/puppeteer.tar \
-                    davidchristie/puppeteer:a03090d
-              fi
-      - save_cache:
-          name: Cache puppeteer image
-          key: v1-images-davidchristie/puppeteer:a03090d
-          paths:
-            - tmp/images/puppeteer.tar
-      - run:
-          name: Build packages
-          command: yarn build
-      - run:
-          name: Build deploy-data-model image
-          command: |
-              yarn tasks build deploy-data-model
-      - run:
-          name: Build integration-tests image
-          command: |
-              yarn tasks build integration-tests
-      - run:
-          name: Save images
-          command: |
-              mkdir -p tmp/images
-              docker save --output tmp/images/deploy-data-model.tar \
-                  deploy-data-model
-              docker save --output tmp/images/integration-tests.tar \
-                  integration-tests
-      - save_cache:
-          name: Cache images
-          paths:
-            - tmp/images/deploy-data-model.tar
-            - tmp/images/integration-tests.tar
-          key: v1-images-tasks-{{ .Environment.CIRCLE_SHA1 }}
-
   build-web-client:
     <<: *defaults
     <<: *build-package
@@ -221,16 +169,11 @@ jobs:
       - restore_cache:
           keys:
             - v1-images-prismagraphql/prisma:1.8
-      - restore_cache:
-          keys:
-            - v1-images-tasks-{{ .Environment.CIRCLE_SHA1 }}
       - setup_remote_docker
       - run:
           name: Load images from workspace
           command: |
               docker load < tmp/images/authentication.tar
-              docker load < tmp/images/deploy-data-model.tar
-              docker load < tmp/images/integration-tests.tar
               docker load < tmp/images/mysql.tar
               docker load < tmp/images/prisma.tar
               docker load < tmp/images/public-api.tar
@@ -240,14 +183,14 @@ jobs:
           command: |
               yarn production up --detach
       - run:
-          name: List docker images
-          command: docker images
-      - run:
           name: Deploy Prisma data-model
           command: yarn tasks up deploy-data-model
       - run:
           name: Run integration tests
           command: yarn tasks up integration-tests
+      - run:
+          name: List docker images
+          command: docker images
 
   pull-images:
     <<: *defaults
@@ -318,9 +261,6 @@ workflows:
       - build-authentication:
           requires:
             - upload-coverage
-      - build-tasks:
-          requires:
-            - install-dependencies
       - build-public-api:
           requires:
             - upload-coverage
@@ -334,7 +274,6 @@ workflows:
           requires:
             - build-authentication
             - build-public-api
-            - build-tasks
             - build-web-client
             - pull-images
       - pull-images
