@@ -31,17 +31,12 @@ export default class AccountMenu extends React.Component<{}, State> {
           const { account } = data;
           return (
             <div className="AccountMenu">
-              {this.renderAvatar(account.profile.avatar)}
+              {this.renderAvatar(account)}
               <Dropdown
                 onClose={this.closeDropdown}
                 open={this.state.isDropdownOpen}
               >
-                <ButtonLink
-                  onClick={this.closeDropdown}
-                  to={`profile/${account.profile.id}`}
-                >
-                  Profile
-                </ButtonLink>
+                {this.renderProfileButton(account)}
                 <ButtonLink
                   onClick={this.closeDropdown}
                   to="/account"
@@ -64,13 +59,30 @@ export default class AccountMenu extends React.Component<{}, State> {
     });
   }
 
-  private renderAvatar = (avatar: ImageData | null) => {
+  private renderAvatar = (
+    account: { profile: { avatar: ImageData | null } }
+  ) => {
+    const { profile: { avatar } } = account;
+    const image = avatar ? avatar.url : undefined;
     return (
       <Avatar
-        image={avatar ? avatar.url : undefined}
+        image={image}
         onClick={this.openDropdown}
         size="small"
       />
+    );
+  }
+
+  private renderProfileButton = (
+    account: { profile: { id: string } }
+  ) => {
+    return (
+      <ButtonLink
+        onClick={this.closeDropdown}
+        to={`profile/${account.profile.id}`}
+      >
+        Profile
+      </ButtonLink>
     );
   }
 
