@@ -6,7 +6,7 @@ import DeletePostMutation, {
   DeletePostVariables,
 } from "../../mutations/DeletePost";
 import ProfileQuery from "../../queries/Profile";
-import AccountQuery from "../AccountQuery";
+import AccountQuery, { Result } from "../AccountQuery";
 import Alert from "../Alert";
 import Button from "../Button";
 import ConfirmationModal from "../ConfirmationModal";
@@ -19,7 +19,7 @@ interface State {
   isConfirmationModalOpen: boolean;
 }
 
-export default class DeletePostButton extends React.Component<Props, State> {
+export class DeletePostButtonContent extends React.Component<Props, State> {
   public state = {
     isConfirmationModalOpen: false,
   };
@@ -83,3 +83,15 @@ export default class DeletePostButton extends React.Component<Props, State> {
     });
   }
 }
+
+const DeletePostButton: React.SFC<Props> = (props: Props) => (
+  <AccountQuery>
+    {(result: Result) => {
+      return (
+        <DeletePostButton {...props} {...result} />
+      );
+    }}
+  </ AccountQuery>
+);
+
+export default DeletePostButton;
