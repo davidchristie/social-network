@@ -7,3 +7,33 @@ exports[`AccountMenu component with no props matches snapshot 1`] = `
 `;
 
 exports[`AccountMenuContent component renders loading state matches snapshot 1`] = `"Loading"`;
+
+exports[`AccountMenuContent component renders profile with no avatar matches snapshot 1`] = `
+<div
+  className="AccountMenu"
+>
+  <Avatar
+    onClick={[Function]}
+    size="small"
+  />
+  <Dropdown
+    onClose={[Function]}
+    open={false}
+  >
+    <ButtonLink
+      onClick={[Function]}
+      to="profile/PROFILE_ID"
+    >
+      Profile
+    </ButtonLink>
+    <ButtonLink
+      onClick={[Function]}
+      to="/account"
+    >
+      Account
+    </ButtonLink>
+    <hr />
+    <LogoutButton />
+  </Dropdown>
+</div>
+`;
