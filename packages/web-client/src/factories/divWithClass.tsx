@@ -3,7 +3,7 @@ import React from "react";
 interface Props extends React.HTMLAttributes<HTMLElement> { }
 
 export default function divWithClass (displayName: string) {
-  const DivWithClass: React.SFC = (props: Props) => {
+  const DivWithClass: React.SFC<Props> = (props: Props) => {
     const { children, className, ...attributes } = props;
     const classes = [displayName];
     if (className) {
