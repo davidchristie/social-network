@@ -1,10 +1,6 @@
 import React from "react";
-import { Query } from "react-apollo";
 
-import AccountQuery, {
-  AccountData,
-  AccountVariables
-} from "../../queries/Account";
+import AccountQuery from "../AccountQuery";
 import Alert from "../Alert";
 import Avatar from "../Avatar";
 import ButtonLink from "../ButtonLink";
@@ -23,9 +19,7 @@ export default class AccountMenu extends React.Component<{}, State> {
 
   public render () {
     return (
-      <Query<AccountData, AccountVariables>
-        query={AccountQuery}
-      >
+      <AccountQuery>
         {({ data, error, loading }) => {
           if (loading) {
             return "Loading";
@@ -63,7 +57,7 @@ export default class AccountMenu extends React.Component<{}, State> {
             </div>
           );
         }}
-      </Query>
+      </AccountQuery>
     );
   }
 
