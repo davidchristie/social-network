@@ -5,3 +5,5 @@ exports[`AccountMenu component with no props matches snapshot 1`] = `
   <Component />
 </AccountQuery>
 `;
+
+exports[`AccountMenuContent component renders loading state matches snapshot 1`] = `"Loading"`;

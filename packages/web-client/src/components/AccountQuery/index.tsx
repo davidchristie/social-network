@@ -6,6 +6,8 @@ import Account, {
   AccountVariables
 } from "../../queries/Account";
 
+export type Result = QueryResult<AccountData, AccountVariables>;
+
 interface Props {
   children: (result: QueryResult<AccountData, AccountVariables>) => React.ReactNode;
 }

@@ -1,7 +1,7 @@
 import React from "react";
 
 import { ImageData } from "../../fragments/Image";
-import AccountQuery from "../AccountQuery";
+import AccountQuery, { Result } from "../AccountQuery";
 import Alert from "../Alert";
 import Avatar from "../Avatar";
 import ButtonLink from "../ButtonLink";
@@ -13,30 +13,25 @@ interface State {
   isDropdownOpen: boolean;
 }
 
-export default class AccountMenu extends React.Component<{}, State> {
+export class AccountMenuContent extends React.Component<Result, State> {
   public state = {
     isDropdownOpen: false,
   };
 
   public render () {
+    const { data, error, loading } = this.props;
+    if (loading || !data || !data.account) {
+      return "Loading";
+    }
+    if (error) {
+      return <Alert>{error.message}</Alert>;
+    }
+    const { account } = data;
     return (
-      <AccountQuery>
-        {({ data, error, loading }) => {
-          if (loading || !data || !data.account) {
-            return "Loading";
-          }
-          if (error) {
-            return <Alert>{error.message}</Alert>;
-          }
-          const { account } = data;
-          return (
-            <div className="AccountMenu">
-              {this.renderAvatar(account)}
-              {this.renderDropdown(account)}
-            </div>
-          );
-        }}
-      </AccountQuery>
+      <div className="AccountMenu">
+        {this.renderAvatar(account)}
+        {this.renderDropdown(account)}
+      </div>
     );
   }
 
@@ -106,3 +101,13 @@ export default class AccountMenu extends React.Component<{}, State> {
     });
   }
 }
+
+const AccountMenu = () => (
+  <AccountQuery>
+    {result => {
+      return <AccountMenuContent {...result} />;
+    }}
+  </AccountQuery>
+);
+
+export default AccountMenu;
