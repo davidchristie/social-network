@@ -32,15 +32,7 @@ export default class AccountMenu extends React.Component<{}, State> {
           return (
             <div className="AccountMenu">
               {this.renderAvatar(account)}
-              <Dropdown
-                onClose={this.closeDropdown}
-                open={this.state.isDropdownOpen}
-              >
-                {this.renderProfileButton(account)}
-                {this.renderAccountButton()}
-                <hr />
-                <LogoutButton />
-              </Dropdown>
+              {this.renderDropdown(account)}
             </div>
           );
         }}
@@ -76,6 +68,22 @@ export default class AccountMenu extends React.Component<{}, State> {
         onClick={this.openDropdown}
         size="small"
       />
+    );
+  }
+
+  private renderDropdown = (
+    account: { profile: { id: string } }
+  ) => {
+    return (
+      <Dropdown
+        onClose={this.closeDropdown}
+        open={this.state.isDropdownOpen}
+      >
+        {this.renderProfileButton(account)}
+        {this.renderAccountButton()}
+        <hr />
+        <LogoutButton />
+      </Dropdown>
     );
   }
 
