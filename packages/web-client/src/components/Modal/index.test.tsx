@@ -7,4 +7,8 @@ describe("Modal component", () => {
   describe("when closed", () => {
     itMatchesSnapshot(<Modal onClose={() => { return; }} open={false} />);
   });
+
+  describe("when open", () => {
+    itMatchesSnapshot(<Modal onClose={() => { return; }} open={true} />);
+  });
 });
