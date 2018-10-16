@@ -1,5 +1,6 @@
 import React from "react";
 
+import { ImageData } from "../../fragments/Image";
 import AccountQuery from "../AccountQuery";
 import Alert from "../Alert";
 import Avatar from "../Avatar";
@@ -21,20 +22,16 @@ export default class AccountMenu extends React.Component<{}, State> {
     return (
       <AccountQuery>
         {({ data, error, loading }) => {
-          if (loading) {
+          if (loading || !data || !data.account) {
             return "Loading";
           }
           if (error) {
             return <Alert>{error.message}</Alert>;
           }
-          const { account } = data!;
+          const { account } = data;
           return (
             <div className="AccountMenu">
-              <Avatar
-                image={account.profile.avatar ? account.profile.avatar.url : undefined}
-                onClick={this.openDropdown}
-                size="small"
-              />
+              {this.renderAvatar(account.profile.avatar)}
               <Dropdown
                 onClose={this.closeDropdown}
                 open={this.state.isDropdownOpen}
@@ -65,6 +62,16 @@ export default class AccountMenu extends React.Component<{}, State> {
     this.setState({
       isDropdownOpen: false,
     });
+  }
+
+  private renderAvatar = (avatar: ImageData | null) => {
+    return (
+      <Avatar
+        image={avatar ? avatar.url : undefined}
+        onClick={this.openDropdown}
+        size="small"
+      />
+    );
   }
 
   private openDropdown = () => {
