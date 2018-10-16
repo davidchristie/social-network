@@ -25,10 +25,10 @@ interface State {
 
 class UpdateProfileForm extends React.Component<Props, State> {
   public state: State = {
-    avatarUrl: this.props.data.account.profile.avatar
-      ? this.props.data.account.profile.avatar.url
+    avatarUrl: this.props.data.account!.profile.avatar
+      ? this.props.data.account!.profile.avatar!.url
       : "",
-    name: this.props.data.account.profile.name,
+    name: this.props.data.account!.profile.name,
   };
 
   public render () {

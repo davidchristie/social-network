@@ -30,13 +30,13 @@ export default class CreatePostForm extends React.Component<{}, State> {
         query={AccountQuery}
       >
         {({ data, error, loading }) => {
-          if (loading) {
+          if (loading || !data || !data.account) {
             return "Loading";
           }
           if (error) {
             return <Alert>{error.message}</Alert>;
           }
-          const { account } = data!;
+          const { account } = data;
           return (
             <Mutation<CreatePostData, CreatePostVariables>
               mutation={CreatePostMutation}
