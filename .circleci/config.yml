@@ -70,42 +70,6 @@ jobs:
     environment:
       PACKAGE: web-client
 
-  check-puppeteer:
-    <<: *defaults
-    steps:
-      - checkout
-      - run:
-          name: Check for changes
-          command: |
-              if [ -z $(git diff --name-only HEAD~ images/puppeteer) ]
-              then
-                echo "No changes in the last commit"
-                circleci step halt
-              else
-                echo "Was changed in the last commit"
-              fi
-      - setup_remote_docker
-      - run:
-          name: Log in to docker
-          command: |
-              docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-      - run:
-          name: Set image name
-          command: |
-              echo 'IMAGE="$DOCKER_USERNAME/puppeteer"' >> $BASH_ENV
-              echo 'VERSION="$(git rev-parse --short HEAD)"' >> $BASH_ENV
-      - run:
-          name: Build image
-          command: |
-              docker build \
-                  --tag $IMAGE:latest \
-                  --tag $IMAGE:$VERSION \
-                  images/puppeteer
-      - run:
-          name: Push image
-          command: |
-              docker push $IMAGE
-
   install-dependencies:
     <<: *defaults
     steps:
@@ -245,7 +209,6 @@ workflows:
       - build-web-client:
           requires:
             - unit-tests
-      - check-puppeteer
       - install-dependencies
       - integration-tests:
           requires:
