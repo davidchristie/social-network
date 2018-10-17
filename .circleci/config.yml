@@ -47,9 +47,6 @@ references:
             - images/*.tar
 
   deploy-service: &deploy-service
-    branches:
-      only:
-        - master
     steps:
       - checkout
       - attach_workspace:
@@ -256,12 +253,21 @@ workflows:
       - deploy-authentication:
           requires:
             - integration-tests
+          filters:
+            branches:
+              only: master
       - deploy-public-api:
           requires:
             - integration-tests
+          filters:
+            branches:
+              only: master
       - deploy-web-client:
           requires:
             - integration-tests
+          filters:
+            branches:
+              only: master
       - install-dependencies
       - integration-tests:
           requires:
