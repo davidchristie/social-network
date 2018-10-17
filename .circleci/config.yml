@@ -20,7 +20,7 @@ references:
 
   # Jobs
 
-  build-package: &build-package
+  build-service: &build-service
     steps:
       - checkout
       - attach_workspace:
@@ -34,16 +34,41 @@ references:
       - run:
           name: Build production image
           command: |
-              yarn production build $PACKAGE
+              VERSION="$(git rev-parse --short HEAD)"
+              yarn production build $NAME
       - run:
           name: Save image to workspace
           command: |
               mkdir -p tmp/images
-              docker save --output tmp/images/$PACKAGE.tar davidchristie/$PACKAGE
+              docker save --output tmp/images/$NAME.tar davidchristie/$NAME
       - persist_to_workspace:
           root: tmp
           paths:
             - images/*.tar
+
+  deploy-service: &deploy-service
+    branches:
+      only: master
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/repo/tmp
+      - setup_remote_docker
+      - run:
+          name: Load images from workspace
+          command: |
+              docker load < tmp/images/$NAME.tar
+      - run:
+          name: List images
+          command: docker images
+      - run:
+          name: Log in to docker
+          command: |
+              docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+      - run:
+          name: Push image
+          command: |
+              docker push $NAME
 
   defaults: &defaults
     docker:
@@ -54,21 +79,39 @@ jobs:
 
   build-authentication:
     <<: *defaults
-    <<: *build-package
+    <<: *build-service
     environment:
-      PACKAGE: authentication
+      NAME: authentication
 
   build-public-api:
     <<: *defaults
-    <<: *build-package
+    <<: *build-service
     environment:
-      PACKAGE: public-api
+      NAME: public-api
 
   build-web-client:
     <<: *defaults
-    <<: *build-package
+    <<: *build-service
     environment:
-      PACKAGE: web-client
+      NAME: web-client
+
+  deploy-authentication:
+    <<: *defaults
+    <<: *deploy-service
+    environment:
+      NAME: authentication
+
+  deploy-public-api:
+    <<: *defaults
+    <<: *deploy-service
+    environment:
+      NAME: public-api
+
+  deploy-web-client:
+    <<: *defaults
+    <<: *deploy-service
+    environment:
+      NAME: web-client
 
   install-dependencies:
     <<: *defaults
@@ -209,6 +252,15 @@ workflows:
       - build-web-client:
           requires:
             - unit-tests
+      - deploy-authentication:
+          requires:
+            - integration-tests
+      - deploy-public-api:
+          requires:
+            - integration-tests
+      - deploy-web-client:
+          requires:
+            - integration-tests
       - install-dependencies
       - integration-tests:
           requires:
