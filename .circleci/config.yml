@@ -34,7 +34,7 @@ references:
       - run:
           name: Build production image
           command: |
-              VERSION="$(git rev-parse --short HEAD)"
+              export VERSION="$(git rev-parse --short HEAD)"
               yarn production build $NAME
       - run:
           name: Save image to workspace
