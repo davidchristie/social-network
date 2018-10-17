@@ -151,6 +151,7 @@ jobs:
       - run:
           name: Start production services
           command: |
+              export VERSION="$(git rev-parse --short HEAD)"
               yarn production up --detach
       - run:
           name: Deploy Prisma data-model
