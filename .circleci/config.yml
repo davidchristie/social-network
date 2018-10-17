@@ -50,27 +50,6 @@ references:
     - image: circleci/node:9.11
     working_directory: ~/repo
 
-  test-package: &test-package
-    steps:
-      - checkout
-      - attach_workspace:
-          at: ~/repo/tmp
-      - *restore-cached-dependencies
-      - *link-dependencies
-      - run:
-          name: Run unit tests
-          command: yarn $PACKAGE test
-      - run:
-          name: Format coverage report
-          command: |
-              ./tmp/test-reporter format-coverage -t lcov \
-                  -o tmp/coverage.$PACKAGE.json \
-                  packages/$PACKAGE/coverage/lcov.info
-      - persist_to_workspace:
-          root: tmp
-          paths:
-            - coverage.*.json
-
 jobs:
 
   build-authentication:
@@ -126,20 +105,6 @@ jobs:
           name: Push image
           command: |
               docker push $IMAGE
-
-  download-test-reporter:
-    <<: *defaults
-    steps:
-      - run:
-          name:  Download test reporter
-          command: |
-            mkdir -p tmp/
-            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./tmp/test-reporter
-            chmod +x ./tmp/test-reporter
-      - persist_to_workspace:
-          root: tmp
-          paths:
-            - test-reporter
 
   install-dependencies:
     <<: *defaults
@@ -221,35 +186,48 @@ jobs:
           paths:
             - tmp/images/prisma.tar
 
-  test-authentication:
-    <<: *defaults
-    <<: *test-package
-    environment:
-      PACKAGE: authentication
-
-  test-public-api:
-    <<: *defaults
-    <<: *test-package
-    environment:
-      PACKAGE: public-api
-
-  test-web-client:
-    <<: *defaults
-    <<: *test-package
-    environment:
-      PACKAGE: web-client
-
-  upload-coverage:
+  unit-tests:
     <<: *defaults
     steps:
-      - attach_workspace:
-          at: ~/repo/tmp
+      - checkout
+      - *restore-cached-dependencies
+      - *link-dependencies
       - run:
-          name: Upload coverage results to Code Climate
+          name: Test authentication
+          command: yarn authentication test --coverage
+      - run:
+          name: Test public-api
+          command: yarn public-api test --coverage
+      - run:
+          name: Test web-client
+          command: yarn web-client test --coverage
+      - run:
+          name: Download test reporter
           command: |
+            mkdir -p tmp/
+              curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./tmp/test-reporter
+              chmod +x ./tmp/test-reporter
+      - run:
+          name: Format coverage report
+          command: |
+            ./tmp/test-reporter format-coverage -t lcov \
+                  -o tmp/coverage.authentication.json \
+                  packages/authentication/coverage/lcov.info
+
+            ./tmp/test-reporter format-coverage -t lcov \
+                  -o tmp/coverage.public-api.json \
+                  packages/public-api/coverage/lcov.info
+
+            ./tmp/test-reporter format-coverage -t lcov \
+                  -o tmp/coverage.web-client.json \
+                  packages/web-client/coverage/lcov.info
+
             ./tmp/test-reporter sum-coverage tmp/coverage.*.json \
-                --parts 3 \
-                --output tmp/coverage.total.json
+              --parts 3 \
+              --output tmp/coverage.total.json
+      - run:
+          name: Upload report
+          command: |
             ./tmp/test-reporter upload-coverage \
               --id $CODE_CLIMATE_TEST_REPORTER_ID \
               --input tmp/coverage.total.json
@@ -260,15 +238,14 @@ workflows:
     jobs:
       - build-authentication:
           requires:
-            - upload-coverage
+            - unit-tests
       - build-public-api:
           requires:
-            - upload-coverage
+            - unit-tests
       - build-web-client:
           requires:
-            - upload-coverage
+            - unit-tests
       - check-puppeteer
-      - download-test-reporter
       - install-dependencies
       - integration-tests:
           requires:
@@ -277,20 +254,6 @@ workflows:
             - build-web-client
             - pull-images
       - pull-images
-      - test-authentication:
+      - unit-tests:
           requires:
-            - download-test-reporter
             - install-dependencies
-      - test-public-api:
-          requires:
-            - download-test-reporter
-            - install-dependencies
-      - test-web-client:
-          requires:
-            - download-test-reporter
-            - install-dependencies
-      - upload-coverage:
-          requires:
-            - test-authentication
-            - test-public-api
-            - test-web-client
