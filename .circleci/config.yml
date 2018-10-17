@@ -48,7 +48,8 @@ references:
 
   deploy-service: &deploy-service
     branches:
-      only: master
+      only:
+        - master
     steps:
       - checkout
       - attach_workspace:
