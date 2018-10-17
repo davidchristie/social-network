@@ -18,3 +18,5 @@ services:
       dockerfile: packages/tasks/integration-tests/Dockerfile
     environment:
       - ORIGIN=http://web-client:3000
+    volumes:
+      - .:/app
