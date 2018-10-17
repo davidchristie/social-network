@@ -210,6 +210,18 @@ jobs:
       - run:
           name: Format coverage report
           command: |
+            ./tmp/test-reporter format-coverage -t lcov \
+                  -o tmp/coverage.authentication.json \
+                  packages/authentication/coverage/lcov.info
+
+            ./tmp/test-reporter format-coverage -t lcov \
+                  -o tmp/coverage.public-api.json \
+                  packages/public-api/coverage/lcov.info
+
+            ./tmp/test-reporter format-coverage -t lcov \
+                  -o tmp/coverage.web-client.json \
+                  packages/web-client/coverage/lcov.info
+
             ./tmp/test-reporter sum-coverage tmp/coverage.*.json \
               --parts 3 \
               --output tmp/coverage.total.json
