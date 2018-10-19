@@ -156,10 +156,10 @@ jobs:
               yarn production up --detach
       - run:
           name: Deploy Prisma data-model
-          command: yarn tasks up deploy-data-model
+          command: yarn tasks run deploy-data-model
       - run:
           name: Run integration tests
-          command: yarn tasks up integration-tests
+          command: yarn tasks run integration-tests
       - run:
           name: List docker images
           command: docker images
