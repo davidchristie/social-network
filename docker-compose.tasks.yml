@@ -8,8 +8,6 @@ services:
       dockerfile: packages/tasks/deploy-data-model/Dockerfile
     environment:
       - PRISMA_ENDPOINT=http://prisma:4466/social-network/production
-    volumes:
-      - .:/app
 
   integration-tests:
     image: integration-tests
@@ -18,5 +16,3 @@ services:
       dockerfile: packages/tasks/integration-tests/Dockerfile
     environment:
       - ORIGIN=http://web-client:3000
-    volumes:
-      - .:/app
