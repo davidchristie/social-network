@@ -8,6 +8,7 @@ metadata:
     name: public-api
     app: social-network
 spec:
+  type: NodePort
   ports:
   - port: 4000
     targetPort: 4000

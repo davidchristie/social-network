@@ -15,6 +15,16 @@ afterAll(async () => {
   browser.close();
 });
 
-export default function newPage () {
-  return browser.newPage();
+export default async function newPage() {
+  const page = await browser.newPage();
+  await page.setRequestInterception(true);
+  page.on('request', (interceptedRequest) => {
+    if (interceptedRequest.url() === `${process.env.ORIGIN}/api`) {
+      return interceptedRequest.continue({
+        url: process.env.API_ENDPOINT
+      });
+    }
+    interceptedRequest.continue();
+  })
+  return page;
 }

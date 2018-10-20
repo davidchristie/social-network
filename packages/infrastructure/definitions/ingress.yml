@@ -4,21 +4,40 @@ metadata:
   name: ingress
   namespace: social-network
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
+    kubernetes.io/ingress.global-static-ip-name: "social-network-ip"
+    # nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
-  tls:
-  - hosts:
-    - www.social-network.com
-    secretName: tls
   rules:
-  - host: www.social-network.com
-    http:
+  - http:
       paths:
-      - path: /
+      - path: /*
         backend:
           serviceName: web-client
           servicePort: 3000
-      - path: /graphql
+      - path: /api/*
         backend:
           serviceName: public-api
           servicePort: 4000
+
+# spec:
+#   backend:
+#     serviceName: web-client
+#     servicePort: 3000
+
+# spec:
+#   tls:
+#   - hosts:
+#     - www.social-network.com
+#     secretName: tls
+#   rules:
+#   - host: www.social-network.com
+#     http:
+#       paths:
+#       - path: /
+#         backend:
+#           serviceName: web-client
+#           servicePort: 3000
+#       - path: /graphql
+#         backend:
+#           serviceName: public-api
+#           servicePort: 4000

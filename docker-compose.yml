@@ -2,7 +2,7 @@ version: '3'
 
 services:
   authentication:
-    image: davidchristie/authentication:${VERSION}
+    image: davidchristie/authentication:${VERSION:-latest}
     build:
       context: .
     ports:
@@ -41,7 +41,7 @@ services:
       - mysql
 
   public-api:
-    image: davidchristie/public-api:${VERSION}
+    image: davidchristie/public-api:${VERSION:-latest}
     build:
       context: .
     ports:
@@ -54,7 +54,7 @@ services:
       - prisma
 
   web-client:
-    image: davidchristie/web-client:${VERSION}
+    image: davidchristie/web-client:${VERSION:-latest}
     build:
       context: .
     ports:
