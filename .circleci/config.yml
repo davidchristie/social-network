@@ -246,6 +246,7 @@ jobs:
     environment:
       GOOGLE_PROJECT_ID: social-network-219921
       GOOGLE_COMPUTE_ZONE: australia-southeast1-a
+      GOOGLE_CLUSTER_NAME: social-network
     steps:
       - checkout
       - run:
@@ -258,11 +259,7 @@ jobs:
               --key-file=${HOME}/gcloud-service-key.json
             gcloud --quiet config set project ${GOOGLE_PROJECT_ID}
             gcloud --quiet config set compute/zone ${GOOGLE_COMPUTE_ZONE}
-      - run:
-          name: Set current version
-          command: |
-            export VERSION="$(git rev-parse --short HEAD)"
-            echo 'export VERSION="$VERSION"' >> $BASH_ENV
+            gcloud --quiet container clusters get-credentials ${GOOGLE_CLUSTER_NAME}
       - run:
           name: Install envsubst
           command: apt-get install -y gettext
@@ -272,16 +269,19 @@ jobs:
       - run:
           name: Update authentication version
           command: |
+            export VERSION="$(git rev-parse --short HEAD)"
             envsubst < packages/infrastructure/definitions/authentication/deployment.yml > updated/authentication-deployment.yml
             kubectl apply -f updated/authentication-deployment.yml
       - run:
           name: Update public-api version
           command: |
+            export VERSION="$(git rev-parse --short HEAD)"
             envsubst < packages/infrastructure/definitions/public-api/deployment.yml > updated/public-api-deployment.yml
             kubectl apply -f updated/public-api-deployment.yml
       - run:
           name: Update web-client version
           command: |
+            export VERSION="$(git rev-parse --short HEAD)"
             envsubst < packages/infrastructure/definitions/web-client/deployment.yml > updated/web-client-deployment.yml
             kubectl apply -f updated/web-client-deployment.yml
 
