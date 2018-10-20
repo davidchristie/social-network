@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: authentication
-        image: davidchristie/authentication:d5ca0b0
+        image: davidchristie/authentication:cd94326
         env:
         - name: JWT_SECRET
           valueFrom:

@@ -20,4 +20,4 @@ spec:
     spec:
       containers:
       - name: web-client
-        image: davidchristie/web-client:d5ca0b0
+        image: davidchristie/web-client:cd94326
