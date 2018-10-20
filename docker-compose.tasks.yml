@@ -16,3 +16,4 @@ services:
       dockerfile: packages/tasks/integration-tests/Dockerfile
     environment:
       - ORIGIN=http://web-client:3000
+      - API_ENDPOINT=http://public-api:4000
