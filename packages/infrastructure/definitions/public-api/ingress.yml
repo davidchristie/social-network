@@ -1,0 +1,19 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: public-api
+  namespace: social-network
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: "public-api"
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /
+        backend:
+          serviceName: public-api
+          servicePort: 4000
+# spec:
+#   backend:
+#     serviceName: public-api
+#     servicePort: 4000

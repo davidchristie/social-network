@@ -15,6 +15,7 @@ kubectl apply -f definitions/prisma/deployment.yml
 kubectl apply -f definitions/prisma/service.yml
 kubectl apply -f definitions/public-api/deployment.yml
 kubectl apply -f definitions/public-api/service.yml
+kubectl apply -f definitions/public-api/ingress.yml
 kubectl apply -f definitions/web-client/deployment.yml
 kubectl apply -f definitions/web-client/service.yml
-kubectl apply -f definitions/ingress.yml
+# kubectl apply -f definitions/web-client/ingress.yml

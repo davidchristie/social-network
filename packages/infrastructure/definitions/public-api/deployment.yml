@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: public-api
-        image: davidchristie/public-api:d5ca0b0
+        image: davidchristie/public-api:${VERSION}
         env:
         - name: AUTHENTICATION_ENDPOINT
           value: 'http://authentication.social-network:5000'

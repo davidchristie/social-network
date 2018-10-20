@@ -1,0 +1,11 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: web-client
+  namespace: social-network
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: "web-client"
+spec:
+  backend:
+    serviceName: web-client
+    servicePort: 3000
