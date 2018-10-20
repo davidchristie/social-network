@@ -267,17 +267,17 @@ jobs:
       - run:
           name: Update authentication version
           command:
-            envsubst < packages/infrastructure/authentication/deployment.yml > tmp/updated-authentication-deployment.yml
+            envsubst < packages/infrastructure/definitions/authentication/deployment.yml > tmp/updated-authentication-deployment.yml
             kubectl apply -f tmp/updated-authentication-deployment.yml
       - run:
           name: Update public-api version
           command:
-            envsubst < packages/infrastructure/public-api/deployment.yml > tmp/updated-public-api-deployment.yml
+            envsubst < packages/infrastructure/definitions/public-api/deployment.yml > tmp/updated-public-api-deployment.yml
             kubectl apply -f tmp/updated-public-api-deployment.yml
       - run:
           name: Update web-client version
           command:
-            envsubst < packages/infrastructure/web-client/deployment.yml > tmp/updated-web-client-deployment.yml
+            envsubst < packages/infrastructure/definitions/web-client/deployment.yml > tmp/updated-web-client-deployment.yml
             kubectl apply -f tmp/updated-web-client-deployment.yml
 
 workflows:
