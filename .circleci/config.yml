@@ -267,20 +267,23 @@ jobs:
           name: Install envsubst
           command: apt-get install -y gettext
       - run:
+          name: Make updated directory
+          command: mkdir updated
+      - run:
           name: Update authentication version
           command:
-            envsubst < packages/infrastructure/definitions/authentication/deployment.yml > tmp/updated-authentication-deployment.yml
-            kubectl apply -f tmp/updated-authentication-deployment.yml
+            envsubst < packages/infrastructure/definitions/authentication/deployment.yml > updated/authentication-deployment.yml
+            kubectl apply -f updated/authentication-deployment.yml
       - run:
           name: Update public-api version
           command:
-            envsubst < packages/infrastructure/definitions/public-api/deployment.yml > tmp/updated-public-api-deployment.yml
-            kubectl apply -f tmp/updated-public-api-deployment.yml
+            envsubst < packages/infrastructure/definitions/public-api/deployment.yml > updated/public-api-deployment.yml
+            kubectl apply -f updated/public-api-deployment.yml
       - run:
           name: Update web-client version
           command:
-            envsubst < packages/infrastructure/definitions/web-client/deployment.yml > tmp/updated-web-client-deployment.yml
-            kubectl apply -f tmp/updated-web-client-deployment.yml
+            envsubst < packages/infrastructure/definitions/web-client/deployment.yml > updated/web-client-deployment.yml
+            kubectl apply -f updated/web-client-deployment.yml
 
 workflows:
   version: 2
