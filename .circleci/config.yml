@@ -246,6 +246,7 @@ jobs:
       GOOGLE_PROJECT_ID: social-network-219921
       GOOGLE_COMPUTE_ZONE: australia-southeast1-a
     steps:
+      - checkout
       - run:
           name: Store service account key
           command: echo $GCLOUD_SERVICE_KEY > ${HOME}/gcloud-service-key.json
