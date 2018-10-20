@@ -239,6 +239,46 @@ jobs:
               --id $CODE_CLIMATE_TEST_REPORTER_ID \
               --input tmp/coverage.total.json
 
+  update-cluster:
+    docker:
+      - image: google/cloud-sdk
+    environment:
+      GOOGLE_PROJECT_ID: social-network-219921
+      GOOGLE_COMPUTE_ZONE: australia-southeast1-a
+    steps:
+      - run:
+          name: Store service account key
+          command: echo $GCLOUD_SERVICE_KEY > ${HOME}/gcloud-service-key.json
+      - run:
+          name: Login to Google Cloud SDK
+          command: |
+            sudo gcloud auth activate-service-account --key-file=${HOME}/gcloud-service-key.json
+            sudo gcloud --quiet config set project ${GOOGLE_PROJECT_ID}
+            sudo gcloud --quiet config set compute/zone ${GOOGLE_COMPUTE_ZONE}
+      - run:
+          name: Set current version
+          command: |
+            export VERSION="$(git rev-parse --short HEAD)"
+            echo 'export VERSION="$VERSION"' >> $BASH_ENV
+      - run:
+          name: Install envsubst
+          command: apt-get install -y gettext
+      - run:
+          name: Update authentication version
+          command:
+            envsubst < packages/infrastructure/authentication/deployment.yml > tmp/updated-authentication-deployment.yml
+            kubectl apply -f tmp/updated-authentication-deployment.yml
+      - run:
+          name: Update public-api version
+          command:
+            envsubst < packages/infrastructure/public-api/deployment.yml > tmp/updated-public-api-deployment.yml
+            kubectl apply -f tmp/updated-public-api-deployment.yml
+      - run:
+          name: Update web-client version
+          command:
+            envsubst < packages/infrastructure/web-client/deployment.yml > tmp/updated-web-client-deployment.yml
+            kubectl apply -f tmp/updated-web-client-deployment.yml
+
 workflows:
   version: 2
   build-test-deploy:
@@ -281,3 +321,11 @@ workflows:
       - unit-tests:
           requires:
             - install-dependencies
+      - update-cluster:
+          requires:
+            - deploy-authentication
+            - deploy-public-api
+            - deploy-web-client
+          filters:
+            branches:
+              only: master
