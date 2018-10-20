@@ -242,6 +242,7 @@ jobs:
   update-cluster:
     docker:
       - image: google/cloud-sdk
+    working_directory: ~/project
     environment:
       GOOGLE_PROJECT_ID: social-network-219921
       GOOGLE_COMPUTE_ZONE: australia-southeast1-a
