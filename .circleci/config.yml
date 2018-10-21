@@ -282,6 +282,11 @@ jobs:
             envsubst < packages/infrastructure/definitions/public-api/deployment.yml > updated/public-api-deployment.yml
             kubectl apply -f updated/public-api-deployment.yml
       - run:
+          <<: *kubectl-apply
+          name: Update public-api service
+          environment:
+            FILE: packages/infrastructure/definitions/public-api/service.yml
+      - run:
           name: Update web-client deployment
           command: |
             export VERSION="$(git rev-parse --short HEAD)"
