@@ -8,17 +8,14 @@ import signup from "./signup";
 
 describe("POST /signup", () => {
   describe("without email, name or password", () => {
-    it("returns status code 400", done => {
-      postToRouter(signup, {})
-        .expect(400)
-        .end((error, response) => {
-          if (error) {
-            throw error
-          }
-          expect(response.text).toEqual("Error creating account")
-          done()
-        });
-    });
+    it("returns status code 400", () => postToRouter({
+      data: {},
+      expect: {
+        status: 400,
+        text: "Error creating account"
+      },
+      router: signup,
+    }));
   });
 
   describe("with valid input", () => {
@@ -30,26 +27,30 @@ describe("POST /signup", () => {
       profile: null,
     }
 
-    it("returns access token", async done => {
+    beforeEach(async () => {
       mockCreateAccountOnce({
         ...account,
         password: await getHash(account.password)
-      })
-      postToRouter(signup, {
+      });
+    });
+
+    afterEach(() => {
+      jest.resetAllMocks();
+    });
+
+    it("returns access token", () => postToRouter({
+      data: {
         email: account.email,
         name: account.name,
         password: account.password,
-      })
-        .expect(200)
-        .end((error, response) => {
-          if (error) {
-            throw error
-          }
-          expect(response.body).toEqual({
-            token: getToken(account)
-          })
-          done()
-        })
-    })
-  })
-})
+      },
+      expect: {
+        body: {
+          token: getToken(account)
+        },
+        status: 200,
+      },
+      router: signup,
+    }));
+  });
+});

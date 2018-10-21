@@ -11,20 +11,17 @@ describe("POST /login", () => {
   describe("if no account matches email", () => {
     const UNKNOWN_EMAIL = "unknown@email.com"
 
-    it("returns status code 404", done => {
-      postToRouter(login, {
+    it("returns status code 404", () => postToRouter({
+      data: {
         email: UNKNOWN_EMAIL,
         password: "xxxxxxxx",
-      })
-        .expect(404)
-        .end((error, response) => {
-          if (error) {
-            throw error
-          }
-          expect(response.text).toEqual(`No account found for email: ${UNKNOWN_EMAIL}`)
-          done()
-        })
-    })
+      },
+      expect: {
+        status: 404,
+        text: `No account found for email: ${UNKNOWN_EMAIL}`
+      },
+      router: login,
+    }))
   })
 
   describe("with incorrect password", () => {
@@ -36,25 +33,29 @@ describe("POST /login", () => {
       profile: null,
     }
 
-    it("returns status code 422", async done => {
+    beforeEach(async () => {
       mockQueryAccountOnce({
         id: account.id,
         password: await getHash(account.password)
-      })
-      postToRouter(login, {
+      });
+    });
+
+    afterEach(() => {
+      jest.resetAllMocks();
+    });
+
+    it("returns status code 422", () => postToRouter({
+      data: {
         email: "user@email.com",
         password: "wrong_password",
-      })
-        .expect(422)
-        .end((error, response) => {
-          if (error) {
-            throw error
-          }
-          expect(response.text).toEqual("Invalid password")
-          done()
-        })
-    })
-  })
+      },
+      expect: {
+        status: 422,
+        text: "Invalid password"
+      },
+      router: login,
+    }));
+  });
 
   describe("with correct password", () => {
     const account = {
@@ -63,44 +64,54 @@ describe("POST /login", () => {
       name: "User",
       password: "password123",
       profile: null,
-    }
+    };
 
-    it("returns access token", async done => {
+    beforeEach(async () => {
       mockQueryAccountOnce({
         id: account.id,
         password: await getHash(account.password)
-      })
-      postToRouter(login, {
+      });
+    });
+
+    afterEach(() => {
+      jest.resetAllMocks();
+    });
+
+    it("returns access token", () => postToRouter({
+      router: login,
+      data: {
         email: "user@email.com",
         password: account.password,
-      })
-        .expect(200)
-        .end((error, response) => {
-          if (error) {
-            throw error
-          }
-          expect(response.body).toEqual({
-            token: getToken(account)
-          })
-          done()
-        })
-    })
-  })
+      },
+      expect: {
+        body: {
+          token: getToken(account)
+        },
+        status: 200
+      }
+    }));
+  });
 
   describe("with Prisma error", () => {
-    const ERROR_MESSAGE = "Test error"
+    const ERROR_MESSAGE = "Test error";
 
-    it("returns status code 500", done => {
-      mockQueryAccountError(new Error(ERROR_MESSAGE))
-      postToRouter(login, {})
-        .expect(500)
-        .end((error, response) => {
-          if (error) {
-            throw error
-          }
-          expect(response.text).toEqual(ERROR_MESSAGE)
-          done()
-        })
-    })
-  })
-})
+    beforeEach(() => {
+      mockQueryAccountError(new Error(ERROR_MESSAGE));
+    });
+
+    afterEach(() => {
+      jest.resetAllMocks();
+    });
+
+    it("returns status code 500", () => {
+      return postToRouter({
+        data: {},
+        expect: {
+          status: 500,
+          text: ERROR_MESSAGE,
+        },
+        router: login
+      });
+    });
+  });
+});
