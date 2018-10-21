@@ -14,7 +14,7 @@ describe("origin", () => {
     await waitForLoading(page);
   });
 
-  itRedirectsTo(page, "/login");
+  itRedirectsTo(() => page, "/login");
 
   it("renders LoginPage component", async () => {
     expect(await page.$(".LoginPage")).not.toBeNull();

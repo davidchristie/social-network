@@ -20,7 +20,7 @@ describe("on success", () => {
     expect(await page.$(".Alert")).toBeNull();
   });
 
-  itRedirectsTo(page, "/");
+  itRedirectsTo(() => page, "/");
 
   it("renders HomePage component", async () => {
     expect(await page.$(".HomePage")).not.toBeNull();
