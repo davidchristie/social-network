@@ -13,4 +13,4 @@ services:
     build:
       dockerfile: 'packages/web-client/production.Dockerfile'
       args:
-        - 'API_ENDPOINT=/api'
+        - 'API_ENDPOINT=http://35.241.43.214'
