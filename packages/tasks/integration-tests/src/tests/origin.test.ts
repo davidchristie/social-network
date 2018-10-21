@@ -2,6 +2,7 @@ import { Page } from "puppeteer";
 
 import { ORIGIN } from "../constants";
 import newPage from "../utilities/newPage";
+import itRedirectsTo from "../utilities/itRedirectsTo";
 import waitForLoading from "../utilities/waitForLoading";
 
 describe("origin", () => {
@@ -13,9 +14,7 @@ describe("origin", () => {
     await waitForLoading(page);
   });
 
-  it(`redirects to "/login"`, async () => {
-    expect(await page.url()).toEqual(`${ORIGIN}/login`);
-  });
+  itRedirectsTo(page, "/login");
 
   it("renders LoginPage component", async () => {
     expect(await page.$(".LoginPage")).not.toBeNull();
