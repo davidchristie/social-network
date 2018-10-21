@@ -8,7 +8,7 @@ describe('GET /account', () => {
   describe('without authentication', () => {
     it('returns null account ID', done => {
       const server = express()
-      server.get('/', account)
+      server.use(account)
       request(server)
         .get('/')
         .expect('Content-Type', /json/)
@@ -30,7 +30,7 @@ describe('GET /account', () => {
 
     it('returns account ID', done => {
       const server = express()
-      server.get('/', account)
+      server.use(account)
       const token = getToken({
         email: 'user@email.com',
         id: ACCOUNT_ID,
@@ -57,7 +57,7 @@ describe('GET /account', () => {
   describe('with invalid authentication', () => {
     it('returns null account ID', done => {
       const server = express()
-      server.get('/', account)
+      server.use(account)
       request(server)
         .get('/')
         .set('Authorization', 'Bearer INVALID_TOKEN')
