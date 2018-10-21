@@ -34,6 +34,7 @@ describe('GET /account', () => {
       })
       requestToRouter(account)
         .get('/')
+        .expect('Content-Type', /json/)
         .set('Authorization', `Bearer ${token}`)
         .expect(200)
         .end((error, response) => {
@@ -52,6 +53,7 @@ describe('GET /account', () => {
     it('returns null account ID', done => {
       requestToRouter(account)
         .get('/')
+        .expect('Content-Type', /json/)
         .set('Authorization', 'Bearer INVALID_TOKEN')
         .expect(200)
         .end((error, response) => {
