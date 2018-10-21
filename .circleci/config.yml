@@ -292,6 +292,11 @@ jobs:
           name: Update web-client service
           environment:
             FILE: packages/infrastructure/definitions/web-client/service.yml
+      - run:
+          <<: *kubectl-apply
+          name: Update web-client ingress
+          environment:
+            FILE: packages/infrastructure/definitions/web-client/ingress.yml
 
 workflows:
   version: 2
