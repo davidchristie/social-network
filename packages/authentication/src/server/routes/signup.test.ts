@@ -1,7 +1,4 @@
-import bodyParser from "body-parser";
-import express from "express";
-import request from "supertest";
-
+import requestToRouter from "../../testing/requestToRouter";
 import getHash from "../../utilities/getHash";
 import getToken from "../../utilities/getToken";
 import signup from "./signup";
@@ -15,9 +12,7 @@ jest.mock("../../services/prisma", () => ({
 describe("GET /signup", () => {
   describe("without email, name or password", () => {
     it("returns status code 400", done => {
-      const server = express()
-      server.use(signup)
-      request(server)
+      requestToRouter(signup)
         .post("/")
         .expect(400)
         .end((error, response) => {
@@ -44,10 +39,7 @@ describe("GET /signup", () => {
         ...account,
         password: await getHash(account.password)
       })
-      const server = express()
-      server.use(bodyParser.json())
-      server.use(signup)
-      request(server)
+      requestToRouter(signup)
         .post("/")
         .send({
           email: account.email,

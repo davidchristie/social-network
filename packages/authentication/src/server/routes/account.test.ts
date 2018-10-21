@@ -1,15 +1,11 @@
-import express from 'express'
-import request from 'supertest'
-
+import requestToRouter from '../../testing/requestToRouter'
 import getToken from '../../utilities/getToken'
 import account from './account'
 
 describe('GET /account', () => {
   describe('without authentication', () => {
     it('returns null account ID', done => {
-      const server = express()
-      server.use(account)
-      request(server)
+      requestToRouter(account)
         .get('/')
         .expect('Content-Type', /json/)
         .expect(200)
@@ -29,8 +25,6 @@ describe('GET /account', () => {
     const ACCOUNT_ID = 'xxxx-xxxx-xxxx-xxxx'
 
     it('returns account ID', done => {
-      const server = express()
-      server.use(account)
       const token = getToken({
         email: 'user@email.com',
         id: ACCOUNT_ID,
@@ -38,7 +32,7 @@ describe('GET /account', () => {
         password: 'xxxxxxxx',
         profile: null
       })
-      request(server)
+      requestToRouter(account)
         .get('/')
         .set('Authorization', `Bearer ${token}`)
         .expect(200)
@@ -56,9 +50,7 @@ describe('GET /account', () => {
 
   describe('with invalid authentication', () => {
     it('returns null account ID', done => {
-      const server = express()
-      server.use(account)
-      request(server)
+      requestToRouter(account)
         .get('/')
         .set('Authorization', 'Bearer INVALID_TOKEN')
         .expect(500)
