@@ -6,6 +6,10 @@ metadata:
   annotations:
     kubernetes.io/ingress.global-static-ip-name: "web-client"
 spec:
-  backend:
-    serviceName: web-client
-    servicePort: 3000
+  rules:
+  - http:
+      paths:
+      - path: /
+        backend:
+          serviceName: web-client
+          servicePort: 3000

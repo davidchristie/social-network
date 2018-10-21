@@ -13,7 +13,3 @@ spec:
         backend:
           serviceName: public-api
           servicePort: 4000
-# spec:
-#   backend:
-#     serviceName: public-api
-#     servicePort: 4000

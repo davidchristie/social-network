@@ -4,6 +4,9 @@ references:
 
   # Steps
 
+  kubectl-apply: &kubectl-apply
+    command: kubectl apply -f $FILE
+
   link-dependencies: &link-dependencies
     run:
       name: Link dependencies
@@ -267,23 +270,43 @@ jobs:
           name: Make updated directory
           command: mkdir updated
       - run:
-          name: Update authentication version
+          name: Update authentication deployment
           command: |
             export VERSION="$(git rev-parse --short HEAD)"
             envsubst < packages/infrastructure/definitions/authentication/deployment.yml > updated/authentication-deployment.yml
             kubectl apply -f updated/authentication-deployment.yml
       - run:
-          name: Update public-api version
+          name: Update public-api deployment
           command: |
             export VERSION="$(git rev-parse --short HEAD)"
             envsubst < packages/infrastructure/definitions/public-api/deployment.yml > updated/public-api-deployment.yml
             kubectl apply -f updated/public-api-deployment.yml
       - run:
-          name: Update web-client version
+          <<: *kubectl-apply
+          name: Update public-api service
+          environment:
+            FILE: packages/infrastructure/definitions/public-api/service.yml
+      - run:
+          <<: *kubectl-apply
+          name: Update public-api ingress
+          environment:
+            FILE: packages/infrastructure/definitions/public-api/ingress.yml
+      - run:
+          name: Update web-client deployment
           command: |
             export VERSION="$(git rev-parse --short HEAD)"
             envsubst < packages/infrastructure/definitions/web-client/deployment.yml > updated/web-client-deployment.yml
             kubectl apply -f updated/web-client-deployment.yml
+      - run:
+          <<: *kubectl-apply
+          name: Update web-client service
+          environment:
+            FILE: packages/infrastructure/definitions/web-client/service.yml
+      - run:
+          <<: *kubectl-apply
+          name: Update web-client ingress
+          environment:
+            FILE: packages/infrastructure/definitions/web-client/ingress.yml
 
 workflows:
   version: 2
