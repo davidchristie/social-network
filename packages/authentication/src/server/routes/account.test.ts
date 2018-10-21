@@ -53,12 +53,14 @@ describe('GET /account', () => {
       requestToRouter(account)
         .get('/')
         .set('Authorization', 'Bearer INVALID_TOKEN')
-        .expect(500)
+        .expect(200)
         .end((error, response) => {
           if (error) {
             throw error
           }
-          expect(response.text).toEqual('jwt malformed')
+          expect(response.body).toEqual({
+            id: null
+          })
           done()
         })
     })
