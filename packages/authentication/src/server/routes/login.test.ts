@@ -14,7 +14,7 @@ jest.mock('../../services/prisma', () => ({
 
 describe('GET /login', () => {
   describe('without email and password', () => {
-    it('returns status code 200', done => {
+    it('returns status code 500', done => {
       const server = express()
       server.use(login)
       request(server)
