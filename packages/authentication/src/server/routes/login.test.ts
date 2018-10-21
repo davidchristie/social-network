@@ -1,4 +1,4 @@
-import requestToRouter from "../../testing/requestToRouter";
+import postToRouter from "../../testing/postToRouter";
 import getHash from "../../utilities/getHash";
 import getToken from "../../utilities/getToken";
 import login from "./login";
@@ -9,17 +9,15 @@ jest.mock("../../services/prisma", () => ({
   }
 }));
 
-describe("GET /login", () => {
+describe("POST /login", () => {
   describe("if no account matches email", () => {
     const UNKNOWN_EMAIL = "unknown@email.com"
 
     it("returns status code 404", done => {
-      requestToRouter(login)
-        .post("/")
-        .send({
-          email: UNKNOWN_EMAIL,
-          password: "xxxxxxxx",
-        })
+      postToRouter(login, {
+        email: UNKNOWN_EMAIL,
+        password: "xxxxxxxx",
+      })
         .expect(404)
         .end((error, response) => {
           if (error) {
@@ -45,12 +43,10 @@ describe("GET /login", () => {
         id: account.id,
         password: await getHash(account.password)
       })
-      requestToRouter(login)
-        .post("/")
-        .send({
-          email: "user@email.com",
-          password: "wrong_password",
-        })
+      postToRouter(login, {
+        email: "user@email.com",
+        password: "wrong_password",
+      })
         .expect(422)
         .end((error, response) => {
           if (error) {
@@ -76,12 +72,10 @@ describe("GET /login", () => {
         id: account.id,
         password: await getHash(account.password)
       })
-      requestToRouter(login)
-        .post("/")
-        .send({
-          email: "user@email.com",
-          password: account.password,
-        })
+      postToRouter(login, {
+        email: "user@email.com",
+        password: account.password,
+      })
         .expect(200)
         .end((error, response) => {
           if (error) {
@@ -103,9 +97,7 @@ describe("GET /login", () => {
         .mockImplementationOnce(() => {
           throw new Error(ERROR_MESSAGE)
         })
-      requestToRouter(login)
-        .post("/")
-        .send({})
+      postToRouter(login, {})
         .expect(500)
         .end((error, response) => {
           if (error) {
