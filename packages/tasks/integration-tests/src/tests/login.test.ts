@@ -2,6 +2,7 @@ import { Page } from "puppeteer";
 
 import { ORIGIN } from "../constants";
 import newPage from "../utilities/newPage";
+import itRedirectsTo from "../utilities/itRedirectsTo";
 
 describe("on success", () => {
   let page: Page;
@@ -19,9 +20,7 @@ describe("on success", () => {
     expect(await page.$(".Alert")).toBeNull();
   });
 
-  it(`redirects to "/"`, async () => {
-    expect(await page.url()).toEqual(`${ORIGIN}/`);
-  });
+  itRedirectsTo(() => page, "/");
 
   it("renders HomePage component", async () => {
     expect(await page.$(".HomePage")).not.toBeNull();

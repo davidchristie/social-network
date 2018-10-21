@@ -24,10 +24,5 @@ spec:
         env:
         - name: AUTHENTICATION_ENDPOINT
           value: 'http://authentication.social-network:5000'
-        - name: JWT_SECRET
-          valueFrom:
-            secretKeyRef:
-              name: authentication
-              key: jwt-secret
         - name: PRISMA_ENDPOINT
           value: 'http://prisma.social-network:4466/social-network/production'
