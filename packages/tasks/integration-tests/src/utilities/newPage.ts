@@ -19,9 +19,9 @@ export default async function newPage() {
   const page = await browser.newPage();
   await page.setRequestInterception(true);
   page.on('request', (interceptedRequest) => {
-    if (interceptedRequest.url() === `${process.env.ORIGIN}/api`) {
+    if (interceptedRequest.url() === process.env.PRODUCTION_API_ENDPOINT) {
       return interceptedRequest.continue({
-        url: process.env.API_ENDPOINT
+        url: process.env.PUBLIC_API_ENDPOINT
       });
     }
     interceptedRequest.continue();
