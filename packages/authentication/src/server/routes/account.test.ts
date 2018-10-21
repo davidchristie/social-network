@@ -1,26 +1,9 @@
 import requestToRouter from '../../testing/requestToRouter'
 import getToken from '../../utilities/getToken'
 import account from './account'
+import itReturnsNullAccountId from '../../testing/itReturnsNullAccountId';
 
 describe('GET /account', () => {
-  describe('without authentication', () => {
-    it('returns null account ID', done => {
-      requestToRouter(account)
-        .get('/')
-        .expect('Content-Type', /json/)
-        .expect(200)
-        .end((error, response) => {
-          if (error) {
-            throw error
-          }
-          expect(response.body).toEqual({
-            id: null
-          })
-          done()
-        })
-    })
-  })
-
   describe('with authentication', () => {
     const ACCOUNT_ID = 'xxxx-xxxx-xxxx-xxxx'
 
@@ -34,6 +17,7 @@ describe('GET /account', () => {
       })
       requestToRouter(account)
         .get('/')
+        .expect('Content-Type', /json/)
         .set('Authorization', `Bearer ${token}`)
         .expect(200)
         .end((error, response) => {
@@ -48,19 +32,11 @@ describe('GET /account', () => {
     })
   })
 
+  describe('with no authentication', () => {
+    itReturnsNullAccountId(account)
+  })
+
   describe('with invalid authentication', () => {
-    it('returns null account ID', done => {
-      requestToRouter(account)
-        .get('/')
-        .set('Authorization', 'Bearer INVALID_TOKEN')
-        .expect(500)
-        .end((error, response) => {
-          if (error) {
-            throw error
-          }
-          expect(response.text).toEqual('jwt malformed')
-          done()
-        })
-    })
+    itReturnsNullAccountId(account, 'INVALID_TOKEN')
   })
 })

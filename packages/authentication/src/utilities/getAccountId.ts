@@ -9,10 +9,14 @@ export interface JWT {
 
 export default async function getAccountId(request: Request) {
   const Authorization = request.get("Authorization");
-  if (Authorization) {
+  if (!Authorization) {
+    return null;
+  }
+  try {
     const token = Authorization.replace("Bearer ", "");
     const { accountId } = verify(token, getJwtSecret()) as JWT;
     return accountId;
+  } catch (error) {
+    return null;
   }
-  return null;
 }
