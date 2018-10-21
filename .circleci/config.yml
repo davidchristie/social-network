@@ -287,6 +287,11 @@ jobs:
           environment:
             FILE: packages/infrastructure/definitions/public-api/service.yml
       - run:
+          <<: *kubectl-apply
+          name: Update public-api ingress
+          environment:
+            FILE: packages/infrastructure/definitions/public-api/ingress.yml
+      - run:
           name: Update web-client deployment
           command: |
             export VERSION="$(git rev-parse --short HEAD)"
