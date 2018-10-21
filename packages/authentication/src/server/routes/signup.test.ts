@@ -1,13 +1,10 @@
+import {
+  mockCreateAccountOnce
+} from "../../testing/mockPrisma";
 import postToRouter from "../../testing/postToRouter";
 import getHash from "../../utilities/getHash";
 import getToken from "../../utilities/getToken";
 import signup from "./signup";
-
-jest.mock("../../services/prisma", () => ({
-  mutation: {
-    createAccount: jest.fn()
-  }
-}));
 
 describe("POST /signup", () => {
   describe("without email, name or password", () => {
@@ -34,7 +31,7 @@ describe("POST /signup", () => {
     }
 
     it("returns access token", async done => {
-      require("../../services/prisma").mutation.createAccount.mockReturnValueOnce({
+      mockCreateAccountOnce({
         ...account,
         password: await getHash(account.password)
       })

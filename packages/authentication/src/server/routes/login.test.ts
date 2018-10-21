@@ -1,13 +1,11 @@
 import postToRouter from "../../testing/postToRouter";
+import {
+  mockQueryAccountError,
+  mockQueryAccountOnce
+} from "../../testing/mockPrisma";
 import getHash from "../../utilities/getHash";
 import getToken from "../../utilities/getToken";
 import login from "./login";
-
-jest.mock("../../services/prisma", () => ({
-  query: {
-    account: jest.fn()
-  }
-}));
 
 describe("POST /login", () => {
   describe("if no account matches email", () => {
@@ -39,7 +37,7 @@ describe("POST /login", () => {
     }
 
     it("returns status code 422", async done => {
-      require("../../services/prisma").query.account.mockReturnValueOnce({
+      mockQueryAccountOnce({
         id: account.id,
         password: await getHash(account.password)
       })
@@ -68,7 +66,7 @@ describe("POST /login", () => {
     }
 
     it("returns access token", async done => {
-      require("../../services/prisma").query.account.mockReturnValueOnce({
+      mockQueryAccountOnce({
         id: account.id,
         password: await getHash(account.password)
       })
@@ -93,10 +91,7 @@ describe("POST /login", () => {
     const ERROR_MESSAGE = "Test error"
 
     it("returns status code 500", done => {
-      require("../../services/prisma").query.account
-        .mockImplementationOnce(() => {
-          throw new Error(ERROR_MESSAGE)
-        })
+      mockQueryAccountError(new Error(ERROR_MESSAGE))
       postToRouter(login, {})
         .expect(500)
         .end((error, response) => {
