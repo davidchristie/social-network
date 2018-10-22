@@ -1,5 +1,10 @@
 import puppeteer, { Browser, Page } from "puppeteer";
 
+import {
+  PRODUCTION_API_ENDPOINT,
+  PUBLIC_API_ENDPOINT
+} from "../constants";
+
 let browser: Browser;
 
 beforeAll(async () => {
@@ -18,10 +23,10 @@ afterAll(async () => {
 export default async function newPage() {
   const page: Page = await browser.newPage();
   await page.setRequestInterception(true);
-  page.on('request', (interceptedRequest) => {
-    if (interceptedRequest.url() === process.env.PRODUCTION_API_ENDPOINT) {
+  page.on("request", (interceptedRequest) => {
+    if (interceptedRequest.url() === PRODUCTION_API_ENDPOINT) {
       return interceptedRequest.continue({
-        url: process.env.PUBLIC_API_ENDPOINT
+        url: PUBLIC_API_ENDPOINT
       });
     }
     interceptedRequest.continue();
