@@ -16,7 +16,7 @@ afterAll(async () => {
 });
 
 export default async function newPage() {
-  const page = await browser.newPage();
+  const page: Page = await browser.newPage();
   await page.setRequestInterception(true);
   page.on('request', (interceptedRequest) => {
     if (interceptedRequest.url() === process.env.PRODUCTION_API_ENDPOINT) {
