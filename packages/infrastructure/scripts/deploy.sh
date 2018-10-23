@@ -18,4 +18,4 @@ kubectl apply -f definitions/public-api/service.yml
 kubectl apply -f definitions/public-api/ingress.yml
 kubectl apply -f definitions/web-client/deployment.yml
 kubectl apply -f definitions/web-client/service.yml
-# kubectl apply -f definitions/web-client/ingress.yml
+kubectl apply -f definitions/web-client/ingress.yml
