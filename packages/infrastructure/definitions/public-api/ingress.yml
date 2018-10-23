@@ -6,6 +6,8 @@ metadata:
   annotations:
     kubernetes.io/ingress.global-static-ip-name: "public-api"
 spec:
+  tls:
+    - secretName: public-api-tls
   backend:
     serviceName: public-api
     servicePort: 4000
