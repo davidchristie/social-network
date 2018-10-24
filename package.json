@@ -8,7 +8,7 @@
     "build": "scripts/build.sh",
     "data-model": "yarn workspace data-model",
     "desktop-client": "yarn workspace desktop-client",
-    "development": "scripts/development.sh",
+    "development": "docker-compose -f docker-compose.yml -f docker-compose.development.yml",
     "infrastructure": "yarn workspace infrastructure",
     "integration-tests": "yarn workspace integration-tests",
     "production": "docker-compose -f docker-compose.yml -f docker-compose.production.yml",
