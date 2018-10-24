@@ -7,6 +7,7 @@
     "authentication": "yarn workspace authentication",
     "build": "scripts/build.sh",
     "data-model": "yarn workspace data-model",
+    "design-system": "yarn workspace design-system",
     "desktop-client": "yarn workspace desktop-client",
     "development": "docker-compose -f docker-compose.yml -f docker-compose.development.yml",
     "infrastructure": "yarn workspace infrastructure",
@@ -22,6 +23,7 @@
   "workspaces": {
     "packages": [
       "packages/*",
+      "packages/libraries/*",
       "packages/tasks/*"
     ]
   }
