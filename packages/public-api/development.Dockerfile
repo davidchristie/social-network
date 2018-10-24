@@ -1,4 +1,4 @@
-FROM build-packages
+FROM node:9.11-alpine
 
 EXPOSE 4000
 
