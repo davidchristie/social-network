@@ -5,7 +5,9 @@
   "repository": "git@github.com:davidchristie/social-network.git",
   "scripts": {
     "authentication": "yarn workspace authentication",
-    "build": "scripts/build.sh",
+    "build": "yarn build-libraries && yarn build-services",
+    "build-libraries": "scripts/build-libraries.sh",
+    "build-services": "scripts/build-services.sh",
     "data-model": "yarn workspace data-model",
     "design-system": "yarn workspace design-system",
     "desktop-client": "yarn workspace desktop-client",

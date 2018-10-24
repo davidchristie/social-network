@@ -203,6 +203,9 @@ jobs:
       - *restore-cached-dependencies
       - *link-dependencies
       - run:
+          name: Build libraries
+          command: yarn build-libraries
+      - run:
           name: Test authentication
           command: yarn authentication test --coverage
       - run:
