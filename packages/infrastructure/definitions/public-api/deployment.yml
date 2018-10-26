@@ -8,7 +8,7 @@ metadata:
     name: public-api
     app: social-network
 spec:
-  replicas: 3
+  replicas: 1
   strategy:
     type: RollingUpdate
   template:
