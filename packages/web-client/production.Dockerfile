@@ -6,6 +6,7 @@ ENV REACT_APP_API_ENDPOINT=$API_ENDPOINT
 
 WORKDIR /app
 
+COPY ./packages/libraries/design-system ./packages/libraries/design-system
 COPY ./packages/web-client ./packages/web-client
 COPY ./package.json .
 COPY ./tsconfig.json .

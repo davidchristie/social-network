@@ -13,6 +13,10 @@
 * [Public API](packages/public-api)
 * [Web Client](packages/web-client)
 
+### Libraries
+
+* [Design System](packages/libraries/design-system)
+
 ### Tasks
 
 * [Deploy Data Model](packages/tasks/deploy-data-model)
