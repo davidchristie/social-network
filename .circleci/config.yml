@@ -209,6 +209,9 @@ jobs:
           name: Test authentication
           command: yarn authentication test --coverage
       - run:
+          name: Test design-system
+          command: yarn design-system test --coverage
+      - run:
           name: Test public-api
           command: yarn public-api test --coverage
       - run:
@@ -228,6 +231,10 @@ jobs:
                   packages/authentication/coverage/lcov.info
 
             ./tmp/test-reporter format-coverage -t lcov \
+                  -o tmp/coverage.design-system.json \
+                  packages/libraries/design-system/coverage/lcov.info
+
+            ./tmp/test-reporter format-coverage -t lcov \
                   -o tmp/coverage.public-api.json \
                   packages/public-api/coverage/lcov.info
 
@@ -236,7 +243,7 @@ jobs:
                   packages/web-client/coverage/lcov.info
 
             ./tmp/test-reporter sum-coverage tmp/coverage.*.json \
-              --parts 3 \
+              --parts 4 \
               --output tmp/coverage.total.json
       - run:
           name: Upload report
