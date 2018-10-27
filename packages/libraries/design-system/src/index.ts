@@ -1,1 +1,1 @@
-console.log("design-system");
+export { default as Button } from './components/Button'

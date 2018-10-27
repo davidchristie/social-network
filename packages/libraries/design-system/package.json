@@ -1,5 +1,8 @@
 {
   "devDependencies": {
+    "enzyme": "^3.7.0",
+    "enzyme-adapter-react-16": "^1.6.0",
+    "enzyme-to-json": "^3.3.4",
     "jest": "^23.6.0",
     "rimraf": "^2.6.2",
     "ts-jest": "^23.10.4",
@@ -20,7 +23,15 @@
       "ts",
       "tsx"
     ],
-    "testEnvironment": "node",
+    "moduleNameMapper": {
+      "\\.css$": "<rootDir>/src/mocks/style.ts"
+    },
+    "setupFiles": [
+      "<rootDir>/src/setupTests.ts"
+    ],
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
     "testMatch": [
       "**/*.test.+(js|ts|tsx)"
     ],
