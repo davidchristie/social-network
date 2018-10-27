@@ -24,7 +24,7 @@ export default class CreatePostForm extends React.Component<{}, State> {
     text: "",
   };
 
-  public render() {
+  public render () {
     return (
       <Query<AccountData, AccountVariables>
         query={AccountQuery}

@@ -28,7 +28,7 @@ export default class SignupForm extends React.Component<{}, State> {
     password: "",
   };
 
-  public render() {
+  public render () {
     return (
       <Mutation<SignupData, SignupVariables>
         mutation={SignupMutation}

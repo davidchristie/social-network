@@ -10,7 +10,7 @@ interface Props {
 }
 
 export default class ConfirmationModal extends React.Component<Props> {
-  public render() {
+  public render () {
     return (
       <Modal
         open={this.props.open}

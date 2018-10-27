@@ -18,7 +18,7 @@ export default class PostMenu extends React.Component<Props, State> {
     isDropdownOpen: false,
   };
 
-  public render() {
+  public render () {
     return (
       <div className="PostMenu">
         <Button onClick={this.openDropdown}>

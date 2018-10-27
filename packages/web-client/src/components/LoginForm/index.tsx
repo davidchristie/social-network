@@ -26,7 +26,7 @@ export default class LoginForm extends React.Component<{}, State> {
     password: "",
   };
 
-  public render() {
+  public render () {
     const { email, password } = this.state;
     return (
       <Mutation<LoginData, LoginVariables>

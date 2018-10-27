@@ -9,7 +9,7 @@ const handleClick = () => {
 };
 
 export default class LogoutButton extends React.Component {
-  public render() {
+  public render () {
     return (
       <Button onClick={handleClick}>
         Logout

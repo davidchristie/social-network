@@ -31,7 +31,7 @@ class UpdateProfileForm extends React.Component<Props, State> {
     name: this.props.data.account!.profile.name,
   };
 
-  public render() {
+  public render () {
     return (
       <Mutation<UpdateProfileData, UpdateProfileVariables>
         mutation={UpdateProfileMutation}
@@ -94,7 +94,7 @@ class UpdateProfileForm extends React.Component<Props, State> {
   }
 }
 
-export default function UpdateProfileFormContainer() {
+export default function UpdateProfileFormContainer () {
   return (
     <Query<AccountData, AccountVariables>
       query={AccountQuery}
