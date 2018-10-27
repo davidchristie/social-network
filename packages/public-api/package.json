@@ -5,7 +5,7 @@
     "node-fetch": "2.2.0"
   },
   "devDependencies": {
-    "@types/jest": "23.3.7",
+    "@types/jest": "23.3.8",
     "@types/node-fetch": "2.1.2",
     "jest": "23.6.0",
     "nodemon": "1.18.5",
