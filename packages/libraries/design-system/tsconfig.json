@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
-    "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "baseUrl": ".",
+    "declaration": true,
     "forceConsistentCasingInFileNames": true,
     "jsx": "react",
     "lib": [
