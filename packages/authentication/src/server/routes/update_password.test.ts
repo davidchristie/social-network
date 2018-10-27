@@ -17,7 +17,7 @@ const account = {
 
 describe("POST /update_password", () => {
   describe("with no input", () => {
-    itReturnsStatusCode(update_password, 400);
+    itReturnsStatusCode(update_password, 404);
   });
 
   describe("with wrong password", () => {
