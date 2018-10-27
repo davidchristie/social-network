@@ -1,5 +1,8 @@
-import describeWithNoProps from "../../testing/describeWithNoProps";
-import describeWithProps from "../../testing/describeWithProps";
+import {
+  describeWithNoProps,
+  describeWithProps
+} from "test-utilities";
+
 import { Result } from "../AccountQuery";
 import AccountMenu, { AccountMenuContent } from "./index";
 
