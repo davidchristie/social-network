@@ -1,6 +1,6 @@
+import { Button } from "design-system";
 import React from "react";
 
-import Button from "../Button";
 import Modal from "../Modal";
 
 interface Props {
@@ -10,7 +10,7 @@ interface Props {
 }
 
 export default class ConfirmationModal extends React.Component<Props> {
-  public render () {
+  public render() {
     return (
       <Modal
         open={this.props.open}

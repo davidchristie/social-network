@@ -1,3 +1,4 @@
+import { Button } from "design-system";
 import React from "react";
 import { Mutation } from "react-apollo";
 
@@ -8,7 +9,6 @@ import DeletePostMutation, {
 import ProfileQuery from "../../queries/Profile";
 import AccountQuery, { Result } from "../AccountQuery";
 import Alert from "../Alert";
-import Button from "../Button";
 import ConfirmationModal from "../ConfirmationModal";
 
 interface Props {
@@ -24,7 +24,7 @@ export class DeletePostButtonContent extends React.Component<Props, State> {
     isConfirmationModalOpen: false,
   };
 
-  public render () {
+  public render() {
     return (
       <AccountQuery>
         {({ data, error, loading }) => {

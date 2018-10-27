@@ -1,3 +1,4 @@
+import { Button } from "design-system";
 import React from "react";
 import { Mutation, Query } from "react-apollo";
 
@@ -10,7 +11,6 @@ import AccountQuery, {
   AccountVariables
 } from "../../queries/Account";
 import Alert from "../Alert";
-import Button from "../Button";
 import Input from "../Input";
 import Section from "../Section";
 
@@ -31,7 +31,7 @@ class UpdatePasswordForm extends React.Component<Props, State> {
     newPassword: "",
   };
 
-  public render () {
+  public render() {
     return (
       <Mutation<UpdatePasswordData, UpdatePasswordVariables>
         mutation={UpdatePasswordMutation}
@@ -109,7 +109,7 @@ class UpdatePasswordForm extends React.Component<Props, State> {
   }
 }
 
-export default function UpdatePasswordFormContainer () {
+export default function UpdatePasswordFormContainer() {
   return (
     <Query<AccountData, AccountVariables>
       query={AccountQuery}

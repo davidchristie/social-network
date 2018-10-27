@@ -1,3 +1,4 @@
+import { Button } from "design-system";
 import React from "react";
 import { Mutation, Query } from "react-apollo";
 
@@ -10,7 +11,6 @@ import AccountQuery, {
   AccountVariables
 } from "../../queries/Account";
 import Alert from "../Alert";
-import Button from "../Button";
 import Input from "../Input";
 import Section from "../Section";
 
@@ -27,7 +27,7 @@ class UpdateAccountForm extends React.Component<Props, State> {
     email: this.props.data.account!.email,
   };
 
-  public render () {
+  public render() {
     return (
       <Mutation<UpdateAccountData, UpdateAccountVariables>
         mutation={UpdateAccountMutation}
@@ -72,7 +72,7 @@ class UpdateAccountForm extends React.Component<Props, State> {
   }
 }
 
-export default function UpdateAccountFormContainer () {
+export default function UpdateAccountFormContainer() {
   return (
     <Query<AccountData, AccountVariables>
       query={AccountQuery}

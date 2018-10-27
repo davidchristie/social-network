@@ -1,6 +1,6 @@
+import { Button } from "design-system";
 import React from "react";
 
-import Button from "../Button";
 import DeletePostButton from "../DeletePostButton";
 import Dropdown from "../Dropdown";
 import "./index.css";
@@ -18,7 +18,7 @@ export default class PostMenu extends React.Component<Props, State> {
     isDropdownOpen: false,
   };
 
-  public render () {
+  public render() {
     return (
       <div className="PostMenu">
         <Button onClick={this.openDropdown}>
