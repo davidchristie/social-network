@@ -29,6 +29,7 @@
     "coverage",
     "jest",
     "node_modules",
+    "rollup.ts",
     "scripts",
     "src/setupTests.ts",
     "webpack"
