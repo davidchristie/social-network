@@ -12,7 +12,7 @@ describe("POST /signup", () => {
       data: {},
       expect: {
         status: 400,
-        text: "Error creating account"
+        text: "Error creating account",
       },
       router: signup,
     }));
@@ -25,12 +25,12 @@ describe("POST /signup", () => {
       name: "User",
       password: "password123",
       profile: null,
-    }
+    };
 
     beforeEach(async () => {
       mockCreateAccountOnce({
         ...account,
-        password: await getHash(account.password)
+        password: await getHash(account.password),
       });
     });
 
@@ -46,7 +46,7 @@ describe("POST /signup", () => {
       },
       expect: {
         body: {
-          token: getToken(account)
+          token: getToken(account),
         },
         status: 200,
       },
