@@ -1,3 +1,4 @@
+import itReturnsStatusCode from "../../testing/itReturnsStatusCode";
 import {
   mockQueryAccountOnce,
   mockUpdateAccountOnce
@@ -16,14 +17,7 @@ const account = {
 
 describe("POST /update_password", () => {
   describe("with no input", () => {
-    it("returns status code 400", () => postToRouter({
-      data: {},
-      expect: {
-        status: 404,
-        text: "No account found for ID: undefined",
-      },
-      router: update_password,
-    }));
+    itReturnsStatusCode(update_password, 400);
   });
 
   describe("with wrong password", () => {
@@ -70,16 +64,10 @@ describe("POST /update_password", () => {
       jest.resetAllMocks();
     });
 
-    it("returns status code 200", () => postToRouter({
-      data: {
-        accountId: account.id,
-        currentPassword: account.password,
-        newPassword: "new_password",
-      },
-      expect: {
-        status: 200,
-      },
-      router: update_password,
-    }));
+    itReturnsStatusCode(update_password, 200, {
+      accountId: account.id,
+      currentPassword: account.password,
+      newPassword: "new_password",
+    });
   });
 });
