@@ -1,7 +1,7 @@
 {
   "devDependencies": {
-    "electron": "^2.0.8",
-    "electron-serve": "^0.2.0"
+    "electron": "2.0.11",
+    "electron-serve": "0.2.0"
   },
   "main": "src/index.js",
   "name": "desktop-client",
