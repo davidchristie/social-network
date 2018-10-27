@@ -1,0 +1,9 @@
+{
+  "main": "dist/index.js",
+  "name": "test-utilities",
+  "private": true,
+  "scripts": {
+    "build": "rimraf dist && tsc"
+  },
+  "version": "1.0.0"
+}
