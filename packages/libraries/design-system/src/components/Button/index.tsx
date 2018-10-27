@@ -4,13 +4,11 @@ import "./index.css";
 
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> { }
 
-const Button: React.SFC<Props> = ({ children, className, ...attributes }) => (
+const Button: React.SFC<Props> = ({ className, ...attributes }) => (
   <button
     className={`Button${className ? " " + className : ""}`}
     {...attributes}
-  >
-    {children}
-  </button>
+  />
 );
 
 export default Button
