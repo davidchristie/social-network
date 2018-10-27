@@ -1,3 +1,4 @@
+import itReturnsStatusCode from "../../testing/itReturnsStatusCode";
 import {
   mockCreateAccountOnce
 } from "../../testing/mockPrisma";
@@ -8,14 +9,7 @@ import signup from "./signup";
 
 describe("POST /signup", () => {
   describe("without email, name or password", () => {
-    it("returns status code 400", () => postToRouter({
-      data: {},
-      expect: {
-        status: 400,
-        text: "Error creating account"
-      },
-      router: signup,
-    }));
+    itReturnsStatusCode(signup, 400);
   });
 
   describe("with valid input", () => {
@@ -25,12 +19,12 @@ describe("POST /signup", () => {
       name: "User",
       password: "password123",
       profile: null,
-    }
+    };
 
     beforeEach(async () => {
       mockCreateAccountOnce({
         ...account,
-        password: await getHash(account.password)
+        password: await getHash(account.password),
       });
     });
 
@@ -46,7 +40,7 @@ describe("POST /signup", () => {
       },
       expect: {
         body: {
-          token: getToken(account)
+          token: getToken(account),
         },
         status: 200,
       },

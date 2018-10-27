@@ -1,7 +1,7 @@
 import { shallow } from "enzyme";
 import React from "react";
+import { describeWithNoProps } from "test-utilities";
 
-import describeWithNoProps from "../../testing/describeWithNoProps";
 import Overlay from "./index";
 
 describe("Overlay component", () => {

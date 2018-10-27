@@ -1,5 +1,8 @@
-import describeWithCustomClass from "../../testing/describeWithCustomClass";
-import describeWithNoProps from "../../testing/describeWithNoProps";
+import {
+  describeWithCustomClass,
+  describeWithNoProps
+} from "test-utilities";
+
 import TextArea from "./index";
 
 describe("TextArea component", () => {

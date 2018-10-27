@@ -1,15 +1,15 @@
-import postToRouter from "../../testing/postToRouter";
 import {
   mockQueryAccountError,
   mockQueryAccountOnce
 } from "../../testing/mockPrisma";
+import postToRouter from "../../testing/postToRouter";
 import getHash from "../../utilities/getHash";
 import getToken from "../../utilities/getToken";
 import login from "./login";
 
 describe("POST /login", () => {
   describe("if no account matches email", () => {
-    const UNKNOWN_EMAIL = "unknown@email.com"
+    const UNKNOWN_EMAIL = "unknown@email.com";
 
     it("returns status code 404", () => postToRouter({
       data: {
@@ -18,11 +18,11 @@ describe("POST /login", () => {
       },
       expect: {
         status: 404,
-        text: `No account found for email: ${UNKNOWN_EMAIL}`
+        text: `No account found for email: ${UNKNOWN_EMAIL}`,
       },
       router: login,
-    }))
-  })
+    }));
+  });
 
   describe("with incorrect password", () => {
     const account = {
@@ -31,12 +31,12 @@ describe("POST /login", () => {
       name: "User",
       password: "password123",
       profile: null,
-    }
+    };
 
     beforeEach(async () => {
       mockQueryAccountOnce({
         id: account.id,
-        password: await getHash(account.password)
+        password: await getHash(account.password),
       });
     });
 
@@ -51,7 +51,7 @@ describe("POST /login", () => {
       },
       expect: {
         status: 422,
-        text: "Invalid password"
+        text: "Invalid password",
       },
       router: login,
     }));
@@ -69,7 +69,7 @@ describe("POST /login", () => {
     beforeEach(async () => {
       mockQueryAccountOnce({
         id: account.id,
-        password: await getHash(account.password)
+        password: await getHash(account.password),
       });
     });
 
@@ -78,17 +78,17 @@ describe("POST /login", () => {
     });
 
     it("returns access token", () => postToRouter({
-      router: login,
       data: {
         email: "user@email.com",
         password: account.password,
       },
       expect: {
         body: {
-          token: getToken(account)
+          token: getToken(account),
         },
-        status: 200
-      }
+        status: 200,
+      },
+      router: login,
     }));
   });
 
@@ -110,7 +110,7 @@ describe("POST /login", () => {
           status: 500,
           text: ERROR_MESSAGE,
         },
-        router: login
+        router: login,
       });
     });
   });

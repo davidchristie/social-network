@@ -11,3 +11,11 @@ exports[`Button component with no props matches snapshot 1`] = `
   className="Button"
 />
 `;
+
+exports[`Button component with text content matches snapshot 1`] = `
+<button
+  className="Button"
+>
+  text content
+</button>
+`;

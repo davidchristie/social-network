@@ -2,11 +2,11 @@ import { Router } from "express";
 
 import requestToRouter from "./requestToRouter";
 
-export default function itReturnsNullAccountId(router: Router, token?: string) {
+export default function itReturnsNullAccountId (router: Router, token?: string) {
   it("returns null account ID", done => {
-    const headers: any = {}
+    const headers: any = {};
     if (token !== undefined) {
-      headers.Authorization = `Bearer ${token}`
+      headers.Authorization = `Bearer ${token}`;
     }
     requestToRouter(router)
       .get("/")
@@ -15,12 +15,12 @@ export default function itReturnsNullAccountId(router: Router, token?: string) {
       .expect(200)
       .end((error, response) => {
         if (error) {
-          throw error
+          throw error;
         }
         expect(response.body).toEqual({
-          id: null
-        })
-        done()
-      })
-  })
+          id: null,
+        });
+        done();
+      });
+  });
 }

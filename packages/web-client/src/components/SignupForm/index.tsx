@@ -1,3 +1,4 @@
+import { Button } from "design-system";
 import React from "react";
 import { Mutation } from "react-apollo";
 import { Link } from "react-router-dom";
@@ -9,7 +10,6 @@ import SignupMutation, {
 } from "../../mutations/Signup";
 import AccountQuery from "../../queries/Account";
 import Alert from "../Alert";
-import Button from "../Button";
 import Input from "../Input";
 import Section from "../Section";
 

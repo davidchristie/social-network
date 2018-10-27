@@ -1,7 +1,7 @@
+import { Button } from "design-system";
 import React from "react";
 
 import { AUTHENTICATION_TOKEN } from "../../constants";
-import Button from "../Button";
 
 const handleClick = () => {
   window.localStorage.removeItem(AUTHENTICATION_TOKEN);

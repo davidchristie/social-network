@@ -1,8 +1,18 @@
 {
   "devDependencies": {
+    "enzyme": "3.7.0",
+    "enzyme-adapter-react-16": "1.6.0",
+    "enzyme-to-json": "3.3.4",
     "jest": "23.6.0",
     "rimraf": "2.6.2",
+    "rollup": "0.66.6",
+    "rollup-plugin-commonjs": "9.2.0",
+    "rollup-plugin-node-resolve": "3.4.0",
+    "rollup-plugin-postcss": "1.6.2",
+    "rollup-plugin-sourcemaps": "0.4.2",
+    "rollup-plugin-typescript2": "0.17.2",
     "ts-jest": "23.10.4",
+    "ts-node": "7.0.1",
     "typescript": "3.1.3"
   },
   "jest": {
@@ -20,19 +30,28 @@
       "ts",
       "tsx"
     ],
-    "testEnvironment": "node",
+    "moduleNameMapper": {
+      "\\.css$": "<rootDir>/src/mocks/style.ts"
+    },
+    "setupFiles": [
+      "<rootDir>/src/setupTests.ts"
+    ],
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
     "testMatch": [
       "**/*.test.+(js|ts|tsx)"
     ],
     "transform": {
-      "^.+\\.(ts|tsx)$": "ts-jest"
+      ".+\\.(ts|tsx)$": "ts-jest"
     }
   },
-  "main": "dist/index.js",
+  "main": "dist/cjs/index.js",
+  "module": "dist/es/index.js",
   "name": "design-system",
   "private": true,
   "scripts": {
-    "build": "rimraf dist && tsc",
+    "build": "rimraf dist && rollup -c rollup.ts",
     "test": "jest --coverage --maxWorkers 2 --verbose"
   },
   "version": "1.0.0"

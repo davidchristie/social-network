@@ -1,7 +1,7 @@
 import React from "react";
+import { itMatchesSnapshot } from "test-utilities";
 
 import LoginPage from ".";
-import itMatchesSnapshot from "../../testing/itMatchesSnapshot";
 
 describe("LoginPage component", () => {
   itMatchesSnapshot(<LoginPage />);

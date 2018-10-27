@@ -17,6 +17,7 @@
     "production": "docker-compose -f docker-compose.yml -f docker-compose.production.yml",
     "public-api": "yarn workspace public-api",
     "tasks": "docker-compose -f docker-compose.yml -f docker-compose.tasks.yml",
+    "test-utilities": "yarn workspace test-utilities",
     "wait-for-prisma": "scripts/wait-for-prisma.sh",
     "wait-for-web-client": "scripts/wait-for-web-client.sh",
     "web-client": "yarn workspace web-client"

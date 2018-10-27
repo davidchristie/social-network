@@ -1,8 +1,8 @@
+import { Button } from "design-system";
 import { shallow, ShallowWrapper } from "enzyme";
 import React from "react";
 
 import { AUTHENTICATION_TOKEN } from "../../constants";
-import Button from "../Button";
 import LogoutButton from "./index";
 
 describe("LogoutButton component", () => {

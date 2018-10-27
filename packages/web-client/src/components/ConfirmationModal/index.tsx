@@ -1,6 +1,6 @@
+import { Button } from "design-system";
 import React from "react";
 
-import Button from "../Button";
 import Modal from "../Modal";
 
 interface Props {

@@ -1,6 +1,6 @@
-import { Router } from "express"
+import { Router } from "express";
 
-import requestToRouter from "./requestToRouter"
+import requestToRouter from "./requestToRouter";
 
 interface Expect {
   body?: any;
@@ -14,7 +14,7 @@ interface Options {
   router: Router;
 }
 
-export default function postToRouter({
+export default function postToRouter ({
   data,
   expect: {
     body,
@@ -25,7 +25,7 @@ export default function postToRouter({
 }: Options) {
   return new Promise(resolve => {
     return requestToRouter(router)
-      .post('/')
+      .post("/")
       .send(data)
       .expect(status)
       .end((error, response) => {
@@ -33,10 +33,10 @@ export default function postToRouter({
           throw error;
         }
         if (body !== undefined) {
-          expect(response.body).toEqual(body)
+          expect(response.body).toEqual(body);
         }
         if (text !== undefined) {
-          expect(response.text).toEqual(text)
+          expect(response.text).toEqual(text);
         }
         resolve();
       });
