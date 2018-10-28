@@ -1,8 +1,11 @@
 {
   "devDependencies": {
-    "@storybook/addon-actions": "3.4.11",
+    "@storybook/addon-actions": "^3.4.11",
     "@storybook/addon-info": "3.4.11",
     "@storybook/react": "4.0.0-alpha.3",
+    "@types/storybook__addon-actions": "^3.4.1",
+    "@types/storybook__addon-info": "^3.4.2",
+    "@types/storybook__react": "^3.0.9",
     "enzyme": "3.7.0",
     "enzyme-adapter-react-16": "1.6.0",
     "enzyme-to-json": "3.3.4",
@@ -24,8 +27,10 @@
   },
   "jest": {
     "collectCoverageFrom": [
-      "src/**/*.{js,ts}",
-      "!src/**/*.stories.js"
+      "src/**/*.{ts,tsx}",
+      "!src/**/*.stories.{ts,tsx}",
+      "!src/setupTests.ts",
+      "!src/mocks/**"
     ],
     "globals": {
       "ts-jest": {
