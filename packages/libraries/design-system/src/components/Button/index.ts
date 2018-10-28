@@ -5,4 +5,6 @@ import "./index.css";
 
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> { }
 
-export default elementWithClass<Props>("Button", "button");
+const Button = elementWithClass<Props>("Button", "button");
+
+export default Button;

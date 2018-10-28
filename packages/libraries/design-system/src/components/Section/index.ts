@@ -5,4 +5,6 @@ import "./index.css";
 
 interface Props extends React.HTMLAttributes<HTMLElement> { }
 
-export default elementWithClass<Props>("Section", "section");
+const Section = elementWithClass<Props>("Section", "section");
+
+export default Section;
