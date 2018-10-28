@@ -11,7 +11,7 @@ describe("Button component", () => {
 
   describeWithCustomClass(Button);
 
-  describeWithProps('with text content', Button, {
-    children: 'text content'
-  })
+  describeWithProps("with text content", Button, {
+    children: "text content",
+  });
 });
