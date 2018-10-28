@@ -23,11 +23,9 @@
     "web-client": "yarn workspace web-client"
   },
   "version": "1.0.0",
-  "workspaces": {
-    "packages": [
-      "packages/*",
-      "packages/libraries/*",
-      "packages/tasks/*"
-    ]
-  }
+  "workspaces": [
+    "packages/*",
+    "packages/libraries/*",
+    "packages/tasks/*"
+  ]
 }
