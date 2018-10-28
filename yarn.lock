@@ -774,6 +774,18 @@
     "@webassemblyjs/wast-parser" "1.7.10"
     "@xtuc/long" "4.2.1"
 
+"@webpack-contrib/schema-utils@^1.0.0-beta.0":
+  version "1.0.0-beta.0"
+  resolved "https://registry.yarnpkg.com/@webpack-contrib/schema-utils/-/schema-utils-1.0.0-beta.0.tgz#bf9638c9464d177b48209e84209e23bee2eb4f65"
+  integrity sha512-LonryJP+FxQQHsjGBi6W786TQB1Oym+agTpY0c+Kj8alnIw+DLUJb6SI8Y1GHGhLCH1yPRrucjObUmxNICQ1pg==
+  dependencies:
+    ajv "^6.1.0"
+    ajv-keywords "^3.1.0"
+    chalk "^2.3.2"
+    strip-ansi "^4.0.0"
+    text-table "^0.2.0"
+    webpack-log "^1.1.2"
+
 "@xtuc/ieee754@^1.2.0":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@xtuc/ieee754/-/ieee754-1.2.0.tgz#eef014a3145ae477a1cbc00cd1e552336dceb790"
@@ -925,7 +937,7 @@ ajv@5, ajv@^5.0.0, ajv@^5.1.5, ajv@^5.3.0:
     fast-json-stable-stringify "^2.0.0"
     json-schema-traverse "^0.3.0"
 
-ajv@^6.0.1, ajv@^6.1.0, ajv@^6.1.1:
+ajv@^6.0.1, ajv@^6.1.0:
   version "6.5.4"
   resolved "https://registry.yarnpkg.com/ajv/-/ajv-6.5.4.tgz#247d5274110db653706b550fcc2b797ca28cfc59"
   integrity sha512-4Wyjt8+t6YszqaXnLDfMmG/8AlO5Zbcsy3ATHncCzjW/NoPzAId8AK6749Ybjmdt+kUY1gP60fCu46oDxPv/mg==
@@ -1485,20 +1497,6 @@ autoprefixer@^8.3.0:
     num2fraction "^1.2.2"
     postcss "^6.0.23"
     postcss-value-parser "^3.2.3"
-
-awesome-typescript-loader@5.2.1:
-  version "5.2.1"
-  resolved "https://registry.yarnpkg.com/awesome-typescript-loader/-/awesome-typescript-loader-5.2.1.tgz#a41daf7847515f4925cdbaa3075d61f289e913fc"
-  integrity sha512-slv66OAJB8orL+UUaTI3pKlLorwIvS4ARZzYR9iJJyGsEgOqueMfOMdKySWzZ73vIkEe3fcwFgsKMg4d8zyb1g==
-  dependencies:
-    chalk "^2.4.1"
-    enhanced-resolve "^4.0.0"
-    loader-utils "^1.1.0"
-    lodash "^4.17.5"
-    micromatch "^3.1.9"
-    mkdirp "^0.5.1"
-    source-map-support "^0.5.3"
-    webpack-log "^1.2.0"
 
 aws-lambda@^0.1.2:
   version "0.1.2"
@@ -3321,7 +3319,7 @@ chalk@2.3.2:
     escape-string-regexp "^1.0.5"
     supports-color "^5.3.0"
 
-chalk@^2.0.0, chalk@^2.0.1, chalk@^2.1.0, chalk@^2.3.0, chalk@^2.4.0, chalk@^2.4.1:
+chalk@^2.0.0, chalk@^2.0.1, chalk@^2.1.0, chalk@^2.3.0, chalk@^2.3.2, chalk@^2.4.0, chalk@^2.4.1:
   version "2.4.1"
   resolved "https://registry.yarnpkg.com/chalk/-/chalk-2.4.1.tgz#18c49ab16a037b6eb0152cc83e3471338215b66e"
   integrity sha512-ObN6h1v2fTJSmUXoS3nMQ92LbDK9be4TV+6G+omQlGJFdcUX5heKi1LZ1YnRMIgwTLEj3E24bT6tYni50rlCfQ==
@@ -11981,15 +11979,16 @@ react-dev-utils@^5.0.2:
     strip-ansi "3.0.1"
     text-table "0.2.0"
 
-react-docgen-typescript-webpack-plugin@1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/react-docgen-typescript-webpack-plugin/-/react-docgen-typescript-webpack-plugin-1.1.0.tgz#4bfb8c3312fce487083924842cf03f66177ab9df"
-  integrity sha1-S/uMMxL85IcIOSSELPA/Zhd6ud8=
+react-docgen-typescript-loader@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/react-docgen-typescript-loader/-/react-docgen-typescript-loader-3.0.0.tgz#4042e2854d29380e4d01e479d438c03ec00de8e8"
+  integrity sha512-xtE4bZrU9+7grFFzs8v6gWc+Wl2FCCL59hldHoX2DuQAXOmJIilUm2uPmDmRNA8RpxU1Ax+9Gl0JfUcWgx2QPA==
   dependencies:
-    ajv "^6.1.1"
-    react-docgen-typescript "^1.2.3"
+    "@webpack-contrib/schema-utils" "^1.0.0-beta.0"
+    loader-utils "^1.1.0"
+    react-docgen-typescript "^1.9.0"
 
-react-docgen-typescript@^1.2.3:
+react-docgen-typescript@^1.9.0:
   version "1.11.0"
   resolved "https://registry.yarnpkg.com/react-docgen-typescript/-/react-docgen-typescript-1.11.0.tgz#9836c6276ed59766b22f9dac90e3718a916f847f"
   integrity sha512-G9DFbjl6ZfM7lb14dgHL0MHudXWyr8ach7Y3wo1NUKGNPLXhvyC4bj4HpShIGbfS1nB9fJh0qB+7fTMgXfKccg==
@@ -13365,7 +13364,7 @@ source-map-support@^0.4.15, source-map-support@^0.4.18:
   dependencies:
     source-map "^0.5.6"
 
-source-map-support@^0.5.0, source-map-support@^0.5.1, source-map-support@^0.5.3, source-map-support@^0.5.6:
+source-map-support@^0.5.0, source-map-support@^0.5.1, source-map-support@^0.5.6:
   version "0.5.9"
   resolved "https://registry.yarnpkg.com/source-map-support/-/source-map-support-0.5.9.tgz#41bc953b2534267ea2d605bccfa7bfa3111ced5f"
   integrity sha512-gR6Rw4MvUlYy83vP0vxoVNzM6t8MUXqNuRsuBmBHQDu1Fh6X015FrLdgoDKcNdkwGubozq0P4N0Q37UyFVr1EA==
@@ -13996,7 +13995,7 @@ test-exclude@^4.2.1:
     read-pkg-up "^1.0.1"
     require-main-filename "^1.0.1"
 
-text-table@0.2.0:
+text-table@0.2.0, text-table@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/text-table/-/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
   integrity sha1-f17oI66AUgfACvLfSoTsP8+lcLQ=
@@ -14213,6 +14212,17 @@ ts-loader@^2.3.7:
     chalk "^2.0.1"
     enhanced-resolve "^3.0.0"
     loader-utils "^1.0.2"
+    semver "^5.0.1"
+
+ts-loader@^5.2.2:
+  version "5.2.2"
+  resolved "https://registry.yarnpkg.com/ts-loader/-/ts-loader-5.2.2.tgz#a707849b08ca754cc46f5c7053e79fe1c84caf0e"
+  integrity sha512-vM/TrEKXBqRYq5yLatsXyKFnYSpv53klmGtrILGlNqcMsxPVi8+e4yr1Agbu9oMZepx/4szDVn5QpFo83IQdQg==
+  dependencies:
+    chalk "^2.3.0"
+    enhanced-resolve "^4.0.0"
+    loader-utils "^1.0.2"
+    micromatch "^3.1.4"
     semver "^5.0.1"
 
 ts-node@7.0.1:
@@ -14951,7 +14961,7 @@ webpack-hot-middleware@^2.22.0, webpack-hot-middleware@^2.22.2:
     querystring "^0.2.0"
     strip-ansi "^3.0.0"
 
-webpack-log@^1.0.1, webpack-log@^1.2.0:
+webpack-log@^1.0.1, webpack-log@^1.1.2:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/webpack-log/-/webpack-log-1.2.0.tgz#a4b34cda6b22b518dbb0ab32e567962d5c72a43d"
   integrity sha512-U9AnICnu50HXtiqiDxuli5gLB5PGBo7VvcHx36jRZHwK4vzOYLbImqT4lwWwoMHdQWwEKw736fCHEekokTEKHA==

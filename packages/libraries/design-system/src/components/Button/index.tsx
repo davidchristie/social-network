@@ -11,4 +11,4 @@ const Button: React.SFC<Props> = ({ className, ...attributes }) => (
   />
 );
 
-export default Button
+export default Button;
