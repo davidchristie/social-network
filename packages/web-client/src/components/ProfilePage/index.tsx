@@ -1,3 +1,4 @@
+import { Section } from "design-system";
 import React from "react";
 import { Query } from "react-apollo";
 
@@ -10,7 +11,6 @@ import Avatar from "../Avatar";
 import Container from "../Container";
 import CreatePostForm from "../CreatePostForm";
 import ProfilePosts from "../ProfilePosts";
-import Section from "../Section";
 
 interface Props {
   match: {
