@@ -2,7 +2,7 @@
   "devDependencies": {
     "@storybook/addon-actions": "3.4.11",
     "@storybook/addon-info": "3.4.11",
-    "@storybook/react": "4.0.0-alpha.3",
+    "@storybook/react": "4.0.0-rc.6",
     "@types/storybook__addon-actions": "3.4.1",
     "@types/storybook__addon-info": "3.4.2",
     "@types/storybook__react": "3.0.9",
