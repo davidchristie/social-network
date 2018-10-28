@@ -1,14 +1,8 @@
 import React from "react";
 
+import elementWithClass from "../../utilities/elementWithClass";
 import "./index.css";
 
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> { }
 
-const Button: React.SFC<Props> = ({ className, ...attributes }) => (
-  <button
-    className={`Button${className ? " " + className : ""}`}
-    {...attributes}
-  />
-);
-
-export default Button;
+export default elementWithClass<Props>("Button", "button");

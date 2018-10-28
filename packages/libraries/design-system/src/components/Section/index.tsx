@@ -1,14 +1,8 @@
 import React from "react";
 
+import elementWithClass from "../../utilities/elementWithClass";
 import "./index.css";
 
 interface Props extends React.HTMLAttributes<HTMLElement> { }
 
-const Section: React.SFC<Props> = ({ className, ...attributes }) => (
-  <section
-    className={`Section${className ? " " + className : ""}`}
-    {...attributes}
-  />
-);
-
-export default Section;
+export default elementWithClass<Props>("Section", "section");
