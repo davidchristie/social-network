@@ -1,9 +1,14 @@
 {
   "devDependencies": {
+    "@storybook/addon-actions": "^3.4.11",
+    "@storybook/addon-info": "^3.4.11",
+    "@storybook/react": "4.0.0-alpha.3",
+    "awesome-typescript-loader": "^5.2.1",
     "enzyme": "3.7.0",
     "enzyme-adapter-react-16": "1.6.0",
     "enzyme-to-json": "3.3.4",
     "jest": "23.6.0",
+    "react-docgen-typescript-webpack-plugin": "^1.1.0",
     "react-cosmos": "4.6.4",
     "react-scripts-ts": "3.1.0",
     "rimraf": "2.6.2",
@@ -55,6 +60,7 @@
   "scripts": {
     "build": "rimraf dist && rollup -c rollup.ts",
     "cosmos": "cosmos",
+    "storybook": "start-storybook --port 3333",
     "test": "jest --coverage --maxWorkers 2 --verbose"
   },
   "version": "1.0.0"
