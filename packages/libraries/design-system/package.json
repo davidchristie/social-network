@@ -60,6 +60,7 @@
   "private": true,
   "scripts": {
     "build": "rimraf dist && rollup -c rollup.ts",
+    "build-documentation": "build-storybook -o documentation",
     "cosmos": "cosmos",
     "storybook": "start-storybook --port 3333",
     "test": "jest --coverage --maxWorkers 2 --verbose"
