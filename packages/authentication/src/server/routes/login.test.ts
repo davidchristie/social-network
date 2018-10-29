@@ -1,8 +1,9 @@
+import { postToRouter } from "test-utilities/express";
+
 import {
   mockQueryAccountError,
   mockQueryAccountOnce
 } from "../../testing/mockPrisma";
-import postToRouter from "../../testing/postToRouter";
 import getHash from "../../utilities/getHash";
 import getToken from "../../utilities/getToken";
 import login from "./login";

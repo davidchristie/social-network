@@ -1,0 +1,6 @@
+{
+  "main": "../dist/express/index.js",
+  "name": "test-utilities/express",
+  "private": true,
+  "version": "1.0.0"
+}

@@ -1,9 +1,12 @@
-import itReturnsStatusCode from "../../testing/itReturnsStatusCode";
+import {
+  itReturnsStatusCode,
+  postToRouter,
+} from "test-utilities/express";
+
 import {
   mockQueryAccountOnce,
   mockUpdateAccountOnce
 } from "../../testing/mockPrisma";
-import postToRouter from "../../testing/postToRouter";
 import getHash from "../../utilities/getHash";
 import update_password from "./update_password";
 
