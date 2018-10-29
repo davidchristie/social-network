@@ -4,7 +4,7 @@ interface Arguments {
   id: string;
 }
 
-export default async function account (
+export default async function profile (
   { },
   { id }: Arguments,
   context: Context,

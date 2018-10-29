@@ -6,7 +6,7 @@ interface Arguments {
   };
 }
 
-export default async function updateProfile (
+export default async function updateAccount (
   { },
   { data: { email } }: Arguments,
   context: Context

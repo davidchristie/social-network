@@ -4,7 +4,7 @@ interface Arguments {
   id: string;
 }
 
-export default async function createPost (
+export default async function deletePost (
   { },
   { id }: Arguments,
   context: Context
