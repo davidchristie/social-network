@@ -29,7 +29,7 @@
     "collectCoverageFrom": [
       "src/**/*.{ts,tsx}",
       "!src/**/*.stories.{ts,tsx}",
-      "!src/utilities/stories/**",
+      "!src/utilities/storybook/**",
       "!src/setupTests.ts",
       "!src/mocks/**"
     ],
