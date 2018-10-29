@@ -2,6 +2,9 @@
   "author": "David Christie <davidchristie.nz@gmail.com>",
   "name": "social-network",
   "private": true,
+  "resolutions": {
+    "graphql": "14.0.2"
+  },
   "repository": "git@github.com:davidchristie/social-network.git",
   "scripts": {
     "authentication": "yarn workspace authentication",
