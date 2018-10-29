@@ -1,6 +1,6 @@
 import { shallow } from "enzyme";
 import React from "react";
-import { describeWithNoProps } from "test-utilities";
+import { describeWithNoProps } from "test-utilities/react";
 
 import Overlay from "./index";
 

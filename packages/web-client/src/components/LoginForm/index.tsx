@@ -1,4 +1,4 @@
-import { Button, Section } from "design-system";
+import { Button, Input, Section } from "design-system";
 import React from "react";
 import { Mutation } from "react-apollo";
 import { Link } from "react-router-dom";
@@ -10,7 +10,6 @@ import LoginMutation, {
 } from "../../mutations/Login";
 import AccountQuery from "../../queries/Account";
 import Alert from "../Alert";
-import Input from "../Input";
 
 interface State {
   email: string;
