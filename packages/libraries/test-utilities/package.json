@@ -1,5 +1,4 @@
 {
-  "main": "dist/index.js",
   "name": "test-utilities",
   "private": true,
   "scripts": {

@@ -1,7 +1,7 @@
 import {
   describeWithNoProps,
   describeWithProps
-} from "test-utilities";
+} from "test-utilities/react";
 
 import { Result } from "../AccountQuery";
 import AccountMenu, { AccountMenuContent } from "./index";

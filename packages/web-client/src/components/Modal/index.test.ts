@@ -1,4 +1,4 @@
-import { describeWithProps } from "test-utilities";
+import { describeWithProps } from "test-utilities/react";
 
 import Modal from "./index";
 

@@ -2,7 +2,7 @@ import {
   describeWithCustomClass,
   describeWithNoProps,
   describeWithProps
-} from "test-utilities";
+} from "test-utilities/react";
 
 import Button from "./index";
 

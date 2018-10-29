@@ -1,4 +1,4 @@
-import { describeWithNoProps } from "test-utilities";
+import { describeWithNoProps } from "test-utilities/react";
 
 import DeletePostButton from "./index";
 

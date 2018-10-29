@@ -1,7 +1,7 @@
 import {
   describeWithCustomClass,
   describeWithNoProps
-} from "test-utilities";
+} from "test-utilities/react";
 
 import Container from "./index";
 

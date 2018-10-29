@@ -1,0 +1,6 @@
+{
+  "main": "../dist/react/index.js",
+  "name": "test-utilities/react",
+  "private": true,
+  "version": "1.0.0"
+}
