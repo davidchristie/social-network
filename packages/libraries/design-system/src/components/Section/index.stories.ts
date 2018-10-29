@@ -1,4 +1,4 @@
 import Section from ".";
-import addComponentStory from "../../utilities/stories/addComponentStory";
+import addComponentStory from "../../utilities/storybook/addComponentStory";
 
 addComponentStory(Section);

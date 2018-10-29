@@ -1,4 +1,4 @@
 import Button from ".";
-import addComponentStory from "../../utilities/stories/addComponentStory";
+import addComponentStory from "../../utilities/storybook/addComponentStory";
 
 addComponentStory(Button);
