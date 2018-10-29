@@ -1,4 +1,4 @@
-import { Button, Section } from "design-system";
+import { Button, Section, TextArea } from "design-system";
 import React from "react";
 import { Mutation, Query } from "react-apollo";
 
@@ -12,7 +12,6 @@ import AccountQuery, {
 } from "../../queries/Account";
 import ProfileQuery from "../../queries/Profile";
 import Alert from "../Alert";
-import TextArea from "../TextArea";
 
 interface State {
   text: string;
