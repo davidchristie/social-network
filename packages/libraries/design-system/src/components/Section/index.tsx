@@ -24,7 +24,9 @@ const Content: React.SFC<Props & WithStyles<"section">> = ({
   classes,
 }) => {
   return (
-    <Paper className={classes!.section + className ? className : ""}>
+    <Paper
+      className={classes!.section + className ? " " + className : ""}
+    >
       {children}
     </Paper>
   );
