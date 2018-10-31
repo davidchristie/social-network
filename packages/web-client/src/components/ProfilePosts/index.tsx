@@ -1,3 +1,4 @@
+import { Alert } from "design-system";
 import React from "react";
 import { Query } from "react-apollo";
 
@@ -5,7 +6,6 @@ import ProfileQuery, {
   ProfileData,
   ProfileVariables
 } from "../../queries/Profile";
-import Alert from "../Alert";
 import PostSummary from "../PostSummary";
 
 interface Props {

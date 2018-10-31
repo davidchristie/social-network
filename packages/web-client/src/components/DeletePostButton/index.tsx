@@ -1,4 +1,4 @@
-import { Button } from "design-system";
+import { Alert, Button } from "design-system";
 import React from "react";
 import { Mutation } from "react-apollo";
 
@@ -8,7 +8,6 @@ import DeletePostMutation, {
 } from "../../mutations/DeletePost";
 import ProfileQuery from "../../queries/Profile";
 import AccountQuery, { Result } from "../AccountQuery";
-import Alert from "../Alert";
 import ConfirmationModal from "../ConfirmationModal";
 
 interface Props {

@@ -1,3 +1,4 @@
+import { Alert } from "design-system";
 import React from "react";
 import { Query } from "react-apollo";
 import { Redirect, Route, Switch } from "react-router-dom";
@@ -7,7 +8,6 @@ import AccountQuery, {
   AccountVariables,
 } from "../../queries/Account";
 import AccountPage from "../AccountPage";
-import Alert from "../Alert";
 import HomePage from "../HomePage";
 import LoginPage from "../LoginPage";
 import ProfilePage from "../ProfilePage";
