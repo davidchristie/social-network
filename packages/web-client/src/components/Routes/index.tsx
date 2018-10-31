@@ -14,7 +14,7 @@ import ProfilePage from "../ProfilePage";
 import SignupPage from "../SignupPage";
 
 export default class Routes extends React.Component {
-  public render() {
+  public render () {
     return (
       <Query<AccountData, AccountVariables>
         query={AccountQuery}
