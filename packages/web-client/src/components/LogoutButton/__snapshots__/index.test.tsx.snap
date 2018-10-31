@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`LogoutButton component matches snapshot 1`] = `
-<Button
+<Button$2
   onClick={[Function]}
 >
   Logout
-</Button>
+</Button$2>
 `;
