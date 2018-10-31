@@ -1,4 +1,4 @@
-import { Button, Section, TextArea } from "design-system";
+import { Alert, Button, Section, TextArea } from "design-system";
 import React from "react";
 import { Mutation, Query } from "react-apollo";
 
@@ -11,7 +11,6 @@ import AccountQuery, {
   AccountVariables
 } from "../../queries/Account";
 import ProfileQuery from "../../queries/Profile";
-import Alert from "../Alert";
 
 interface State {
   text: string;
@@ -22,7 +21,7 @@ export default class CreatePostForm extends React.Component<{}, State> {
     text: "",
   };
 
-  public render () {
+  public render() {
     return (
       <Query<AccountData, AccountVariables>
         query={AccountQuery}

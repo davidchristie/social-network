@@ -1,4 +1,4 @@
-import { Section } from "design-system";
+import { Alert, Section } from "design-system";
 import React from "react";
 import { Query } from "react-apollo";
 
@@ -6,7 +6,6 @@ import ProfileQuery, {
   ProfileData,
   ProfileVariables
 } from "../../queries/Profile";
-import Alert from "../Alert";
 import Avatar from "../Avatar";
 import Container from "../Container";
 import CreatePostForm from "../CreatePostForm";
