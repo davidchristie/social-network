@@ -28,7 +28,7 @@ class UpdatePasswordForm extends React.Component<Props, State> {
     newPassword: "",
   };
 
-  public render() {
+  public render () {
     return (
       <Mutation<UpdatePasswordData, UpdatePasswordVariables>
         mutation={UpdatePasswordMutation}
@@ -106,7 +106,7 @@ class UpdatePasswordForm extends React.Component<Props, State> {
   }
 }
 
-export default function UpdatePasswordFormContainer() {
+export default function UpdatePasswordFormContainer () {
   return (
     <Query<AccountData, AccountVariables>
       query={AccountQuery}
