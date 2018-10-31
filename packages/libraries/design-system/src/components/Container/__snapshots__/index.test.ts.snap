@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Container component with custom class matches snapshot 1`] = `
+<div
+  className="Container CUSTOM_CLASS"
+/>
+`;
+
+exports[`Container component with no props matches snapshot 1`] = `
+<div
+  className="Container"
+/>
+`;

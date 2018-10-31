@@ -1,0 +1,29 @@
+.Container {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+@media (min-width: 575px) {
+  .Container {
+    max-width: 550px;
+  }
+}
+
+@media (min-width: 775px) {
+  .Container {
+    max-width: 720px;
+  }
+}
+
+@media (min-width: 1000px) {
+  .Container {
+    max-width: 950px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .Container {
+      max-width: 1150px;
+  }
+}
