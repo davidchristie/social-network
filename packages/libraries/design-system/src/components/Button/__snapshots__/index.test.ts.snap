@@ -1,21 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Button component with custom class matches snapshot 1`] = `
-<button
-  className="Button CUSTOM_CLASS"
+<WithStyles(Button)
+  className="CUSTOM_CLASS"
 />
 `;
 
-exports[`Button component with no props matches snapshot 1`] = `
-<button
-  className="Button"
-/>
-`;
+exports[`Button component with no props matches snapshot 1`] = `<WithStyles(Button) />`;
 
 exports[`Button component with text content matches snapshot 1`] = `
-<button
-  className="Button"
->
+<WithStyles(Button)>
   text content
-</button>
+</WithStyles(Button)>
 `;

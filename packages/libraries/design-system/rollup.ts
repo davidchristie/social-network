@@ -1,10 +1,10 @@
-import resolve from "rollup-plugin-node-resolve";
 import commonjs from "rollup-plugin-commonjs";
+import resolve from "rollup-plugin-node-resolve";
+import postcss from "rollup-plugin-postcss";
 import sourceMaps from "rollup-plugin-sourcemaps";
 import typescript from "rollup-plugin-typescript2";
-import postcss from "rollup-plugin-postcss";
 
-const pkg = require("./package.json")
+const pkg = require("./package.json");
 
 export default {
   input: `src/index.ts`,
@@ -12,12 +12,12 @@ export default {
     {
       file: pkg.main,
       format: "cjs",
-      sourcemap: true
+      sourcemap: true,
     },
     {
       file: pkg.module,
       format: "es",
-      sourcemap: true
+      sourcemap: true,
     },
   ],
   external: [],
@@ -26,7 +26,7 @@ export default {
   },
   plugins: [
     postcss({
-      extensions: ['.css'],
+      extensions: [".css"],
     }),
     typescript({
       tsconfig: "tsconfig.json",
@@ -35,4 +35,4 @@ export default {
     resolve(),
     sourceMaps(),
   ],
-}
+};
