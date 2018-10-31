@@ -1,7 +1,6 @@
-import { Section } from "design-system";
+import { Container, Section } from "design-system";
 import React from "react";
 
-import Container from "../Container";
 import UpdateAccountForm from "../UpdateAccountForm";
 import UpdatePasswordForm from "../UpdatePasswordForm";
 import UpdateProfileForm from "../UpdateProfileForm";

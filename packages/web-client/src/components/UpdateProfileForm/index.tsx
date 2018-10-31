@@ -1,4 +1,4 @@
-import { Button, Input, Section } from "design-system";
+import { Alert, Button, Input, Section } from "design-system";
 import React from "react";
 import { Mutation, Query } from "react-apollo";
 
@@ -10,7 +10,6 @@ import AccountQuery, {
   AccountData,
   AccountVariables
 } from "../../queries/Account";
-import Alert from "../Alert";
 
 interface Props {
   data: AccountData;

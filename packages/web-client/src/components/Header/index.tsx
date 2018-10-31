@@ -1,3 +1,4 @@
+import { Alert, Container } from "design-system";
 import React from "react";
 import { Query } from "react-apollo";
 import { Link } from "react-router-dom";
@@ -7,9 +8,7 @@ import AccountQuery, {
   AccountVariables,
 } from "../../queries/Account";
 import AccountMenu from "../AccountMenu";
-import Alert from "../Alert";
 import ButtonLink from "../ButtonLink";
-import Container from "../Container";
 import "./index.css";
 
 export default class Header extends React.Component {
