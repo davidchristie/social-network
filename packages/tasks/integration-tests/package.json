@@ -1,7 +1,7 @@
 {
   "devDependencies": {
     "@types/faker": "4.1.4",
-    "@types/jest": "23.3.8",
+    "@types/jest": "23.3.9",
     "@types/puppeteer": "1.9.1",
     "faker": "4.1.0",
     "jest": "23.6.0",
