@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Theme component matches snapshot 1`] = `
+exports[`Theme component with no props matches snapshot 1`] = `
 <MuiThemeProvider
   theme={
     Object {
