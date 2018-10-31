@@ -1,3 +1,4 @@
+import { Theme } from "design-system";
 import React from "react";
 import { ApolloProvider } from "react-apollo";
 import { BrowserRouter } from "react-router-dom";
@@ -5,7 +6,6 @@ import { BrowserRouter } from "react-router-dom";
 import apollo from "../../apollo";
 import Layout from "../Layout";
 import Routes from "../Routes";
-import Theme from "../Theme";
 
 export default class Application extends React.Component {
   public render () {
