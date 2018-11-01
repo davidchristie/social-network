@@ -2,9 +2,8 @@
   "compilerOptions": {
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
-    "baseUrl": ".",
     "forceConsistentCasingInFileNames": true,
-    "jsx": "react",
+    "jsx": "preserve",
     "lib": [
       "es6",
       "dom",
@@ -21,7 +20,12 @@
     "sourceMap": true,
     "strictNullChecks": true,
     "suppressImplicitAnyIndexErrors": true,
-    "target": "es5"
+    "target": "es5",
+    "skipLibCheck": false,
+    "strict": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true
   },
   "exclude": [
     "acceptance-tests",
@@ -32,5 +36,8 @@
     "src/setupTests.ts",
     "webpack"
   ],
-  "extends": "../../tsconfig.json"
+  "extends": "../../tsconfig.json",
+  "include": [
+    "src"
+  ]
 }
