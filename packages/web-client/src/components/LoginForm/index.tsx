@@ -69,6 +69,7 @@ export default class LoginForm extends React.Component<{}, State> {
               }
               <Input
                 autoFocus={true}
+                id="login-email"
                 label="Email Address"
                 name="email"
                 onChange={this.emailChanged}
@@ -77,6 +78,7 @@ export default class LoginForm extends React.Component<{}, State> {
                 value={this.state.email}
               />
               <Input
+                id="login-password"
                 label="Password"
                 name="password"
                 onChange={this.passwordChanged}

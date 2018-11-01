@@ -44,6 +44,7 @@ class UpdateAccountForm extends React.Component<Props, State> {
               }}
             >
               <Input
+                id="update-account-email"
                 label="Email Address"
                 name="email"
                 onChange={this.emailChanged}

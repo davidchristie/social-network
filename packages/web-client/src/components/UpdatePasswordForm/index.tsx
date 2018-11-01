@@ -64,6 +64,7 @@ class UpdatePasswordForm extends React.Component<Props, State> {
                 <Alert>Current password is incorrect</Alert>
               )}
               <Input
+                id="update-password-current"
                 label="Current"
                 name="current"
                 onChange={this.currentPasswordChanged}
@@ -72,6 +73,7 @@ class UpdatePasswordForm extends React.Component<Props, State> {
                 value={this.state.currentPassword}
               />
               <Input
+                id="update-password-new"
                 label="New"
                 name="new"
                 onChange={this.newPasswordChanged}

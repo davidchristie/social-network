@@ -72,6 +72,7 @@ export default class SignupForm extends React.Component<{}, State> {
               }
               <Input
                 autoFocus={true}
+                id="signup-name"
                 label="Name"
                 name="name"
                 onChange={this.nameChanged}
@@ -79,6 +80,7 @@ export default class SignupForm extends React.Component<{}, State> {
                 value={this.state.name}
               />
               <Input
+                id="signup-email"
                 label="Email Address"
                 name="email"
                 onChange={this.emailChanged}
@@ -87,6 +89,7 @@ export default class SignupForm extends React.Component<{}, State> {
                 value={this.state.email}
               />
               <Input
+                id="signup-password"
                 label="Password"
                 name="password"
                 onChange={this.passwordChanged}

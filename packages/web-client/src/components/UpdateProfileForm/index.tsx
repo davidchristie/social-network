@@ -51,6 +51,7 @@ class UpdateProfileForm extends React.Component<Props, State> {
             >
               <h2>Profile</h2>
               <Input
+                id="update-profile-name"
                 label="Name"
                 name="name"
                 onChange={this.nameChanged}
@@ -58,6 +59,7 @@ class UpdateProfileForm extends React.Component<Props, State> {
                 value={this.state.name}
               />
               <Input
+                id="update-profile-avatar-url"
                 label="Avatar URL"
                 name="avatar-url"
                 onChange={this.avatarUrlChanged}

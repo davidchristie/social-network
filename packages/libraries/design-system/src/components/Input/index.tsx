@@ -6,6 +6,7 @@ import React from "react";
 interface Props {
   autoFocus?: boolean;
   className?: string;
+  id: string;
   label: string;
   name: string;
   onBlur?: (event: React.FocusEvent) => void;
@@ -17,6 +18,7 @@ interface Props {
 }
 
 const Input: React.SFC<Props> = ({
+  id,
   label,
   name,
   required,
@@ -24,10 +26,10 @@ const Input: React.SFC<Props> = ({
 }) => {
   return (
     <FormControl fullWidth margin="normal" required={required}>
-      <InputLabel htmlFor={name}>{label}</InputLabel>
+      <InputLabel htmlFor={id}>{label}</InputLabel>
       <MaterialInput
         autoComplete={name}
-        id={name}
+        id={id}
         name={name}
         {...attributes}
       />
