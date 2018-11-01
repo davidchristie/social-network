@@ -67,28 +67,22 @@ export default class LoginForm extends React.Component<{}, State> {
                   <Alert>{this.state.error}</Alert>
                 )
               }
-              <div>
-                <label htmlFor="login-email">Email</label>
-                <Input
-                  id="login-email"
-                  name="email"
-                  onChange={this.emailChanged}
-                  required={true}
-                  type="email"
-                  value={this.state.email}
-                />
-              </div>
-              <div>
-                <label htmlFor="login-password">Password</label>
-                <Input
-                  id="login-password"
-                  name="password"
-                  onChange={this.passwordChanged}
-                  required={true}
-                  type="password"
-                  value={this.state.password}
-                />
-              </div>
+              <Input
+                label="Email Address"
+                name="email"
+                onChange={this.emailChanged}
+                required={true}
+                type="email"
+                value={this.state.email}
+              />
+              <Input
+                label="Password"
+                name="password"
+                onChange={this.passwordChanged}
+                required={true}
+                type="password"
+                value={this.state.password}
+              />
               <Button type="submit">Submit</Button>
             </form>
           </Section>
