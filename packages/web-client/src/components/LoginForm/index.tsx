@@ -68,6 +68,7 @@ export default class LoginForm extends React.Component<{}, State> {
                 )
               }
               <Input
+                autoFocus={true}
                 label="Email Address"
                 name="email"
                 onChange={this.emailChanged}

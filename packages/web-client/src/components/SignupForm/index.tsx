@@ -71,6 +71,7 @@ export default class SignupForm extends React.Component<{}, State> {
                 )
               }
               <Input
+                autoFocus={true}
                 label="Name"
                 name="name"
                 onChange={this.nameChanged}

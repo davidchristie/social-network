@@ -12,7 +12,6 @@ exports[`Input component with label and name matches snapshot 1`] = `
   </WithStyles(InputLabel)>
   <WithStyles(Input)
     autoComplete="name"
-    autoFocus={true}
     id="name"
     name="name"
   />

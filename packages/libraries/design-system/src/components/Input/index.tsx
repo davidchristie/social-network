@@ -4,6 +4,7 @@ import InputLabel from "@material-ui/core/InputLabel";
 import React from "react";
 
 interface Props {
+  autoFocus?: boolean;
   className?: string;
   label: string;
   name: string;
@@ -12,10 +13,8 @@ interface Props {
   onClick?: (event: React.MouseEvent) => void;
   required?: boolean;
   type?: string;
-  value?: Value | Value[];
+  value?: number | string;
 }
-
-type Value = boolean | number | string;
 
 const Input: React.SFC<Props> = ({
   label,
@@ -28,7 +27,6 @@ const Input: React.SFC<Props> = ({
       <InputLabel htmlFor={name}>{label}</InputLabel>
       <MaterialInput
         autoComplete={name}
-        autoFocus
         id={name}
         name={name}
         {...attributes}
