@@ -70,38 +70,33 @@ export default class SignupForm extends React.Component<{}, State> {
                   </Alert>
                 )
               }
-              <div>
-                <label htmlFor="signup-name">Name</label>
-                <Input
-                  id="signup-name"
-                  name="name"
-                  onChange={this.nameChanged}
-                  required={true}
-                  value={this.state.name}
-                />
-              </div>
-              <div>
-                <label htmlFor="signup-email">Email</label>
-                <Input
-                  id="signup-email"
-                  name="email"
-                  onChange={this.emailChanged}
-                  required={true}
-                  type="email"
-                  value={this.state.email}
-                />
-              </div>
-              <div>
-                <label htmlFor="signup-password">Password</label>
-                <Input
-                  id="signup-password"
-                  name="password"
-                  onChange={this.passwordChanged}
-                  required={true}
-                  type="password"
-                  value={this.state.password}
-                />
-              </div>
+              <Input
+                autoFocus={true}
+                id="signup-name"
+                label="Name"
+                name="name"
+                onChange={this.nameChanged}
+                required={true}
+                value={this.state.name}
+              />
+              <Input
+                id="signup-email"
+                label="Email Address"
+                name="email"
+                onChange={this.emailChanged}
+                required={true}
+                type="email"
+                value={this.state.email}
+              />
+              <Input
+                id="signup-password"
+                label="Password"
+                name="password"
+                onChange={this.passwordChanged}
+                required={true}
+                type="password"
+                value={this.state.password}
+              />
               <Button type="submit">Submit</Button>
             </form>
           </Section>

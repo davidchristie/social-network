@@ -50,26 +50,22 @@ class UpdateProfileForm extends React.Component<Props, State> {
               }}
             >
               <h2>Profile</h2>
-              <div>
-                <label htmlFor="update-profile-name">Name</label>
-                <Input
-                  id="update-profile-name"
-                  name="name"
-                  onChange={this.nameChanged}
-                  required={true}
-                  value={this.state.name}
-                />
-              </div>
-              <div>
-                <label htmlFor="update-profile-avatar-url">Avatar</label>
-                <Input
-                  id="update-profile-avatar-url"
-                  name="avatar-url"
-                  onChange={this.avatarUrlChanged}
-                  type="url"
-                  value={this.state.avatarUrl}
-                />
-              </div>
+              <Input
+                id="update-profile-name"
+                label="Name"
+                name="name"
+                onChange={this.nameChanged}
+                required={true}
+                value={this.state.name}
+              />
+              <Input
+                id="update-profile-avatar-url"
+                label="Avatar URL"
+                name="avatar-url"
+                onChange={this.avatarUrlChanged}
+                type="url"
+                value={this.state.avatarUrl}
+              />
               <Button type="submit">Save</Button>
             </form>
           </Section>
