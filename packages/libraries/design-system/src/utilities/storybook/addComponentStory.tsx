@@ -1,5 +1,4 @@
 import { action } from "@storybook/addon-actions";
-import { withInfo } from "@storybook/addon-info";
 import { storiesOf } from "@storybook/react";
 import React from "react";
 
@@ -19,8 +18,6 @@ export default function addComponentStory<P extends Props> (
   };
   stories.add(
     name,
-    withInfo({ inline: true })(() => (
-      <Component {...componentProps} />
-    ))
+    () => <Component {...componentProps} />
   );
 }

@@ -63,28 +63,24 @@ class UpdatePasswordForm extends React.Component<Props, State> {
               {this.state.errorMessage && (
                 <Alert>Current password is incorrect</Alert>
               )}
-              <div>
-                <label htmlFor="update-password-current">Current</label>
-                <Input
-                  id="update-password-current"
-                  name="current"
-                  onChange={this.currentPasswordChanged}
-                  required={true}
-                  type="password"
-                  value={this.state.currentPassword}
-                />
-              </div>
-              <div>
-                <label htmlFor="update-password-new">New</label>
-                <Input
-                  id="update-password-new"
-                  name="new"
-                  onChange={this.newPasswordChanged}
-                  required={true}
-                  type="password"
-                  value={this.state.newPassword}
-                />
-              </div>
+              <Input
+                id="update-password-current"
+                label="Current"
+                name="current"
+                onChange={this.currentPasswordChanged}
+                required={true}
+                type="password"
+                value={this.state.currentPassword}
+              />
+              <Input
+                id="update-password-new"
+                label="New"
+                name="new"
+                onChange={this.newPasswordChanged}
+                required={true}
+                type="password"
+                value={this.state.newPassword}
+              />
               <Button type="submit">Save</Button>
             </form>
           </Section>

@@ -43,17 +43,15 @@ class UpdateAccountForm extends React.Component<Props, State> {
                 updateAccount();
               }}
             >
-              <div>
-                <label htmlFor="update-account-email">Email</label>
-                <Input
-                  id="update-account-email"
-                  name="email"
-                  onChange={this.emailChanged}
-                  required={true}
-                  type="email"
-                  value={this.state.email}
-                />
-              </div>
+              <Input
+                id="update-account-email"
+                label="Email Address"
+                name="email"
+                onChange={this.emailChanged}
+                required={true}
+                type="email"
+                value={this.state.email}
+              />
               <Button type="submit">Save</Button>
             </form>
           </Section>
