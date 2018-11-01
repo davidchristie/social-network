@@ -2,6 +2,7 @@ import Paper from "@material-ui/core/Paper";
 import withStyles, {
   WithStyles
 } from "@material-ui/core/styles/withStyles";
+import classNames from "classnames";
 import React from "react";
 
 interface Props {
@@ -24,9 +25,7 @@ const Content: React.SFC<Props & WithStyles<"section">> = ({
   classes,
 }) => {
   return (
-    <Paper
-      className={classes!.section + className ? " " + className : ""}
-    >
+    <Paper className={classNames(classes.section, className)}>
       {children}
     </Paper>
   );

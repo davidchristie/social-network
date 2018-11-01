@@ -1,4 +1,4 @@
-import { Alert, Container } from "design-system";
+import { Alert, Container, Topbar } from "design-system";
 import React from "react";
 import { Query } from "react-apollo";
 import { Link } from "react-router-dom";
@@ -26,7 +26,7 @@ export default class Header extends React.Component {
           }
           const { account } = data!;
           return (
-            <header className="Header">
+            <Topbar className="Header">
               <Container>
                 <Link
                   className="logo"
@@ -51,7 +51,7 @@ export default class Header extends React.Component {
                   }
                 </div>
               </Container>
-            </header>
+            </Topbar>
           );
         }}
       </Query>
