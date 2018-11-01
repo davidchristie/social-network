@@ -5,3 +5,4 @@ export { default as Input } from "./components/Input";
 export { default as Section } from "./components/Section";
 export { default as TextArea } from "./components/TextArea";
 export { default as Theme } from "./components/Theme";
+export { default as Topbar } from "./components/Topbar";
