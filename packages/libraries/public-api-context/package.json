@@ -25,7 +25,7 @@
       "ts"
     ],
     "testMatch": [
-      "**/*.test.+(js|ts)"
+      "<rootDir>/src/**/*.test.+(js|ts)"
     ],
     "transform": {
       ".+\\.(ts|tsx)$": "ts-jest"
