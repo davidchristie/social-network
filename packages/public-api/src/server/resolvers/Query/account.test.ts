@@ -1,4 +1,5 @@
-import { Context } from "../../../types";
+import { Context } from "public-api-context";
+
 import accountQueryResolver from "./account";
 
 const response = {} as Response;

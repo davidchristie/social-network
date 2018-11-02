@@ -17,6 +17,7 @@
 ### Libraries
 
 * [Design System](packages/libraries/design-system)
+* [Public API Context](packages/libraries/public-api-context)
 * [Test Utilities](packages/libraries/test-utilities)
 
 ### Tasks

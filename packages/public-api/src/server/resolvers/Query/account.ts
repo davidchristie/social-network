@@ -1,5 +1,6 @@
+import { Context } from "public-api-context";
+
 import authentication from "../../../services/authentication";
-import { Context } from "../../../types";
 
 export default async function account ({ }, { }, context: Context, info) {
   const { id } = await authentication.account(context.request);

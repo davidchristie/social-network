@@ -1,4 +1,5 @@
-import { Context } from "../../../types";
+import { Context } from "public-api-context";
+
 import profileQueryResolver from "./profile";
 
 describe("profile query resolver", () => {

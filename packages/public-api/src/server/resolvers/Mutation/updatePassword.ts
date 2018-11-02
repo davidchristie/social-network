@@ -1,5 +1,6 @@
+import { Context } from "public-api-context";
+
 import authentication from "../../../services/authentication";
-import { Context } from "../../../types";
 
 interface Arguments {
   data: {
