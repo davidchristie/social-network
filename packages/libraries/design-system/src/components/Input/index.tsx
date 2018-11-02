@@ -9,9 +9,9 @@ interface Props {
   id: string;
   label: string;
   name: string;
-  onBlur?: (event: React.FocusEvent) => void;
-  onChange?: (event: React.FormEvent) => void;
-  onClick?: (event: React.MouseEvent) => void;
+  onBlur?: React.FocusEventHandler
+  onChange?: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>
+  onClick?: React.MouseEventHandler
   required?: boolean;
   type?: string;
   value?: number | string;

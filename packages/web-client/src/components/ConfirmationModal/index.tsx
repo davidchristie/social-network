@@ -20,7 +20,7 @@ export default class ConfirmationModal extends React.Component<Props> {
         <hr />
         <Button onClick={this.handleConfirmClick}>
           Confirm
-          </Button>
+        </Button>
         <Button onClick={this.props.onClose}>
           Cancel
         </Button>
