@@ -70,7 +70,7 @@ export default class CreatePostForm extends React.Component<{}, State> {
                         value={this.state.text}
                       />
                     </div>
-                    <Button>Post</Button>
+                    <Button type="submit">Post</Button>
                   </form>
                 </Section>
               )}

@@ -1,11 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`DeletePostButton component with no props matches snapshot 1`] = `
-<AccountQuery>
-  <Component />
-</AccountQuery>
-`;
-
 exports[`DeletePostButton component with post ID matches snapshot 1`] = `
 <AccountQuery>
   <Component />
