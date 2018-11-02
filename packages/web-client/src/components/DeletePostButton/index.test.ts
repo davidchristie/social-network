@@ -1,7 +1,9 @@
-import { describeWithNoProps } from "test-utilities/react";
+import { describeWithProps } from "test-utilities/react";
 
-import DeletePostButton from "./index";
+import DeletePostButton from ".";
 
 describe("DeletePostButton component", () => {
-  describeWithNoProps(DeletePostButton);
+  describeWithProps("with post ID", DeletePostButton, {
+    postId: "xxxx-xxxx-xxxx-xxxx",
+  });
 });
