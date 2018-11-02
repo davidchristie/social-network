@@ -1,4 +1,4 @@
-import { Context } from "../../../types";
+import { Context } from "public-api-context";
 
 interface Arguments {
   data: {

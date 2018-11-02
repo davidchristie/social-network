@@ -1,6 +1,6 @@
-import { ProfileUpdateInput } from "data-model";
+import { Context } from "public-api-context";
 
-import { Context } from "../../../types";
+import { ProfileUpdateInput } from "data-model";
 
 interface Arguments {
   data: {
