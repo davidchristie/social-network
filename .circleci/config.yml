@@ -215,6 +215,9 @@ jobs:
           name: Test public-api
           command: yarn public-api test --coverage
       - run:
+          name: Test public-api-context
+          command: yarn public-api-context test --coverage
+      - run:
           name: Test web-client
           command: yarn web-client test --coverage
       - run:
@@ -239,11 +242,15 @@ jobs:
                   packages/public-api/coverage/lcov.info
 
             ./tmp/test-reporter format-coverage -t lcov \
+                  -o tmp/coverage.public-api-context.json \
+                  packages/libraries/public-api-context/coverage/lcov.info
+
+            ./tmp/test-reporter format-coverage -t lcov \
                   -o tmp/coverage.web-client.json \
                   packages/web-client/coverage/lcov.info
 
             ./tmp/test-reporter sum-coverage tmp/coverage.*.json \
-              --parts 4 \
+              --parts 5 \
               --output tmp/coverage.total.json
       - run:
           name: Upload report
