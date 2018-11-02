@@ -1,5 +1,5 @@
-# import Image from "../../data-model/generated/prisma.graphql"
-# import Post from "../../data-model/generated/prisma.graphql"
+# import Image from "../../data-model/generated/graphql-schema/prisma.graphql"
+# import Post from "../../data-model/generated/graphql-schema/prisma.graphql"
 
 input AccountUpdateInput {
   email: String

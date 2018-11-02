@@ -8,13 +8,14 @@
     "rimraf": "2.6.2",
     "typescript": "3.1.6"
   },
-  "main": "./dist/prisma.js",
+  "main": "./dist/prisma-client/index.js",
   "name": "data-model",
   "private": true,
   "scripts": {
     "build": "rimraf dist && tsc",
     "delete": "prisma delete",
     "deploy": "prisma deploy --no-seed",
+    "generate": "prisma generate && yarn build",
     "playground": "prisma playground",
     "seed": "prisma seed",
     "wait-for-prisma": "scripts/wait-for-prisma.sh"

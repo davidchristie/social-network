@@ -2,7 +2,8 @@ endpoint: ${env:PRISMA_ENDPOINT}
 datamodel: datamodel.graphql
 seed:
   import: seed.graphql
-hooks:
-  post-deploy:
-    - graphql get-schema --project data-model
-    - graphql codegen
+generate:
+  - generator: typescript-client
+    output: ./generated/prisma-client/
+  - generator: graphql-schema
+    output: ./generated/graphql-schema/
