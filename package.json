@@ -15,7 +15,7 @@
     "design-system": "yarn workspace design-system",
     "desktop-client": "yarn workspace desktop-client",
     "development": "docker-compose -f docker-compose.yml -f docker-compose.development.yml",
-    "lint": "yarn workspaces run lint",
+    "lint": "scripts/lint.sh",
     "infrastructure": "yarn workspace infrastructure",
     "integration-tests": "yarn workspace integration-tests",
     "production": "docker-compose -f docker-compose.yml -f docker-compose.production.yml",

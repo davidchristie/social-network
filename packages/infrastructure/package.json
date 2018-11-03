@@ -5,8 +5,7 @@
     "connect-to-prisma": "scripts/connect-to-prisma.sh",
     "create-namespace": "scripts/create-namespace.sh",
     "create-secrets": "scripts/create-secrets.sh",
-    "deploy": "scripts/deploy.sh",
-    "lint": "exit 0"
+    "deploy": "scripts/deploy.sh"
   },
   "version": "1.0.0"
 }
