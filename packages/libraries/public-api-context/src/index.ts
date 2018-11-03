@@ -4,6 +4,8 @@ import account from "./account";
 import database from "./database";
 import { Context } from "./types";
 
+export * from "./types";
+
 export function createContext (): ContextCallback {
   return async ({ request }): Promise<Context> => {
     return {

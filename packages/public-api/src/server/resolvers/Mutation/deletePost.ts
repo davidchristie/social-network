@@ -9,7 +9,7 @@ export default async function deletePost (
   { id }: Arguments,
   context: Context
 ) {
-  const canDeletePost = await context.database.exists.Post({
+  const canDeletePost = await context.database.$exists.post({
     AND: [
       {
         id,
@@ -26,9 +26,5 @@ export default async function deletePost (
   if (!canDeletePost) {
     throw new Error(`Post not found or you are not the author`);
   }
-  return context.database.mutation.deletePost({
-    where: {
-      id,
-    },
-  });
+  return context.database.deletePost({ id });
 }

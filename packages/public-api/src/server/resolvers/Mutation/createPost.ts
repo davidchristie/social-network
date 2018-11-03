@@ -9,21 +9,19 @@ export default async function createPost (
   { text }: Arguments,
   context: Context
 ) {
-  const [profile] = await context.database.query.profiles({
+  const [profile] = await context.database.profiles({
     where: {
       account: {
         id: context.account.id,
       },
     },
   });
-  return context.database.mutation.createPost({
-    data: {
-      createdBy: {
-        connect: {
-          id: profile.id,
-        },
+  return context.database.createPost({
+    createdBy: {
+      connect: {
+        id: profile.id,
       },
-      text,
     },
+    text,
   });
 }

@@ -10,12 +10,5 @@ export default async function profile (
   context: Context,
   info
 ) {
-  return context.database.query.profile(
-    {
-      where: {
-        id,
-      },
-    },
-    info,
-  );
+  return context.database.profile({ id });
 }

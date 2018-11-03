@@ -41,7 +41,7 @@
   "private": true,
   "scripts": {
     "build": "rimraf dist && tsc",
-    "lint": "tslint --project .",
+    "lint": "tslint --project . && tsc --noEmit",
     "start": "nodemon -e ts,graphql -x ts-node -r dotenv/config src/index.ts dotenv_config_path=../../.env",
     "test": "jest --coverage --maxWorkers 2 --verbose"
   },

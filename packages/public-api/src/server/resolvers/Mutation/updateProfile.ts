@@ -14,7 +14,7 @@ export default async function updateProfile (
   { data: { avatarUrl, name } }: Arguments,
   context: Context
 ) {
-  const [profile] = await context.database.query.profiles({
+  const [profile] = await context.database.profiles({
     where: {
       account: {
         id: context.account.id,
@@ -36,7 +36,7 @@ export default async function updateProfile (
       delete: true,
     };
   }
-  return context.database.mutation.updateProfile({
+  return context.database.updateProfile({
     data,
     where: {
       id: profile.id,

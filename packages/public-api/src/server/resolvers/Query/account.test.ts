@@ -34,7 +34,7 @@ function itReturnsExpectedResult (
         get: jest.fn(),
       },
     } as unknown as Context;
-    expect(await accountQueryResolver(null, null, context, null))
+    expect(await accountQueryResolver(null, null, context))
       .toBe(queryResult);
   });
 }
