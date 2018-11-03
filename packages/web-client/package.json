@@ -44,7 +44,7 @@
   "private": true,
   "scripts": {
     "build": "react-scripts build",
-    "lint": "tslint --project .",
+    "lint": "tslint --project . && tsc --noEmit",
     "start": "react-scripts start",
     "test": "react-scripts test --coverage --env=jsdom --maxWorkers 2 --verbose"
   },

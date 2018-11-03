@@ -23,6 +23,18 @@ references:
 
   # Jobs
 
+  build-packages:
+    steps:
+      - checkout
+      - *restore-cached-dependencies
+      - *link-dependencies
+      - run:
+          name: Build packages
+          command: yarn build
+      - run:
+          name: Check code for errors
+          command: yarn lint
+
   build-service: &build-service
     steps:
       - checkout
@@ -331,12 +343,18 @@ workflows:
     jobs:
       - build-authentication:
           requires:
+            - build-packages
             - unit-tests
+      - build-packages:
+          requires:
+            - install-dependencies
       - build-public-api:
           requires:
+            - build-packages
             - unit-tests
       - build-web-client:
           requires:
+            - build-packages
             - unit-tests
       - deploy-authentication:
           requires:

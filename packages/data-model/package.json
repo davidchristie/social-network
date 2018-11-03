@@ -16,6 +16,7 @@
     "build": "rimraf dist && tsc",
     "delete": "prisma delete",
     "deploy": "prisma deploy --no-seed",
+    "lint": "tsc --noEmit",
     "generate": "prisma generate && yarn build",
     "playground": "prisma playground",
     "seed": "prisma seed",

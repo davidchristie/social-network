@@ -23,7 +23,7 @@ export default class DeletePostButton extends React.Component<Props, State> {
     isConfirmationModalOpen: false,
   };
 
-  public render() {
+  public render () {
     return (
       <AccountQuery>
         {({ data, error, loading }) => {

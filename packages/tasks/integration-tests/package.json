@@ -35,6 +35,7 @@
   "name": "integration-tests",
   "private": true,
   "scripts": {
+    "lint": "tslint --project . && tsc --noEmit",
     "start": "jest --verbose"
   },
   "version": "1.0.0"
