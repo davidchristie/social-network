@@ -2,6 +2,7 @@ import { Page } from "puppeteer";
 import request, { Test } from "supertest";
 
 import { AUTHENTICATION_HOST } from "../../constants/hosts";
+import itReturnsStatusCode from "../../utilities/itReturnsStatusCode";
 import newPage from "../../utilities/newPage";
 
 const url = `${AUTHENTICATION_HOST}/account`;
@@ -22,11 +23,7 @@ describe(`${AUTHENTICATION_HOST}/account`, () => {
           .get("/");
       });
 
-      it("returns status code 200", done => {
-        withoutAuthentication
-          .expect(200)
-          .end(done);
-      });
+      itReturnsStatusCode(() => withoutAuthentication, 200);
 
       it("returns null account ID", done => {
         withoutAuthentication
@@ -48,11 +45,7 @@ describe(`${AUTHENTICATION_HOST}/account`, () => {
           .set("Authorization", "Bearer invalid_token");
       });
 
-      it("returns status code 200", done => {
-        withInvalidAuthentication
-          .expect(200)
-          .end(done);
-      });
+      itReturnsStatusCode(() => withInvalidAuthentication, 200);
 
       it("returns null account ID", done => {
         withInvalidAuthentication
