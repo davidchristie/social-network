@@ -16,6 +16,33 @@ function getInputWithName (wrapper: ReactWrapper, name: string) {
     .first();
 }
 
+function itContainsInputWithName (
+  getWrapper: () => ReactWrapper<any, any>,
+  name: string
+) {
+  it(`updates state when ${name} is changed`, () => {
+    const wrapper = getWrapper();
+    const passwordInput = getInputWithName(wrapper, "password");
+    const newValue = "new_value";
+    passwordInput.simulate("change", {
+      target: {
+        value: newValue,
+      },
+    });
+    expect(wrapper.state().password).toEqual(newValue);
+  });
+}
+
+function itUpdatesStateWhenInputIsChanged (
+  getWrapper: () => ReactWrapper,
+  name: string
+) {
+  it(`contains ${name} input`, () => {
+    const input = getInputWithName(getWrapper(), name);
+    expect(input.exists()).toBe(true);
+  });
+}
+
 describe("LoginForm component", () => {
   let wrapper: ReactWrapper<any, State>;
 
@@ -29,37 +56,13 @@ describe("LoginForm component", () => {
     ).find(LoginForm);
   });
 
-  it("contains email input", async () => {
-    const emailInput = getInputWithName(wrapper, "email");
-    expect(emailInput.exists()).toBe(true);
-  });
+  itContainsInputWithName(() => wrapper, "email");
 
-  it("contains password input", async () => {
-    const passwordInput = getInputWithName(wrapper, "password");
-    expect(passwordInput.exists()).toBe(true);
-  });
+  itContainsInputWithName(() => wrapper, "password");
 
-  it("updates state when email is changed", () => {
-    const emailInput = getInputWithName(wrapper, "email");
-    const newValue = "new_value";
-    emailInput.simulate("change", {
-      target: {
-        value: newValue,
-      },
-    });
-    expect(wrapper.state().email).toEqual(newValue);
-  });
+  itUpdatesStateWhenInputIsChanged(() => wrapper, "email");
 
-  it("updates state when password is changed", () => {
-    const passwordInput = getInputWithName(wrapper, "password");
-    const newValue = "new_value";
-    passwordInput.simulate("change", {
-      target: {
-        value: newValue,
-      },
-    });
-    expect(wrapper.state().password).toEqual(newValue);
-  });
+  itUpdatesStateWhenInputIsChanged(() => wrapper, "password");
 
   it("submits without errors", () => {
     wrapper.find("form").simulate("submit");
