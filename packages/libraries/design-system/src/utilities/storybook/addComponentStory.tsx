@@ -1,4 +1,5 @@
 import { action } from "@storybook/addon-actions";
+import { withInfo } from "@storybook/addon-info";
 import { storiesOf } from "@storybook/react";
 import React from "react";
 
@@ -18,6 +19,10 @@ export default function addComponentStory<P extends Props> (
     onClick: action("onClick"),
   };
   stories.addDecorator(getStory => <Theme>{getStory()}</Theme>);
+  stories.addDecorator(withInfo({
+    inline: true,
+    propTablesExclude: [Theme],
+  }));
   stories.add(
     name,
     () => <Component {...componentProps} />
