@@ -1,4 +1,4 @@
-import { Alert, Button, Section, TextArea } from "design-system";
+import { Alert, Button, Loading, Section, TextArea } from "design-system";
 import React from "react";
 import { Mutation, Query } from "react-apollo";
 
@@ -28,7 +28,7 @@ export default class CreatePostForm extends React.Component<{}, State> {
       >
         {({ data, error, loading }) => {
           if (loading || !data || !data.account) {
-            return "Loading";
+            return <Loading />;
           }
           if (error) {
             return <Alert>{error.message}</Alert>;

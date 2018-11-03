@@ -1,5 +1,8 @@
 import CircularProgress from "@material-ui/core/CircularProgress";
-import { StyleRulesCallback, withStyles, WithStyles } from "@material-ui/core/styles";
+import withStyles, {
+  StyleRulesCallback,
+  WithStyles
+} from "@material-ui/core/styles/withStyles";
 import React from "react";
 
 interface Props {

@@ -1,4 +1,4 @@
-import { Alert, Container, Topbar } from "design-system";
+import { Alert, Container, Loading, Topbar } from "design-system";
 import React from "react";
 import { Query } from "react-apollo";
 import { Link } from "react-router-dom";
@@ -19,7 +19,7 @@ export default class Header extends React.Component {
       >
         {({ data, error, loading }) => {
           if (loading) {
-            return "Loading";
+            return <Loading />;
           }
           if (error) {
             return <Alert>{error.message}</Alert>;

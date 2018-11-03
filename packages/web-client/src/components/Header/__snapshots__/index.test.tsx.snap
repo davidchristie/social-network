@@ -183,19 +183,19 @@ exports[`Header component when logged out 1`] = `
     <Topbar
       className="Header"
     >
-      <WithStyles(Content$1)
+      <WithStyles(Content$2)
         className="Header"
       >
-        <Content$1
+        <Content$2
           className="Header"
           classes={
             Object {
-              "topbar": "Content-1-topbar-1",
+              "topbar": "Content-2-topbar-23",
             }
           }
         >
           <div
-            className="Content-1-topbar-1 Header"
+            className="Content-2-topbar-23 Header"
           >
             <WithStyles(AppBar)
               color="default"
@@ -204,57 +204,57 @@ exports[`Header component when logged out 1`] = `
               <AppBar
                 classes={
                   Object {
-                    "colorDefault": "MuiAppBar-colorDefault-8",
-                    "colorPrimary": "MuiAppBar-colorPrimary-9",
-                    "colorSecondary": "MuiAppBar-colorSecondary-10",
-                    "positionAbsolute": "MuiAppBar-positionAbsolute-4",
-                    "positionFixed": "MuiAppBar-positionFixed-3",
-                    "positionRelative": "MuiAppBar-positionRelative-7",
-                    "positionStatic": "MuiAppBar-positionStatic-6",
-                    "positionSticky": "MuiAppBar-positionSticky-5",
-                    "root": "MuiAppBar-root-2",
+                    "colorDefault": "MuiAppBar-colorDefault-30",
+                    "colorPrimary": "MuiAppBar-colorPrimary-31",
+                    "colorSecondary": "MuiAppBar-colorSecondary-32",
+                    "positionAbsolute": "MuiAppBar-positionAbsolute-26",
+                    "positionFixed": "MuiAppBar-positionFixed-25",
+                    "positionRelative": "MuiAppBar-positionRelative-29",
+                    "positionStatic": "MuiAppBar-positionStatic-28",
+                    "positionSticky": "MuiAppBar-positionSticky-27",
+                    "root": "MuiAppBar-root-24",
                   }
                 }
                 color="default"
                 position="static"
               >
                 <WithStyles(Paper)
-                  className="MuiAppBar-root-2 MuiAppBar-positionStatic-6 MuiAppBar-colorDefault-8"
+                  className="MuiAppBar-root-24 MuiAppBar-positionStatic-28 MuiAppBar-colorDefault-30"
                   component="header"
                   elevation={4}
                   square={true}
                 >
                   <Paper
-                    className="MuiAppBar-root-2 MuiAppBar-positionStatic-6 MuiAppBar-colorDefault-8"
+                    className="MuiAppBar-root-24 MuiAppBar-positionStatic-28 MuiAppBar-colorDefault-30"
                     classes={
                       Object {
-                        "elevation0": "MuiPaper-elevation0-13",
-                        "elevation1": "MuiPaper-elevation1-14",
-                        "elevation10": "MuiPaper-elevation10-23",
-                        "elevation11": "MuiPaper-elevation11-24",
-                        "elevation12": "MuiPaper-elevation12-25",
-                        "elevation13": "MuiPaper-elevation13-26",
-                        "elevation14": "MuiPaper-elevation14-27",
-                        "elevation15": "MuiPaper-elevation15-28",
-                        "elevation16": "MuiPaper-elevation16-29",
-                        "elevation17": "MuiPaper-elevation17-30",
-                        "elevation18": "MuiPaper-elevation18-31",
-                        "elevation19": "MuiPaper-elevation19-32",
-                        "elevation2": "MuiPaper-elevation2-15",
-                        "elevation20": "MuiPaper-elevation20-33",
-                        "elevation21": "MuiPaper-elevation21-34",
-                        "elevation22": "MuiPaper-elevation22-35",
-                        "elevation23": "MuiPaper-elevation23-36",
-                        "elevation24": "MuiPaper-elevation24-37",
-                        "elevation3": "MuiPaper-elevation3-16",
-                        "elevation4": "MuiPaper-elevation4-17",
-                        "elevation5": "MuiPaper-elevation5-18",
-                        "elevation6": "MuiPaper-elevation6-19",
-                        "elevation7": "MuiPaper-elevation7-20",
-                        "elevation8": "MuiPaper-elevation8-21",
-                        "elevation9": "MuiPaper-elevation9-22",
-                        "root": "MuiPaper-root-11",
-                        "rounded": "MuiPaper-rounded-12",
+                        "elevation0": "MuiPaper-elevation0-35",
+                        "elevation1": "MuiPaper-elevation1-36",
+                        "elevation10": "MuiPaper-elevation10-45",
+                        "elevation11": "MuiPaper-elevation11-46",
+                        "elevation12": "MuiPaper-elevation12-47",
+                        "elevation13": "MuiPaper-elevation13-48",
+                        "elevation14": "MuiPaper-elevation14-49",
+                        "elevation15": "MuiPaper-elevation15-50",
+                        "elevation16": "MuiPaper-elevation16-51",
+                        "elevation17": "MuiPaper-elevation17-52",
+                        "elevation18": "MuiPaper-elevation18-53",
+                        "elevation19": "MuiPaper-elevation19-54",
+                        "elevation2": "MuiPaper-elevation2-37",
+                        "elevation20": "MuiPaper-elevation20-55",
+                        "elevation21": "MuiPaper-elevation21-56",
+                        "elevation22": "MuiPaper-elevation22-57",
+                        "elevation23": "MuiPaper-elevation23-58",
+                        "elevation24": "MuiPaper-elevation24-59",
+                        "elevation3": "MuiPaper-elevation3-38",
+                        "elevation4": "MuiPaper-elevation4-39",
+                        "elevation5": "MuiPaper-elevation5-40",
+                        "elevation6": "MuiPaper-elevation6-41",
+                        "elevation7": "MuiPaper-elevation7-42",
+                        "elevation8": "MuiPaper-elevation8-43",
+                        "elevation9": "MuiPaper-elevation9-44",
+                        "root": "MuiPaper-root-33",
+                        "rounded": "MuiPaper-rounded-34",
                       }
                     }
                     component="header"
@@ -262,23 +262,23 @@ exports[`Header component when logged out 1`] = `
                     square={true}
                   >
                     <header
-                      className="MuiPaper-root-11 MuiPaper-elevation4-17 MuiAppBar-root-2 MuiAppBar-positionStatic-6 MuiAppBar-colorDefault-8"
+                      className="MuiPaper-root-33 MuiPaper-elevation4-39 MuiAppBar-root-24 MuiAppBar-positionStatic-28 MuiAppBar-colorDefault-30"
                     >
                       <WithStyles(Toolbar)>
                         <Toolbar
                           classes={
                             Object {
-                              "dense": "MuiToolbar-dense-41",
-                              "gutters": "MuiToolbar-gutters-39",
-                              "regular": "MuiToolbar-regular-40",
-                              "root": "MuiToolbar-root-38",
+                              "dense": "MuiToolbar-dense-63",
+                              "gutters": "MuiToolbar-gutters-61",
+                              "regular": "MuiToolbar-regular-62",
+                              "root": "MuiToolbar-root-60",
                             }
                           }
                           disableGutters={false}
                           variant="regular"
                         >
                           <div
-                            className="MuiToolbar-root-38 MuiToolbar-regular-40 MuiToolbar-gutters-39"
+                            className="MuiToolbar-root-60 MuiToolbar-regular-62 MuiToolbar-gutters-61"
                           >
                             <Container>
                               <div
@@ -316,32 +316,32 @@ exports[`Header component when logged out 1`] = `
                                             <Button
                                               classes={
                                                 Object {
-                                                  "colorInherit": "MuiButton-colorInherit-63",
-                                                  "contained": "MuiButton-contained-53",
-                                                  "containedPrimary": "MuiButton-containedPrimary-54",
-                                                  "containedSecondary": "MuiButton-containedSecondary-55",
-                                                  "disabled": "MuiButton-disabled-62",
-                                                  "extendedFab": "MuiButton-extendedFab-60",
-                                                  "fab": "MuiButton-fab-59",
-                                                  "flat": "MuiButton-flat-47",
-                                                  "flatPrimary": "MuiButton-flatPrimary-48",
-                                                  "flatSecondary": "MuiButton-flatSecondary-49",
-                                                  "focusVisible": "MuiButton-focusVisible-61",
-                                                  "fullWidth": "MuiButton-fullWidth-67",
-                                                  "label": "MuiButton-label-43",
-                                                  "mini": "MuiButton-mini-64",
-                                                  "outlined": "MuiButton-outlined-50",
-                                                  "outlinedPrimary": "MuiButton-outlinedPrimary-51",
-                                                  "outlinedSecondary": "MuiButton-outlinedSecondary-52",
-                                                  "raised": "MuiButton-raised-56",
-                                                  "raisedPrimary": "MuiButton-raisedPrimary-57",
-                                                  "raisedSecondary": "MuiButton-raisedSecondary-58",
-                                                  "root": "MuiButton-root-42",
-                                                  "sizeLarge": "MuiButton-sizeLarge-66",
-                                                  "sizeSmall": "MuiButton-sizeSmall-65",
-                                                  "text": "MuiButton-text-44",
-                                                  "textPrimary": "MuiButton-textPrimary-45",
-                                                  "textSecondary": "MuiButton-textSecondary-46",
+                                                  "colorInherit": "MuiButton-colorInherit-85",
+                                                  "contained": "MuiButton-contained-75",
+                                                  "containedPrimary": "MuiButton-containedPrimary-76",
+                                                  "containedSecondary": "MuiButton-containedSecondary-77",
+                                                  "disabled": "MuiButton-disabled-84",
+                                                  "extendedFab": "MuiButton-extendedFab-82",
+                                                  "fab": "MuiButton-fab-81",
+                                                  "flat": "MuiButton-flat-69",
+                                                  "flatPrimary": "MuiButton-flatPrimary-70",
+                                                  "flatSecondary": "MuiButton-flatSecondary-71",
+                                                  "focusVisible": "MuiButton-focusVisible-83",
+                                                  "fullWidth": "MuiButton-fullWidth-89",
+                                                  "label": "MuiButton-label-65",
+                                                  "mini": "MuiButton-mini-86",
+                                                  "outlined": "MuiButton-outlined-72",
+                                                  "outlinedPrimary": "MuiButton-outlinedPrimary-73",
+                                                  "outlinedSecondary": "MuiButton-outlinedSecondary-74",
+                                                  "raised": "MuiButton-raised-78",
+                                                  "raisedPrimary": "MuiButton-raisedPrimary-79",
+                                                  "raisedSecondary": "MuiButton-raisedSecondary-80",
+                                                  "root": "MuiButton-root-64",
+                                                  "sizeLarge": "MuiButton-sizeLarge-88",
+                                                  "sizeSmall": "MuiButton-sizeSmall-87",
+                                                  "text": "MuiButton-text-66",
+                                                  "textPrimary": "MuiButton-textPrimary-67",
+                                                  "textSecondary": "MuiButton-textSecondary-68",
                                                 }
                                               }
                                               color="default"
@@ -355,21 +355,21 @@ exports[`Header component when logged out 1`] = `
                                               variant="text"
                                             >
                                               <WithStyles(ButtonBase)
-                                                className="MuiButton-root-42 MuiButton-text-44 MuiButton-flat-47"
+                                                className="MuiButton-root-64 MuiButton-text-66 MuiButton-flat-69"
                                                 component="button"
                                                 disabled={false}
                                                 focusRipple={true}
-                                                focusVisibleClassName="MuiButton-focusVisible-61"
+                                                focusVisibleClassName="MuiButton-focusVisible-83"
                                                 type="button"
                                               >
                                                 <ButtonBase
                                                   centerRipple={false}
-                                                  className="MuiButton-root-42 MuiButton-text-44 MuiButton-flat-47"
+                                                  className="MuiButton-root-64 MuiButton-text-66 MuiButton-flat-69"
                                                   classes={
                                                     Object {
-                                                      "disabled": "MuiButtonBase-disabled-69",
-                                                      "focusVisible": "MuiButtonBase-focusVisible-70",
-                                                      "root": "MuiButtonBase-root-68",
+                                                      "disabled": "MuiButtonBase-disabled-91",
+                                                      "focusVisible": "MuiButtonBase-focusVisible-92",
+                                                      "root": "MuiButtonBase-root-90",
                                                     }
                                                   }
                                                   component="button"
@@ -377,12 +377,12 @@ exports[`Header component when logged out 1`] = `
                                                   disableTouchRipple={false}
                                                   disabled={false}
                                                   focusRipple={true}
-                                                  focusVisibleClassName="MuiButton-focusVisible-61"
+                                                  focusVisibleClassName="MuiButton-focusVisible-83"
                                                   tabIndex="0"
                                                   type="button"
                                                 >
                                                   <button
-                                                    className="MuiButtonBase-root-68 MuiButton-root-42 MuiButton-text-44 MuiButton-flat-47"
+                                                    className="MuiButtonBase-root-90 MuiButton-root-64 MuiButton-text-66 MuiButton-flat-69"
                                                     disabled={false}
                                                     onBlur={[Function]}
                                                     onFocus={[Function]}
@@ -398,7 +398,7 @@ exports[`Header component when logged out 1`] = `
                                                     type="button"
                                                   >
                                                     <span
-                                                      className="MuiButton-label-43"
+                                                      className="MuiButton-label-65"
                                                     >
                                                       Login
                                                     </span>
@@ -414,25 +414,25 @@ exports[`Header component when logged out 1`] = `
                                                           center={false}
                                                           classes={
                                                             Object {
-                                                              "child": "MuiTouchRipple-child-75",
-                                                              "childLeaving": "MuiTouchRipple-childLeaving-76",
-                                                              "childPulsate": "MuiTouchRipple-childPulsate-77",
-                                                              "ripple": "MuiTouchRipple-ripple-72",
-                                                              "ripplePulsate": "MuiTouchRipple-ripplePulsate-74",
-                                                              "rippleVisible": "MuiTouchRipple-rippleVisible-73",
-                                                              "root": "MuiTouchRipple-root-71",
+                                                              "child": "MuiTouchRipple-child-97",
+                                                              "childLeaving": "MuiTouchRipple-childLeaving-98",
+                                                              "childPulsate": "MuiTouchRipple-childPulsate-99",
+                                                              "ripple": "MuiTouchRipple-ripple-94",
+                                                              "ripplePulsate": "MuiTouchRipple-ripplePulsate-96",
+                                                              "rippleVisible": "MuiTouchRipple-rippleVisible-95",
+                                                              "root": "MuiTouchRipple-root-93",
                                                             }
                                                           }
                                                         >
                                                           <TransitionGroup
                                                             childFactory={[Function]}
-                                                            className="MuiTouchRipple-root-71"
+                                                            className="MuiTouchRipple-root-93"
                                                             component="span"
                                                             enter={true}
                                                             exit={true}
                                                           >
                                                             <span
-                                                              className="MuiTouchRipple-root-71"
+                                                              className="MuiTouchRipple-root-93"
                                                             />
                                                           </TransitionGroup>
                                                         </TouchRipple>
@@ -465,32 +465,32 @@ exports[`Header component when logged out 1`] = `
                                             <Button
                                               classes={
                                                 Object {
-                                                  "colorInherit": "MuiButton-colorInherit-63",
-                                                  "contained": "MuiButton-contained-53",
-                                                  "containedPrimary": "MuiButton-containedPrimary-54",
-                                                  "containedSecondary": "MuiButton-containedSecondary-55",
-                                                  "disabled": "MuiButton-disabled-62",
-                                                  "extendedFab": "MuiButton-extendedFab-60",
-                                                  "fab": "MuiButton-fab-59",
-                                                  "flat": "MuiButton-flat-47",
-                                                  "flatPrimary": "MuiButton-flatPrimary-48",
-                                                  "flatSecondary": "MuiButton-flatSecondary-49",
-                                                  "focusVisible": "MuiButton-focusVisible-61",
-                                                  "fullWidth": "MuiButton-fullWidth-67",
-                                                  "label": "MuiButton-label-43",
-                                                  "mini": "MuiButton-mini-64",
-                                                  "outlined": "MuiButton-outlined-50",
-                                                  "outlinedPrimary": "MuiButton-outlinedPrimary-51",
-                                                  "outlinedSecondary": "MuiButton-outlinedSecondary-52",
-                                                  "raised": "MuiButton-raised-56",
-                                                  "raisedPrimary": "MuiButton-raisedPrimary-57",
-                                                  "raisedSecondary": "MuiButton-raisedSecondary-58",
-                                                  "root": "MuiButton-root-42",
-                                                  "sizeLarge": "MuiButton-sizeLarge-66",
-                                                  "sizeSmall": "MuiButton-sizeSmall-65",
-                                                  "text": "MuiButton-text-44",
-                                                  "textPrimary": "MuiButton-textPrimary-45",
-                                                  "textSecondary": "MuiButton-textSecondary-46",
+                                                  "colorInherit": "MuiButton-colorInherit-85",
+                                                  "contained": "MuiButton-contained-75",
+                                                  "containedPrimary": "MuiButton-containedPrimary-76",
+                                                  "containedSecondary": "MuiButton-containedSecondary-77",
+                                                  "disabled": "MuiButton-disabled-84",
+                                                  "extendedFab": "MuiButton-extendedFab-82",
+                                                  "fab": "MuiButton-fab-81",
+                                                  "flat": "MuiButton-flat-69",
+                                                  "flatPrimary": "MuiButton-flatPrimary-70",
+                                                  "flatSecondary": "MuiButton-flatSecondary-71",
+                                                  "focusVisible": "MuiButton-focusVisible-83",
+                                                  "fullWidth": "MuiButton-fullWidth-89",
+                                                  "label": "MuiButton-label-65",
+                                                  "mini": "MuiButton-mini-86",
+                                                  "outlined": "MuiButton-outlined-72",
+                                                  "outlinedPrimary": "MuiButton-outlinedPrimary-73",
+                                                  "outlinedSecondary": "MuiButton-outlinedSecondary-74",
+                                                  "raised": "MuiButton-raised-78",
+                                                  "raisedPrimary": "MuiButton-raisedPrimary-79",
+                                                  "raisedSecondary": "MuiButton-raisedSecondary-80",
+                                                  "root": "MuiButton-root-64",
+                                                  "sizeLarge": "MuiButton-sizeLarge-88",
+                                                  "sizeSmall": "MuiButton-sizeSmall-87",
+                                                  "text": "MuiButton-text-66",
+                                                  "textPrimary": "MuiButton-textPrimary-67",
+                                                  "textSecondary": "MuiButton-textSecondary-68",
                                                 }
                                               }
                                               color="default"
@@ -504,21 +504,21 @@ exports[`Header component when logged out 1`] = `
                                               variant="text"
                                             >
                                               <WithStyles(ButtonBase)
-                                                className="MuiButton-root-42 MuiButton-text-44 MuiButton-flat-47"
+                                                className="MuiButton-root-64 MuiButton-text-66 MuiButton-flat-69"
                                                 component="button"
                                                 disabled={false}
                                                 focusRipple={true}
-                                                focusVisibleClassName="MuiButton-focusVisible-61"
+                                                focusVisibleClassName="MuiButton-focusVisible-83"
                                                 type="button"
                                               >
                                                 <ButtonBase
                                                   centerRipple={false}
-                                                  className="MuiButton-root-42 MuiButton-text-44 MuiButton-flat-47"
+                                                  className="MuiButton-root-64 MuiButton-text-66 MuiButton-flat-69"
                                                   classes={
                                                     Object {
-                                                      "disabled": "MuiButtonBase-disabled-69",
-                                                      "focusVisible": "MuiButtonBase-focusVisible-70",
-                                                      "root": "MuiButtonBase-root-68",
+                                                      "disabled": "MuiButtonBase-disabled-91",
+                                                      "focusVisible": "MuiButtonBase-focusVisible-92",
+                                                      "root": "MuiButtonBase-root-90",
                                                     }
                                                   }
                                                   component="button"
@@ -526,12 +526,12 @@ exports[`Header component when logged out 1`] = `
                                                   disableTouchRipple={false}
                                                   disabled={false}
                                                   focusRipple={true}
-                                                  focusVisibleClassName="MuiButton-focusVisible-61"
+                                                  focusVisibleClassName="MuiButton-focusVisible-83"
                                                   tabIndex="0"
                                                   type="button"
                                                 >
                                                   <button
-                                                    className="MuiButtonBase-root-68 MuiButton-root-42 MuiButton-text-44 MuiButton-flat-47"
+                                                    className="MuiButtonBase-root-90 MuiButton-root-64 MuiButton-text-66 MuiButton-flat-69"
                                                     disabled={false}
                                                     onBlur={[Function]}
                                                     onFocus={[Function]}
@@ -547,7 +547,7 @@ exports[`Header component when logged out 1`] = `
                                                     type="button"
                                                   >
                                                     <span
-                                                      className="MuiButton-label-43"
+                                                      className="MuiButton-label-65"
                                                     >
                                                       Signup
                                                     </span>
@@ -563,25 +563,25 @@ exports[`Header component when logged out 1`] = `
                                                           center={false}
                                                           classes={
                                                             Object {
-                                                              "child": "MuiTouchRipple-child-75",
-                                                              "childLeaving": "MuiTouchRipple-childLeaving-76",
-                                                              "childPulsate": "MuiTouchRipple-childPulsate-77",
-                                                              "ripple": "MuiTouchRipple-ripple-72",
-                                                              "ripplePulsate": "MuiTouchRipple-ripplePulsate-74",
-                                                              "rippleVisible": "MuiTouchRipple-rippleVisible-73",
-                                                              "root": "MuiTouchRipple-root-71",
+                                                              "child": "MuiTouchRipple-child-97",
+                                                              "childLeaving": "MuiTouchRipple-childLeaving-98",
+                                                              "childPulsate": "MuiTouchRipple-childPulsate-99",
+                                                              "ripple": "MuiTouchRipple-ripple-94",
+                                                              "ripplePulsate": "MuiTouchRipple-ripplePulsate-96",
+                                                              "rippleVisible": "MuiTouchRipple-rippleVisible-95",
+                                                              "root": "MuiTouchRipple-root-93",
                                                             }
                                                           }
                                                         >
                                                           <TransitionGroup
                                                             childFactory={[Function]}
-                                                            className="MuiTouchRipple-root-71"
+                                                            className="MuiTouchRipple-root-93"
                                                             component="span"
                                                             enter={true}
                                                             exit={true}
                                                           >
                                                             <span
-                                                              className="MuiTouchRipple-root-71"
+                                                              className="MuiTouchRipple-root-93"
                                                             />
                                                           </TransitionGroup>
                                                         </TouchRipple>
@@ -608,8 +608,8 @@ exports[`Header component when logged out 1`] = `
               </AppBar>
             </WithStyles(AppBar)>
           </div>
-        </Content$1>
-      </WithStyles(Content$1)>
+        </Content$2>
+      </WithStyles(Content$2)>
     </Topbar>
   </Query>
 </Header>
@@ -795,7 +795,74 @@ exports[`Header component while loading 1`] = `
       }
     }
   >
-    Loading
+    <Loading>
+      <WithStyles(Content)>
+        <Content
+          classes={
+            Object {
+              "loading": "Content-loading-1",
+              "progress": "Content-progress-2",
+            }
+          }
+        >
+          <div
+            className="Content-loading-1"
+          >
+            <WithStyles(CircularProgress)
+              className="Content-progress-2"
+            >
+              <CircularProgress
+                className="Content-progress-2"
+                classes={
+                  Object {
+                    "circle": "MuiCircularProgress-circle-9",
+                    "circleIndeterminate": "MuiCircularProgress-circleIndeterminate-11",
+                    "circleStatic": "MuiCircularProgress-circleStatic-10",
+                    "colorPrimary": "MuiCircularProgress-colorPrimary-6",
+                    "colorSecondary": "MuiCircularProgress-colorSecondary-7",
+                    "indeterminate": "MuiCircularProgress-indeterminate-5",
+                    "root": "MuiCircularProgress-root-3",
+                    "static": "MuiCircularProgress-static-4",
+                    "svg": "MuiCircularProgress-svg-8",
+                  }
+                }
+                color="primary"
+                size={40}
+                thickness={3.6}
+                value={0}
+                variant="indeterminate"
+              >
+                <div
+                  className="MuiCircularProgress-root-3 MuiCircularProgress-colorPrimary-6 MuiCircularProgress-indeterminate-5 Content-progress-2"
+                  role="progressbar"
+                  style={
+                    Object {
+                      "height": 40,
+                      "width": 40,
+                    }
+                  }
+                >
+                  <svg
+                    className="MuiCircularProgress-svg-8"
+                    viewBox="22 22 44 44"
+                  >
+                    <circle
+                      className="MuiCircularProgress-circle-9 MuiCircularProgress-circleIndeterminate-11"
+                      cx={44}
+                      cy={44}
+                      fill="none"
+                      r={20.2}
+                      strokeWidth={3.6}
+                      style={Object {}}
+                    />
+                  </svg>
+                </div>
+              </CircularProgress>
+            </WithStyles(CircularProgress)>
+          </div>
+        </Content>
+      </WithStyles(Content)>
+    </Loading>
   </Query>
 </Header>
 `;

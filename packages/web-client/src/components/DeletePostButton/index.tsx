@@ -1,4 +1,4 @@
-import { Alert, Button } from "design-system";
+import { Alert, Button, Loading } from "design-system";
 import React from "react";
 import { Mutation } from "react-apollo";
 
@@ -28,7 +28,7 @@ export default class DeletePostButton extends React.Component<Props, State> {
       <AccountQuery>
         {({ data, error, loading }) => {
           if (loading || !data || !data.account) {
-            return "Loading";
+            return <Loading />;
           }
           if (error) {
             return <Alert>{error.message}</Alert>;

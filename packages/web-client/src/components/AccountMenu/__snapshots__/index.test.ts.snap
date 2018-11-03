@@ -6,7 +6,7 @@ exports[`AccountMenu component with no props matches snapshot 1`] = `
 </AccountQuery>
 `;
 
-exports[`AccountMenuContent component renders loading state matches snapshot 1`] = `"Loading"`;
+exports[`AccountMenuContent component renders loading state matches snapshot 1`] = `<Loading />`;
 
 exports[`AccountMenuContent component renders profile with no avatar matches snapshot 1`] = `
 <div
