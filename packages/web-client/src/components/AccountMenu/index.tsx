@@ -1,4 +1,4 @@
-import { Alert } from "design-system";
+import { Alert, Loading } from "design-system";
 import React from "react";
 
 import { ImageData } from "../../fragments/Image";
@@ -21,7 +21,7 @@ export class AccountMenuContent extends React.Component<Result, State> {
   public render () {
     const { data, error, loading } = this.props;
     if (loading || !data || !data.account) {
-      return "Loading";
+      return <Loading />;
     }
     if (error) {
       return <Alert>{error.message}</Alert>;

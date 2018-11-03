@@ -1,4 +1,4 @@
-import { Alert, Button, Input, Section } from "design-system";
+import { Alert, Button, Input, Loading, Section } from "design-system";
 import React from "react";
 import { Mutation, Query } from "react-apollo";
 
@@ -112,7 +112,7 @@ export default function UpdatePasswordFormContainer () {
           return <Alert>{error.message}</Alert>;
         }
         if (loading) {
-          return "Loading";
+          return <Loading />;
         }
         return <UpdatePasswordForm data={data!} />;
       }}

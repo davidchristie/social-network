@@ -7,6 +7,7 @@ import typescript from "rollup-plugin-typescript2";
 const pkg = require("./package.json");
 
 export default {
+  external: [],
   input: `src/index.ts`,
   output: [
     {
@@ -20,10 +21,6 @@ export default {
       sourcemap: true,
     },
   ],
-  external: [],
-  watch: {
-    include: "src/**",
-  },
   plugins: [
     postcss({
       extensions: [".css"],
@@ -35,4 +32,7 @@ export default {
     resolve(),
     sourceMaps(),
   ],
+  watch: {
+    include: "src/**",
+  },
 };

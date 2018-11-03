@@ -1,4 +1,4 @@
-import { Alert } from "design-system";
+import { Alert, Loading } from "design-system";
 import React from "react";
 import { Query } from "react-apollo";
 import { Redirect, Route, Switch } from "react-router-dom";
@@ -21,7 +21,7 @@ export default class Routes extends React.Component {
       >
         {({ data, error, loading }) => {
           if (loading) {
-            return "Loading";
+            return <Loading />;
           }
           if (error) {
             return <Alert>{error.message}</Alert>;

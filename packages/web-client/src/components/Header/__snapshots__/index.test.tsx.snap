@@ -183,19 +183,19 @@ exports[`Header component when logged out 1`] = `
     <Topbar
       className="Header"
     >
-      <WithStyles(Content$1)
+      <WithStyles(Content$2)
         className="Header"
       >
-        <Content$1
+        <Content$2
           className="Header"
           classes={
             Object {
-              "topbar": "Content-1-topbar-1",
+              "topbar": "Content-2-topbar-1",
             }
           }
         >
           <div
-            className="Content-1-topbar-1 Header"
+            className="Content-2-topbar-1 Header"
           >
             <WithStyles(AppBar)
               color="default"
@@ -608,8 +608,8 @@ exports[`Header component when logged out 1`] = `
               </AppBar>
             </WithStyles(AppBar)>
           </div>
-        </Content$1>
-      </WithStyles(Content$1)>
+        </Content$2>
+      </WithStyles(Content$2)>
     </Topbar>
   </Query>
 </Header>
@@ -795,7 +795,138 @@ exports[`Header component while loading 1`] = `
       }
     }
   >
-    Loading
+    <Topbar
+      className="Header"
+    >
+      <WithStyles(Content$2)
+        className="Header"
+      >
+        <Content$2
+          className="Header"
+          classes={
+            Object {
+              "topbar": "Content-2-topbar-1",
+            }
+          }
+        >
+          <div
+            className="Content-2-topbar-1 Header"
+          >
+            <WithStyles(AppBar)
+              color="default"
+              position="static"
+            >
+              <AppBar
+                classes={
+                  Object {
+                    "colorDefault": "MuiAppBar-colorDefault-8",
+                    "colorPrimary": "MuiAppBar-colorPrimary-9",
+                    "colorSecondary": "MuiAppBar-colorSecondary-10",
+                    "positionAbsolute": "MuiAppBar-positionAbsolute-4",
+                    "positionFixed": "MuiAppBar-positionFixed-3",
+                    "positionRelative": "MuiAppBar-positionRelative-7",
+                    "positionStatic": "MuiAppBar-positionStatic-6",
+                    "positionSticky": "MuiAppBar-positionSticky-5",
+                    "root": "MuiAppBar-root-2",
+                  }
+                }
+                color="default"
+                position="static"
+              >
+                <WithStyles(Paper)
+                  className="MuiAppBar-root-2 MuiAppBar-positionStatic-6 MuiAppBar-colorDefault-8"
+                  component="header"
+                  elevation={4}
+                  square={true}
+                >
+                  <Paper
+                    className="MuiAppBar-root-2 MuiAppBar-positionStatic-6 MuiAppBar-colorDefault-8"
+                    classes={
+                      Object {
+                        "elevation0": "MuiPaper-elevation0-13",
+                        "elevation1": "MuiPaper-elevation1-14",
+                        "elevation10": "MuiPaper-elevation10-23",
+                        "elevation11": "MuiPaper-elevation11-24",
+                        "elevation12": "MuiPaper-elevation12-25",
+                        "elevation13": "MuiPaper-elevation13-26",
+                        "elevation14": "MuiPaper-elevation14-27",
+                        "elevation15": "MuiPaper-elevation15-28",
+                        "elevation16": "MuiPaper-elevation16-29",
+                        "elevation17": "MuiPaper-elevation17-30",
+                        "elevation18": "MuiPaper-elevation18-31",
+                        "elevation19": "MuiPaper-elevation19-32",
+                        "elevation2": "MuiPaper-elevation2-15",
+                        "elevation20": "MuiPaper-elevation20-33",
+                        "elevation21": "MuiPaper-elevation21-34",
+                        "elevation22": "MuiPaper-elevation22-35",
+                        "elevation23": "MuiPaper-elevation23-36",
+                        "elevation24": "MuiPaper-elevation24-37",
+                        "elevation3": "MuiPaper-elevation3-16",
+                        "elevation4": "MuiPaper-elevation4-17",
+                        "elevation5": "MuiPaper-elevation5-18",
+                        "elevation6": "MuiPaper-elevation6-19",
+                        "elevation7": "MuiPaper-elevation7-20",
+                        "elevation8": "MuiPaper-elevation8-21",
+                        "elevation9": "MuiPaper-elevation9-22",
+                        "root": "MuiPaper-root-11",
+                        "rounded": "MuiPaper-rounded-12",
+                      }
+                    }
+                    component="header"
+                    elevation={4}
+                    square={true}
+                  >
+                    <header
+                      className="MuiPaper-root-11 MuiPaper-elevation4-17 MuiAppBar-root-2 MuiAppBar-positionStatic-6 MuiAppBar-colorDefault-8"
+                    >
+                      <WithStyles(Toolbar)>
+                        <Toolbar
+                          classes={
+                            Object {
+                              "dense": "MuiToolbar-dense-41",
+                              "gutters": "MuiToolbar-gutters-39",
+                              "regular": "MuiToolbar-regular-40",
+                              "root": "MuiToolbar-root-38",
+                            }
+                          }
+                          disableGutters={false}
+                          variant="regular"
+                        >
+                          <div
+                            className="MuiToolbar-root-38 MuiToolbar-regular-40 MuiToolbar-gutters-39"
+                          >
+                            <Container>
+                              <div
+                                className="Container"
+                              >
+                                <Link
+                                  className="logo"
+                                  replace={false}
+                                  to="/"
+                                >
+                                  <a
+                                    className="logo"
+                                    href="/"
+                                    onClick={[Function]}
+                                  >
+                                    Social Network
+                                  </a>
+                                </Link>
+                                <div />
+                              </div>
+                            </Container>
+                          </div>
+                        </Toolbar>
+                      </WithStyles(Toolbar)>
+                    </header>
+                  </Paper>
+                </WithStyles(Paper)>
+              </AppBar>
+            </WithStyles(AppBar)>
+          </div>
+        </Content$2>
+      </WithStyles(Content$2)>
+    </Topbar>
   </Query>
 </Header>
 `;

@@ -1,4 +1,4 @@
-import { Alert, Container, Section } from "design-system";
+import { Alert, Container, Loading, Section } from "design-system";
 import React from "react";
 import { Query } from "react-apollo";
 
@@ -29,7 +29,7 @@ export default class ProfilePage extends React.Component<Props> {
       >
         {({ data, error, loading }) => {
           if (loading) {
-            return "Loading";
+            return <Loading />;
           }
           if (error) {
             return <Alert>{error.message}</Alert>;
