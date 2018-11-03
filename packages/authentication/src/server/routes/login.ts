@@ -3,6 +3,7 @@ import { Router } from "express";
 import prisma from "../../services/prisma";
 import getToken from "../../utilities/getToken";
 import isPassword from "../../utilities/isPassword";
+import sendAccountNotFound from "../../utilities/sendAccountNotFound";
 
 const router = Router();
 router.post("/", async (request, response) => {
@@ -10,7 +11,7 @@ router.post("/", async (request, response) => {
     const { email, password } = request.body;
     const account = await prisma.account({ email });
     if (!account) {
-      return response.status(404).send(`No account found for email: ${email}`);
+      return sendAccountNotFound(response);
     }
     const valid = await isPassword(password, account);
     if (!valid) {

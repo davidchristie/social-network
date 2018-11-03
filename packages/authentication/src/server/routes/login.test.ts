@@ -19,7 +19,7 @@ describe("POST /login", () => {
       },
       expect: {
         status: 404,
-        text: `No account found for email: ${UNKNOWN_EMAIL}`,
+        text: "Account not found",
       },
       router: login,
     }));
