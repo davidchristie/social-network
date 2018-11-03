@@ -1,7 +1,8 @@
 {
   "dependencies": {
     "graphql": "14.0.2",
-    "prisma-binding": "2.1.6"
+    "prisma-binding": "2.1.6",
+    "prisma-client-lib": "^1.19.3"
   },
   "devDependencies": {
     "prisma": "1.19.3",
