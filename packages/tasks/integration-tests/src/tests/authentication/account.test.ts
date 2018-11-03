@@ -7,6 +7,18 @@ import newPage from "../../utilities/newPage";
 
 const url = `${AUTHENTICATION_HOST}/account`;
 
+export function itReturnsNullAccountId (getRequest: () => Test) {
+  it("returns null account ID", done => {
+    getRequest()
+      .end((error, response) => {
+        expect(response.body).toEqual({
+          id: null,
+        });
+        done();
+      });
+  });
+}
+
 describe(`${AUTHENTICATION_HOST}/account`, () => {
   let page: Page;
 
@@ -25,15 +37,7 @@ describe(`${AUTHENTICATION_HOST}/account`, () => {
 
       itReturnsStatusCode(() => withoutAuthentication, 200);
 
-      it("returns null account ID", done => {
-        withoutAuthentication
-          .end(async (error, response) => {
-            expect(response.body).toEqual({
-              id: null,
-            });
-            done();
-          });
-      });
+      itReturnsNullAccountId(() => withoutAuthentication);
     });
 
     describe("with invalid authentication header", () => {
@@ -47,15 +51,7 @@ describe(`${AUTHENTICATION_HOST}/account`, () => {
 
       itReturnsStatusCode(() => withInvalidAuthentication, 200);
 
-      it("returns null account ID", done => {
-        withInvalidAuthentication
-          .end(async (error, response) => {
-            expect(response.body).toEqual({
-              id: null,
-            });
-            done();
-          });
-      });
+      itReturnsNullAccountId(() => withInvalidAuthentication);
     });
   });
 });
