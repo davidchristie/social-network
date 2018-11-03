@@ -52,7 +52,7 @@ describe("POST /login", () => {
       },
       expect: {
         status: 422,
-        text: "Invalid password",
+        text: "Incorrect password",
       },
       router: login,
     }));

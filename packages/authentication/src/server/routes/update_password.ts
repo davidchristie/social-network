@@ -4,6 +4,7 @@ import prisma from "../../services/prisma";
 import getHash from "../../utilities/getHash";
 import isPassword from "../../utilities/isPassword";
 import sendAccountNotFound from "../../utilities/sendAccountNotFound";
+import sendIncorrectPassword from "../../utilities/sendIncorrectPassword";
 
 const router = Router();
 router.post("/", async (request, response) => {
@@ -13,9 +14,8 @@ router.post("/", async (request, response) => {
     if (!account) {
       return sendAccountNotFound(response);
     }
-    const valid = await isPassword(currentPassword, account);
-    if (!valid) {
-      return response.status(422).send("Invalid current password");
+    if (!await isPassword(currentPassword, account)) {
+      return sendIncorrectPassword(response);
     }
     await prisma.updateAccount({
       data: {

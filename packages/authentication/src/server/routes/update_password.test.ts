@@ -43,7 +43,7 @@ describe("POST /update_password", () => {
       },
       expect: {
         status: 422,
-        text: "Invalid current password",
+        text: "Incorrect password",
       },
       router: update_password,
     }));
