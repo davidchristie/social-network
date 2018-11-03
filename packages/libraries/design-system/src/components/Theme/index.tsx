@@ -4,7 +4,11 @@ import React from "react";
 
 import "./index.css";
 
-const theme = createMuiTheme();
+const theme = createMuiTheme({
+  typography: {
+    useNextVariants: true,
+  },
+});
 
 export default class Theme extends React.Component {
   public render () {
