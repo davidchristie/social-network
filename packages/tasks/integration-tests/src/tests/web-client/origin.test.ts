@@ -1,9 +1,9 @@
 import { Page } from "puppeteer";
 
-import { ORIGIN } from "../constants";
-import newPage from "../utilities/newPage";
-import itRedirectsTo from "../utilities/itRedirectsTo";
-import waitForLoading from "../utilities/waitForLoading";
+import { ORIGIN } from "../../constants";
+import itRedirectsTo from "../../utilities/itRedirectsTo";
+import newPage from "../../utilities/newPage";
+import waitForLoading from "../../utilities/waitForLoading";
 
 describe("origin", () => {
   let page: Page;

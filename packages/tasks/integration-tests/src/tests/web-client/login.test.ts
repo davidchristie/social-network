@@ -1,8 +1,8 @@
 import { Page } from "puppeteer";
 
-import { ORIGIN } from "../constants";
-import newPage from "../utilities/newPage";
-import itRedirectsTo from "../utilities/itRedirectsTo";
+import { ORIGIN } from "../../constants";
+import itRedirectsTo from "../../utilities/itRedirectsTo";
+import newPage from "../../utilities/newPage";
 
 describe("on success", () => {
   let page: Page;
