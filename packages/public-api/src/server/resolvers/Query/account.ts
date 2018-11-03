@@ -1,11 +1,13 @@
 import { Context } from "public-api-context";
 
-import authentication from "../../../services/authentication";
-
-export default async function account ({ }, { }, context: Context) {
-  const { id } = await authentication.account(context.request);
-  if (id) {
-    return context.database.account({ id });
+export default function account ({ }, { }, context: Context) {
+  console.log("account resolver");
+  console.log("account ID", context.accountId);
+  const { accountId } = context;
+  if (accountId) {
+    return context.database.account({
+      id: context.accountId,
+    });
   }
   return null;
 }

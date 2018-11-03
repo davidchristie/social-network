@@ -9,11 +9,15 @@ export default async function createPost (
   { text }: Arguments,
   context: Context
 ) {
-  const profile = await context.account.profile();
+  const profile = context.database
+    .account({
+      id: context.accountId,
+    })
+    .profile();
   return context.database.createPost({
     createdBy: {
       connect: {
-        id: profile.id,
+        id: await profile.id(),
       },
     },
     text,

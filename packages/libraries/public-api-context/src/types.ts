@@ -1,8 +1,8 @@
-import { Account, Prisma } from "data-model";
+import { Prisma } from "data-model";
 import { Request } from "express";
 
 export interface Context {
-  account: Account;
+  accountId: string | null;
   database: Prisma;
   request: Request;
 }

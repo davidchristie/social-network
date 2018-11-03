@@ -17,7 +17,7 @@ export default async function deletePost (
       {
         createdBy: {
           account: {
-            id: await context.account.id(),
+            id: await context.accountId,
           },
         },
       },

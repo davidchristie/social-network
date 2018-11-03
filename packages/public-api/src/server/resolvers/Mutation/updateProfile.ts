@@ -14,7 +14,11 @@ export default async function updateProfile (
   { data: { avatarUrl, name } }: Arguments,
   context: Context
 ) {
-  const profile = context.account.profile();
+  const profile = context.database
+    .account({
+      id: context.accountId,
+    })
+    .profile();
   const data: ProfileUpdateInput = {
     name,
   };

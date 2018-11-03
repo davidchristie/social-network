@@ -15,11 +15,11 @@ export default async function updatePassword (
   context: Context
 ) {
   await authentication.updatePassword({
-    accountId: await context.account.id(),
+    accountId: await context.accountId,
     currentPassword,
     newPassword,
   });
   return {
-    id: context.account.id,
+    id: context.accountId,
   };
 }

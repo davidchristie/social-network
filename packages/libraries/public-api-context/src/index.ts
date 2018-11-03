@@ -10,7 +10,7 @@ export function createContext (): ContextCallback {
   return async ({ request }): Promise<Context> => {
     const accountId = await getAccountId(request);
     return {
-      account: database.account({ id: accountId }),
+      accountId,
       database,
       request,
     };
