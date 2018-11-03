@@ -10,7 +10,7 @@ import LoginMutation, {
 } from "../../mutations/Login";
 import AccountQuery from "../../queries/Account";
 
-interface State {
+export interface State {
   email: string;
   error: string | null;
   password: string;
