@@ -2,6 +2,7 @@ import request, { Test } from "supertest";
 
 import { AUTHENTICATION_HOST } from "../../constants/hosts";
 import { USER_1_TOKEN } from "../../constants/login";
+import expectBodyPropertyToBeAString from "../../utilities/expectBodyPropertyToBeAString";
 import itReturnsStatusCode from "../../utilities/itReturnsStatusCode";
 
 const url = `${AUTHENTICATION_HOST}/account`;
@@ -58,12 +59,11 @@ describe(`${AUTHENTICATION_HOST}/account`, () => {
 
       itReturnsStatusCode(() => withValidAuthentication, 200);
 
-      it("returns account ID", done => {
-        withValidAuthentication
-          .end((error, response) => {
-            expect(typeof response.body.id).toBe("string");
-            done();
-          });
+      it("returns account ID", () => {
+        return expectBodyPropertyToBeAString(
+          withValidAuthentication,
+          "id"
+        );
       });
     });
   });
