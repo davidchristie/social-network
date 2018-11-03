@@ -1,10 +1,8 @@
-import { Page } from "puppeteer";
 import request, { Test } from "supertest";
 
 import { AUTHENTICATION_HOST } from "../../constants/hosts";
 import { USER_1_TOKEN } from "../../constants/login";
 import itReturnsStatusCode from "../../utilities/itReturnsStatusCode";
-import newPage from "../../utilities/newPage";
 
 const url = `${AUTHENTICATION_HOST}/account`;
 
@@ -21,12 +19,6 @@ export function itReturnsNullAccountId (getRequest: () => Test) {
 }
 
 describe(`${AUTHENTICATION_HOST}/account`, () => {
-  let page: Page;
-
-  beforeAll(async () => {
-    page = await newPage();
-  });
-
   describe("GET", () => {
     describe("without authentication header", () => {
       let withoutAuthentication: Test;

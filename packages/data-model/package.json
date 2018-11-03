@@ -21,6 +21,6 @@
     "seed": "prisma seed",
     "wait-for-prisma": "scripts/wait-for-prisma.sh"
   },
-  "types": "dist/index.d.ts",
+  "types": "dist/prisma-client/index.d.ts",
   "version": "1.0.0"
 }

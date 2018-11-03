@@ -8,13 +8,7 @@ const router = Router();
 router.post("/", async (request, response) => {
   try {
     const { email, password } = request.body;
-    const account = await prisma.query.account(
-      {
-        where: {
-          email,
-        },
-      },
-    );
+    const account = await prisma.query.account({ email });
     if (!account) {
       return response.status(404).send(`No account found for email: ${email}`);
     }
@@ -26,7 +20,7 @@ router.post("/", async (request, response) => {
       token: getToken(account),
     });
   } catch (error) {
-    response.status(500).send(error.message)
+    response.status(500).send(error.message);
   }
 });
 
