@@ -2,6 +2,7 @@ import { action } from "@storybook/addon-actions";
 import { storiesOf } from "@storybook/react";
 import React from "react";
 
+import Theme from "../../components/Theme";
 import getDisplayName from "./getDisplayName";
 
 interface Props extends React.HTMLAttributes<HTMLElement> { }
@@ -16,6 +17,7 @@ export default function addComponentStory<P extends Props> (
     children: name,
     onClick: action("onClick"),
   };
+  stories.addDecorator(getStory => <Theme>{getStory()}</Theme>);
   stories.add(
     name,
     () => <Component {...componentProps} />
