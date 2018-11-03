@@ -1,7 +1,7 @@
 import puppeteer, { Browser, Page } from "puppeteer";
 
-import { PRODUCTION_API_ENDPOINT } from "../constants";
 import { PUBLIC_API_HOST } from "../constants/hosts";
+import { PRODUCTION_API_ENDPOINT } from "../constants/production";
 
 let browser: Browser;
 

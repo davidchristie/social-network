@@ -1,7 +1,7 @@
 import faker from "faker";
 import { Page } from "puppeteer";
 
-import { ORIGIN } from "../../constants";
+import { WEB_CLIENT_HOST } from "../../constants/hosts";
 import itRedirectsTo from "../../utilities/itRedirectsTo";
 import newPage from "../../utilities/newPage";
 
@@ -10,7 +10,7 @@ describe("on success", () => {
 
   beforeAll(async () => {
     page = await newPage();
-    await page.goto(`${ORIGIN}/signup`);
+    await page.goto(`${WEB_CLIENT_HOST}/signup`);
     await page.waitForSelector(".SignupForm");
     await page.type("#signup-name", faker.name.firstName());
     await page.type("#signup-email", faker.internet.email());

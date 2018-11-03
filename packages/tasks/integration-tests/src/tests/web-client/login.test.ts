@@ -1,6 +1,7 @@
 import { Page } from "puppeteer";
 
-import { ORIGIN } from "../../constants";
+import { WEB_CLIENT_HOST } from "../../constants/hosts";
+import { USER_1_EMAIL, USER_1_PASSWORD } from "../../constants/login";
 import itRedirectsTo from "../../utilities/itRedirectsTo";
 import newPage from "../../utilities/newPage";
 
@@ -9,9 +10,9 @@ describe("on success", () => {
 
   beforeAll(async () => {
     page = await newPage();
-    await page.goto(`${ORIGIN}/login`);
-    await page.type("#login-email", "test_user1@email.com");
-    await page.type("#login-password", "test_user1password");
+    await page.goto(`${WEB_CLIENT_HOST}/login`);
+    await page.type("#login-email", USER_1_EMAIL);
+    await page.type("#login-password", USER_1_PASSWORD);
     await page.click(`.LoginForm button[type="submit"]`);
     await page.waitForNavigation();
   });
