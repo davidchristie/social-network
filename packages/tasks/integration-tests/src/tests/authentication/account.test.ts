@@ -15,11 +15,23 @@ describe(`${AUTHENTICATION_HOST}/account`, () => {
 
   describe("GET", () => {
     describe("without authentication header", () => {
-      it("returns status 200", done => {
+      it("returns status code 200", done => {
         request(url)
           .get("/")
           .expect(200)
           .end(done);
+      });
+
+      it("returns null account ID", done => {
+        request(url)
+          .get("/")
+          .expect(200)
+          .end(async (error, response) => {
+            expect(response.body).toEqual({
+              id: null,
+            });
+            done();
+          });
       });
     });
   });
