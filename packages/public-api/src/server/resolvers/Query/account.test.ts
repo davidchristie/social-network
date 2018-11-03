@@ -26,9 +26,7 @@ function itReturnsExpectedResult (
     queryAccount.mockResolvedValueOnce(queryResult);
     const context = {
       database: {
-        query: {
-          account: queryAccount,
-        },
+        account: queryAccount,
       },
       request: {
         get: jest.fn(),
