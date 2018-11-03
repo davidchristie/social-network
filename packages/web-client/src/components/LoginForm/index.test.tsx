@@ -6,6 +6,16 @@ import { MemoryRouter } from "react-router-dom";
 
 import LoginForm, { State } from ".";
 
+function getInputWithName (wrapper: ReactWrapper, name: string) {
+  return wrapper
+    .find(Input)
+    .filter({
+      name,
+    })
+    .find("input")
+    .first();
+}
+
 describe("LoginForm component", () => {
   let wrapper: ReactWrapper<any, State>;
 
@@ -20,32 +30,17 @@ describe("LoginForm component", () => {
   });
 
   it("contains email input", async () => {
-    const emailInput = wrapper
-      .find(Input)
-      .filter({
-        name: "email",
-      })
-      .first();
+    const emailInput = getInputWithName(wrapper, "email");
     expect(emailInput.exists()).toBe(true);
   });
 
   it("contains password input", async () => {
-    const passwordInput = wrapper
-      .find(Input)
-      .filter({
-        name: "password",
-      })
-      .first();
+    const passwordInput = getInputWithName(wrapper, "password");
     expect(passwordInput.exists()).toBe(true);
   });
 
   it("updates state when email is changed", () => {
-    const emailInput = wrapper
-      .find(Input)
-      .filter({
-        name: "email",
-      })
-      .find("input");
+    const emailInput = getInputWithName(wrapper, "email");
     const newValue = "new_value";
     emailInput.simulate("change", {
       target: {
@@ -56,12 +51,7 @@ describe("LoginForm component", () => {
   });
 
   it("updates state when password is changed", () => {
-    const passwordInput = wrapper
-      .find(Input)
-      .filter({
-        name: "password",
-      })
-      .find("input");
+    const passwordInput = getInputWithName(wrapper, "password");
     const newValue = "new_value";
     passwordInput.simulate("change", {
       target: {
