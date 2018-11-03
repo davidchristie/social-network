@@ -25,6 +25,7 @@ function itReturnsExpectedResult (
     const queryAccount = jest.fn();
     queryAccount.mockResolvedValueOnce(queryResult);
     const context = {
+      accountId: "xxxx-xxxx-xxxx-xxxx",
       database: {
         account: queryAccount,
       },
