@@ -1,9 +1,9 @@
 import { Page } from "puppeteer";
 
-import { ORIGIN } from '../constants'
+import { WEB_CLIENT_HOST } from "../constants/hosts";
 
-export default function itRedirectsTo(getPage: () => Page, path: string) {
+export default function itRedirectsTo (getPage: () => Page, path: string) {
   it(`redirects to "${path}"`, async () => {
-    expect(await getPage().url()).toEqual(`${ORIGIN}${path}`);
+    expect(await getPage().url()).toEqual(`${WEB_CLIENT_HOST}${path}`);
   });
 }

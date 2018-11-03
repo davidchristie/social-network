@@ -9,9 +9,9 @@ interface Props {
   id: string;
   label: string;
   name: string;
-  onBlur?: React.FocusEventHandler
-  onChange?: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>
-  onClick?: React.MouseEventHandler
+  onBlur?: React.FocusEventHandler;
+  onChange?: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>;
+  onClick?: React.MouseEventHandler;
   required?: boolean;
   type?: string;
   value?: number | string;
@@ -25,7 +25,7 @@ const Input: React.SFC<Props> = ({
   ...attributes
 }) => {
   return (
-    <FormControl fullWidth margin="normal" required={required}>
+    <FormControl fullWidth={true} margin="normal" required={required}>
       <InputLabel htmlFor={id}>{label}</InputLabel>
       <MaterialInput
         autoComplete={name}

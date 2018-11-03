@@ -25,16 +25,15 @@ function itReturnsExpectedResult (
     const queryAccount = jest.fn();
     queryAccount.mockResolvedValueOnce(queryResult);
     const context = {
+      accountId: "xxxx-xxxx-xxxx-xxxx",
       database: {
-        query: {
-          account: queryAccount,
-        },
+        account: queryAccount,
       },
       request: {
         get: jest.fn(),
       },
     } as unknown as Context;
-    expect(await accountQueryResolver(null, null, context, null))
+    expect(await accountQueryResolver(null, null, context))
       .toBe(queryResult);
   });
 }

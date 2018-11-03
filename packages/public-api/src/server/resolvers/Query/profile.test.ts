@@ -12,9 +12,7 @@ describe("profile query resolver", () => {
     queryProfile.mockResolvedValueOnce(result);
     const context = {
       database: {
-        query: {
-          profile: queryProfile,
-        },
+        profile: queryProfile,
       },
     } as unknown as Context;
     expect(await profileQueryResolver(null, input, context, null))

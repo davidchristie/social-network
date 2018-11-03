@@ -2,7 +2,8 @@
   "name": "test-utilities",
   "private": true,
   "scripts": {
-    "build": "rimraf dist && tsc"
+    "build": "rimraf dist && tsc",
+    "lint": "tslint --project . && tsc --noEmit"
   },
   "version": "1.0.0"
 }

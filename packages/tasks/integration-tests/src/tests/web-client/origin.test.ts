@@ -1,16 +1,16 @@
 import { Page } from "puppeteer";
 
-import { ORIGIN } from "../constants";
-import newPage from "../utilities/newPage";
-import itRedirectsTo from "../utilities/itRedirectsTo";
-import waitForLoading from "../utilities/waitForLoading";
+import { WEB_CLIENT_HOST } from "../../constants/hosts";
+import itRedirectsTo from "../../utilities/itRedirectsTo";
+import newPage from "../../utilities/newPage";
+import waitForLoading from "../../utilities/waitForLoading";
 
 describe("origin", () => {
   let page: Page;
 
   beforeAll(async () => {
     page = await newPage();
-    await page.goto(ORIGIN);
+    await page.goto(WEB_CLIENT_HOST);
     await waitForLoading(page);
   });
 

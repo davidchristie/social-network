@@ -5,7 +5,9 @@ import { createContext } from ".";
 
 jest.mock("node-fetch", () => () => Promise.resolve({
   json () {
-    return Promise.resolve(null);
+    return Promise.resolve({
+      id: null,
+    });
   },
 }));
 

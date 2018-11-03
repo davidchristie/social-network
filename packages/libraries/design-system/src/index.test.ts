@@ -1,3 +1,3 @@
-it('runs without crashing', () => {
-  require('.')
-})
+it("runs without crashing", () => {
+  require(".");
+});

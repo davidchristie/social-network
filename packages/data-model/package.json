@@ -1,24 +1,27 @@
 {
   "dependencies": {
     "graphql": "14.0.2",
-    "prisma-binding": "2.1.6"
+    "prisma-binding": "2.1.6",
+    "prisma-client-lib": "^1.19.3"
   },
   "devDependencies": {
     "prisma": "1.19.3",
     "rimraf": "2.6.2",
     "typescript": "3.1.6"
   },
-  "main": "./dist/prisma.js",
+  "main": "./dist/prisma-client/index.js",
   "name": "data-model",
   "private": true,
   "scripts": {
     "build": "rimraf dist && tsc",
     "delete": "prisma delete",
     "deploy": "prisma deploy --no-seed",
+    "lint": "tsc --noEmit",
+    "generate": "prisma generate && yarn build",
     "playground": "prisma playground",
     "seed": "prisma seed",
     "wait-for-prisma": "scripts/wait-for-prisma.sh"
   },
-  "types": "./generated/prisma.ts",
+  "types": "dist/prisma-client/index.d.ts",
   "version": "1.0.0"
 }

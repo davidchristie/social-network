@@ -1,32 +1,28 @@
 import { Router } from "express";
 
-import prisma from "../../services/prisma";
+import getAccountByEmail from "../../utilities/getAccountByEmail";
 import getToken from "../../utilities/getToken";
 import isPassword from "../../utilities/isPassword";
+import sendAccountNotFound from "../../utilities/sendAccountNotFound";
+import sendIncorrectPassword from "../../utilities/sendIncorrectPassword";
 
 const router = Router();
 router.post("/", async (request, response) => {
   try {
     const { email, password } = request.body;
-    const account = await prisma.query.account(
-      {
-        where: {
-          email,
-        },
-      },
-    );
+    const account = await getAccountByEmail(email);
     if (!account) {
-      return response.status(404).send(`No account found for email: ${email}`);
+      return sendAccountNotFound(response);
     }
-    const valid = await isPassword(password, account);
-    if (!valid) {
-      return response.status(422).send("Invalid password");
+    if (!await isPassword(password, account)) {
+      return sendIncorrectPassword(response);
     }
     return response.send({
       token: getToken(account),
     });
   } catch (error) {
-    response.status(500).send(error.message)
+    console.log(error.stack);
+    response.status(500).send(error.message);
   }
 });
 

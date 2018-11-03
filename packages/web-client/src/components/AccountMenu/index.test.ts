@@ -11,7 +11,7 @@ describe("AccountMenu component", () => {
 });
 
 describe("AccountMenuContent component", () => {
-  describeWithProps(
+  describeWithProps<any>(
     "renders loading state",
     AccountMenuContent,
     {

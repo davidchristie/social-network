@@ -12,16 +12,14 @@ router.post("/", async (request, response) => {
       name,
       password,
     } = request.body;
-    const account = await prisma.mutation.createAccount(
+    const account = await prisma.createAccount(
       {
-        data: {
-          email,
-          name,
-          password: await getHash(password),
-          profile: {
-            create: {
-              name,
-            },
+        email,
+        name,
+        password: await getHash(password),
+        profile: {
+          create: {
+            name,
           },
         },
       },
@@ -30,6 +28,7 @@ router.post("/", async (request, response) => {
       token: getToken(account),
     });
   } catch (error) {
+    console.log(error.stack);
     response.status(400).send("Error creating account");
   }
 });

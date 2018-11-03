@@ -40,6 +40,7 @@
   "private": true,
   "scripts": {
     "build": "rimraf dist && tsc",
+    "lint": "tslint --project . && tsc --noEmit",
     "test": "jest --coverage --maxWorkers 2 --verbose"
   },
   "version": "1.0.0"

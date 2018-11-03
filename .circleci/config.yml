@@ -85,6 +85,19 @@ jobs:
     environment:
       NAME: authentication
 
+  build-packages:
+    <<: *defaults
+    steps:
+      - checkout
+      - *restore-cached-dependencies
+      - *link-dependencies
+      - run:
+          name: Build packages
+          command: yarn build
+      - run:
+          name: Check code for errors
+          command: yarn lint
+
   build-public-api:
     <<: *defaults
     <<: *build-service
@@ -331,12 +344,18 @@ workflows:
     jobs:
       - build-authentication:
           requires:
+            - build-packages
             - unit-tests
+      - build-packages:
+          requires:
+            - install-dependencies
       - build-public-api:
           requires:
+            - build-packages
             - unit-tests
       - build-web-client:
           requires:
+            - build-packages
             - unit-tests
       - deploy-authentication:
           requires:

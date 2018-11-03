@@ -14,13 +14,11 @@ export default async function updateProfile (
   { data: { avatarUrl, name } }: Arguments,
   context: Context
 ) {
-  const [profile] = await context.database.query.profiles({
-    where: {
-      account: {
-        id: context.account.id,
-      },
-    },
-  });
+  const profile = context.database
+    .account({
+      id: context.accountId,
+    })
+    .profile();
   const data: ProfileUpdateInput = {
     name,
   };
@@ -36,10 +34,10 @@ export default async function updateProfile (
       delete: true,
     };
   }
-  return context.database.mutation.updateProfile({
+  return context.database.updateProfile({
     data,
     where: {
-      id: profile.id,
+      id: await profile.id(),
     },
   });
 }
