@@ -28,6 +28,7 @@ router.post("/", async (request, response) => {
       token: getToken(account),
     });
   } catch (error) {
+    console.log(error.stack);
     response.status(400).send("Error creating account");
   }
 });

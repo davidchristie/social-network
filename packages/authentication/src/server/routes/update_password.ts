@@ -26,6 +26,7 @@ router.post("/", async (request, response) => {
     });
     response.sendStatus(200);
   } catch (error) {
+    console.log(error.stack);
     response.status(500).send(error.message);
   }
 });
