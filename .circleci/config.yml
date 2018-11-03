@@ -23,18 +23,6 @@ references:
 
   # Jobs
 
-  build-packages:
-    steps:
-      - checkout
-      - *restore-cached-dependencies
-      - *link-dependencies
-      - run:
-          name: Build packages
-          command: yarn build
-      - run:
-          name: Check code for errors
-          command: yarn lint
-
   build-service: &build-service
     steps:
       - checkout
@@ -96,6 +84,19 @@ jobs:
     <<: *build-service
     environment:
       NAME: authentication
+
+  build-packages:
+    <<: *defaults
+    steps:
+      - checkout
+      - *restore-cached-dependencies
+      - *link-dependencies
+      - run:
+          name: Build packages
+          command: yarn build
+      - run:
+          name: Check code for errors
+          command: yarn lint
 
   build-public-api:
     <<: *defaults
