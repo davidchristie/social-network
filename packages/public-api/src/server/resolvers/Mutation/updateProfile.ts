@@ -14,13 +14,7 @@ export default async function updateProfile (
   { data: { avatarUrl, name } }: Arguments,
   context: Context
 ) {
-  const [profile] = await context.database.profiles({
-    where: {
-      account: {
-        id: context.account.id,
-      },
-    },
-  });
+  const profile = context.account.profile();
   const data: ProfileUpdateInput = {
     name,
   };
@@ -39,7 +33,7 @@ export default async function updateProfile (
   return context.database.updateProfile({
     data,
     where: {
-      id: profile.id,
+      id: await profile.id(),
     },
   });
 }

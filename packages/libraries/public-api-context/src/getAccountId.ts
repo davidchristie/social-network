@@ -3,11 +3,9 @@ import fetch from "node-fetch";
 
 const AUTHENTICATION_HOST = process.env.AUTHENTICATION_ENDPOINT;
 
-interface Account {
-  id: string | null;
-}
-
-export default async function account (request: Request): Promise<Account> {
+export default async function getAccountId (
+  request: Request
+): Promise<string | null> {
   const response = await fetch(
     `${AUTHENTICATION_HOST}/account`,
     {
@@ -16,5 +14,6 @@ export default async function account (request: Request): Promise<Account> {
       },
     },
   );
-  return response.json();
+  const { id } = await response.json();
+  return id;
 }

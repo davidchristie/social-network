@@ -16,7 +16,7 @@ export default async function updateAccount (
       email,
     },
     where: {
-      id: context.account.id,
+      id: await context.account.id(),
     },
   });
 }

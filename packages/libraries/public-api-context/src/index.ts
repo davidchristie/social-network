@@ -1,15 +1,16 @@
 import { ContextCallback } from "graphql-yoga/dist/types";
 
-import account from "./account";
 import database from "./database";
+import getAccountId from "./getAccountId";
 import { Context } from "./types";
 
 export * from "./types";
 
 export function createContext (): ContextCallback {
   return async ({ request }): Promise<Context> => {
+    const accountId = await getAccountId(request);
     return {
-      account: await account(request),
+      account: database.account({ id: accountId }),
       database,
       request,
     };
