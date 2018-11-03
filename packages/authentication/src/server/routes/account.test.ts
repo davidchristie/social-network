@@ -16,7 +16,6 @@ describe("GET /account", () => {
         id: ACCOUNT_ID,
         name: "User",
         password: "xxxxxxxx",
-        profile: null,
       });
       requestToRouter(account)
         .get("/")

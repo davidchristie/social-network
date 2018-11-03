@@ -12,16 +12,14 @@ router.post("/", async (request, response) => {
       name,
       password,
     } = request.body;
-    const account = await prisma.mutation.createAccount(
+    const account = await prisma.createAccount(
       {
-        data: {
-          email,
-          name,
-          password: await getHash(password),
-          profile: {
-            create: {
-              name,
-            },
+        email,
+        name,
+        password: await getHash(password),
+        profile: {
+          create: {
+            name,
           },
         },
       },

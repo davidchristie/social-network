@@ -7,7 +7,7 @@ export interface JWT {
   accountId: string;
 }
 
-export default async function getAccountId(request: Request) {
+export default async function getAccountId (request: Request) {
   const Authorization = request.get("Authorization");
   if (!Authorization) {
     return null;

@@ -49,6 +49,7 @@
   "private": true,
   "scripts": {
     "build": "rimraf dist && tsc",
+    "lint": "tslint --project . && tsc --noEmit",
     "start": "nodemon -x ts-node src/index.ts",
     "test": "jest --coverage --maxWorkers 2 --verbose"
   },

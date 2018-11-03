@@ -8,13 +8,7 @@ const router = Router();
 router.post("/", async (request, response) => {
   try {
     const { accountId, currentPassword, newPassword } = request.body;
-    const account = await prisma.query.account(
-      {
-        where: {
-          id: accountId,
-        },
-      },
-    );
+    const account = await prisma.account({ id: accountId });
     if (!account) {
       return response.status(404).send(`No account found for ID: ${accountId}`);
     }
@@ -22,7 +16,7 @@ router.post("/", async (request, response) => {
     if (!valid) {
       return response.status(422).send("Invalid current password");
     }
-    await prisma.mutation.updateAccount({
+    await prisma.updateAccount({
       data: {
         password: await getHash(newPassword),
       },

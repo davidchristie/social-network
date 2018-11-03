@@ -8,7 +8,7 @@ const router = Router();
 router.post("/", async (request, response) => {
   try {
     const { email, password } = request.body;
-    const account = await prisma.query.account({ email });
+    const account = await prisma.account({ email });
     if (!account) {
       return response.status(404).send(`No account found for email: ${email}`);
     }
