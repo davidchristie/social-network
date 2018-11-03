@@ -1,6 +1,6 @@
-import { Alert, Container, Loading, Topbar } from "design-system";
+import { Container, Topbar } from "design-system";
 import React from "react";
-import { Query } from "react-apollo";
+import { Query, QueryResult } from "react-apollo";
 import { Link } from "react-router-dom";
 
 import AccountQuery, {
@@ -17,14 +17,7 @@ export default class Header extends React.Component {
       <Query<AccountData, AccountVariables>
         query={AccountQuery}
       >
-        {({ data, error, loading }) => {
-          if (loading) {
-            return <Loading />;
-          }
-          if (error) {
-            return <Alert>{error.message}</Alert>;
-          }
-          const { account } = data!;
+        {result => {
           return (
             <Topbar className="Header">
               <Container>
@@ -35,26 +28,36 @@ export default class Header extends React.Component {
                   Social Network
                 </Link>
                 <div>
-                  {
-                    account
-                      ? <AccountMenu />
-                      : (
-                        <React.Fragment>
-                          <ButtonLink to="/login">
-                            Login
-                          </ButtonLink>
-                          <ButtonLink to="/signup">
-                            Signup
-                          </ButtonLink>
-                        </React.Fragment>
-                      )
-                  }
+                  {this.renderMenuItems(result)}
                 </div>
               </Container>
             </Topbar>
           );
         }}
       </Query>
+    );
+  }
+
+  private renderMenuItems (
+    { data, loading }: QueryResult<AccountData>
+  ) {
+    if (loading) {
+      return null;
+    }
+    // Authenticated
+    if (data && data.account) {
+      return <AccountMenu />;
+    }
+    // Unauthenticated
+    return (
+      <React.Fragment>
+        <ButtonLink to="/login">
+          Login
+        </ButtonLink>
+        <ButtonLink to="/signup">
+          Signup
+        </ButtonLink>
+      </React.Fragment>
     );
   }
 }
