@@ -1,6 +1,6 @@
 import { Router } from "express";
 
-import prisma from "../../services/prisma";
+import getAccountByEmail from "../../utilities/getAccountByEmail";
 import getToken from "../../utilities/getToken";
 import isPassword from "../../utilities/isPassword";
 import sendAccountNotFound from "../../utilities/sendAccountNotFound";
@@ -10,7 +10,7 @@ const router = Router();
 router.post("/", async (request, response) => {
   try {
     const { email, password } = request.body;
-    const account = await prisma.account({ email });
+    const account = await getAccountByEmail(email);
     if (!account) {
       return sendAccountNotFound(response);
     }
