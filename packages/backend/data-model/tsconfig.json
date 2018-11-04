@@ -4,7 +4,7 @@
     "outDir": "dist",
     "rootDir": "generated"
   },
-  "extends": "../../tsconfig.json",
+  "extends": "../../../tsconfig.json",
   "exclude": [
     "node_modules"
   ]
