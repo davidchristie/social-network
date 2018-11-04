@@ -244,23 +244,23 @@ jobs:
           command: |
             ./tmp/test-reporter format-coverage -t lcov \
                   -o tmp/coverage.authentication.json \
-                  packages/authentication/coverage/lcov.info
+                  packages/backend/authentication/coverage/lcov.info
 
             ./tmp/test-reporter format-coverage -t lcov \
                   -o tmp/coverage.design-system.json \
-                  packages/libraries/design-system/coverage/lcov.info
+                  packages/frontend/design-system/coverage/lcov.info
 
             ./tmp/test-reporter format-coverage -t lcov \
                   -o tmp/coverage.public-api.json \
-                  packages/public-api/coverage/lcov.info
+                  packages/backend/public-api/coverage/lcov.info
 
             ./tmp/test-reporter format-coverage -t lcov \
                   -o tmp/coverage.public-api-context.json \
-                  packages/libraries/public-api-context/coverage/lcov.info
+                  packages/backend/public-api-context/coverage/lcov.info
 
             ./tmp/test-reporter format-coverage -t lcov \
                   -o tmp/coverage.web-client.json \
-                  packages/web-client/coverage/lcov.info
+                  packages/frontend/web-client/coverage/lcov.info
 
             ./tmp/test-reporter sum-coverage tmp/coverage.*.json \
               --parts 5 \

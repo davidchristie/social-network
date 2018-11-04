@@ -2,7 +2,7 @@ FROM node:9.11-alpine
 
 WORKDIR /app
 
-COPY ./packages/data-model ./packages/data-model
+COPY ./packages/backend/data-model ./packages/backend/data-model
 COPY ./scripts ./scripts
 COPY ./package.json .
 COPY ./yarn.lock .

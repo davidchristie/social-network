@@ -3,14 +3,14 @@ version: '3'
 services:
   authentication:
     build:
-      dockerfile: 'packages/authentication/production.Dockerfile'
+      dockerfile: 'packages/backend/authentication/production.Dockerfile'
 
   public-api:
     build:
-      dockerfile: 'packages/public-api/production.Dockerfile'
+      dockerfile: 'packages/backend/public-api/production.Dockerfile'
 
   web-client:
     build:
-      dockerfile: 'packages/web-client/production.Dockerfile'
+      dockerfile: 'packages/frontend/web-client/production.Dockerfile'
       args:
         - 'API_ENDPOINT=https://api.social-network.davidchristie.io'
