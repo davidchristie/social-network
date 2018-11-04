@@ -1,7 +1,6 @@
 import { ApolloClient } from "apollo-boost";
 import gql from "graphql-tag";
 
-import { PUBLIC_API_HOST } from "../../../constants/hosts";
 import { USER_1_EMAIL, USER_1_PASSWORD } from "../../../constants/login";
 import createPublicApiClient from "../createPublicApiClient";
 import describeQuery from "../describeQuery";
