@@ -248,7 +248,7 @@ jobs:
 
             ./tmp/test-reporter format-coverage -t lcov \
                   -o tmp/coverage.design-system.json \
-                  packages/libraries/design-system/coverage/lcov.info
+                  packages/frontend/design-system/coverage/lcov.info
 
             ./tmp/test-reporter format-coverage -t lcov \
                   -o tmp/coverage.public-api.json \
