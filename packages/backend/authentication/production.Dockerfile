@@ -3,7 +3,7 @@ FROM node:9.11-alpine AS build
 WORKDIR /app
 
 COPY ./packages/backend/authentication ./packages/backend/authentication
-COPY ./packages/data-model ./packages/data-model
+COPY ./packages/backend/data-model ./packages/backend/data-model
 COPY ./package.json .
 COPY ./tsconfig.json .
 COPY ./yarn.lock .
