@@ -17,6 +17,6 @@ EXPOSE 4000
 
 COPY --from=build /app /app
 
-WORKDIR /app/packages/public-api
+WORKDIR /app/packages/backend/public-api
 
 ENTRYPOINT ["node", "dist/index.js"]
