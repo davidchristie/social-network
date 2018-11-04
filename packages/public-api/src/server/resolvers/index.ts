@@ -1,13 +1,11 @@
-import Account from "./Account";
+import { delegateQueryResolver } from "../utilities";
 import Mutation from "./Mutation";
-import Post from "./Post";
-import Profile from "./Profile";
 import Query from "./Query";
 
 export default {
-  Account,
+  Account: delegateQueryResolver("account", ["profile"]),
   Mutation,
-  Post,
-  Profile,
+  Post: delegateQueryResolver("post", ["createdBy"]),
+  Profile: delegateQueryResolver("profile", ["posts"]),
   Query,
 };
