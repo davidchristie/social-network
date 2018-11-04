@@ -260,7 +260,7 @@ jobs:
 
             ./tmp/test-reporter format-coverage -t lcov \
                   -o tmp/coverage.web-client.json \
-                  packages/web-client/coverage/lcov.info
+                  packages/frontend/web-client/coverage/lcov.info
 
             ./tmp/test-reporter sum-coverage tmp/coverage.*.json \
               --parts 5 \
