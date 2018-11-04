@@ -256,7 +256,7 @@ jobs:
 
             ./tmp/test-reporter format-coverage -t lcov \
                   -o tmp/coverage.public-api-context.json \
-                  packages/libraries/public-api-context/coverage/lcov.info
+                  packages/backend/public-api-context/coverage/lcov.info
 
             ./tmp/test-reporter format-coverage -t lcov \
                   -o tmp/coverage.web-client.json \
