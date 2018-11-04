@@ -4,12 +4,6 @@ interface Arguments {
   id: string;
 }
 
-export default function profile (
-  { },
-  { id }: Arguments,
-  context: Context,
-  info
-) {
-  console.log("profile resolver, ID: ", id);
+export default function profile ({ }, { id }: Arguments, context: Context) {
   return context.database.profile({ id });
 }

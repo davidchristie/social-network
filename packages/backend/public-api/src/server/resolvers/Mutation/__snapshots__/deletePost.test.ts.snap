@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`deletePost mutation resolver if the post doesn't exist or was not created by user throws an error 1`] = `"Post not found or you are not the author"`;

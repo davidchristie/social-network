@@ -23,6 +23,7 @@ export default async function deletePost (
       },
     ],
   });
+  console.log("canDeletePost", canDeletePost);
   if (!canDeletePost) {
     throw new Error(`Post not found or you are not the author`);
   }

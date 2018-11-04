@@ -50,12 +50,12 @@ describe("account query resolver", () => {
   });
 
   describe("without valid authentication", () => {
-    itReturnsExpectedResult(
-      "returns null",
-      {
-        id: null,
-      },
-      null
-    );
+    it("returns null", () => {
+      const context = {
+        accountId: null,
+      } as Context;
+      const result = accountQueryResolver(null, null, context);
+      expect(result).toBeNull();
+    });
   });
 });
