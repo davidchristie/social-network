@@ -16,6 +16,6 @@ EXPOSE 5000
 
 COPY --from=build /app /app
 
-WORKDIR /app/packages/authentication
+WORKDIR /app/packages/backend/authentication
 
 ENTRYPOINT ["node", "dist/index.js"]
