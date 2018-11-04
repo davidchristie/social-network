@@ -9,7 +9,7 @@ Object {
 }
 `;
 
-exports[`http://localhost:4000 account query with authentication with all fields matches snapshot 1`] = `
+exports[`http://localhost:4000 account query with authentication with all account fields matches snapshot 1`] = `
 Object {
   "account": Object {
     "__typename": "Account",
@@ -24,14 +24,16 @@ Object {
 }
 `;
 
-exports[`http://localhost:4000 account query with authentication with profile posts matches snapshot 1`] = `
+exports[`http://localhost:4000 account query with authentication with all profile fields matches snapshot 1`] = `
 Object {
   "account": Object {
     "__typename": "Account",
     "id": "cjo0wqu90000e0b03zk6ggygn",
     "profile": Object {
       "__typename": "Profile",
+      "avatar": null,
       "id": "cjo0wqua2000f0b03lgzat5xy",
+      "name": "Test User 1",
       "posts": Array [
         Object {
           "__typename": "Post",

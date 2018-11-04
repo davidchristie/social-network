@@ -14,7 +14,7 @@ const withIdField = gql`
   }
 `;
 
-const withAllFields = gql`
+const withAllAccountFields = gql`
   query {
     account {
       email
@@ -27,14 +27,37 @@ const withAllFields = gql`
   }
 `;
 
-const withProfilePosts = gql`
+const withAllProfileFields = gql`
+  query {
+    account {
+      id
+      profile {
+        avatar {
+          id
+        }
+        id
+        name
+        posts {
+          id
+        }
+      }
+    }
+  }
+`;
+
+const withAllPostFields = gql`
   query {
     account {
       id
       profile {
         id
         posts {
+          createdAt
+          createdBy {
+            id
+          }
           id
+          text
         }
       }
     }
@@ -83,19 +106,28 @@ describe(PUBLIC_API_HOST, () => {
         });
       });
 
-      describe("with all fields", () => {
+      describe("with all account fields", () => {
         it("matches snapshot", async () => {
           const { data } = await client.query({
-            query: withAllFields,
+            query: withAllAccountFields,
           });
           expect(data).toMatchSnapshot();
         });
       });
 
-      describe("with profile posts", () => {
+      describe("with all profile fields", () => {
         it("matches snapshot", async () => {
           const { data } = await client.query({
-            query: withProfilePosts,
+            query: withAllProfileFields,
+          });
+          expect(data).toMatchSnapshot();
+        });
+      });
+
+      describe("with all post fields", () => {
+        it("matches snapshot", async () => {
+          const { data } = await client.query({
+            query: withAllPostFields,
           });
           expect(data).toMatchSnapshot();
         });
