@@ -30,6 +30,7 @@
   "version": "1.0.0",
   "workspaces": [
     "packages/*",
+    "packages/frontend/*",
     "packages/libraries/*",
     "packages/tasks/*"
   ]

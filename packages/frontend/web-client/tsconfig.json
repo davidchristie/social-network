@@ -36,7 +36,7 @@
     "src/setupTests.ts",
     "webpack"
   ],
-  "extends": "../../tsconfig.json",
+  "extends": "../../../tsconfig.json",
   "include": [
     "src"
   ]

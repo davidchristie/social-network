@@ -11,6 +11,6 @@ services:
 
   web-client:
     build:
-      dockerfile: 'packages/web-client/production.Dockerfile'
+      dockerfile: 'packages/frontend/web-client/production.Dockerfile'
       args:
         - 'API_ENDPOINT=https://api.social-network.davidchristie.io'
