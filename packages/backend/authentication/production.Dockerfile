@@ -2,7 +2,7 @@ FROM node:9.11-alpine AS build
 
 WORKDIR /app
 
-COPY ./packages/authentication ./packages/authentication
+COPY ./packages/backend/authentication ./packages/backend/authentication
 COPY ./packages/data-model ./packages/data-model
 COPY ./package.json .
 COPY ./tsconfig.json .
