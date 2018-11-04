@@ -3,7 +3,7 @@ version: '3'
 services:
   authentication:
     build:
-      dockerfile: 'packages/authentication/development.Dockerfile'
+      dockerfile: 'packages/backend/authentication/development.Dockerfile'
     volumes: &volumes
       - '.:/app'
 

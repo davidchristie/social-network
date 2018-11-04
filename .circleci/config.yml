@@ -244,7 +244,7 @@ jobs:
           command: |
             ./tmp/test-reporter format-coverage -t lcov \
                   -o tmp/coverage.authentication.json \
-                  packages/authentication/coverage/lcov.info
+                  packages/backend/authentication/coverage/lcov.info
 
             ./tmp/test-reporter format-coverage -t lcov \
                   -o tmp/coverage.design-system.json \
