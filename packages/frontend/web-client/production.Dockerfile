@@ -1,4 +1,4 @@
-FROM node:9.11-alpine AS build
+FROM node:10-alpine AS build
 
 ARG API_ENDPOINT
 

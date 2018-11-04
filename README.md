@@ -7,17 +7,25 @@
 
 ## Packages
 
-* [Authentication](packages/authentication)
-* [Data Model](packages/data-model)
-* [Desktop Client](packages/desktop-client)
-* [Infrastructure](packages/infrastructure)
-* [Public API](packages/public-api)
-* [Web Client](packages/web-client)
+### Backend
+
+* [Authentication](packages/backend/authentication)
+* [Data Model](packages/backend/data-model)
+* [Public API](packages/backend/public-api)
+* [Public API Context](packages/backend/public-api-context)
+
+### Frontend
+
+* [Design System](packages/frontend/design-system)
+* [Desktop Client](packages/frontend/desktop-client)
+* [Web Client](packages/frontend/web-client)
+
+### Infrastructure
+
+* [Cluster](packages/infrastructure)
 
 ### Libraries
 
-* [Design System](packages/libraries/design-system)
-* [Public API Context](packages/libraries/public-api-context)
 * [Test Utilities](packages/libraries/test-utilities)
 
 ### Tasks

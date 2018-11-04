@@ -1,4 +1,4 @@
-FROM node:9.11-alpine AS build
+FROM node:10-alpine AS build
 
 WORKDIR /app
 
@@ -11,7 +11,7 @@ COPY ./yarn.lock .
 
 RUN yarn --frozen-lockfile --production
 
-FROM node:9.11-alpine
+FROM node:10-alpine
 
 EXPOSE 4000
 
