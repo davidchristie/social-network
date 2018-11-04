@@ -15,7 +15,7 @@ describe("profile query resolver", () => {
         profile: queryProfile,
       },
     } as unknown as Context;
-    expect(await profileQueryResolver(null, input, context, null))
+    expect(await profileQueryResolver(null, input, context))
       .toBe(result);
   });
 });
