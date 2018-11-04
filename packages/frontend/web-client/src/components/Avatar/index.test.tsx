@@ -1,28 +1,19 @@
-import { shallow, ShallowWrapper } from "enzyme";
+import { shallow } from "enzyme";
 import React from "react";
 
-import Avatar from "./index";
+import Avatar from ".";
+
+function describeSize (size: string) {
+  describe(size, () => {
+    it("matches snapshot", () => {
+      const wrapper = shallow(<Avatar size={size} />);
+      expect(wrapper).toMatchSnapshot();
+    });
+  });
+}
 
 describe("Avatar component", () => {
-  let wrapper: ShallowWrapper;
+  describeSize("small");
 
-  describe("large", () => {
-    beforeEach(() => {
-      wrapper = shallow(<Avatar size="large" />);
-    });
-
-    it("matches snapshot", () => {
-      expect(wrapper).toMatchSnapshot();
-    });
-  });
-
-  describe("small", () => {
-    beforeEach(() => {
-      wrapper = shallow(<Avatar size="small" />);
-    });
-
-    it("matches snapshot", () => {
-      expect(wrapper).toMatchSnapshot();
-    });
-  });
+  describeSize("large");
 });
