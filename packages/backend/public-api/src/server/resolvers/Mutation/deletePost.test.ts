@@ -2,20 +2,24 @@ import { Context } from "public-api-context";
 
 import deletePostResolver from "./deletePost";
 
+function createMockContext (deletePost: () => void, canDeletePost: boolean) {
+  const context = {
+    database: {
+      $exists: {
+        post: () => Promise.resolve(canDeletePost),
+      },
+      deletePost,
+    },
+  } as unknown as Context;
+  return context;
+}
+
 describe("deletePost mutation resolver", () => {
   describe("if the post exists and was created by user", () => {
     it("deletes the post", async () => {
       const deletePost = jest.fn();
       const postId = "post_id";
-      const text = "post_text";
-      const context = {
-        database: {
-          $exists: {
-            post: () => Promise.resolve(true),
-          },
-          deletePost,
-        },
-      } as unknown as Context;
+      const context = createMockContext(deletePost, true);
       await deletePostResolver(null, { id: postId }, context);
       expect(deletePost).toBeCalledWith({
         id: postId,
@@ -28,14 +32,7 @@ describe("deletePost mutation resolver", () => {
       const promise = async () => {
         const deletePost = jest.fn();
         const postId = "post_id";
-        const context = {
-          database: {
-            $exists: {
-              post: () => Promise.resolve(false),
-            },
-            deletePost,
-          },
-        } as unknown as Context;
+        const context = createMockContext(deletePost, false);
         await deletePostResolver(null, { id: postId }, context);
       };
       await expect(promise()).rejects.toThrowErrorMatchingSnapshot();
