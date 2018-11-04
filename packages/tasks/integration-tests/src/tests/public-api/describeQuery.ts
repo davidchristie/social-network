@@ -6,12 +6,12 @@ export default function describeQuery (
   getClient: () => ApolloClient<any>
 ) {
   describe(name, () => {
-    it("matches snapshot", async () => {
+    it("doesn't return errors", async () => {
       const client = getClient();
-      const { data } = await client.query({
+      const { errors } = await client.query({
         query,
       });
-      expect(data).toMatchSnapshot();
+      expect(errors).toBeUndefined();
     });
   });
 }

@@ -41,7 +41,7 @@
   "private": true,
   "scripts": {
     "lint": "tslint --project . && tsc --noEmit",
-    "start": "jest --verbose"
+    "start": "jest -ci --verbose"
   },
   "version": "1.0.0"
 }
