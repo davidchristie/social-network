@@ -4,6 +4,7 @@ import gql from "graphql-tag";
 import { PUBLIC_API_HOST } from "../../../constants/hosts";
 import { USER_1_EMAIL, USER_1_PASSWORD } from "../../../constants/login";
 import createPublicApiClient from "../createPublicApiClient";
+import describeQuery from "../describeQuery";
 import getAuthenticationToken from "../getAuthenticationToken";
 
 const withIdField = gql`
@@ -97,41 +98,13 @@ describe(PUBLIC_API_HOST, () => {
         });
       });
 
-      describe("with ID field", () => {
-        it("matches snapshot", async () => {
-          const { data } = await client.query({
-            query: withIdField,
-          });
-          expect(data).toMatchSnapshot();
-        });
-      });
+      describeQuery("with ID field", withIdField, () => client);
 
-      describe("with all account fields", () => {
-        it("matches snapshot", async () => {
-          const { data } = await client.query({
-            query: withAllAccountFields,
-          });
-          expect(data).toMatchSnapshot();
-        });
-      });
+      describeQuery("with all account fields", withAllAccountFields, () => client);
 
-      describe("with all profile fields", () => {
-        it("matches snapshot", async () => {
-          const { data } = await client.query({
-            query: withAllProfileFields,
-          });
-          expect(data).toMatchSnapshot();
-        });
-      });
+      describeQuery("with all profile fields", withAllProfileFields, () => client);
 
-      describe("with all post fields", () => {
-        it("matches snapshot", async () => {
-          const { data } = await client.query({
-            query: withAllPostFields,
-          });
-          expect(data).toMatchSnapshot();
-        });
-      });
+      describeQuery("with all post fields", withAllPostFields, () => client);
     });
   });
 });
