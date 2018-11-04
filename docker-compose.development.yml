@@ -9,7 +9,7 @@ services:
 
   public-api:
     build:
-      dockerfile: 'packages/public-api/development.Dockerfile'
+      dockerfile: 'packages/backend/public-api/development.Dockerfile'
     volumes: *volumes
 
   web-client:

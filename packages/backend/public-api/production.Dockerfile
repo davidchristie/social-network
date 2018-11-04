@@ -3,8 +3,8 @@ FROM node:9.11-alpine AS build
 WORKDIR /app
 
 COPY ./packages/backend/public-api-context ./packages/backend/public-api-context
+COPY ./packages/backend/public-api ./packages/backend/public-api
 COPY ./packages/data-model ./packages/data-model
-COPY ./packages/public-api ./packages/public-api
 COPY ./package.json .
 COPY ./tsconfig.json .
 COPY ./yarn.lock .
