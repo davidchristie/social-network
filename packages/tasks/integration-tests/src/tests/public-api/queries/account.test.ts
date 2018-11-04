@@ -27,6 +27,20 @@ const withAllFields = gql`
   }
 `;
 
+const withProfilePosts = gql`
+  query {
+    account {
+      id
+      profile {
+        id
+        posts {
+          id
+        }
+      }
+    }
+  }
+`;
+
 describe(PUBLIC_API_HOST, () => {
   describe("account query", () => {
     let client: ApolloClient<{}>;
@@ -73,6 +87,15 @@ describe(PUBLIC_API_HOST, () => {
         it("matches snapshot", async () => {
           const { data } = await client.query({
             query: withAllFields,
+          });
+          expect(data).toMatchSnapshot();
+        });
+      });
+
+      describe("with profile posts", () => {
+        it("matches snapshot", async () => {
+          const { data } = await client.query({
+            query: withProfilePosts,
           });
           expect(data).toMatchSnapshot();
         });

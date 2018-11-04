@@ -23,3 +23,30 @@ Object {
   },
 }
 `;
+
+exports[`http://localhost:4000 account query with authentication with profile posts matches snapshot 1`] = `
+Object {
+  "account": Object {
+    "__typename": "Account",
+    "id": "cjo0wqu90000e0b03zk6ggygn",
+    "profile": Object {
+      "__typename": "Profile",
+      "id": "cjo0wqua2000f0b03lgzat5xy",
+      "posts": Array [
+        Object {
+          "__typename": "Post",
+          "id": "cjo0wquag000g0b03c3fdxuhy",
+        },
+        Object {
+          "__typename": "Post",
+          "id": "cjo0wquah000h0b03nd7beoto",
+        },
+        Object {
+          "__typename": "Post",
+          "id": "cjo0wquah000i0b03ckstn6d1",
+        },
+      ],
+    },
+  },
+}
+`;
