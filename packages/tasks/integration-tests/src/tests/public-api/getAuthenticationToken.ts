@@ -10,7 +10,7 @@ interface Arguments {
 export default async function getAuthenticationToken (
   { email, password }: Arguments
 ) {
-  return new Promise(resolve => {
+  return new Promise<string>(resolve => {
     const url = `${AUTHENTICATION_HOST}/login`;
     request(url)
       .post("/")

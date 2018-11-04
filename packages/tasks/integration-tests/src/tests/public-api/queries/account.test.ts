@@ -7,11 +7,24 @@ import createPublicApiClient from "../createPublicApiClient";
 import getAuthenticationToken from "../getAuthenticationToken";
 
 const withIdField = gql`
-query {
-  account {
-    id
+  query {
+    account {
+      id
+    }
   }
-}
+`;
+
+const withAllFields = gql`
+  query {
+    account {
+      email
+      id
+      name
+      profile {
+        id
+      }
+    }
+  }
 `;
 
 describe(PUBLIC_API_HOST, () => {
@@ -51,6 +64,15 @@ describe(PUBLIC_API_HOST, () => {
         it("matches snapshot", async () => {
           const { data } = await client.query({
             query: withIdField,
+          });
+          expect(data).toMatchSnapshot();
+        });
+      });
+
+      describe("with all fields", () => {
+        it("matches snapshot", async () => {
+          const { data } = await client.query({
+            query: withAllFields,
           });
           expect(data).toMatchSnapshot();
         });

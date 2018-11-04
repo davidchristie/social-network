@@ -8,3 +8,18 @@ Object {
   },
 }
 `;
+
+exports[`http://localhost:4000 account query with authentication with all fields matches snapshot 1`] = `
+Object {
+  "account": Object {
+    "__typename": "Account",
+    "email": "test_user1@email.com",
+    "id": "cjo0wqu90000e0b03zk6ggygn",
+    "name": "Test User 1",
+    "profile": Object {
+      "__typename": "Profile",
+      "id": "cjo0wqua2000f0b03lgzat5xy",
+    },
+  },
+}
+`;
