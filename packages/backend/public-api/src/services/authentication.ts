@@ -31,6 +31,20 @@ type SignupOutput = Promise<{
   token: string;
 }>;
 
+async function postToAuthentication (endpoint: string, data: any): Promise<any> {
+  const response = await fetch(
+    `${path}${endpoint}`,
+    {
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: "post",
+    },
+  );
+  return response.json();
+}
+
 export default {
   async account (request: Request) {
     const response = await fetch(
@@ -44,30 +58,12 @@ export default {
     return response.json() as AccountOutput;
   },
   async login (input: LoginInput) {
-    const response = await fetch(
-      `${path}/login`,
-      {
-        body: JSON.stringify(input),
-        headers: {
-          "Content-Type": "application/json",
-        },
-        method: "post",
-      },
-    );
-    return response.json() as LoginOutput;
+    const output: LoginOutput = await postToAuthentication("/login", input);
+    return output;
   },
   async signup (input: SignupInput) {
-    const response = await fetch(
-      `${path}/signup`,
-      {
-        body: JSON.stringify(input),
-        headers: {
-          "Content-Type": "application/json",
-        },
-        method: "post",
-      },
-    );
-    return response.json() as SignupOutput;
+    const output: SignupOutput = await postToAuthentication("/signup", input);
+    return output;
   },
   async updatePassword (input: UpdatePasswordInput) {
     const response = await fetch(
