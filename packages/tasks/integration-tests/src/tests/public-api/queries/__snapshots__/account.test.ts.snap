@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`http://localhost:4000 account query with authentication with ID field matches snapshot 1`] = `
+Object {
+  "account": Object {
+    "__typename": "Account",
+    "id": "cjo0wqu90000e0b03zk6ggygn",
+  },
+}
+`;

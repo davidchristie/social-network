@@ -3,7 +3,10 @@
     "@types/faker": "4.1.4",
     "@types/jest": "23.3.9",
     "@types/puppeteer": "1.9.1",
+    "apollo-boost": "^0.1.20",
     "faker": "4.1.0",
+    "graphql": "^14.0.2",
+    "graphql-tag": "^2.10.0",
     "jest": "23.6.0",
     "puppeteer": "1.10.0",
     "supertest": "3.3.0",
@@ -22,6 +25,7 @@
       "ts",
       "tsx"
     ],
+    "testEnvironment": "node",
     "setupFiles": [
       "<rootDir>/src/setupTests.ts"
     ],
