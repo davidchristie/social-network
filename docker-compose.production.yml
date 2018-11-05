@@ -1,16 +1,19 @@
-version: '3'
+version: "3.7"
 
 services:
   authentication:
     build:
-      dockerfile: 'packages/backend/authentication/production.Dockerfile'
+      context: .
+      dockerfile: packages/backend/authentication/Dockerfile
 
   public-api:
     build:
-      dockerfile: 'packages/backend/public-api/production.Dockerfile'
+      context: .
+      dockerfile: packages/backend/public-api/Dockerfile
 
   web-client:
     build:
-      dockerfile: 'packages/frontend/web-client/production.Dockerfile'
+      context: .
+      dockerfile: packages/frontend/web-client/Dockerfile
       args:
-        - 'API_ENDPOINT=https://api.social-network.davidchristie.io'
+        - API_ENDPOINT=https://api.social-network.davidchristie.io
