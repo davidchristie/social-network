@@ -1,20 +1,22 @@
-version: '3'
+version: "3.7"
+
+x-defaults: &defaults
+  image: node:10-alpine
+  volumes:
+    - .:/app/
+  entrypoint: ["yarn", "start"]
 
 services:
   authentication:
-    build:
-      dockerfile: 'packages/backend/authentication/development.Dockerfile'
-    volumes: &volumes
-      - '.:/app'
+    <<: *defaults
+    working_dir: /app/packages/backend/authentication/
 
   public-api:
-    build:
-      dockerfile: 'packages/backend/public-api/development.Dockerfile'
-    volumes: *volumes
+    <<: *defaults
+    working_dir: /app/packages/backend/public-api/
 
   web-client:
-    build:
-      dockerfile: 'packages/frontend/web-client/development.Dockerfile'
+    <<: *defaults
+    working_dir: /app/packages/frontend/web-client/
     environment:
-      - 'REACT_APP_API_ENDPOINT=http://localhost:4000'
-    volumes: *volumes
+      - REACT_APP_API_ENDPOINT=http://localhost:4000

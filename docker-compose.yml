@@ -1,15 +1,13 @@
-version: '3'
+version: "3.7"
 
 services:
   authentication:
     image: davidchristie/authentication:${VERSION:-latest}
-    build:
-      context: .
     ports:
-      - '5000:5000'
+      - 5000:5000
     environment:
-      - 'JWT_SECRET=jwt_secret123'
-      - 'PRISMA_ENDPOINT=http://prisma:4466/social-network/production'
+      - JWT_SECRET=jwt_secret123
+      - PRISMA_ENDPOINT=http://prisma:4466/social-network/production
     depends_on:
       - prisma
 
@@ -42,23 +40,19 @@ services:
 
   public-api:
     image: davidchristie/public-api:${VERSION:-latest}
-    build:
-      context: .
     ports:
-      - '4000:4000'
+      - 4000:4000
     environment:
-      - 'AUTHENTICATION_ENDPOINT=http://authentication:5000'
-      - 'PRISMA_ENDPOINT=http://prisma:4466/social-network/production'
+      - AUTHENTICATION_ENDPOINT=http://authentication:5000
+      - PRISMA_ENDPOINT=http://prisma:4466/social-network/production
     depends_on:
       - authentication
       - prisma
 
   web-client:
     image: davidchristie/web-client:${VERSION:-latest}
-    build:
-      context: .
     ports:
-      - '3000:3000'
+      - 3000:3000
     depends_on:
       - public-api
 
