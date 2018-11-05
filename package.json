@@ -1,5 +1,8 @@
 {
   "author": "David Christie <davidchristie.nz@gmail.com>",
+  "engines": {
+    "node": ">=10"
+  },
   "name": "social-network",
   "private": true,
   "repository": "git@github.com:davidchristie/social-network.git",
