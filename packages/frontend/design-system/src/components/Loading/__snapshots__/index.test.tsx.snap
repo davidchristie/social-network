@@ -22,6 +22,7 @@ exports[`Loading component matches shapshot 1`] = `
             classes={
               Object {
                 "circle": "MuiCircularProgress-circle-9",
+                "circleDisableShrink": "MuiCircularProgress-circleDisableShrink-12",
                 "circleIndeterminate": "MuiCircularProgress-circleIndeterminate-11",
                 "circleStatic": "MuiCircularProgress-circleStatic-10",
                 "colorPrimary": "MuiCircularProgress-colorPrimary-6",
@@ -33,6 +34,7 @@ exports[`Loading component matches shapshot 1`] = `
               }
             }
             color="primary"
+            disableShrink={false}
             size={40}
             thickness={3.6}
             value={0}
