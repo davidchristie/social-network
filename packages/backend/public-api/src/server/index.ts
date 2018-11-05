@@ -1,5 +1,6 @@
 import { GraphQLServer } from "graphql-yoga";
-import { createContext } from "public-api-context";
+
+import { createContext } from "./context";
 
 import resolvers from "./resolvers";
 

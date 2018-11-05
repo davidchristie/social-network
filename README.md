@@ -12,7 +12,6 @@
 * [Authentication](packages/backend/authentication)
 * [Data Model](packages/backend/data-model)
 * [Public API](packages/backend/public-api)
-* [Public API Context](packages/backend/public-api-context)
 
 ### Frontend
 
