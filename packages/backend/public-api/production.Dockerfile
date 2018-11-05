@@ -2,14 +2,19 @@ FROM node:10-alpine AS build
 
 WORKDIR /app
 
+# Install dependencies
+COPY ./packages/backend/data-model/package.json ./packages/backend/data-model/package.json
+COPY ./packages/backend/public-api/package.json ./packages/backend/public-api/package.json
+COPY ./packages/backend/public-api-context/package.json ./packages/backend/public-api-context/package.json
+COPY ./package.json .
+COPY ./yarn.lock .
+RUN yarn --production
+
+# Copy source code
 COPY ./packages/backend/data-model ./packages/backend/data-model
 COPY ./packages/backend/public-api ./packages/backend/public-api
 COPY ./packages/backend/public-api-context ./packages/backend/public-api-context
-COPY ./package.json .
 COPY ./tsconfig.json .
-COPY ./yarn.lock .
-
-RUN yarn --frozen-lockfile --production
 
 FROM node:10-alpine
 
