@@ -20,7 +20,6 @@
     "integration-tests": "yarn workspace integration-tests",
     "production": "docker-compose -f docker-compose.yml -f docker-compose.production.yml",
     "public-api": "yarn workspace public-api",
-    "public-api-context": "yarn workspace public-api-context",
     "tasks": "docker-compose -f docker-compose.yml -f docker-compose.tasks.yml",
     "test-utilities": "yarn workspace test-utilities",
     "wait-for-prisma": "scripts/wait-for-prisma.sh",

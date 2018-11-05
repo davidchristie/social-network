@@ -1,4 +1,4 @@
-import { Context } from "public-api-context";
+import { Context } from "./context";
 
 export function delegateQueryResolver (query: string, relations: string[]) {
   return relations.reduce((accumulator, relation) => {

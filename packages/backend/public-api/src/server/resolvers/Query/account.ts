@@ -1,4 +1,4 @@
-import { Context } from "public-api-context";
+import { Context } from "../../context";
 
 export default function account ({ }, { }, context: Context) {
   const { accountId } = context;
