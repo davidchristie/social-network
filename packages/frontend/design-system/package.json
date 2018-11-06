@@ -6,9 +6,9 @@
   },
   "devDependencies": {
     "@babel/core": "7.1.2",
-    "@storybook/addon-actions": "4.0.3",
-    "@storybook/addon-info": "4.0.3",
-    "@storybook/react": "4.0.3",
+    "@storybook/addon-actions": "4.0.4",
+    "@storybook/addon-info": "4.0.4",
+    "@storybook/react": "4.0.4",
     "@types/storybook__addon-actions": "3.4.1",
     "@types/storybook__addon-info": "3.4.2",
     "@types/storybook__react": "3.0.9",
