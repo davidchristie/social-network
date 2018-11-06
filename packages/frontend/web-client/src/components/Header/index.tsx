@@ -1,4 +1,4 @@
-import { Container, Topbar } from "design-system";
+import { Button, Container, Topbar } from "design-system";
 import React from "react";
 import { Query, QueryResult } from "react-apollo";
 import { Link } from "react-router-dom";
@@ -9,6 +9,7 @@ import AccountQuery, {
 } from "../../queries/Account";
 import AccountMenu from "../AccountMenu";
 import ButtonLink from "../ButtonLink";
+import GitHub from "./GitHub.png";
 import "./index.css";
 
 export default class Header extends React.Component {
@@ -29,6 +30,11 @@ export default class Header extends React.Component {
                 </Link>
                 <div>
                   {this.renderMenuItems(result)}
+                  <a href="https://github.com/davidchristie/social-network">
+                    <Button>
+                      <img alt="GitHub" height={22} src={GitHub} />
+                    </Button>
+                  </a>
                 </div>
               </Container>
             </Topbar>
