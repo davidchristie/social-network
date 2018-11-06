@@ -596,6 +596,147 @@ exports[`Header component when logged out 1`] = `
                                       </a>
                                     </Link>
                                   </ButtonLink>
+                                  <a
+                                    href="https://github.com/davidchristie/social-network"
+                                  >
+                                    <Button$2>
+                                      <WithStyles(Button)>
+                                        <Button
+                                          classes={
+                                            Object {
+                                              "colorInherit": "MuiButton-colorInherit-63",
+                                              "contained": "MuiButton-contained-53",
+                                              "containedPrimary": "MuiButton-containedPrimary-54",
+                                              "containedSecondary": "MuiButton-containedSecondary-55",
+                                              "disabled": "MuiButton-disabled-62",
+                                              "extendedFab": "MuiButton-extendedFab-60",
+                                              "fab": "MuiButton-fab-59",
+                                              "flat": "MuiButton-flat-47",
+                                              "flatPrimary": "MuiButton-flatPrimary-48",
+                                              "flatSecondary": "MuiButton-flatSecondary-49",
+                                              "focusVisible": "MuiButton-focusVisible-61",
+                                              "fullWidth": "MuiButton-fullWidth-67",
+                                              "label": "MuiButton-label-43",
+                                              "mini": "MuiButton-mini-64",
+                                              "outlined": "MuiButton-outlined-50",
+                                              "outlinedPrimary": "MuiButton-outlinedPrimary-51",
+                                              "outlinedSecondary": "MuiButton-outlinedSecondary-52",
+                                              "raised": "MuiButton-raised-56",
+                                              "raisedPrimary": "MuiButton-raisedPrimary-57",
+                                              "raisedSecondary": "MuiButton-raisedSecondary-58",
+                                              "root": "MuiButton-root-42",
+                                              "sizeLarge": "MuiButton-sizeLarge-66",
+                                              "sizeSmall": "MuiButton-sizeSmall-65",
+                                              "text": "MuiButton-text-44",
+                                              "textPrimary": "MuiButton-textPrimary-45",
+                                              "textSecondary": "MuiButton-textSecondary-46",
+                                            }
+                                          }
+                                          color="default"
+                                          component="button"
+                                          disableFocusRipple={false}
+                                          disabled={false}
+                                          fullWidth={false}
+                                          mini={false}
+                                          size="medium"
+                                          type="button"
+                                          variant="text"
+                                        >
+                                          <WithStyles(ButtonBase)
+                                            className="MuiButton-root-42 MuiButton-text-44 MuiButton-flat-47"
+                                            component="button"
+                                            disabled={false}
+                                            focusRipple={true}
+                                            focusVisibleClassName="MuiButton-focusVisible-61"
+                                            type="button"
+                                          >
+                                            <ButtonBase
+                                              centerRipple={false}
+                                              className="MuiButton-root-42 MuiButton-text-44 MuiButton-flat-47"
+                                              classes={
+                                                Object {
+                                                  "disabled": "MuiButtonBase-disabled-69",
+                                                  "focusVisible": "MuiButtonBase-focusVisible-70",
+                                                  "root": "MuiButtonBase-root-68",
+                                                }
+                                              }
+                                              component="button"
+                                              disableRipple={false}
+                                              disableTouchRipple={false}
+                                              disabled={false}
+                                              focusRipple={true}
+                                              focusVisibleClassName="MuiButton-focusVisible-61"
+                                              tabIndex="0"
+                                              type="button"
+                                            >
+                                              <button
+                                                className="MuiButtonBase-root-68 MuiButton-root-42 MuiButton-text-44 MuiButton-flat-47"
+                                                disabled={false}
+                                                onBlur={[Function]}
+                                                onFocus={[Function]}
+                                                onKeyDown={[Function]}
+                                                onKeyUp={[Function]}
+                                                onMouseDown={[Function]}
+                                                onMouseLeave={[Function]}
+                                                onMouseUp={[Function]}
+                                                onTouchEnd={[Function]}
+                                                onTouchMove={[Function]}
+                                                onTouchStart={[Function]}
+                                                tabIndex="0"
+                                                type="button"
+                                              >
+                                                <span
+                                                  className="MuiButton-label-43"
+                                                >
+                                                  <img
+                                                    alt="GitHub"
+                                                    height={22}
+                                                    src="GitHub.png"
+                                                  />
+                                                </span>
+                                                <NoSsr
+                                                  defer={false}
+                                                  fallback={null}
+                                                >
+                                                  <WithStyles(TouchRipple)
+                                                    center={false}
+                                                    innerRef={[Function]}
+                                                  >
+                                                    <TouchRipple
+                                                      center={false}
+                                                      classes={
+                                                        Object {
+                                                          "child": "MuiTouchRipple-child-75",
+                                                          "childLeaving": "MuiTouchRipple-childLeaving-76",
+                                                          "childPulsate": "MuiTouchRipple-childPulsate-77",
+                                                          "ripple": "MuiTouchRipple-ripple-72",
+                                                          "ripplePulsate": "MuiTouchRipple-ripplePulsate-74",
+                                                          "rippleVisible": "MuiTouchRipple-rippleVisible-73",
+                                                          "root": "MuiTouchRipple-root-71",
+                                                        }
+                                                      }
+                                                    >
+                                                      <TransitionGroup
+                                                        childFactory={[Function]}
+                                                        className="MuiTouchRipple-root-71"
+                                                        component="span"
+                                                        enter={true}
+                                                        exit={true}
+                                                      >
+                                                        <span
+                                                          className="MuiTouchRipple-root-71"
+                                                        />
+                                                      </TransitionGroup>
+                                                    </TouchRipple>
+                                                  </WithStyles(TouchRipple)>
+                                                </NoSsr>
+                                              </button>
+                                            </ButtonBase>
+                                          </WithStyles(ButtonBase)>
+                                        </Button>
+                                      </WithStyles(Button)>
+                                    </Button$2>
+                                  </a>
                                 </div>
                               </div>
                             </Container>
@@ -912,7 +1053,149 @@ exports[`Header component while loading 1`] = `
                                     Social Network
                                   </a>
                                 </Link>
-                                <div />
+                                <div>
+                                  <a
+                                    href="https://github.com/davidchristie/social-network"
+                                  >
+                                    <Button$2>
+                                      <WithStyles(Button)>
+                                        <Button
+                                          classes={
+                                            Object {
+                                              "colorInherit": "MuiButton-colorInherit-63",
+                                              "contained": "MuiButton-contained-53",
+                                              "containedPrimary": "MuiButton-containedPrimary-54",
+                                              "containedSecondary": "MuiButton-containedSecondary-55",
+                                              "disabled": "MuiButton-disabled-62",
+                                              "extendedFab": "MuiButton-extendedFab-60",
+                                              "fab": "MuiButton-fab-59",
+                                              "flat": "MuiButton-flat-47",
+                                              "flatPrimary": "MuiButton-flatPrimary-48",
+                                              "flatSecondary": "MuiButton-flatSecondary-49",
+                                              "focusVisible": "MuiButton-focusVisible-61",
+                                              "fullWidth": "MuiButton-fullWidth-67",
+                                              "label": "MuiButton-label-43",
+                                              "mini": "MuiButton-mini-64",
+                                              "outlined": "MuiButton-outlined-50",
+                                              "outlinedPrimary": "MuiButton-outlinedPrimary-51",
+                                              "outlinedSecondary": "MuiButton-outlinedSecondary-52",
+                                              "raised": "MuiButton-raised-56",
+                                              "raisedPrimary": "MuiButton-raisedPrimary-57",
+                                              "raisedSecondary": "MuiButton-raisedSecondary-58",
+                                              "root": "MuiButton-root-42",
+                                              "sizeLarge": "MuiButton-sizeLarge-66",
+                                              "sizeSmall": "MuiButton-sizeSmall-65",
+                                              "text": "MuiButton-text-44",
+                                              "textPrimary": "MuiButton-textPrimary-45",
+                                              "textSecondary": "MuiButton-textSecondary-46",
+                                            }
+                                          }
+                                          color="default"
+                                          component="button"
+                                          disableFocusRipple={false}
+                                          disabled={false}
+                                          fullWidth={false}
+                                          mini={false}
+                                          size="medium"
+                                          type="button"
+                                          variant="text"
+                                        >
+                                          <WithStyles(ButtonBase)
+                                            className="MuiButton-root-42 MuiButton-text-44 MuiButton-flat-47"
+                                            component="button"
+                                            disabled={false}
+                                            focusRipple={true}
+                                            focusVisibleClassName="MuiButton-focusVisible-61"
+                                            type="button"
+                                          >
+                                            <ButtonBase
+                                              centerRipple={false}
+                                              className="MuiButton-root-42 MuiButton-text-44 MuiButton-flat-47"
+                                              classes={
+                                                Object {
+                                                  "disabled": "MuiButtonBase-disabled-69",
+                                                  "focusVisible": "MuiButtonBase-focusVisible-70",
+                                                  "root": "MuiButtonBase-root-68",
+                                                }
+                                              }
+                                              component="button"
+                                              disableRipple={false}
+                                              disableTouchRipple={false}
+                                              disabled={false}
+                                              focusRipple={true}
+                                              focusVisibleClassName="MuiButton-focusVisible-61"
+                                              tabIndex="0"
+                                              type="button"
+                                            >
+                                              <button
+                                                className="MuiButtonBase-root-68 MuiButton-root-42 MuiButton-text-44 MuiButton-flat-47"
+                                                disabled={false}
+                                                onBlur={[Function]}
+                                                onFocus={[Function]}
+                                                onKeyDown={[Function]}
+                                                onKeyUp={[Function]}
+                                                onMouseDown={[Function]}
+                                                onMouseLeave={[Function]}
+                                                onMouseUp={[Function]}
+                                                onTouchEnd={[Function]}
+                                                onTouchMove={[Function]}
+                                                onTouchStart={[Function]}
+                                                tabIndex="0"
+                                                type="button"
+                                              >
+                                                <span
+                                                  className="MuiButton-label-43"
+                                                >
+                                                  <img
+                                                    alt="GitHub"
+                                                    height={22}
+                                                    src="GitHub.png"
+                                                  />
+                                                </span>
+                                                <NoSsr
+                                                  defer={false}
+                                                  fallback={null}
+                                                >
+                                                  <WithStyles(TouchRipple)
+                                                    center={false}
+                                                    innerRef={[Function]}
+                                                  >
+                                                    <TouchRipple
+                                                      center={false}
+                                                      classes={
+                                                        Object {
+                                                          "child": "MuiTouchRipple-child-75",
+                                                          "childLeaving": "MuiTouchRipple-childLeaving-76",
+                                                          "childPulsate": "MuiTouchRipple-childPulsate-77",
+                                                          "ripple": "MuiTouchRipple-ripple-72",
+                                                          "ripplePulsate": "MuiTouchRipple-ripplePulsate-74",
+                                                          "rippleVisible": "MuiTouchRipple-rippleVisible-73",
+                                                          "root": "MuiTouchRipple-root-71",
+                                                        }
+                                                      }
+                                                    >
+                                                      <TransitionGroup
+                                                        childFactory={[Function]}
+                                                        className="MuiTouchRipple-root-71"
+                                                        component="span"
+                                                        enter={true}
+                                                        exit={true}
+                                                      >
+                                                        <span
+                                                          className="MuiTouchRipple-root-71"
+                                                        />
+                                                      </TransitionGroup>
+                                                    </TouchRipple>
+                                                  </WithStyles(TouchRipple)>
+                                                </NoSsr>
+                                              </button>
+                                            </ButtonBase>
+                                          </WithStyles(ButtonBase)>
+                                        </Button>
+                                      </WithStyles(Button)>
+                                    </Button$2>
+                                  </a>
+                                </div>
                               </div>
                             </Container>
                           </div>
