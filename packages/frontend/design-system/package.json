@@ -72,6 +72,7 @@
   "module": "dist/es/index.js",
   "name": "design-system",
   "peerDependencies": {
+    "material-design-icons": "^3.0.1",
     "react": "^16.6.0",
     "react-dom": "^16.6.0"
   },

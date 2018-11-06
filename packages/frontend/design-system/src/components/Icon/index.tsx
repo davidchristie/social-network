@@ -1,5 +1,4 @@
 import MaterialIcon from "@material-ui/core/Icon";
-import "material-design-icons/iconfont/material-icons.css";
 import React from "react";
 
 interface Props {
