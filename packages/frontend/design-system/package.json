@@ -1,7 +1,8 @@
 {
   "dependencies": {
     "@material-ui/core": "3.4.0",
-    "classnames": "2.2.6"
+    "classnames": "2.2.6",
+    "material-design-icons": "^3.0.1"
   },
   "devDependencies": {
     "@babel/core": "7.1.2",
