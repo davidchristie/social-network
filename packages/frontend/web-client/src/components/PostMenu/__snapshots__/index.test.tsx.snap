@@ -7,7 +7,9 @@ exports[`PostMenu component with post ID matches snapshot 1`] = `
   <Button$2
     onClick={[Function]}
   >
-    Actions
+    <Icon$2>
+      more_horiz
+    </Icon$2>
   </Button$2>
   <Dropdown
     onClose={[Function]}
