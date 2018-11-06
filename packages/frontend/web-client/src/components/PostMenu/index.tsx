@@ -1,4 +1,4 @@
-import { Button } from "design-system";
+import { Button, Icon } from "design-system";
 import React from "react";
 
 import DeletePostButton from "../DeletePostButton";
@@ -22,7 +22,7 @@ export default class PostMenu extends React.Component<Props, State> {
     return (
       <div className="PostMenu">
         <Button onClick={this.openDropdown}>
-          Actions
+          <Icon>more_horiz</Icon>
         </Button>
         <Dropdown
           onClose={this.closeDropdown}

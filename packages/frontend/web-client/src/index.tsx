@@ -1,4 +1,4 @@
-import "design-system";
+import "material-design-icons/iconfont/material-icons.css";
 import React from "react";
 import ReactDOM from "react-dom";
 
