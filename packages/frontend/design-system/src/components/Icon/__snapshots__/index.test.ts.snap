@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Icon component with default props matches snapshot 1`] = `
+<WithStyles(Icon)
+  color="inherit"
+  fontSize="small"
+>
+  account_circle
+</WithStyles(Icon)>
+`;
+
+exports[`Icon component with size "large" matches snapshot 1`] = `
+<WithStyles(Icon)
+  color="inherit"
+  fontSize="large"
+>
+  account_circle
+</WithStyles(Icon)>
+`;
+
+exports[`Icon component with variant "primary" matches snapshot 1`] = `
+<WithStyles(Icon)
+  color="primary"
+  fontSize="small"
+>
+  account_circle
+</WithStyles(Icon)>
+`;
