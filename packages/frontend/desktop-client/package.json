@@ -1,6 +1,6 @@
 {
   "devDependencies": {
-    "electron": "3.0.7",
+    "electron": "3.0.8",
     "electron-serve": "0.2.0"
   },
   "main": "src/index.js",
