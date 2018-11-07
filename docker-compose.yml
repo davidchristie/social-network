@@ -20,7 +20,7 @@ services:
       - mysql:/var/lib/mysql
 
   prisma:
-    image: prismagraphql/prisma:1.19
+    image: prismagraphql/prisma:1.20
     restart: always
     ports:
     - "4467:4466"
