@@ -1,4 +1,4 @@
-import { Button, Container, Topbar } from "design-system";
+import { Avatar, Container, Topbar } from "design-system";
 import React from "react";
 import { Query, QueryResult } from "react-apollo";
 import { Link } from "react-router-dom";
@@ -31,9 +31,7 @@ export default class Header extends React.Component {
                 <div className="items">
                   {this.renderMenuItems(result)}
                   <a href="https://github.com/davidchristie/social-network">
-                    <Button>
-                      <img alt="GitHub" height={22} src={GitHub} />
-                    </Button>
+                    <Avatar image={GitHub} />
                   </a>
                 </div>
               </Container>

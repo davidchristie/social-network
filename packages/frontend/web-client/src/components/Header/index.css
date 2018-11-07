@@ -19,6 +19,10 @@
   display: flex;
 }
 
+.Header .items > *:not(:first-child) {
+  margin-left: 10px;
+}
+
 .Header .logo {
   font-size: 1.4em;
   text-decoration: none;

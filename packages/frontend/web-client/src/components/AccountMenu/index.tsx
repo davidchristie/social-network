@@ -1,9 +1,8 @@
-import { Alert, Loading } from "design-system";
+import { Alert, Avatar, Loading } from "design-system";
 import React from "react";
 
 import { ImageData } from "../../fragments/Image";
 import AccountQuery, { Result } from "../AccountQuery";
-import Avatar from "../Avatar";
 import ButtonLink from "../ButtonLink";
 import Dropdown from "../Dropdown";
 import LogoutButton from "../LogoutButton";

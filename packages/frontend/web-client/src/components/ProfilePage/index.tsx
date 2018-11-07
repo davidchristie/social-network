@@ -1,4 +1,10 @@
-import { Alert, Container, Loading, Section } from "design-system";
+import {
+  Alert,
+  Avatar,
+  Container,
+  Loading,
+  Section
+} from "design-system";
 import React from "react";
 import { Query } from "react-apollo";
 
@@ -6,7 +12,6 @@ import ProfileQuery, {
   ProfileData,
   ProfileVariables
 } from "../../queries/Profile";
-import Avatar from "../Avatar";
 import CreatePostForm from "../CreatePostForm";
 import ProfilePosts from "../ProfilePosts";
 

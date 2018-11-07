@@ -3,4 +3,5 @@ import addComponentStory from "../../utilities/storybook/addComponentStory";
 
 addComponentStory(Avatar, {
   children: undefined,
+  size: "large",
 });

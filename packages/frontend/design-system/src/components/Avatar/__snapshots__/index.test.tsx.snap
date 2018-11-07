@@ -1,0 +1,221 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Avatar component with no props matches shapshot 1`] = `
+<Avatar>
+  <WithStyles(Content)>
+    <Content
+      classes={
+        Object {
+          "large": "Content-large-1",
+          "small": "Content-small-2",
+        }
+      }
+    >
+      <WithStyles(Avatar)
+        className="Content-small-2"
+      >
+        <Avatar
+          className="Content-small-2"
+          classes={
+            Object {
+              "colorDefault": "MuiAvatar-colorDefault-4",
+              "img": "MuiAvatar-img-5",
+              "root": "MuiAvatar-root-3",
+            }
+          }
+          component="div"
+        >
+          <div
+            className="MuiAvatar-root-3 MuiAvatar-colorDefault-4 Content-small-2"
+          >
+            <Icon
+              size="small"
+            >
+              <WithStyles(Icon)
+                color="inherit"
+                fontSize="small"
+              >
+                <Icon
+                  classes={
+                    Object {
+                      "colorAction": "MuiIcon-colorAction-9",
+                      "colorDisabled": "MuiIcon-colorDisabled-11",
+                      "colorError": "MuiIcon-colorError-10",
+                      "colorPrimary": "MuiIcon-colorPrimary-7",
+                      "colorSecondary": "MuiIcon-colorSecondary-8",
+                      "fontSizeInherit": "MuiIcon-fontSizeInherit-12",
+                      "fontSizeLarge": "MuiIcon-fontSizeLarge-14",
+                      "fontSizeSmall": "MuiIcon-fontSizeSmall-13",
+                      "root": "MuiIcon-root-6",
+                    }
+                  }
+                  color="inherit"
+                  component="span"
+                  fontSize="small"
+                >
+                  <span
+                    aria-hidden="true"
+                    className="material-icons MuiIcon-root-6 MuiIcon-fontSizeSmall-13"
+                  >
+                    account_circle
+                  </span>
+                </Icon>
+              </WithStyles(Icon)>
+            </Icon>
+          </div>
+        </Avatar>
+      </WithStyles(Avatar)>
+    </Content>
+  </WithStyles(Content)>
+</Avatar>
+`;
+
+exports[`Avatar component with size "large" matches shapshot 1`] = `
+<Avatar
+  size="large"
+>
+  <WithStyles(Content)
+    size="large"
+  >
+    <Content
+      classes={
+        Object {
+          "large": "Content-large-1",
+          "small": "Content-small-2",
+        }
+      }
+      size="large"
+    >
+      <WithStyles(Avatar)
+        className="Content-large-1"
+      >
+        <Avatar
+          className="Content-large-1"
+          classes={
+            Object {
+              "colorDefault": "MuiAvatar-colorDefault-4",
+              "img": "MuiAvatar-img-5",
+              "root": "MuiAvatar-root-3",
+            }
+          }
+          component="div"
+        >
+          <div
+            className="MuiAvatar-root-3 MuiAvatar-colorDefault-4 Content-large-1"
+          >
+            <Icon
+              size="large"
+            >
+              <WithStyles(Icon)
+                color="inherit"
+                fontSize="large"
+              >
+                <Icon
+                  classes={
+                    Object {
+                      "colorAction": "MuiIcon-colorAction-9",
+                      "colorDisabled": "MuiIcon-colorDisabled-11",
+                      "colorError": "MuiIcon-colorError-10",
+                      "colorPrimary": "MuiIcon-colorPrimary-7",
+                      "colorSecondary": "MuiIcon-colorSecondary-8",
+                      "fontSizeInherit": "MuiIcon-fontSizeInherit-12",
+                      "fontSizeLarge": "MuiIcon-fontSizeLarge-14",
+                      "fontSizeSmall": "MuiIcon-fontSizeSmall-13",
+                      "root": "MuiIcon-root-6",
+                    }
+                  }
+                  color="inherit"
+                  component="span"
+                  fontSize="large"
+                >
+                  <span
+                    aria-hidden="true"
+                    className="material-icons MuiIcon-root-6 MuiIcon-fontSizeLarge-14"
+                  >
+                    account_circle
+                  </span>
+                </Icon>
+              </WithStyles(Icon)>
+            </Icon>
+          </div>
+        </Avatar>
+      </WithStyles(Avatar)>
+    </Content>
+  </WithStyles(Content)>
+</Avatar>
+`;
+
+exports[`Avatar component with size "small" matches shapshot 1`] = `
+<Avatar
+  size="small"
+>
+  <WithStyles(Content)
+    size="small"
+  >
+    <Content
+      classes={
+        Object {
+          "large": "Content-large-1",
+          "small": "Content-small-2",
+        }
+      }
+      size="small"
+    >
+      <WithStyles(Avatar)
+        className="Content-small-2"
+      >
+        <Avatar
+          className="Content-small-2"
+          classes={
+            Object {
+              "colorDefault": "MuiAvatar-colorDefault-4",
+              "img": "MuiAvatar-img-5",
+              "root": "MuiAvatar-root-3",
+            }
+          }
+          component="div"
+        >
+          <div
+            className="MuiAvatar-root-3 MuiAvatar-colorDefault-4 Content-small-2"
+          >
+            <Icon
+              size="small"
+            >
+              <WithStyles(Icon)
+                color="inherit"
+                fontSize="small"
+              >
+                <Icon
+                  classes={
+                    Object {
+                      "colorAction": "MuiIcon-colorAction-9",
+                      "colorDisabled": "MuiIcon-colorDisabled-11",
+                      "colorError": "MuiIcon-colorError-10",
+                      "colorPrimary": "MuiIcon-colorPrimary-7",
+                      "colorSecondary": "MuiIcon-colorSecondary-8",
+                      "fontSizeInherit": "MuiIcon-fontSizeInherit-12",
+                      "fontSizeLarge": "MuiIcon-fontSizeLarge-14",
+                      "fontSizeSmall": "MuiIcon-fontSizeSmall-13",
+                      "root": "MuiIcon-root-6",
+                    }
+                  }
+                  color="inherit"
+                  component="span"
+                  fontSize="small"
+                >
+                  <span
+                    aria-hidden="true"
+                    className="material-icons MuiIcon-root-6 MuiIcon-fontSizeSmall-13"
+                  >
+                    account_circle
+                  </span>
+                </Icon>
+              </WithStyles(Icon)>
+            </Icon>
+          </div>
+        </Avatar>
+      </WithStyles(Avatar)>
+    </Content>
+  </WithStyles(Content)>
+</Avatar>
+`;
