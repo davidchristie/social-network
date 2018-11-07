@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Avatar component with no props matches snapshot 1`] = `
+<WithStyles(Avatar)>
+  <Icon>
+    account_circle
+  </Icon>
+</WithStyles(Avatar)>
+`;
