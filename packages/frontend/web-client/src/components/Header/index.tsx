@@ -28,7 +28,7 @@ export default class Header extends React.Component {
                 >
                   Social Network
                 </Link>
-                <div>
+                <div className="items">
                   {this.renderMenuItems(result)}
                   <a href="https://github.com/davidchristie/social-network">
                     <Button>

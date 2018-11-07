@@ -297,7 +297,9 @@ exports[`Header component when logged out 1`] = `
                                     Social Network
                                   </a>
                                 </Link>
-                                <div>
+                                <div
+                                  className="items"
+                                >
                                   <ButtonLink
                                     to="/login"
                                   >
@@ -1053,7 +1055,9 @@ exports[`Header component while loading 1`] = `
                                     Social Network
                                   </a>
                                 </Link>
-                                <div>
+                                <div
+                                  className="items"
+                                >
                                   <a
                                     href="https://github.com/davidchristie/social-network"
                                   >
