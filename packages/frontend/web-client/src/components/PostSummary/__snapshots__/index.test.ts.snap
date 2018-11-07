@@ -19,7 +19,7 @@ exports[`PostSummary component with avatar image matches snapshot 1`] = `
         }
         to="/profile/cjn5pm4wm000r0a4239rvnn8i"
       >
-        <Avatar
+        <Avatar$2
           image="https:cdn.social-network.com/images/default-avatar.png"
           size="small"
         />
@@ -74,7 +74,7 @@ exports[`PostSummary component without avatar image matches snapshot 1`] = `
         }
         to="/profile/cjn5pm4wm000r0a4239rvnn8i"
       >
-        <Avatar
+        <Avatar$2
           size="small"
         />
       </Link>
