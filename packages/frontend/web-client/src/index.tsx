@@ -4,7 +4,8 @@ import ReactDOM from "react-dom";
 
 import Application from "./components/Application";
 import "./index.css";
-import registerServiceWorker from "./registerServiceWorker";
+import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(<Application />, document.getElementById("root"));
-registerServiceWorker();
+
+serviceWorker.unregister();

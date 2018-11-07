@@ -37,6 +37,10 @@
     "typescript": "3.1.6"
   },
   "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{ts,tsx}",
+      "!src/serviceWorker.ts"
+    ],
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
     ]
