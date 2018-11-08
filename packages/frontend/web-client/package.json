@@ -29,7 +29,7 @@
     "@types/react-dom": "16.0.9",
     "@types/react-router-dom": "4.3.1",
     "enzyme": "3.7.0",
-    "enzyme-adapter-react-16": "1.6.0",
+    "enzyme-adapter-react-16": "1.7.0",
     "enzyme-to-json": "3.3.4",
     "react-scripts": "2.1.1",
     "tslint": "5.11.0",
