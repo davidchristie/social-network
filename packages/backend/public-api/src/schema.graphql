@@ -1,5 +1,7 @@
 # import Image from "../../data-model/generated/graphql-schema/prisma.graphql"
 # import Post from "../../data-model/generated/graphql-schema/prisma.graphql"
+# import ProfileOrderByInput from "../../data-model/generated/graphql-schema/prisma.graphql"
+# import ProfileWhereInput from "../../data-model/generated/graphql-schema/prisma.graphql"
 
 input AccountUpdateInput {
   email: String
@@ -46,4 +48,5 @@ type Profile {
 type Query {
   account: Account
   profile(id: String!): Profile
+  profiles(after: String, before: String, first: Int, last: Int, orderBy: ProfileOrderByInput, skip: Int, where: ProfileWhereInput): [Profile]!
 }
