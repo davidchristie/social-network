@@ -7655,7 +7655,7 @@ http-errors@1.6.3, http-errors@~1.6.2, http-errors@~1.6.3:
     setprototypeof "1.1.0"
     statuses ">= 1.4.0 < 2"
 
-http-link-dataloader@^0.1.2, http-link-dataloader@^0.1.4:
+http-link-dataloader@^0.1.2:
   version "0.1.5"
   resolved "https://registry.yarnpkg.com/http-link-dataloader/-/http-link-dataloader-0.1.5.tgz#3dca3341e449bf26a44b57222fbb1df986958f7d"
   integrity sha512-vWWFbuuABBxu27pTIrPXZJpwWpv4JM/u0DQRslNcPQNg+uA94Yqf175sJfdpepWn9GOvgPEEROy4dZB53v65LQ==
@@ -12384,24 +12384,6 @@ prisma-cli-engine@1.20.0:
     treeify "^1.0.1"
     update-notifier "^2.3.0"
     validator "^8.2.0"
-
-prisma-client-lib@1.19.3:
-  version "1.19.3"
-  resolved "https://registry.yarnpkg.com/prisma-client-lib/-/prisma-client-lib-1.19.3.tgz#34af4a9eee653ba2407cfc3c84f1385423cff2ed"
-  integrity sha512-t2b1JgzdAKPC/gOtmgDbcILmnPa9+nciJI45OR1MVJuTWcIAIL5ogn5sfAjwtI7OlDM/eKNuPtlsnopCr0da/A==
-  dependencies:
-    "@types/node" "^10.12.0"
-    "@types/prettier" "^1.13.2"
-    debug "^4.1.0"
-    graphql-tag "^2.10.0"
-    http-link-dataloader "^0.1.4"
-    jsonwebtoken "^8.3.0"
-    lodash.flatten "^4.4.0"
-    prettier "^1.14.3"
-    subscriptions-transport-ws "^0.9.15"
-    uppercamelcase "^3.0.0"
-    ws "^6.1.0"
-    zen-observable "^0.8.10"
 
 prisma-client-lib@1.20.0:
   version "1.20.0"
