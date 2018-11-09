@@ -6,7 +6,7 @@ import withStyles, {
   StyleRulesCallback,
   WithStyles
 } from "@material-ui/core/styles/withStyles";
-import withWidth, { isWidthUp } from "@material-ui/core/withWidth";
+import withWidth, { isWidthUp } from "@material-ui/core/withWidth/withWidth";
 import match from "autosuggest-highlight/match";
 import parse from "autosuggest-highlight/parse";
 import React from "react";
