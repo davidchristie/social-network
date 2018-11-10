@@ -33,7 +33,7 @@ type ContentProps = Props
   & WithStyles<"suggestionsList">
   & { width: Breakpoint; };
 
-function renderSuggestion (suggestion: Suggestion, { query, isHighlighted }) {
+function renderSuggestion(suggestion: Suggestion, { query, isHighlighted }) {
   const matches = match(suggestion.name, query);
   const parts = parse(suggestion.name, matches);
   return (
@@ -55,7 +55,7 @@ function renderSuggestion (suggestion: Suggestion, { query, isHighlighted }) {
   );
 }
 
-function renderSuggestionsContainer (options) {
+function renderSuggestionsContainer(options) {
   const { containerProps, children } = options;
   return (
     <Paper {...containerProps} square={true}>
@@ -64,7 +64,7 @@ function renderSuggestionsContainer (options) {
   );
 }
 
-function getSuggestionValue (suggestion) {
+function getSuggestionValue(suggestion) {
   return suggestion.name;
 }
 
@@ -79,33 +79,14 @@ class Content extends React.Component<ContentProps, ContentState> {
     value: "",
   };
 
-  public render () {
+  public render() {
     const { classes, width } = this.props;
     return (
       <div className={classes.root} style={{ display: isWidthUp("sm", width) ? "block" : "none" }}>
         <div className={classes.search}>
           <Icon>search</Icon>
         </div>
-        <Autosuggest
-          getSuggestionValue={getSuggestionValue}
-          inputProps={{
-            className: classes.input,
-            onChange: this.handleChange,
-            placeholder: "Search",
-            value: this.state.value,
-          }}
-          onSuggestionsClearRequested={this.handleSuggestionsClearRequested}
-          onSuggestionsFetchRequested={this.handleSuggestionsFetchRequested}
-          onSuggestionSelected={this.handleSuggestionSelected}
-          renderSuggestion={renderSuggestion}
-          renderSuggestionsContainer={renderSuggestionsContainer}
-          suggestions={this.state.suggestions}
-          theme={{
-            suggestion: classes.suggestion,
-            suggestionsContainerOpen: classes.suggestionsContainerOpen,
-            suggestionsList: classes.suggestionsList,
-          }}
-        />
+        {this.renderAutosuggest()}
       </div>
     );
   }
@@ -132,6 +113,32 @@ class Content extends React.Component<ContentProps, ContentState> {
     this.setState({
       value,
     });
+  }
+
+  private renderAutosuggest = () => {
+    const { classes } = this.props;
+    return (
+      <Autosuggest
+        getSuggestionValue={getSuggestionValue}
+        inputProps={{
+          className: classes.input,
+          onChange: this.handleChange,
+          placeholder: "Search",
+          value: this.state.value,
+        }}
+        onSuggestionsClearRequested={this.handleSuggestionsClearRequested}
+        onSuggestionsFetchRequested={this.handleSuggestionsFetchRequested}
+        onSuggestionSelected={this.handleSuggestionSelected}
+        renderSuggestion={renderSuggestion}
+        renderSuggestionsContainer={renderSuggestionsContainer}
+        suggestions={this.state.suggestions}
+        theme={{
+          suggestion: classes.suggestion,
+          suggestionsContainerOpen: classes.suggestionsContainerOpen,
+          suggestionsList: classes.suggestionsList,
+        }}
+      />
+    );
   }
 }
 
