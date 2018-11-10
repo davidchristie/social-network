@@ -31,17 +31,19 @@ function renderSuggestion (suggestion: Suggestion, { query, isHighlighted }) {
   return (
     <MenuItem component="div" selected={isHighlighted}>
       {parts.map((part, index) => {
-        return part.highlight
-          ? (
-            <span key={String(index)} style={{ fontWeight: 300 }}>
-              {part.text}
-            </span>
-          )
-          : (
-            <strong key={String(index)} style={{ fontWeight: 500 }}>
-              {part.text}
-            </strong>
-          );
+        const style: React.CSSProperties = {
+          whiteSpace: "pre-wrap",
+        };
+        const highlightedStyle: React.CSSProperties = {
+          ...style,
+          // fontWeight: "bold",
+          textShadow: "0px 0px 1px rgba(0,0,0,0.5)",
+        };
+        return (
+          <span key={index} style={part.highlight ? highlightedStyle : style}>
+            {part.text}
+          </span>
+        );
       })}
     </MenuItem>
   );
