@@ -9,6 +9,7 @@ import AccountQuery, {
 } from "../../queries/Account";
 import AccountMenu from "../AccountMenu";
 import ButtonLink from "../ButtonLink";
+import ProfileSearch from "../ProfileSearch";
 import GitHub from "./GitHub.png";
 import "./index.css";
 
@@ -50,7 +51,12 @@ export default class Header extends React.Component {
     }
     // Authenticated
     if (data && data.account) {
-      return <AccountMenu />;
+      return (
+        <React.Fragment>
+          <ProfileSearch />
+          <AccountMenu />
+        </React.Fragment>
+      );
     }
     // Unauthenticated
     return (

@@ -9,7 +9,7 @@ export interface Suggestion {
 
 export interface Props {
   fetchSuggestions: (value: string) => Promise<Suggestion[]>;
-  onSelect: (selected: Selection) => void;
+  onSelect: (selected: Suggestion) => void;
 }
 
 const Search: React.SFC<Props> = props => <Styled {...props} />;
