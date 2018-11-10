@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Account mutation matches snapshot 1`] = `
+exports[`Account query matches snapshot 1`] = `
 Object {
   "definitions": Array [
     Object {

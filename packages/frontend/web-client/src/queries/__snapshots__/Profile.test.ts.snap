@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Profile mutation matches snapshot 1`] = `
+exports[`Profile query matches snapshot 1`] = `
 Object {
   "definitions": Array [
     Object {
