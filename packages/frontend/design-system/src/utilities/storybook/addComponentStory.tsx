@@ -6,9 +6,7 @@ import React from "react";
 import Theme from "../../components/Theme";
 import getDisplayName from "./getDisplayName";
 
-interface Props extends React.HTMLAttributes<HTMLElement> { }
-
-export default function addComponentStory<P extends Props> (
+export default function addComponentStory<P> (
   Component: React.ComponentType<P>,
   props?: P
 ) {

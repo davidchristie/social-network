@@ -6,6 +6,7 @@ export { default as Icon } from "./components/Icon";
 export { default as Input } from "./components/Input";
 export { default as Loading } from "./components/Loading";
 export { default as Section } from "./components/Section";
+export { default as Search } from "./components/Search";
 export { default as TextArea } from "./components/TextArea";
 export { default as Theme } from "./components/Theme";
 export { default as Topbar } from "./components/Topbar";

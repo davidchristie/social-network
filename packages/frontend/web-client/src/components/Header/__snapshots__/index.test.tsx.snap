@@ -183,19 +183,19 @@ exports[`Header component when logged out 1`] = `
     <Topbar
       className="Header"
     >
-      <WithStyles(Content$3)
+      <WithStyles(Content$4)
         className="Header"
       >
-        <Content$3
+        <Content$4
           className="Header"
           classes={
             Object {
-              "topbar": "Content-3-topbar-1",
+              "topbar": "Content-4-topbar-1",
             }
           }
         >
           <div
-            className="Content-3-topbar-1 Header"
+            className="Content-4-topbar-1 Header"
           >
             <WithStyles(AppBar)
               color="default"
@@ -658,8 +658,8 @@ exports[`Header component when logged out 1`] = `
               </AppBar>
             </WithStyles(AppBar)>
           </div>
-        </Content$3>
-      </WithStyles(Content$3)>
+        </Content$4>
+      </WithStyles(Content$4)>
     </Topbar>
   </Query>
 </Header>
@@ -848,19 +848,19 @@ exports[`Header component while loading 1`] = `
     <Topbar
       className="Header"
     >
-      <WithStyles(Content$3)
+      <WithStyles(Content$4)
         className="Header"
       >
-        <Content$3
+        <Content$4
           className="Header"
           classes={
             Object {
-              "topbar": "Content-3-topbar-1",
+              "topbar": "Content-4-topbar-1",
             }
           }
         >
           <div
-            className="Content-3-topbar-1 Header"
+            className="Content-4-topbar-1 Header"
           >
             <WithStyles(AppBar)
               color="default"
@@ -1025,8 +1025,8 @@ exports[`Header component while loading 1`] = `
               </AppBar>
             </WithStyles(AppBar)>
           </div>
-        </Content$3>
-      </WithStyles(Content$3)>
+        </Content$4>
+      </WithStyles(Content$4)>
     </Topbar>
   </Query>
 </Header>
