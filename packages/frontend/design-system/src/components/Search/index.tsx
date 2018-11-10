@@ -33,7 +33,7 @@ type ContentProps = Props
   & WithStyles<"suggestionsList">
   & { width: Breakpoint; };
 
-function renderSuggestion(suggestion: Suggestion, { query, isHighlighted }) {
+function renderSuggestion (suggestion: Suggestion, { query, isHighlighted }) {
   const matches = match(suggestion.name, query);
   const parts = parse(suggestion.name, matches);
   return (
@@ -55,7 +55,7 @@ function renderSuggestion(suggestion: Suggestion, { query, isHighlighted }) {
   );
 }
 
-function renderSuggestionsContainer(options) {
+function renderSuggestionsContainer (options) {
   const { containerProps, children } = options;
   return (
     <Paper {...containerProps} square={true}>
@@ -64,7 +64,7 @@ function renderSuggestionsContainer(options) {
   );
 }
 
-function getSuggestionValue(suggestion) {
+function getSuggestionValue (suggestion) {
   return suggestion.name;
 }
 
@@ -79,7 +79,7 @@ class Content extends React.Component<ContentProps, ContentState> {
     value: "",
   };
 
-  public render() {
+  public render () {
     const { classes, width } = this.props;
     return (
       <div className={classes.root} style={{ display: isWidthUp("sm", width) ? "block" : "none" }}>
