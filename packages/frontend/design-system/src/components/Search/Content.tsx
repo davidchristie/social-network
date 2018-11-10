@@ -28,8 +28,6 @@ interface ContentState {
 function renderSuggestion (suggestion: Suggestion, { query, isHighlighted }) {
   const matches = match(suggestion.name, query);
   const parts = parse(suggestion.name, matches);
-  console.log("matches", matches);
-  console.log("parts", parts);
   return (
     <MenuItem component="div" selected={isHighlighted}>
       {parts.map((part, index) => {
