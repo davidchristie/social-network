@@ -1,28 +1,82 @@
 import { Loading } from "design-system";
 import { mount, ReactWrapper } from "enzyme";
 import React from "react";
-import { MockedProvider } from "react-apollo/test-utils";
-import { MemoryRouter } from "react-router-dom";
+import { MockedProvider, MockedResponse } from "react-apollo/test-utils";
+import { Route, StaticRouter } from "react-router-dom";
+import AccountQuery, {
+  AccountData
+} from "../../queries/Account";
+import ProfileQuery, {
+  ProfileData
+} from "../../queries/Profile";
 import Connected from "./Connected";
 
-const TestContent: React.ComponentType<any> = () => null;
+const Content: React.ComponentType<any> = () => null;
+const accountResult: AccountData = {
+  account: null,
+};
+const profileResult: ProfileData = {
+  profile: {
+    avatar: null,
+    id: "profile_id",
+    name: "Profile",
+    posts: [],
+  },
+};
+const mocks: MockedResponse[] = [
+  {
+    request: {
+      query: AccountQuery,
+    },
+    result: {
+      data: accountResult,
+    },
+  },
+  {
+    request: {
+      query: ProfileQuery,
+      variables: {
+        id: profileResult.profile.id,
+      },
+    },
+    result: {
+      data: profileResult,
+    },
+  },
+];
 
 describe("Connected component", () => {
   let wrapper: ReactWrapper;
 
   beforeEach(() => {
     wrapper = mount(
-      <MemoryRouter>
-        <MockedProvider>
-          <Connected content={TestContent} />
-        </MockedProvider>
-      </MemoryRouter>
+      <MockedProvider addTypename={false} mocks={mocks}>
+        <StaticRouter context={{}} location={`/profile/${profileResult.profile.id}`}>
+          <Route
+            path="/profile/:id"
+            render={() => {
+              return <Connected content={Content} />;
+            }}
+          />
+        </StaticRouter>
+      </MockedProvider>
     );
   });
 
   describe("loading state", () => {
     it("renders loading component", () => {
       expect(wrapper.find(Loading).exists()).toBe(true);
+    });
+  });
+
+  describe("loaded content", () => {
+    beforeEach(async () => {
+      await new Promise(resolve => window.setTimeout(resolve, 0));
+      wrapper.update();
+    });
+
+    it("renders content component", async () => {
+      expect(wrapper.find(Content).exists()).toBe(true);
     });
   });
 });
