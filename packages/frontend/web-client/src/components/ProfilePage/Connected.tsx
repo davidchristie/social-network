@@ -19,9 +19,6 @@ interface Props extends RouteComponentProps<{ id: string }> {
 const Connected: React.SFC<Props> = ({ content, match }) => {
   return (
     <Query<AccountData, AccountVariables>
-      variables={{
-        id: match.params.id,
-      }}
       query={AccountQuery}
     >
       {accountResult => (
