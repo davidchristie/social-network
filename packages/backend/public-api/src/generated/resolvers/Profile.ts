@@ -4,5 +4,12 @@
 import { ProfileResolvers } from "../graphqlgen";
 
 export const Profile: ProfileResolvers.Type = {
-  ...ProfileResolvers.defaultResolvers
+  ...ProfileResolvers.defaultResolvers,
+
+  avatar: parent => {
+    throw new Error("Resolver not implemented");
+  },
+  posts: parent => {
+    throw new Error("Resolver not implemented");
+  }
 };

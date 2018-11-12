@@ -4,5 +4,9 @@
 import { PostResolvers } from "../graphqlgen";
 
 export const Post: PostResolvers.Type = {
-  ...PostResolvers.defaultResolvers
+  ...PostResolvers.defaultResolvers,
+
+  createdBy: parent => {
+    throw new Error("Resolver not implemented");
+  }
 };

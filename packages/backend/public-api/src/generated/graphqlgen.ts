@@ -260,8 +260,7 @@ export namespace AccountResolvers {
   export const defaultResolvers = {
     email: (parent: Account) => parent.email,
     id: (parent: Account) => parent.id,
-    name: (parent: Account) => parent.name,
-    profile: (parent: Account) => parent.profile
+    name: (parent: Account) => parent.name
   };
 
   export type EmailResolver = (
@@ -325,10 +324,8 @@ export namespace AccountResolvers {
 
 export namespace ProfileResolvers {
   export const defaultResolvers = {
-    avatar: (parent: Profile) => parent.avatar,
     id: (parent: Profile) => parent.id,
-    name: (parent: Profile) => parent.name,
-    posts: (parent: Profile) => parent.posts
+    name: (parent: Profile) => parent.name
   };
 
   export type AvatarResolver = (
@@ -430,7 +427,6 @@ export namespace ImageResolvers {
 export namespace PostResolvers {
   export const defaultResolvers = {
     createdAt: (parent: Post) => parent.createdAt,
-    createdBy: (parent: Post) => parent.createdBy,
     id: (parent: Post) => parent.id,
     text: (parent: Post) => parent.text
   };
