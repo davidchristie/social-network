@@ -8,6 +8,7 @@
     "@types/jest": "23.3.9",
     "@types/node-fetch": "2.1.2",
     "@types/supertest": "2.0.6",
+    "graphqlgen": "^0.3.0",
     "jest": "23.6.0",
     "nodemon": "1.18.6",
     "rimraf": "2.6.2",
@@ -43,6 +44,7 @@
   "private": true,
   "scripts": {
     "build": "rimraf dist && tsc",
+    "generate": "graphqlgen",
     "lint": "tslint --project . && tsc --noEmit",
     "start": "nodemon -e ts,graphql -x ts-node -r dotenv/config src/index.ts dotenv_config_path=../../.env",
     "test": "jest --coverage --maxWorkers 2 --verbose"
