@@ -37,7 +37,7 @@ export default async function updateProfile (
   return context.database.updateProfile({
     data,
     where: {
-      id: await profile.id(),
+      id: await profile.id,
     },
   });
 }

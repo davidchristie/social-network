@@ -1,11 +1,18 @@
-import { delegateQueryResolver } from "../utilities";
-import Mutation from "./Mutation";
+import { Resolvers } from "../../generated/graphqlgen";
+import { Account } from "./Account";
+import { Image } from "./Image";
+import { LoginPayload } from "./LoginPayload";
+import { Mutation } from "./Mutation";
+import { Post } from "./Post";
+import { Profile } from "./Profile";
 import Query from "./Query";
 
-export default {
-  Account: delegateQueryResolver("account", ["profile"]),
+export const resolvers: Resolvers = {
+  Account,
+  Image,
+  LoginPayload,
   Mutation,
-  Post: delegateQueryResolver("post", ["createdBy"]),
-  Profile: delegateQueryResolver("profile", ["posts"]),
+  Post,
+  Profile,
   Query,
 };

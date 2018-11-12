@@ -17,7 +17,7 @@ export default async function createPost (
   return context.database.createPost({
     createdBy: {
       connect: {
-        id: await profile.id(),
+        id: await profile.id,
       },
     },
     text,

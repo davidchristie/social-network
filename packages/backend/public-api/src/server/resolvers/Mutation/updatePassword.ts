@@ -19,7 +19,5 @@ export default async function updatePassword (
     currentPassword,
     newPassword,
   });
-  return {
-    id: context.accountId,
-  };
+  return context.database.account({ id: context.accountId });
 }

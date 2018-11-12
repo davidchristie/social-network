@@ -6,9 +6,15 @@
   },
   "extends": "../../../tsconfig.json",
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "src/generated/**"
   ],
   "include": [
     "src/**/*"
+  ],
+  "references": [
+    {
+      "path": "../data-model"
+    }
   ]
 }

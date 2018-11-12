@@ -1,12 +1,11 @@
 import { GraphQLServer } from "graphql-yoga";
-
 import { createContext } from "./context";
-
-import resolvers from "./resolvers";
+import { resolvers } from "./resolvers";
 
 const server = new GraphQLServer({
   context: createContext(),
-  resolvers,
+  // @TODO: Remove the cast to any once https://github.com/prisma/graphqlgen/issues/15 is resolved.
+  resolvers: resolvers as any,
   typeDefs: "./src/schema.graphql",
 });
 
