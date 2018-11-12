@@ -45,7 +45,7 @@ async function postToAuthentication (endpoint: string, data: any): Promise<any> 
   return response.json();
 }
 
-export default {
+export const authentication = {
   async account (request: Request) {
     const response = await fetch(
       `${path}/account`,
