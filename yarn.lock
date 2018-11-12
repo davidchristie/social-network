@@ -7294,7 +7294,7 @@ graphqlgen-json-schema@0.2.12:
   resolved "https://registry.yarnpkg.com/graphqlgen-json-schema/-/graphqlgen-json-schema-0.2.12.tgz#445a2da9839a460841d729fba5941fd3007249c2"
   integrity sha512-Q87J16Di8mWLJV2Xd5IG+13ec6U6hZJHSlsCGfnQz4CoM7K8wiHcXeMb4be9Cru4a43PBOuOI/qjkwCqdX2mEg==
 
-graphqlgen@^0.3.0:
+graphqlgen@0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/graphqlgen/-/graphqlgen-0.3.0.tgz#f04f8ba2ee397a27962925a0e00f0ad78f8dd300"
   integrity sha512-kslCUg6LG9zJhoOgW5pqssrus8AOakcxS0OBXi7Pjz+EiGw4zshIqZc9N9s48GMkcblJjYu1gIBnAnCnyG4nKw==
