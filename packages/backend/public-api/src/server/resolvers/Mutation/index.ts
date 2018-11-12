@@ -1,3 +1,4 @@
+import { MutationResolvers } from "../../../generated/graphqlgen";
 import createPost from "./createPost";
 import deletePost from "./deletePost";
 import login from "./login";
@@ -6,7 +7,8 @@ import updateAccount from "./updateAccount";
 import updatePassword from "./updatePassword";
 import updateProfile from "./updateProfile";
 
-export default {
+export const Mutation: MutationResolvers.Type = {
+  ...MutationResolvers.defaultResolvers,
   createPost,
   deletePost,
   login,
