@@ -82,6 +82,12 @@ input AccountUpdateInput {
   profile: ProfileUpdateOneRequiredWithoutAccountInput
 }
 
+input AccountUpdateManyMutationInput {
+  email: String
+  name: String
+  password: String
+}
+
 input AccountUpdateOneRequiredWithoutProfileInput {
   create: AccountCreateWithoutProfileInput
   update: AccountUpdateWithoutProfileDataInput
@@ -257,6 +263,10 @@ input ImageUpdateInput {
   url: String
 }
 
+input ImageUpdateManyMutationInput {
+  url: String
+}
+
 input ImageUpdateOneInput {
   create: ImageCreateInput
   update: ImageUpdateDataInput
@@ -314,25 +324,25 @@ scalar Long
 type Mutation {
   createAccount(data: AccountCreateInput!): Account!
   updateAccount(data: AccountUpdateInput!, where: AccountWhereUniqueInput!): Account
-  updateManyAccounts(data: AccountUpdateInput!, where: AccountWhereInput): BatchPayload!
+  updateManyAccounts(data: AccountUpdateManyMutationInput!, where: AccountWhereInput): BatchPayload!
   upsertAccount(where: AccountWhereUniqueInput!, create: AccountCreateInput!, update: AccountUpdateInput!): Account!
   deleteAccount(where: AccountWhereUniqueInput!): Account
   deleteManyAccounts(where: AccountWhereInput): BatchPayload!
   createImage(data: ImageCreateInput!): Image!
   updateImage(data: ImageUpdateInput!, where: ImageWhereUniqueInput!): Image
-  updateManyImages(data: ImageUpdateInput!, where: ImageWhereInput): BatchPayload!
+  updateManyImages(data: ImageUpdateManyMutationInput!, where: ImageWhereInput): BatchPayload!
   upsertImage(where: ImageWhereUniqueInput!, create: ImageCreateInput!, update: ImageUpdateInput!): Image!
   deleteImage(where: ImageWhereUniqueInput!): Image
   deleteManyImages(where: ImageWhereInput): BatchPayload!
   createPost(data: PostCreateInput!): Post!
   updatePost(data: PostUpdateInput!, where: PostWhereUniqueInput!): Post
-  updateManyPosts(data: PostUpdateInput!, where: PostWhereInput): BatchPayload!
+  updateManyPosts(data: PostUpdateManyMutationInput!, where: PostWhereInput): BatchPayload!
   upsertPost(where: PostWhereUniqueInput!, create: PostCreateInput!, update: PostUpdateInput!): Post!
   deletePost(where: PostWhereUniqueInput!): Post
   deleteManyPosts(where: PostWhereInput): BatchPayload!
   createProfile(data: ProfileCreateInput!): Profile!
   updateProfile(data: ProfileUpdateInput!, where: ProfileWhereUniqueInput!): Profile
-  updateManyProfiles(data: ProfileUpdateInput!, where: ProfileWhereInput): BatchPayload!
+  updateManyProfiles(data: ProfileUpdateManyMutationInput!, where: ProfileWhereInput): BatchPayload!
   upsertProfile(where: ProfileWhereUniqueInput!, create: ProfileCreateInput!, update: ProfileUpdateInput!): Profile!
   deleteProfile(where: ProfileWhereUniqueInput!): Profile
   deleteManyProfiles(where: ProfileWhereInput): BatchPayload!
@@ -424,6 +434,10 @@ input PostSubscriptionWhereInput {
 
 input PostUpdateInput {
   createdBy: ProfileUpdateOneRequiredWithoutPostsInput
+  text: String
+}
+
+input PostUpdateManyMutationInput {
   text: String
 }
 
@@ -585,6 +599,10 @@ input ProfileUpdateInput {
   avatar: ImageUpdateOneInput
   name: String
   posts: PostUpdateManyWithoutCreatedByInput
+}
+
+input ProfileUpdateManyMutationInput {
+  name: String
 }
 
 input ProfileUpdateOneRequiredWithoutAccountInput {
