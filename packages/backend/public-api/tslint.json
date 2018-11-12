@@ -4,6 +4,7 @@
   ],
   "linterOptions": {
     "exclude": [
+      "**/graphqlgen.ts",
       "src/generated/**"
     ]
   }

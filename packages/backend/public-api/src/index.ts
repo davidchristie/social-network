@@ -1,3 +1,4 @@
+import "../../../generated/graphqlgen";
 import server from "./server";
 
 server.start(({ port }) => {
