@@ -15,9 +15,9 @@
     "graphql": "14.0.2",
     "graphql-tag": "2.10.0",
     "material-design-icons-iconfont": "4.0.2",
-    "react": "16.6.1",
+    "react": "16.6.3",
     "react-apollo": "2.2.4",
-    "react-dom": "16.6.1",
+    "react-dom": "16.6.3",
     "react-router-dom": "4.3.1"
   },
   "devDependencies": {
