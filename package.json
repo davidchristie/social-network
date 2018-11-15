@@ -1,5 +1,8 @@
 {
   "author": "David Christie <davidchristie.nz@gmail.com>",
+  "devDependencies": {
+    "tslint-config-prettier": "1.16.0"
+  },
   "engines": {
     "node": ">=10"
   },
@@ -15,9 +18,9 @@
     "design-system": "yarn workspace design-system",
     "desktop-client": "yarn workspace desktop-client",
     "development": "docker-compose -f docker-compose.yml -f docker-compose.development.yml",
-    "lint": "scripts/lint.sh",
     "infrastructure": "yarn workspace infrastructure",
     "integration-tests": "yarn workspace integration-tests",
+    "lint": "scripts/lint.sh",
     "production": "docker-compose -f docker-compose.yml -f docker-compose.production.yml",
     "public-api": "yarn workspace public-api",
     "tasks": "docker-compose -f docker-compose.yml -f docker-compose.tasks.yml",
