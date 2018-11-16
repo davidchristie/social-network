@@ -3,47 +3,20 @@ import { mount, ReactWrapper } from "enzyme";
 import React from "react";
 import { MockedProvider, MockedResponse } from "react-apollo/test-utils";
 import { Route, StaticRouter } from "react-router-dom";
-import { beforeEachWaitForUpdate, itContainsComponent } from "test-utilities/dist/enzyme";
-import AccountQuery, {
-  AccountData
-} from "../../queries/Account";
-import ProfileQuery, {
-  ProfileData
-} from "../../queries/Profile";
+import {
+  beforeEachWaitForUpdate,
+  itContainsComponent
+} from "test-utilities/dist/enzyme";
+import mockAccountResponse from "../../queries/mockAccountResponse";
+import mockProfileResponse from "../../queries/mockProfileResponse";
 import Connected from "./Connected";
 
+
+const profileId = "profile_id";
 const Content: React.ComponentType<any> = () => null;
-const accountResult: AccountData = {
-  account: null,
-};
-const profileResult: ProfileData = {
-  profile: {
-    avatar: null,
-    id: "profile_id",
-    name: "Profile",
-    posts: [],
-  },
-};
 const mocks: MockedResponse[] = [
-  {
-    request: {
-      query: AccountQuery,
-    },
-    result: {
-      data: accountResult,
-    },
-  },
-  {
-    request: {
-      query: ProfileQuery,
-      variables: {
-        id: profileResult.profile.id,
-      },
-    },
-    result: {
-      data: profileResult,
-    },
-  },
+  mockAccountResponse(),
+  mockProfileResponse({ id: "profile_id" }),
 ];
 
 describe("Connected component", () => {
@@ -51,8 +24,8 @@ describe("Connected component", () => {
 
   beforeEach(() => {
     wrapper = mount(
-      <MockedProvider addTypename={false} mocks={mocks}>
-        <StaticRouter context={{}} location={`/profile/${profileResult.profile.id}`}>
+      <MockedProvider addTypename={true} mocks={mocks}>
+        <StaticRouter context={{}} location={`/profile/${profileId}`}>
           <Route
             path="/profile/:id"
             render={() => {
