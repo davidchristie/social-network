@@ -2,37 +2,24 @@ import { Loading } from "design-system";
 import { mount, ReactWrapper } from "enzyme";
 import React from "react";
 import { MockedProvider, MockedResponse } from "react-apollo/test-utils";
-import { Route, StaticRouter } from "react-router-dom";
-import {
-  beforeEachWaitForUpdate,
-  itContainsComponent
-} from "test-utilities/dist/enzyme";
+import { beforeEachWaitForUpdate, itContainsComponent } from "test-utilities/enzyme";
 import mockAccountResponse from "../../queries/mockAccountResponse";
 import mockProfileResponse from "../../queries/mockProfileResponse";
-import Connected from "./Connected";
+import Data from "./Data";
 
-
-const profileId = "profile_id";
 const Content: React.ComponentType<any> = () => null;
 const mocks: MockedResponse[] = [
   mockAccountResponse(),
   mockProfileResponse({ id: "profile_id" }),
 ];
 
-describe("Connected component", () => {
+describe("Data component", () => {
   let wrapper: ReactWrapper;
 
   beforeEach(() => {
     wrapper = mount(
       <MockedProvider addTypename={true} mocks={mocks}>
-        <StaticRouter context={{}} location={`/profile/${profileId}`}>
-          <Route
-            path="/profile/:id"
-            render={() => {
-              return <Connected content={Content} />;
-            }}
-          />
-        </StaticRouter>
+        <Data content={Content} />;
       </MockedProvider>
     );
   });

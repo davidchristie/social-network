@@ -1,0 +1,6 @@
+{
+  "main": "../dist/enzyme/index.js",
+  "name": "test-utilities/enzyme",
+  "private": true,
+  "version": "1.0.0"
+}
