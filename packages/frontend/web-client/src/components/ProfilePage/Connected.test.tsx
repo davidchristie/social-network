@@ -3,6 +3,7 @@ import { mount, ReactWrapper } from "enzyme";
 import React from "react";
 import { MockedProvider, MockedResponse } from "react-apollo/test-utils";
 import { Route, StaticRouter } from "react-router-dom";
+import { beforeEachWaitForUpdate } from "test-utilities/dist/enzyme";
 import AccountQuery, {
   AccountData
 } from "../../queries/Account";
@@ -70,10 +71,7 @@ describe("Connected component", () => {
   });
 
   describe("loaded content", () => {
-    beforeEach(async () => {
-      await new Promise(resolve => window.setTimeout(resolve, 0));
-      wrapper.update();
-    });
+    beforeEachWaitForUpdate(() => wrapper);
 
     it("renders content component", async () => {
       expect(wrapper.find(Content).exists()).toBe(true);
