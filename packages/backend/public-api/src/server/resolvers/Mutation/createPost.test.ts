@@ -11,7 +11,7 @@ describe("createPost mutation resolver", () => {
       database: {
         account: () => ({
           profile: () => ({
-            id: profileId,
+            id: () => Promise.resolve(profileId),
           }),
         }),
         createPost,
