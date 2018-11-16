@@ -15,7 +15,7 @@ const mockAccountResponse = (): MockedResponse => ({
         profile: {
           __typename: "Profile",
           avatar: {
-            __typename: "Avatar",
+            __typename: "Image",
             id: "avatar_id",
             url: "https://avatar_url.com",
           },
