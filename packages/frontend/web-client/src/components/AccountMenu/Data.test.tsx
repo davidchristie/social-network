@@ -2,7 +2,7 @@ import { Loading } from "design-system";
 import { mount, ReactWrapper } from "enzyme";
 import React from "react";
 import { MockedProvider, MockedResponse } from "react-apollo/test-utils";
-import { beforeEachWaitForUpdate } from "test-utilities/enzyme";
+import { beforeEachWaitForUpdate, itContainsComponent } from "test-utilities/enzyme";
 import AccountQuery, {
   AccountData
 } from "../../queries/Account";
@@ -68,16 +68,12 @@ describe("Data component", () => {
   });
 
   describe("loading state", () => {
-    it("renders loading component", () => {
-      expect(wrapper.find(Loading).exists()).toBe(true);
-    });
+    itContainsComponent("renders loading component", () => wrapper, Loading);
   });
 
   describe("loaded content", () => {
     beforeEachWaitForUpdate(() => wrapper);
 
-    it("renders content component", async () => {
-      expect(wrapper.find(Content).exists()).toBe(true);
-    });
+    itContainsComponent("renders content component", () => wrapper, Content);
   });
 });

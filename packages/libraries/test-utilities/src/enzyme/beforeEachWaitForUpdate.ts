@@ -1,6 +1,4 @@
-import { ReactWrapper, ShallowWrapper } from "enzyme";
-
-type Wrapper = ReactWrapper | ShallowWrapper;
+import { Wrapper } from "./types";
 
 export default function beforeEachWaitForUpdate (getWrapper: () => Wrapper) {
   beforeEach(async () => {
