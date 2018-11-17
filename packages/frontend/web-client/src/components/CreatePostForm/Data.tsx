@@ -23,11 +23,11 @@ const Data: React.ComponentType<Props> = ({ content }) => {
       query={AccountQuery}
     >
       {({ data, error, loading }) => {
-        if (loading || !data || !data.account) {
-          return <Loading />;
-        }
         if (error) {
           return <Alert>{error.message}</Alert>;
+        }
+        if (loading || !data || !data.account) {
+          return <Loading />;
         }
         const { account } = data;
         return (
