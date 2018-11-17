@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Content component matches snapshot 1`] = `
+<Section>
+  <form
+    onSubmit={[Function]}
+  >
+    <div>
+      <TextArea
+        name="text"
+        onChange={[Function]}
+        required={true}
+        value=""
+      />
+    </div>
+    <Button$2
+      type="submit"
+    >
+      Post
+    </Button$2>
+  </form>
+</Section>
+`;

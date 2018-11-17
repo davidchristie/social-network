@@ -1,14 +1,13 @@
 import { mount } from "enzyme";
 import React from "react";
 import { MockedProvider } from "react-apollo/test-utils";
-import AccountMenu from ".";
 
-describe("AccountMenu component", () => {
+export default function itRendersWithoutCrashing (Component: React.ComponentType) {
   it("renders without crashing", () => {
     mount(
       <MockedProvider>
-        <AccountMenu />
+        <Component />
       </MockedProvider>
     );
   });
-});
+}
