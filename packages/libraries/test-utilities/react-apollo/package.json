@@ -1,0 +1,6 @@
+{
+  "main": "../dist/react-apollo/index.js",
+  "name": "test-utilities/react-apollo",
+  "private": true,
+  "version": "1.0.0"
+}
