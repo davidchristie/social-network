@@ -1,7 +1,6 @@
-import { Avatar } from "design-system";
+import { Avatar, Menu } from "design-system";
 import React from "react";
 import ButtonLink from "../ButtonLink";
-import Dropdown from "../Dropdown";
 import LogoutButton from "../LogoutButton";
 
 interface Account {
@@ -17,40 +16,58 @@ export interface Props {
   account: Account;
 }
 
-export interface State {
-  isDropdownOpen: boolean;
+interface State {
+  anchorElement: HTMLElement | null;
 }
 
 export default class Content extends React.Component<Props, State> {
   public state = {
-    isDropdownOpen: false,
+    anchorElement: null,
   };
 
   public render () {
     const { account } = this.props;
     return (
-      <div className="AccountMenu">
+      <div>
         {this.renderAvatar(account)}
-        {this.renderDropdown(account)}
+        {this.renderMenu(account)}
       </div>
     );
-  }
-
-  private closeDropdown = () => {
-    this.setState({
-      isDropdownOpen: false,
-    });
   }
 
   private renderAccountButton = () => {
     return (
       <ButtonLink
-        onClick={this.closeDropdown}
+        onClick={this.handleClose}
         to="/account"
       >
         Account
       </ButtonLink>
     );
+  }
+
+  private renderProfileButton = (account: Account) => {
+    return (
+      <ButtonLink
+        onClick={this.handleClose}
+        to={`profile/${account.profile.id}`}
+      >
+        Profile
+      </ButtonLink>
+    );
+  }
+
+  private handleClick = event => {
+    console.log(event.currentTarget);
+    this.setState({
+      anchorElement: event.currentTarget,
+    });
+  }
+
+  private handleClose = () => {
+    this.setState({
+      anchorElement: null,
+    });
   }
 
   private renderAvatar = (account: Account) => {
@@ -59,40 +76,24 @@ export default class Content extends React.Component<Props, State> {
     return (
       <Avatar
         image={image}
-        onClick={this.openDropdown}
+        onClick={this.handleClick}
         size="small"
       />
     );
   }
 
-  private renderDropdown = (account: Account) => {
+  private renderMenu = (account: Account) => {
     return (
-      <Dropdown
-        onClose={this.closeDropdown}
-        open={this.state.isDropdownOpen}
+      <Menu
+        anchorElement={this.state.anchorElement}
+        onClose={this.handleClose}
+        open={Boolean(this.state.anchorElement)}
       >
         {this.renderProfileButton(account)}
         {this.renderAccountButton()}
         <hr />
         <LogoutButton />
-      </Dropdown>
+      </Menu>
     );
-  }
-
-  private renderProfileButton = (account: Account) => {
-    return (
-      <ButtonLink
-        onClick={this.closeDropdown}
-        to={`profile/${account.profile.id}`}
-      >
-        Profile
-      </ButtonLink>
-    );
-  }
-
-  private openDropdown = () => {
-    this.setState({
-      isDropdownOpen: true,
-    });
   }
 }

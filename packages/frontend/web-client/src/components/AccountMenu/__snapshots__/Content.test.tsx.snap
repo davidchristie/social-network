@@ -1,15 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Content component renders profile with avatar matches snapshot 1`] = `
-<div
-  className="AccountMenu"
->
+<div>
   <Avatar$2
     image="https://avatar_url.com"
     onClick={[Function]}
     size="small"
   />
-  <Dropdown
+  <Menu$2
+    anchorElement={null}
     onClose={[Function]}
     open={false}
   >
@@ -27,19 +26,18 @@ exports[`Content component renders profile with avatar matches snapshot 1`] = `
     </ButtonLink>
     <hr />
     <LogoutButton />
-  </Dropdown>
+  </Menu$2>
 </div>
 `;
 
 exports[`Content component renders profile without avatar matches snapshot 1`] = `
-<div
-  className="AccountMenu"
->
+<div>
   <Avatar$2
     onClick={[Function]}
     size="small"
   />
-  <Dropdown
+  <Menu$2
+    anchorElement={null}
     onClose={[Function]}
     open={false}
   >
@@ -57,6 +55,6 @@ exports[`Content component renders profile without avatar matches snapshot 1`] =
     </ButtonLink>
     <hr />
     <LogoutButton />
-  </Dropdown>
+  </Menu$2>
 </div>
 `;

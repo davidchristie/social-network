@@ -1,8 +1,7 @@
-import { Avatar } from "design-system";
+import { Avatar, Menu } from "design-system";
 import { shallow, ShallowWrapper } from "enzyme";
 import React from "react";
 import { describeWithProps } from "test-utilities/react";
-import Dropdown from "../Dropdown";
 import Content, { Props, State } from "./Content";
 
 const propsWithoutAvatar: Props = {
@@ -56,22 +55,24 @@ describe("Content component", () => {
         },
       };
       wrapper = shallow(<Content {...props} />);
-      wrapper.find(Avatar).simulate("click");
+      wrapper.find(Avatar).simulate("click", {
+        currentTarget: wrapper.find(Avatar).first().getElement(),
+      });
     });
 
-    it("opens dropdown", () => {
-      const dropdown = wrapper.find(Dropdown);
-      expect(dropdown.props().open).toBe(true);
+    it("opens menu", () => {
+      const menu = wrapper.find(Menu);
+      expect(menu.props().anchorElement).not.toBeNull();
     });
 
-    describe("when dropdown is closed", () => {
+    describe("when menu is closed", () => {
       beforeEach(() => {
-        const dropdown = wrapper.find(Dropdown);
-        dropdown.props().onClose!();
+        const menu = wrapper.find(Menu);
+        menu.props().onClose!();
       });
 
       it("updates state", () => {
-        expect(wrapper.state().isDropdownOpen).toBe(false);
+        expect(wrapper.state().anchorElement).toBe(null);
       });
     });
   });
