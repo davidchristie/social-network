@@ -16,7 +16,7 @@ export interface Props {
   account: Account;
 }
 
-interface State {
+export interface State {
   anchorElement: HTMLElement | null;
 }
 
