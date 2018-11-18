@@ -9,8 +9,20 @@ exports[`Content component renders profile with avatar matches snapshot 1`] = `
   />
   <Menu$2
     anchorElement={null}
+    anchorOrigin={
+      Object {
+        "horizontal": "right",
+        "vertical": "top",
+      }
+    }
     onClose={[Function]}
     open={false}
+    transformOrigin={
+      Object {
+        "horizontal": "right",
+        "vertical": "top",
+      }
+    }
   >
     <MenuItem$3
       component={[Function]}
@@ -43,8 +55,20 @@ exports[`Content component renders profile without avatar matches snapshot 1`] =
   />
   <Menu$2
     anchorElement={null}
+    anchorOrigin={
+      Object {
+        "horizontal": "right",
+        "vertical": "top",
+      }
+    }
     onClose={[Function]}
     open={false}
+    transformOrigin={
+      Object {
+        "horizontal": "right",
+        "vertical": "top",
+      }
+    }
   >
     <MenuItem$3
       component={[Function]}

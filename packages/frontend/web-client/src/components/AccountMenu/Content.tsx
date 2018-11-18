@@ -100,8 +100,16 @@ export default class Content extends React.Component<Props, State> {
     return (
       <Menu
         anchorElement={this.state.anchorElement}
+        anchorOrigin={{
+          horizontal: "right",
+          vertical: "top",
+        }}
         onClose={this.handleClose}
         open={Boolean(this.state.anchorElement)}
+        transformOrigin={{
+          horizontal: "right",
+          vertical: "top",
+        }}
       >
         {this.renderProfileMenuItem(account)}
         {this.renderAccountMenuItem()}
