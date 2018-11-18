@@ -1,62 +1,94 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Content component renders profile with avatar matches snapshot 1`] = `
-<div
-  className="AccountMenu"
->
+<div>
   <Avatar$2
     image="https://avatar_url.com"
     onClick={[Function]}
     size="small"
   />
-  <Dropdown
+  <Menu$2
+    anchorElement={null}
+    anchorOrigin={
+      Object {
+        "horizontal": "right",
+        "vertical": "top",
+      }
+    }
     onClose={[Function]}
     open={false}
+    transformOrigin={
+      Object {
+        "horizontal": "right",
+        "vertical": "top",
+      }
+    }
   >
-    <ButtonLink
+    <MenuItem$3
+      component={[Function]}
       onClick={[Function]}
       to="profile/profile_id"
     >
       Profile
-    </ButtonLink>
-    <ButtonLink
+    </MenuItem$3>
+    <MenuItem$3
+      component={[Function]}
       onClick={[Function]}
       to="/account"
     >
       Account
-    </ButtonLink>
-    <hr />
-    <LogoutButton />
-  </Dropdown>
+    </MenuItem$3>
+    <MenuItem$3
+      onClick={[Function]}
+    >
+      Logout
+    </MenuItem$3>
+  </Menu$2>
 </div>
 `;
 
 exports[`Content component renders profile without avatar matches snapshot 1`] = `
-<div
-  className="AccountMenu"
->
+<div>
   <Avatar$2
     onClick={[Function]}
     size="small"
   />
-  <Dropdown
+  <Menu$2
+    anchorElement={null}
+    anchorOrigin={
+      Object {
+        "horizontal": "right",
+        "vertical": "top",
+      }
+    }
     onClose={[Function]}
     open={false}
+    transformOrigin={
+      Object {
+        "horizontal": "right",
+        "vertical": "top",
+      }
+    }
   >
-    <ButtonLink
+    <MenuItem$3
+      component={[Function]}
       onClick={[Function]}
       to="profile/profile_id"
     >
       Profile
-    </ButtonLink>
-    <ButtonLink
+    </MenuItem$3>
+    <MenuItem$3
+      component={[Function]}
       onClick={[Function]}
       to="/account"
     >
       Account
-    </ButtonLink>
-    <hr />
-    <LogoutButton />
-  </Dropdown>
+    </MenuItem$3>
+    <MenuItem$3
+      onClick={[Function]}
+    >
+      Logout
+    </MenuItem$3>
+  </Menu$2>
 </div>
 `;

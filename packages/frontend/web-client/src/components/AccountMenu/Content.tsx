@@ -1,8 +1,7 @@
-import { Avatar } from "design-system";
+import { Avatar, Menu, MenuItem } from "design-system";
 import React from "react";
-import ButtonLink from "../ButtonLink";
-import Dropdown from "../Dropdown";
-import LogoutButton from "../LogoutButton";
+import { Link } from "react-router-dom";
+import { AUTHENTICATION_TOKEN } from "../../constants";
 
 interface Account {
   profile: {
@@ -18,39 +17,71 @@ export interface Props {
 }
 
 export interface State {
-  isDropdownOpen: boolean;
+  anchorElement: HTMLElement | null;
 }
 
 export default class Content extends React.Component<Props, State> {
   public state = {
-    isDropdownOpen: false,
+    anchorElement: null,
   };
 
   public render () {
     const { account } = this.props;
     return (
-      <div className="AccountMenu">
+      <div>
         {this.renderAvatar(account)}
-        {this.renderDropdown(account)}
+        {this.renderMenu(account)}
       </div>
     );
   }
 
-  private closeDropdown = () => {
-    this.setState({
-      isDropdownOpen: false,
-    });
-  }
-
-  private renderAccountButton = () => {
+  private renderAccountMenuItem = () => {
     return (
-      <ButtonLink
-        onClick={this.closeDropdown}
+      <MenuItem
+        component={Link}
+        onClick={this.handleClose}
         to="/account"
       >
         Account
-      </ButtonLink>
+      </MenuItem>
     );
+  }
+
+  private renderLogoutMenuItem = () => {
+    return (
+      <MenuItem onClick={this.handleLogout}>
+        Logout
+      </MenuItem>
+    );
+  }
+
+  private renderProfileMenuItem = (account: Account) => {
+    return (
+      <MenuItem
+        component={Link}
+        onClick={this.handleClose}
+        to={`profile/${account.profile.id}`}
+      >
+        Profile
+      </MenuItem>
+    );
+  }
+
+  private handleClick = event => {
+    this.setState({
+      anchorElement: event.currentTarget,
+    });
+  }
+
+  private handleClose = () => {
+    this.setState({
+      anchorElement: null,
+    });
+  }
+
+  private handleLogout = () => {
+    window.localStorage.removeItem(AUTHENTICATION_TOKEN);
+    window.location.reload();
   }
 
   private renderAvatar = (account: Account) => {
@@ -59,40 +90,31 @@ export default class Content extends React.Component<Props, State> {
     return (
       <Avatar
         image={image}
-        onClick={this.openDropdown}
+        onClick={this.handleClick}
         size="small"
       />
     );
   }
 
-  private renderDropdown = (account: Account) => {
+  private renderMenu = (account: Account) => {
     return (
-      <Dropdown
-        onClose={this.closeDropdown}
-        open={this.state.isDropdownOpen}
+      <Menu
+        anchorElement={this.state.anchorElement}
+        anchorOrigin={{
+          horizontal: "right",
+          vertical: "top",
+        }}
+        onClose={this.handleClose}
+        open={Boolean(this.state.anchorElement)}
+        transformOrigin={{
+          horizontal: "right",
+          vertical: "top",
+        }}
       >
-        {this.renderProfileButton(account)}
-        {this.renderAccountButton()}
-        <hr />
-        <LogoutButton />
-      </Dropdown>
+        {this.renderProfileMenuItem(account)}
+        {this.renderAccountMenuItem()}
+        {this.renderLogoutMenuItem()}
+      </Menu>
     );
-  }
-
-  private renderProfileButton = (account: Account) => {
-    return (
-      <ButtonLink
-        onClick={this.closeDropdown}
-        to={`profile/${account.profile.id}`}
-      >
-        Profile
-      </ButtonLink>
-    );
-  }
-
-  private openDropdown = () => {
-    this.setState({
-      isDropdownOpen: true,
-    });
   }
 }
