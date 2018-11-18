@@ -3,18 +3,15 @@ import React from "react";
 
 interface Props {
   children?: React.ReactNode;
+  component?: any;
   onClick?: (event: React.MouseEvent<HTMLElement>) => void;
+  [name: string]: any;
 }
 
-const Menu: React.ComponentType<Props> = ({
-  children,
-  onClick,
+const MenuItem: React.ComponentType<Props> = ({
+  ...attributes
 }) => {
-  return (
-    <MaterialMenuItem onClick={onClick}>
-      {children}
-    </MaterialMenuItem>
-  );
+  return <MaterialMenuItem {...attributes} />;
 };
 
-export default Menu;
+export default MenuItem;

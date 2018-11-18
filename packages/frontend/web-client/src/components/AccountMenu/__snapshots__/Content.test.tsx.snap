@@ -12,20 +12,25 @@ exports[`Content component renders profile with avatar matches snapshot 1`] = `
     onClose={[Function]}
     open={false}
   >
-    <ButtonLink
+    <MenuItem$3
+      component={[Function]}
       onClick={[Function]}
       to="profile/profile_id"
     >
       Profile
-    </ButtonLink>
-    <ButtonLink
+    </MenuItem$3>
+    <MenuItem$3
+      component={[Function]}
       onClick={[Function]}
       to="/account"
     >
       Account
-    </ButtonLink>
-    <hr />
-    <LogoutButton />
+    </MenuItem$3>
+    <MenuItem$3
+      onClick={[Function]}
+    >
+      Logout
+    </MenuItem$3>
   </Menu$2>
 </div>
 `;
@@ -41,20 +46,25 @@ exports[`Content component renders profile without avatar matches snapshot 1`] =
     onClose={[Function]}
     open={false}
   >
-    <ButtonLink
+    <MenuItem$3
+      component={[Function]}
       onClick={[Function]}
       to="profile/profile_id"
     >
       Profile
-    </ButtonLink>
-    <ButtonLink
+    </MenuItem$3>
+    <MenuItem$3
+      component={[Function]}
       onClick={[Function]}
       to="/account"
     >
       Account
-    </ButtonLink>
-    <hr />
-    <LogoutButton />
+    </MenuItem$3>
+    <MenuItem$3
+      onClick={[Function]}
+    >
+      Logout
+    </MenuItem$3>
   </Menu$2>
 </div>
 `;

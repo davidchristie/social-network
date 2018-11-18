@@ -1,7 +1,7 @@
-import { Avatar, Menu } from "design-system";
+import { Avatar, Menu, MenuItem } from "design-system";
 import React from "react";
-import ButtonLink from "../ButtonLink";
-import LogoutButton from "../LogoutButton";
+import { Link } from "react-router-dom";
+import { AUTHENTICATION_TOKEN } from "../../constants";
 
 interface Account {
   profile: {
@@ -35,30 +35,39 @@ export default class Content extends React.Component<Props, State> {
     );
   }
 
-  private renderAccountButton = () => {
+  private renderAccountMenuItem = () => {
     return (
-      <ButtonLink
+      <MenuItem
+        component={Link}
         onClick={this.handleClose}
         to="/account"
       >
         Account
-      </ButtonLink>
+      </MenuItem>
     );
   }
 
-  private renderProfileButton = (account: Account) => {
+  private renderLogoutMenuItem = () => {
     return (
-      <ButtonLink
+      <MenuItem onClick={this.handleLogout}>
+        Logout
+      </MenuItem>
+    );
+  }
+
+  private renderProfileMenuItem = (account: Account) => {
+    return (
+      <MenuItem
+        component={Link}
         onClick={this.handleClose}
         to={`profile/${account.profile.id}`}
       >
         Profile
-      </ButtonLink>
+      </MenuItem>
     );
   }
 
   private handleClick = event => {
-    console.log(event.currentTarget);
     this.setState({
       anchorElement: event.currentTarget,
     });
@@ -68,6 +77,11 @@ export default class Content extends React.Component<Props, State> {
     this.setState({
       anchorElement: null,
     });
+  }
+
+  private handleLogout = () => {
+    window.localStorage.removeItem(AUTHENTICATION_TOKEN);
+    window.location.reload();
   }
 
   private renderAvatar = (account: Account) => {
@@ -89,10 +103,9 @@ export default class Content extends React.Component<Props, State> {
         onClose={this.handleClose}
         open={Boolean(this.state.anchorElement)}
       >
-        {this.renderProfileButton(account)}
-        {this.renderAccountButton()}
-        <hr />
-        <LogoutButton />
+        {this.renderProfileMenuItem(account)}
+        {this.renderAccountMenuItem()}
+        {this.renderLogoutMenuItem()}
       </Menu>
     );
   }

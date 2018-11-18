@@ -1,7 +1,8 @@
-import { Avatar, Menu } from "design-system";
+import { Avatar, Menu, MenuItem } from "design-system";
 import { shallow, ShallowWrapper } from "enzyme";
 import React from "react";
 import { describeWithProps } from "test-utilities/react";
+import { AUTHENTICATION_TOKEN } from "../../constants";
 import Content, { Props, State } from "./Content";
 
 const propsWithoutAvatar: Props = {
@@ -63,6 +64,28 @@ describe("Content component", () => {
     it("opens menu", () => {
       const menu = wrapper.find(Menu);
       expect(menu.props().anchorElement).not.toBeNull();
+    });
+
+    describe("when logout is clicked", () => {
+      beforeEach(() => {
+        window.localStorage.setItem(AUTHENTICATION_TOKEN, "test_token");
+        Object.defineProperty(window.location, "reload", {
+          configurable: true,
+        });
+        window.location.reload = jest.fn();
+        wrapper
+          .find(MenuItem)
+          .at(2)
+          .simulate("click");
+      });
+
+      it("removes authentication token from local storage", () => {
+        expect(window.localStorage.getItem(AUTHENTICATION_TOKEN)).toBeNull();
+      });
+
+      it("reloads the page", () => {
+        expect(window.location.reload).toHaveBeenCalledTimes(1);
+      });
     });
 
     describe("when menu is closed", () => {
