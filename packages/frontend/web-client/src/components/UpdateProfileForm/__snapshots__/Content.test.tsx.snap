@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Content component with avatar matches snapshot 1`] = `
+<Section
+  className="UpdateProfileForm"
+>
+  <form
+    onSubmit={[Function]}
+  >
+    <h2>
+      Profile
+    </h2>
+    <Input$2
+      id="update-profile-name"
+      label="Name"
+      name="name"
+      onChange={[Function]}
+      required={true}
+      value="Profile"
+    />
+    <Input$2
+      id="update-profile-avatar-url"
+      label="Avatar URL"
+      name="avatar-url"
+      onChange={[Function]}
+      type="url"
+      value="https://avatar_url.com"
+    />
+    <Button$2
+      type="submit"
+    >
+      Save
+    </Button$2>
+  </form>
+</Section>
+`;
+
+exports[`Content component without avatar matches snapshot 1`] = `
+<Section
+  className="UpdateProfileForm"
+>
+  <form
+    onSubmit={[Function]}
+  >
+    <h2>
+      Profile
+    </h2>
+    <Input$2
+      id="update-profile-name"
+      label="Name"
+      name="name"
+      onChange={[Function]}
+      required={true}
+      value="Profile"
+    />
+    <Input$2
+      id="update-profile-avatar-url"
+      label="Avatar URL"
+      name="avatar-url"
+      onChange={[Function]}
+      type="url"
+      value=""
+    />
+    <Button$2
+      type="submit"
+    >
+      Save
+    </Button$2>
+  </form>
+</Section>
+`;
