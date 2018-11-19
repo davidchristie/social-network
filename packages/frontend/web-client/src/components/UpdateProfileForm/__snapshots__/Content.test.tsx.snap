@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`UpdateProfileForm component with avatar matches snapshot 1`] = `
+exports[`Content component with avatar matches snapshot 1`] = `
 <Section
   className="UpdateProfileForm"
 >
@@ -35,7 +35,7 @@ exports[`UpdateProfileForm component with avatar matches snapshot 1`] = `
 </Section>
 `;
 
-exports[`UpdateProfileForm component without avatar matches snapshot 1`] = `
+exports[`Content component without avatar matches snapshot 1`] = `
 <Section
   className="UpdateProfileForm"
 >

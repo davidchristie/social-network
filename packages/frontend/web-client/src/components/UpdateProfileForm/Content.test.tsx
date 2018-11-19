@@ -21,7 +21,7 @@ const accountWithoutProfileAvatar = {
   },
 };
 
-describe("UpdateProfileForm component", () => {
+describe("Content component", () => {
   const updateProfile = jest.fn() as MutationFn<UpdateProfileData, UpdateProfileVariables>;
 
   describeWithProps<Props>("with avatar", Content, {
