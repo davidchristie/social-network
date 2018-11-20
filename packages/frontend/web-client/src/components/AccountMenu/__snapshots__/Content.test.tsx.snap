@@ -27,7 +27,7 @@ exports[`Content component renders profile with avatar matches snapshot 1`] = `
     <MenuItem$3
       component={[Function]}
       onClick={[Function]}
-      to="profile/profile_id"
+      to="/profile/profile_id"
     >
       Profile
     </MenuItem$3>
@@ -73,7 +73,7 @@ exports[`Content component renders profile without avatar matches snapshot 1`] =
     <MenuItem$3
       component={[Function]}
       onClick={[Function]}
-      to="profile/profile_id"
+      to="/profile/profile_id"
     >
       Profile
     </MenuItem$3>
