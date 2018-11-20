@@ -6,10 +6,16 @@ import { ProfileResolvers } from "../graphqlgen";
 export const Profile: ProfileResolvers.Type = {
   ...ProfileResolvers.defaultResolvers,
 
-  avatar: parent => {
+  avatar: (parent, args, ctx) => {
     throw new Error("Resolver not implemented");
   },
-  posts: parent => {
+  followers: (parent, args, ctx) => {
+    throw new Error("Resolver not implemented");
+  },
+  following: (parent, args, ctx) => {
+    throw new Error("Resolver not implemented");
+  },
+  posts: (parent, args, ctx) => {
     throw new Error("Resolver not implemented");
   }
 };

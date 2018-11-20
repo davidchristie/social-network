@@ -27,6 +27,7 @@
     "acceptance-tests",
     "build",
     "coverage",
+    "dist",
     "jest",
     "node_modules",
     "rollup.ts",

@@ -228,6 +228,16 @@ export interface ClientConstructor<T> {
  * Types
  */
 
+export type ProfileOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "name_ASC"
+  | "name_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC"
+  | "updatedAt_ASC"
+  | "updatedAt_DESC";
+
 export type PostOrderByInput =
   | "createdAt_ASC"
   | "createdAt_DESC"
@@ -262,16 +272,6 @@ export type ImageOrderByInput =
   | "updatedAt_ASC"
   | "updatedAt_DESC";
 
-export type ProfileOrderByInput =
-  | "id_ASC"
-  | "id_DESC"
-  | "name_ASC"
-  | "name_DESC"
-  | "createdAt_ASC"
-  | "createdAt_DESC"
-  | "updatedAt_ASC"
-  | "updatedAt_DESC";
-
 export type MutationType = "CREATED" | "UPDATED" | "DELETED";
 
 export interface ProfileUpdateOneRequiredWithoutAccountInput {
@@ -286,178 +286,9 @@ export type AccountWhereUniqueInput = AtLeastOne<{
   id?: ID_Input;
 }>;
 
-export interface ProfileCreateWithoutPostsInput {
-  account: AccountCreateOneWithoutProfileInput;
-  avatar?: ImageCreateOneInput;
-  name: String;
-}
-
-export interface ImageUpdateInput {
-  url?: String;
-}
-
-export interface ProfileCreateOneWithoutPostsInput {
-  create?: ProfileCreateWithoutPostsInput;
-  connect?: ProfileWhereUniqueInput;
-}
-
 export interface ImageUpsertNestedInput {
   update: ImageUpdateDataInput;
   create: ImageCreateInput;
-}
-
-export interface ImageWhereInput {
-  id?: ID_Input;
-  id_not?: ID_Input;
-  id_in?: ID_Input[] | ID_Input;
-  id_not_in?: ID_Input[] | ID_Input;
-  id_lt?: ID_Input;
-  id_lte?: ID_Input;
-  id_gt?: ID_Input;
-  id_gte?: ID_Input;
-  id_contains?: ID_Input;
-  id_not_contains?: ID_Input;
-  id_starts_with?: ID_Input;
-  id_not_starts_with?: ID_Input;
-  id_ends_with?: ID_Input;
-  id_not_ends_with?: ID_Input;
-  url?: String;
-  url_not?: String;
-  url_in?: String[] | String;
-  url_not_in?: String[] | String;
-  url_lt?: String;
-  url_lte?: String;
-  url_gt?: String;
-  url_gte?: String;
-  url_contains?: String;
-  url_not_contains?: String;
-  url_starts_with?: String;
-  url_not_starts_with?: String;
-  url_ends_with?: String;
-  url_not_ends_with?: String;
-  AND?: ImageWhereInput[] | ImageWhereInput;
-  OR?: ImageWhereInput[] | ImageWhereInput;
-  NOT?: ImageWhereInput[] | ImageWhereInput;
-}
-
-export interface ProfileSubscriptionWhereInput {
-  mutation_in?: MutationType[] | MutationType;
-  updatedFields_contains?: String;
-  updatedFields_contains_every?: String[] | String;
-  updatedFields_contains_some?: String[] | String;
-  node?: ProfileWhereInput;
-  AND?: ProfileSubscriptionWhereInput[] | ProfileSubscriptionWhereInput;
-  OR?: ProfileSubscriptionWhereInput[] | ProfileSubscriptionWhereInput;
-  NOT?: ProfileSubscriptionWhereInput[] | ProfileSubscriptionWhereInput;
-}
-
-export interface AccountCreateInput {
-  email: String;
-  name: String;
-  password: String;
-  profile: ProfileCreateOneWithoutAccountInput;
-}
-
-export interface ImageSubscriptionWhereInput {
-  mutation_in?: MutationType[] | MutationType;
-  updatedFields_contains?: String;
-  updatedFields_contains_every?: String[] | String;
-  updatedFields_contains_some?: String[] | String;
-  node?: ImageWhereInput;
-  AND?: ImageSubscriptionWhereInput[] | ImageSubscriptionWhereInput;
-  OR?: ImageSubscriptionWhereInput[] | ImageSubscriptionWhereInput;
-  NOT?: ImageSubscriptionWhereInput[] | ImageSubscriptionWhereInput;
-}
-
-export interface ProfileCreateOneWithoutAccountInput {
-  create?: ProfileCreateWithoutAccountInput;
-  connect?: ProfileWhereUniqueInput;
-}
-
-export interface ProfileUpdateManyMutationInput {
-  name?: String;
-}
-
-export interface ProfileCreateWithoutAccountInput {
-  avatar?: ImageCreateOneInput;
-  name: String;
-  posts?: PostCreateManyWithoutCreatedByInput;
-}
-
-export interface ProfileCreateInput {
-  account: AccountCreateOneWithoutProfileInput;
-  avatar?: ImageCreateOneInput;
-  name: String;
-  posts?: PostCreateManyWithoutCreatedByInput;
-}
-
-export interface ImageCreateOneInput {
-  create?: ImageCreateInput;
-  connect?: ImageWhereUniqueInput;
-}
-
-export type ImageWhereUniqueInput = AtLeastOne<{
-  id: ID_Input;
-}>;
-
-export interface ImageCreateInput {
-  url: String;
-}
-
-export interface AccountUpsertWithoutProfileInput {
-  update: AccountUpdateWithoutProfileDataInput;
-  create: AccountCreateWithoutProfileInput;
-}
-
-export interface PostCreateManyWithoutCreatedByInput {
-  create?: PostCreateWithoutCreatedByInput[] | PostCreateWithoutCreatedByInput;
-  connect?: PostWhereUniqueInput[] | PostWhereUniqueInput;
-}
-
-export interface AccountUpdateOneRequiredWithoutProfileInput {
-  create?: AccountCreateWithoutProfileInput;
-  update?: AccountUpdateWithoutProfileDataInput;
-  upsert?: AccountUpsertWithoutProfileInput;
-  connect?: AccountWhereUniqueInput;
-}
-
-export interface PostCreateWithoutCreatedByInput {
-  text: String;
-}
-
-export interface ProfileUpdateWithoutPostsDataInput {
-  account?: AccountUpdateOneRequiredWithoutProfileInput;
-  avatar?: ImageUpdateOneInput;
-  name?: String;
-}
-
-export interface AccountUpdateInput {
-  email?: String;
-  name?: String;
-  password?: String;
-  profile?: ProfileUpdateOneRequiredWithoutAccountInput;
-}
-
-export interface PostUpdateInput {
-  createdBy?: ProfileUpdateOneRequiredWithoutPostsInput;
-  text?: String;
-}
-
-export interface PostCreateInput {
-  createdBy: ProfileCreateOneWithoutPostsInput;
-  text: String;
-}
-
-export interface AccountCreateWithoutProfileInput {
-  email: String;
-  name: String;
-  password: String;
-}
-
-export interface ProfileUpdateWithoutAccountDataInput {
-  avatar?: ImageUpdateOneInput;
-  name?: String;
-  posts?: PostUpdateManyWithoutCreatedByInput;
 }
 
 export interface AccountWhereInput {
@@ -523,109 +354,19 @@ export interface AccountWhereInput {
   NOT?: AccountWhereInput[] | AccountWhereInput;
 }
 
-export interface ImageUpdateOneInput {
-  create?: ImageCreateInput;
-  update?: ImageUpdateDataInput;
-  upsert?: ImageUpsertNestedInput;
-  delete?: Boolean;
-  disconnect?: Boolean;
-  connect?: ImageWhereUniqueInput;
-}
-
-export interface PostSubscriptionWhereInput {
-  mutation_in?: MutationType[] | MutationType;
-  updatedFields_contains?: String;
-  updatedFields_contains_every?: String[] | String;
-  updatedFields_contains_some?: String[] | String;
-  node?: PostWhereInput;
-  AND?: PostSubscriptionWhereInput[] | PostSubscriptionWhereInput;
-  OR?: PostSubscriptionWhereInput[] | PostSubscriptionWhereInput;
-  NOT?: PostSubscriptionWhereInput[] | PostSubscriptionWhereInput;
-}
-
-export interface ImageUpdateDataInput {
-  url?: String;
-}
-
-export interface ProfileUpdateInput {
-  account?: AccountUpdateOneRequiredWithoutProfileInput;
-  avatar?: ImageUpdateOneInput;
-  name?: String;
-  posts?: PostUpdateManyWithoutCreatedByInput;
-}
-
-export interface ProfileWhereInput {
-  account?: AccountWhereInput;
-  avatar?: ImageWhereInput;
-  id?: ID_Input;
-  id_not?: ID_Input;
-  id_in?: ID_Input[] | ID_Input;
-  id_not_in?: ID_Input[] | ID_Input;
-  id_lt?: ID_Input;
-  id_lte?: ID_Input;
-  id_gt?: ID_Input;
-  id_gte?: ID_Input;
-  id_contains?: ID_Input;
-  id_not_contains?: ID_Input;
-  id_starts_with?: ID_Input;
-  id_not_starts_with?: ID_Input;
-  id_ends_with?: ID_Input;
-  id_not_ends_with?: ID_Input;
-  name?: String;
-  name_not?: String;
-  name_in?: String[] | String;
-  name_not_in?: String[] | String;
-  name_lt?: String;
-  name_lte?: String;
-  name_gt?: String;
-  name_gte?: String;
-  name_contains?: String;
-  name_not_contains?: String;
-  name_starts_with?: String;
-  name_not_starts_with?: String;
-  name_ends_with?: String;
-  name_not_ends_with?: String;
-  posts_every?: PostWhereInput;
-  posts_some?: PostWhereInput;
-  posts_none?: PostWhereInput;
-  AND?: ProfileWhereInput[] | ProfileWhereInput;
-  OR?: ProfileWhereInput[] | ProfileWhereInput;
-  NOT?: ProfileWhereInput[] | ProfileWhereInput;
-}
-
-export interface ProfileUpsertWithoutPostsInput {
-  update: ProfileUpdateWithoutPostsDataInput;
-  create: ProfileCreateWithoutPostsInput;
-}
-
-export interface PostUpdateManyWithoutCreatedByInput {
-  create?: PostCreateWithoutCreatedByInput[] | PostCreateWithoutCreatedByInput;
-  delete?: PostWhereUniqueInput[] | PostWhereUniqueInput;
-  connect?: PostWhereUniqueInput[] | PostWhereUniqueInput;
-  disconnect?: PostWhereUniqueInput[] | PostWhereUniqueInput;
+export interface ProfileUpdateManyWithoutFollowingInput {
+  create?:
+    | ProfileCreateWithoutFollowingInput[]
+    | ProfileCreateWithoutFollowingInput;
+  delete?: ProfileWhereUniqueInput[] | ProfileWhereUniqueInput;
+  connect?: ProfileWhereUniqueInput[] | ProfileWhereUniqueInput;
+  disconnect?: ProfileWhereUniqueInput[] | ProfileWhereUniqueInput;
   update?:
-    | PostUpdateWithWhereUniqueWithoutCreatedByInput[]
-    | PostUpdateWithWhereUniqueWithoutCreatedByInput;
+    | ProfileUpdateWithWhereUniqueWithoutFollowingInput[]
+    | ProfileUpdateWithWhereUniqueWithoutFollowingInput;
   upsert?:
-    | PostUpsertWithWhereUniqueWithoutCreatedByInput[]
-    | PostUpsertWithWhereUniqueWithoutCreatedByInput;
-}
-
-export type PostWhereUniqueInput = AtLeastOne<{
-  id: ID_Input;
-}>;
-
-export interface PostUpdateWithWhereUniqueWithoutCreatedByInput {
-  where: PostWhereUniqueInput;
-  data: PostUpdateWithoutCreatedByDataInput;
-}
-
-export type ProfileWhereUniqueInput = AtLeastOne<{
-  id: ID_Input;
-}>;
-
-export interface PostUpdateWithoutCreatedByDataInput {
-  text?: String;
+    | ProfileUpsertWithWhereUniqueWithoutFollowingInput[]
+    | ProfileUpsertWithWhereUniqueWithoutFollowingInput;
 }
 
 export interface PostWhereInput {
@@ -671,25 +412,105 @@ export interface PostWhereInput {
   NOT?: PostWhereInput[] | PostWhereInput;
 }
 
-export interface ImageUpdateManyMutationInput {
-  url?: String;
+export interface ProfileUpdateWithWhereUniqueWithoutFollowingInput {
+  where: ProfileWhereUniqueInput;
+  data: ProfileUpdateWithoutFollowingDataInput;
 }
 
-export interface AccountUpdateManyMutationInput {
-  email?: String;
+export interface ProfileWhereInput {
+  account?: AccountWhereInput;
+  avatar?: ImageWhereInput;
+  followers_every?: ProfileWhereInput;
+  followers_some?: ProfileWhereInput;
+  followers_none?: ProfileWhereInput;
+  following_every?: ProfileWhereInput;
+  following_some?: ProfileWhereInput;
+  following_none?: ProfileWhereInput;
+  id?: ID_Input;
+  id_not?: ID_Input;
+  id_in?: ID_Input[] | ID_Input;
+  id_not_in?: ID_Input[] | ID_Input;
+  id_lt?: ID_Input;
+  id_lte?: ID_Input;
+  id_gt?: ID_Input;
+  id_gte?: ID_Input;
+  id_contains?: ID_Input;
+  id_not_contains?: ID_Input;
+  id_starts_with?: ID_Input;
+  id_not_starts_with?: ID_Input;
+  id_ends_with?: ID_Input;
+  id_not_ends_with?: ID_Input;
   name?: String;
-  password?: String;
+  name_not?: String;
+  name_in?: String[] | String;
+  name_not_in?: String[] | String;
+  name_lt?: String;
+  name_lte?: String;
+  name_gt?: String;
+  name_gte?: String;
+  name_contains?: String;
+  name_not_contains?: String;
+  name_starts_with?: String;
+  name_not_starts_with?: String;
+  name_ends_with?: String;
+  name_not_ends_with?: String;
+  posts_every?: PostWhereInput;
+  posts_some?: PostWhereInput;
+  posts_none?: PostWhereInput;
+  AND?: ProfileWhereInput[] | ProfileWhereInput;
+  OR?: ProfileWhereInput[] | ProfileWhereInput;
+  NOT?: ProfileWhereInput[] | ProfileWhereInput;
 }
 
-export interface ProfileUpsertWithoutAccountInput {
-  update: ProfileUpdateWithoutAccountDataInput;
-  create: ProfileCreateWithoutAccountInput;
+export interface ProfileCreateWithoutFollowingInput {
+  account: AccountCreateOneWithoutProfileInput;
+  avatar?: ImageCreateOneInput;
+  followers?: ProfileCreateManyWithoutFollowingInput;
+  name: String;
+  posts?: PostCreateManyWithoutCreatedByInput;
 }
 
-export interface PostUpsertWithWhereUniqueWithoutCreatedByInput {
-  where: PostWhereUniqueInput;
-  update: PostUpdateWithoutCreatedByDataInput;
-  create: PostCreateWithoutCreatedByInput;
+export interface ProfileUpdateWithoutFollowersDataInput {
+  account?: AccountUpdateOneRequiredWithoutProfileInput;
+  avatar?: ImageUpdateOneInput;
+  following?: ProfileUpdateManyWithoutFollowersInput;
+  name?: String;
+  posts?: PostUpdateManyWithoutCreatedByInput;
+}
+
+export interface AccountCreateOneWithoutProfileInput {
+  create?: AccountCreateWithoutProfileInput;
+  connect?: AccountWhereUniqueInput;
+}
+
+export interface ProfileUpdateWithoutFollowingDataInput {
+  account?: AccountUpdateOneRequiredWithoutProfileInput;
+  avatar?: ImageUpdateOneInput;
+  followers?: ProfileUpdateManyWithoutFollowingInput;
+  name?: String;
+  posts?: PostUpdateManyWithoutCreatedByInput;
+}
+
+export interface AccountCreateWithoutProfileInput {
+  email: String;
+  name: String;
+  password: String;
+}
+
+export interface PostSubscriptionWhereInput {
+  mutation_in?: MutationType[] | MutationType;
+  updatedFields_contains?: String;
+  updatedFields_contains_every?: String[] | String;
+  updatedFields_contains_some?: String[] | String;
+  node?: PostWhereInput;
+  AND?: PostSubscriptionWhereInput[] | PostSubscriptionWhereInput;
+  OR?: PostSubscriptionWhereInput[] | PostSubscriptionWhereInput;
+  NOT?: PostSubscriptionWhereInput[] | PostSubscriptionWhereInput;
+}
+
+export interface PostCreateManyWithoutCreatedByInput {
+  create?: PostCreateWithoutCreatedByInput[] | PostCreateWithoutCreatedByInput;
+  connect?: PostWhereUniqueInput[] | PostWhereUniqueInput;
 }
 
 export interface AccountSubscriptionWhereInput {
@@ -703,9 +524,294 @@ export interface AccountSubscriptionWhereInput {
   NOT?: AccountSubscriptionWhereInput[] | AccountSubscriptionWhereInput;
 }
 
-export interface AccountCreateOneWithoutProfileInput {
+export interface PostCreateWithoutCreatedByInput {
+  text: String;
+}
+
+export interface ProfileUpdateInput {
+  account?: AccountUpdateOneRequiredWithoutProfileInput;
+  avatar?: ImageUpdateOneInput;
+  followers?: ProfileUpdateManyWithoutFollowingInput;
+  following?: ProfileUpdateManyWithoutFollowersInput;
+  name?: String;
+  posts?: PostUpdateManyWithoutCreatedByInput;
+}
+
+export interface ProfileCreateManyWithoutFollowersInput {
+  create?:
+    | ProfileCreateWithoutFollowersInput[]
+    | ProfileCreateWithoutFollowersInput;
+  connect?: ProfileWhereUniqueInput[] | ProfileWhereUniqueInput;
+}
+
+export interface ProfileCreateInput {
+  account: AccountCreateOneWithoutProfileInput;
+  avatar?: ImageCreateOneInput;
+  followers?: ProfileCreateManyWithoutFollowingInput;
+  following?: ProfileCreateManyWithoutFollowersInput;
+  name: String;
+  posts?: PostCreateManyWithoutCreatedByInput;
+}
+
+export interface ProfileCreateWithoutFollowersInput {
+  account: AccountCreateOneWithoutProfileInput;
+  avatar?: ImageCreateOneInput;
+  following?: ProfileCreateManyWithoutFollowersInput;
+  name: String;
+  posts?: PostCreateManyWithoutCreatedByInput;
+}
+
+export interface ProfileUpsertWithoutPostsInput {
+  update: ProfileUpdateWithoutPostsDataInput;
+  create: ProfileCreateWithoutPostsInput;
+}
+
+export interface AccountUpdateInput {
+  email?: String;
+  name?: String;
+  password?: String;
+  profile?: ProfileUpdateOneRequiredWithoutAccountInput;
+}
+
+export type PostWhereUniqueInput = AtLeastOne<{
+  id: ID_Input;
+}>;
+
+export interface ImageUpdateInput {
+  url?: String;
+}
+
+export interface PostUpdateInput {
+  createdBy?: ProfileUpdateOneRequiredWithoutPostsInput;
+  text?: String;
+}
+
+export interface ProfileUpdateWithoutAccountDataInput {
+  avatar?: ImageUpdateOneInput;
+  followers?: ProfileUpdateManyWithoutFollowingInput;
+  following?: ProfileUpdateManyWithoutFollowersInput;
+  name?: String;
+  posts?: PostUpdateManyWithoutCreatedByInput;
+}
+
+export type ProfileWhereUniqueInput = AtLeastOne<{
+  id: ID_Input;
+}>;
+
+export interface ImageUpdateOneInput {
+  create?: ImageCreateInput;
+  update?: ImageUpdateDataInput;
+  upsert?: ImageUpsertNestedInput;
+  delete?: Boolean;
+  disconnect?: Boolean;
+  connect?: ImageWhereUniqueInput;
+}
+
+export interface PostCreateInput {
+  createdBy: ProfileCreateOneWithoutPostsInput;
+  text: String;
+}
+
+export interface ImageUpdateDataInput {
+  url?: String;
+}
+
+export interface ProfileCreateOneWithoutAccountInput {
+  create?: ProfileCreateWithoutAccountInput;
+  connect?: ProfileWhereUniqueInput;
+}
+
+export interface ImageWhereInput {
+  id?: ID_Input;
+  id_not?: ID_Input;
+  id_in?: ID_Input[] | ID_Input;
+  id_not_in?: ID_Input[] | ID_Input;
+  id_lt?: ID_Input;
+  id_lte?: ID_Input;
+  id_gt?: ID_Input;
+  id_gte?: ID_Input;
+  id_contains?: ID_Input;
+  id_not_contains?: ID_Input;
+  id_starts_with?: ID_Input;
+  id_not_starts_with?: ID_Input;
+  id_ends_with?: ID_Input;
+  id_not_ends_with?: ID_Input;
+  url?: String;
+  url_not?: String;
+  url_in?: String[] | String;
+  url_not_in?: String[] | String;
+  url_lt?: String;
+  url_lte?: String;
+  url_gt?: String;
+  url_gte?: String;
+  url_contains?: String;
+  url_not_contains?: String;
+  url_starts_with?: String;
+  url_not_starts_with?: String;
+  url_ends_with?: String;
+  url_not_ends_with?: String;
+  AND?: ImageWhereInput[] | ImageWhereInput;
+  OR?: ImageWhereInput[] | ImageWhereInput;
+  NOT?: ImageWhereInput[] | ImageWhereInput;
+}
+
+export interface ImageCreateOneInput {
+  create?: ImageCreateInput;
+  connect?: ImageWhereUniqueInput;
+}
+
+export interface AccountUpdateManyMutationInput {
+  email?: String;
+  name?: String;
+  password?: String;
+}
+
+export interface ProfileCreateManyWithoutFollowingInput {
+  create?:
+    | ProfileCreateWithoutFollowingInput[]
+    | ProfileCreateWithoutFollowingInput;
+  connect?: ProfileWhereUniqueInput[] | ProfileWhereUniqueInput;
+}
+
+export interface ProfileUpsertWithoutAccountInput {
+  update: ProfileUpdateWithoutAccountDataInput;
+  create: ProfileCreateWithoutAccountInput;
+}
+
+export interface ImageSubscriptionWhereInput {
+  mutation_in?: MutationType[] | MutationType;
+  updatedFields_contains?: String;
+  updatedFields_contains_every?: String[] | String;
+  updatedFields_contains_some?: String[] | String;
+  node?: ImageWhereInput;
+  AND?: ImageSubscriptionWhereInput[] | ImageSubscriptionWhereInput;
+  OR?: ImageSubscriptionWhereInput[] | ImageSubscriptionWhereInput;
+  NOT?: ImageSubscriptionWhereInput[] | ImageSubscriptionWhereInput;
+}
+
+export interface ProfileUpsertWithWhereUniqueWithoutFollowersInput {
+  where: ProfileWhereUniqueInput;
+  update: ProfileUpdateWithoutFollowersDataInput;
+  create: ProfileCreateWithoutFollowersInput;
+}
+
+export type ImageWhereUniqueInput = AtLeastOne<{
+  id: ID_Input;
+}>;
+
+export interface AccountUpdateOneRequiredWithoutProfileInput {
   create?: AccountCreateWithoutProfileInput;
+  update?: AccountUpdateWithoutProfileDataInput;
+  upsert?: AccountUpsertWithoutProfileInput;
   connect?: AccountWhereUniqueInput;
+}
+
+export interface ProfileUpdateWithoutPostsDataInput {
+  account?: AccountUpdateOneRequiredWithoutProfileInput;
+  avatar?: ImageUpdateOneInput;
+  followers?: ProfileUpdateManyWithoutFollowingInput;
+  following?: ProfileUpdateManyWithoutFollowersInput;
+  name?: String;
+}
+
+export interface AccountUpdateWithoutProfileDataInput {
+  email?: String;
+  name?: String;
+  password?: String;
+}
+
+export interface ProfileCreateWithoutPostsInput {
+  account: AccountCreateOneWithoutProfileInput;
+  avatar?: ImageCreateOneInput;
+  followers?: ProfileCreateManyWithoutFollowingInput;
+  following?: ProfileCreateManyWithoutFollowersInput;
+  name: String;
+}
+
+export interface AccountUpsertWithoutProfileInput {
+  update: AccountUpdateWithoutProfileDataInput;
+  create: AccountCreateWithoutProfileInput;
+}
+
+export interface ImageUpdateManyMutationInput {
+  url?: String;
+}
+
+export interface PostUpdateManyWithoutCreatedByInput {
+  create?: PostCreateWithoutCreatedByInput[] | PostCreateWithoutCreatedByInput;
+  delete?: PostWhereUniqueInput[] | PostWhereUniqueInput;
+  connect?: PostWhereUniqueInput[] | PostWhereUniqueInput;
+  disconnect?: PostWhereUniqueInput[] | PostWhereUniqueInput;
+  update?:
+    | PostUpdateWithWhereUniqueWithoutCreatedByInput[]
+    | PostUpdateWithWhereUniqueWithoutCreatedByInput;
+  upsert?:
+    | PostUpsertWithWhereUniqueWithoutCreatedByInput[]
+    | PostUpsertWithWhereUniqueWithoutCreatedByInput;
+}
+
+export interface ProfileCreateWithoutAccountInput {
+  avatar?: ImageCreateOneInput;
+  followers?: ProfileCreateManyWithoutFollowingInput;
+  following?: ProfileCreateManyWithoutFollowersInput;
+  name: String;
+  posts?: PostCreateManyWithoutCreatedByInput;
+}
+
+export interface PostUpdateWithWhereUniqueWithoutCreatedByInput {
+  where: PostWhereUniqueInput;
+  data: PostUpdateWithoutCreatedByDataInput;
+}
+
+export interface ProfileSubscriptionWhereInput {
+  mutation_in?: MutationType[] | MutationType;
+  updatedFields_contains?: String;
+  updatedFields_contains_every?: String[] | String;
+  updatedFields_contains_some?: String[] | String;
+  node?: ProfileWhereInput;
+  AND?: ProfileSubscriptionWhereInput[] | ProfileSubscriptionWhereInput;
+  OR?: ProfileSubscriptionWhereInput[] | ProfileSubscriptionWhereInput;
+  NOT?: ProfileSubscriptionWhereInput[] | ProfileSubscriptionWhereInput;
+}
+
+export interface PostUpdateWithoutCreatedByDataInput {
+  text?: String;
+}
+
+export interface PostUpdateManyMutationInput {
+  text?: String;
+}
+
+export interface ProfileUpdateWithWhereUniqueWithoutFollowersInput {
+  where: ProfileWhereUniqueInput;
+  data: ProfileUpdateWithoutFollowersDataInput;
+}
+
+export interface ProfileUpdateManyWithoutFollowersInput {
+  create?:
+    | ProfileCreateWithoutFollowersInput[]
+    | ProfileCreateWithoutFollowersInput;
+  delete?: ProfileWhereUniqueInput[] | ProfileWhereUniqueInput;
+  connect?: ProfileWhereUniqueInput[] | ProfileWhereUniqueInput;
+  disconnect?: ProfileWhereUniqueInput[] | ProfileWhereUniqueInput;
+  update?:
+    | ProfileUpdateWithWhereUniqueWithoutFollowersInput[]
+    | ProfileUpdateWithWhereUniqueWithoutFollowersInput;
+  upsert?:
+    | ProfileUpsertWithWhereUniqueWithoutFollowersInput[]
+    | ProfileUpsertWithWhereUniqueWithoutFollowersInput;
+}
+
+export interface ProfileUpsertWithWhereUniqueWithoutFollowingInput {
+  where: ProfileWhereUniqueInput;
+  update: ProfileUpdateWithoutFollowingDataInput;
+  create: ProfileCreateWithoutFollowingInput;
+}
+
+export interface PostUpsertWithWhereUniqueWithoutCreatedByInput {
+  where: PostWhereUniqueInput;
+  update: PostUpdateWithoutCreatedByDataInput;
+  create: PostCreateWithoutCreatedByInput;
 }
 
 export interface ProfileUpdateOneRequiredWithoutPostsInput {
@@ -715,14 +821,24 @@ export interface ProfileUpdateOneRequiredWithoutPostsInput {
   connect?: ProfileWhereUniqueInput;
 }
 
-export interface AccountUpdateWithoutProfileDataInput {
-  email?: String;
+export interface ProfileUpdateManyMutationInput {
   name?: String;
-  password?: String;
 }
 
-export interface PostUpdateManyMutationInput {
-  text?: String;
+export interface ImageCreateInput {
+  url: String;
+}
+
+export interface AccountCreateInput {
+  email: String;
+  name: String;
+  password: String;
+  profile: ProfileCreateOneWithoutAccountInput;
+}
+
+export interface ProfileCreateOneWithoutPostsInput {
+  create?: ProfileCreateWithoutPostsInput;
+  connect?: ProfileWhereUniqueInput;
 }
 
 export interface NodeNode {
@@ -748,47 +864,62 @@ export interface ProfilePreviousValuesSubscription
   name: () => Promise<AsyncIterator<String>>;
 }
 
-export interface Profile {
+export interface Account {
+  email: String;
   id: ID_Output;
   name: String;
+  password: String;
 }
 
-export interface ProfilePromise extends Promise<Profile>, Fragmentable {
-  account: <T = AccountPromise>() => T;
-  avatar: <T = ImagePromise>() => T;
+export interface AccountPromise extends Promise<Account>, Fragmentable {
+  email: () => Promise<String>;
   id: () => Promise<ID_Output>;
   name: () => Promise<String>;
-  posts: <T = FragmentableArray<Post>>(
-    args?: {
-      where?: PostWhereInput;
-      orderBy?: PostOrderByInput;
-      skip?: Int;
-      after?: String;
-      before?: String;
-      first?: Int;
-      last?: Int;
-    }
-  ) => T;
+  password: () => Promise<String>;
+  profile: <T = ProfilePromise>() => T;
 }
 
-export interface ProfileSubscription
-  extends Promise<AsyncIterator<Profile>>,
+export interface AccountSubscription
+  extends Promise<AsyncIterator<Account>>,
     Fragmentable {
-  account: <T = AccountSubscription>() => T;
-  avatar: <T = ImageSubscription>() => T;
+  email: () => Promise<AsyncIterator<String>>;
   id: () => Promise<AsyncIterator<ID_Output>>;
   name: () => Promise<AsyncIterator<String>>;
-  posts: <T = Promise<AsyncIterator<PostSubscription>>>(
-    args?: {
-      where?: PostWhereInput;
-      orderBy?: PostOrderByInput;
-      skip?: Int;
-      after?: String;
-      before?: String;
-      first?: Int;
-      last?: Int;
-    }
-  ) => T;
+  password: () => Promise<AsyncIterator<String>>;
+  profile: <T = ProfileSubscription>() => T;
+}
+
+export interface Image {
+  id: ID_Output;
+  url: String;
+}
+
+export interface ImagePromise extends Promise<Image>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  url: () => Promise<String>;
+}
+
+export interface ImageSubscription
+  extends Promise<AsyncIterator<Image>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  url: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregateAccount {
+  count: Int;
+}
+
+export interface AggregateAccountPromise
+  extends Promise<AggregateAccount>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateAccountSubscription
+  extends Promise<AsyncIterator<AggregateAccount>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
 }
 
 export interface Post {
@@ -811,247 +942,6 @@ export interface PostSubscription
   createdBy: <T = ProfileSubscription>() => T;
   id: () => Promise<AsyncIterator<ID_Output>>;
   text: () => Promise<AsyncIterator<String>>;
-}
-
-export interface AggregateAccount {
-  count: Int;
-}
-
-export interface AggregateAccountPromise
-  extends Promise<AggregateAccount>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregateAccountSubscription
-  extends Promise<AsyncIterator<AggregateAccount>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface AccountEdge {
-  cursor: String;
-}
-
-export interface AccountEdgePromise extends Promise<AccountEdge>, Fragmentable {
-  node: <T = AccountPromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface AccountEdgeSubscription
-  extends Promise<AsyncIterator<AccountEdge>>,
-    Fragmentable {
-  node: <T = AccountSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface BatchPayload {
-  count: Long;
-}
-
-export interface BatchPayloadPromise
-  extends Promise<BatchPayload>,
-    Fragmentable {
-  count: () => Promise<Long>;
-}
-
-export interface BatchPayloadSubscription
-  extends Promise<AsyncIterator<BatchPayload>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Long>>;
-}
-
-export interface AggregateProfile {
-  count: Int;
-}
-
-export interface AggregateProfilePromise
-  extends Promise<AggregateProfile>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregateProfileSubscription
-  extends Promise<AsyncIterator<AggregateProfile>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface PostPreviousValues {
-  createdAt: DateTimeOutput;
-  id: ID_Output;
-  text: String;
-}
-
-export interface PostPreviousValuesPromise
-  extends Promise<PostPreviousValues>,
-    Fragmentable {
-  createdAt: () => Promise<DateTimeOutput>;
-  id: () => Promise<ID_Output>;
-  text: () => Promise<String>;
-}
-
-export interface PostPreviousValuesSubscription
-  extends Promise<AsyncIterator<PostPreviousValues>>,
-    Fragmentable {
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  text: () => Promise<AsyncIterator<String>>;
-}
-
-export interface ProfileConnection {}
-
-export interface ProfileConnectionPromise
-  extends Promise<ProfileConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<ProfileEdge>>() => T;
-  aggregate: <T = AggregateProfilePromise>() => T;
-}
-
-export interface ProfileConnectionSubscription
-  extends Promise<AsyncIterator<ProfileConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<ProfileEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateProfileSubscription>() => T;
-}
-
-export interface PageInfo {
-  hasNextPage: Boolean;
-  hasPreviousPage: Boolean;
-  startCursor?: String;
-  endCursor?: String;
-}
-
-export interface PageInfoPromise extends Promise<PageInfo>, Fragmentable {
-  hasNextPage: () => Promise<Boolean>;
-  hasPreviousPage: () => Promise<Boolean>;
-  startCursor: () => Promise<String>;
-  endCursor: () => Promise<String>;
-}
-
-export interface PageInfoSubscription
-  extends Promise<AsyncIterator<PageInfo>>,
-    Fragmentable {
-  hasNextPage: () => Promise<AsyncIterator<Boolean>>;
-  hasPreviousPage: () => Promise<AsyncIterator<Boolean>>;
-  startCursor: () => Promise<AsyncIterator<String>>;
-  endCursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface AggregatePost {
-  count: Int;
-}
-
-export interface AggregatePostPromise
-  extends Promise<AggregatePost>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregatePostSubscription
-  extends Promise<AsyncIterator<AggregatePost>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface AccountConnection {}
-
-export interface AccountConnectionPromise
-  extends Promise<AccountConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<AccountEdge>>() => T;
-  aggregate: <T = AggregateAccountPromise>() => T;
-}
-
-export interface AccountConnectionSubscription
-  extends Promise<AsyncIterator<AccountConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<AccountEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateAccountSubscription>() => T;
-}
-
-export interface PostConnection {}
-
-export interface PostConnectionPromise
-  extends Promise<PostConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<PostEdge>>() => T;
-  aggregate: <T = AggregatePostPromise>() => T;
-}
-
-export interface PostConnectionSubscription
-  extends Promise<AsyncIterator<PostConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<PostEdgeSubscription>>>() => T;
-  aggregate: <T = AggregatePostSubscription>() => T;
-}
-
-export interface PostSubscriptionPayload {
-  mutation: MutationType;
-  updatedFields?: String[];
-}
-
-export interface PostSubscriptionPayloadPromise
-  extends Promise<PostSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = PostPromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = PostPreviousValuesPromise>() => T;
-}
-
-export interface PostSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<PostSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = PostSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = PostPreviousValuesSubscription>() => T;
-}
-
-export interface ImageEdge {
-  cursor: String;
-}
-
-export interface ImageEdgePromise extends Promise<ImageEdge>, Fragmentable {
-  node: <T = ImagePromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface ImageEdgeSubscription
-  extends Promise<AsyncIterator<ImageEdge>>,
-    Fragmentable {
-  node: <T = ImageSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface AccountSubscriptionPayload {
-  mutation: MutationType;
-  updatedFields?: String[];
-}
-
-export interface AccountSubscriptionPayloadPromise
-  extends Promise<AccountSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = AccountPromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = AccountPreviousValuesPromise>() => T;
-}
-
-export interface AccountSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<AccountSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = AccountSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = AccountPreviousValuesSubscription>() => T;
 }
 
 export interface ProfileSubscriptionPayload {
@@ -1077,29 +967,291 @@ export interface ProfileSubscriptionPayloadSubscription
   previousValues: <T = ProfilePreviousValuesSubscription>() => T;
 }
 
-export interface Account {
-  email: String;
+export interface AccountConnection {}
+
+export interface AccountConnectionPromise
+  extends Promise<AccountConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<AccountEdge>>() => T;
+  aggregate: <T = AggregateAccountPromise>() => T;
+}
+
+export interface AccountConnectionSubscription
+  extends Promise<AsyncIterator<AccountConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<AccountEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateAccountSubscription>() => T;
+}
+
+export interface BatchPayload {
+  count: Long;
+}
+
+export interface BatchPayloadPromise
+  extends Promise<BatchPayload>,
+    Fragmentable {
+  count: () => Promise<Long>;
+}
+
+export interface BatchPayloadSubscription
+  extends Promise<AsyncIterator<BatchPayload>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Long>>;
+}
+
+export interface AccountEdge {
+  cursor: String;
+}
+
+export interface AccountEdgePromise extends Promise<AccountEdge>, Fragmentable {
+  node: <T = AccountPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface AccountEdgeSubscription
+  extends Promise<AsyncIterator<AccountEdge>>,
+    Fragmentable {
+  node: <T = AccountSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface Profile {
   id: ID_Output;
   name: String;
-  password: String;
 }
 
-export interface AccountPromise extends Promise<Account>, Fragmentable {
-  email: () => Promise<String>;
+export interface ProfilePromise extends Promise<Profile>, Fragmentable {
+  account: <T = AccountPromise>() => T;
+  avatar: <T = ImagePromise>() => T;
+  followers: <T = FragmentableArray<Profile>>(
+    args?: {
+      where?: ProfileWhereInput;
+      orderBy?: ProfileOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+  following: <T = FragmentableArray<Profile>>(
+    args?: {
+      where?: ProfileWhereInput;
+      orderBy?: ProfileOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
   id: () => Promise<ID_Output>;
   name: () => Promise<String>;
-  password: () => Promise<String>;
-  profile: <T = ProfilePromise>() => T;
+  posts: <T = FragmentableArray<Post>>(
+    args?: {
+      where?: PostWhereInput;
+      orderBy?: PostOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
 }
 
-export interface AccountSubscription
-  extends Promise<AsyncIterator<Account>>,
+export interface ProfileSubscription
+  extends Promise<AsyncIterator<Profile>>,
     Fragmentable {
-  email: () => Promise<AsyncIterator<String>>;
+  account: <T = AccountSubscription>() => T;
+  avatar: <T = ImageSubscription>() => T;
+  followers: <T = Promise<AsyncIterator<ProfileSubscription>>>(
+    args?: {
+      where?: ProfileWhereInput;
+      orderBy?: ProfileOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+  following: <T = Promise<AsyncIterator<ProfileSubscription>>>(
+    args?: {
+      where?: ProfileWhereInput;
+      orderBy?: ProfileOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
   id: () => Promise<AsyncIterator<ID_Output>>;
   name: () => Promise<AsyncIterator<String>>;
-  password: () => Promise<AsyncIterator<String>>;
-  profile: <T = ProfileSubscription>() => T;
+  posts: <T = Promise<AsyncIterator<PostSubscription>>>(
+    args?: {
+      where?: PostWhereInput;
+      orderBy?: PostOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+}
+
+export interface ProfileEdge {
+  cursor: String;
+}
+
+export interface ProfileEdgePromise extends Promise<ProfileEdge>, Fragmentable {
+  node: <T = ProfilePromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface ProfileEdgeSubscription
+  extends Promise<AsyncIterator<ProfileEdge>>,
+    Fragmentable {
+  node: <T = ProfileSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface PostPreviousValues {
+  createdAt: DateTimeOutput;
+  id: ID_Output;
+  text: String;
+}
+
+export interface PostPreviousValuesPromise
+  extends Promise<PostPreviousValues>,
+    Fragmentable {
+  createdAt: () => Promise<DateTimeOutput>;
+  id: () => Promise<ID_Output>;
+  text: () => Promise<String>;
+}
+
+export interface PostPreviousValuesSubscription
+  extends Promise<AsyncIterator<PostPreviousValues>>,
+    Fragmentable {
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  text: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregatePost {
+  count: Int;
+}
+
+export interface AggregatePostPromise
+  extends Promise<AggregatePost>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregatePostSubscription
+  extends Promise<AsyncIterator<AggregatePost>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface PostSubscriptionPayload {
+  mutation: MutationType;
+  updatedFields?: String[];
+}
+
+export interface PostSubscriptionPayloadPromise
+  extends Promise<PostSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = PostPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = PostPreviousValuesPromise>() => T;
+}
+
+export interface PostSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<PostSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = PostSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = PostPreviousValuesSubscription>() => T;
+}
+
+export interface PostConnection {}
+
+export interface PostConnectionPromise
+  extends Promise<PostConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<PostEdge>>() => T;
+  aggregate: <T = AggregatePostPromise>() => T;
+}
+
+export interface PostConnectionSubscription
+  extends Promise<AsyncIterator<PostConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<PostEdgeSubscription>>>() => T;
+  aggregate: <T = AggregatePostSubscription>() => T;
+}
+
+export interface AccountSubscriptionPayload {
+  mutation: MutationType;
+  updatedFields?: String[];
+}
+
+export interface AccountSubscriptionPayloadPromise
+  extends Promise<AccountSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = AccountPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = AccountPreviousValuesPromise>() => T;
+}
+
+export interface AccountSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<AccountSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = AccountSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = AccountPreviousValuesSubscription>() => T;
+}
+
+export interface ImageEdge {
+  cursor: String;
+}
+
+export interface ImageEdgePromise extends Promise<ImageEdge>, Fragmentable {
+  node: <T = ImagePromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface ImageEdgeSubscription
+  extends Promise<AsyncIterator<ImageEdge>>,
+    Fragmentable {
+  node: <T = ImageSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregateProfile {
+  count: Int;
+}
+
+export interface AggregateProfilePromise
+  extends Promise<AggregateProfile>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateProfileSubscription
+  extends Promise<AsyncIterator<AggregateProfile>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
 }
 
 export interface ImagePreviousValues {
@@ -1144,21 +1296,27 @@ export interface ImageSubscriptionPayloadSubscription
   previousValues: <T = ImagePreviousValuesSubscription>() => T;
 }
 
-export interface Image {
-  id: ID_Output;
-  url: String;
+export interface PageInfo {
+  hasNextPage: Boolean;
+  hasPreviousPage: Boolean;
+  startCursor?: String;
+  endCursor?: String;
 }
 
-export interface ImagePromise extends Promise<Image>, Fragmentable {
-  id: () => Promise<ID_Output>;
-  url: () => Promise<String>;
+export interface PageInfoPromise extends Promise<PageInfo>, Fragmentable {
+  hasNextPage: () => Promise<Boolean>;
+  hasPreviousPage: () => Promise<Boolean>;
+  startCursor: () => Promise<String>;
+  endCursor: () => Promise<String>;
 }
 
-export interface ImageSubscription
-  extends Promise<AsyncIterator<Image>>,
+export interface PageInfoSubscription
+  extends Promise<AsyncIterator<PageInfo>>,
     Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  url: () => Promise<AsyncIterator<String>>;
+  hasNextPage: () => Promise<AsyncIterator<Boolean>>;
+  hasPreviousPage: () => Promise<AsyncIterator<Boolean>>;
+  startCursor: () => Promise<AsyncIterator<String>>;
+  endCursor: () => Promise<AsyncIterator<String>>;
 }
 
 export interface AccountPreviousValues {
@@ -1186,36 +1344,22 @@ export interface AccountPreviousValuesSubscription
   password: () => Promise<AsyncIterator<String>>;
 }
 
-export interface PostEdge {
-  cursor: String;
-}
+export interface ProfileConnection {}
 
-export interface PostEdgePromise extends Promise<PostEdge>, Fragmentable {
-  node: <T = PostPromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface PostEdgeSubscription
-  extends Promise<AsyncIterator<PostEdge>>,
+export interface ProfileConnectionPromise
+  extends Promise<ProfileConnection>,
     Fragmentable {
-  node: <T = PostSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<ProfileEdge>>() => T;
+  aggregate: <T = AggregateProfilePromise>() => T;
 }
 
-export interface ProfileEdge {
-  cursor: String;
-}
-
-export interface ProfileEdgePromise extends Promise<ProfileEdge>, Fragmentable {
-  node: <T = ProfilePromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface ProfileEdgeSubscription
-  extends Promise<AsyncIterator<ProfileEdge>>,
+export interface ProfileConnectionSubscription
+  extends Promise<AsyncIterator<ProfileConnection>>,
     Fragmentable {
-  node: <T = ProfileSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<ProfileEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateProfileSubscription>() => T;
 }
 
 export interface ImageConnection {}
@@ -1252,6 +1396,22 @@ export interface AggregateImageSubscription
   count: () => Promise<AsyncIterator<Int>>;
 }
 
+export interface PostEdge {
+  cursor: String;
+}
+
+export interface PostEdgePromise extends Promise<PostEdge>, Fragmentable {
+  node: <T = PostPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface PostEdgeSubscription
+  extends Promise<AsyncIterator<PostEdge>>,
+    Fragmentable {
+  node: <T = PostSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
 /*
 DateTime scalar input type, allowing Date
 */
@@ -1265,14 +1425,14 @@ export type DateTimeOutput = string;
 export type Long = string;
 
 /*
-The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.
-*/
-export type String = string;
-
-/*
 The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1. 
 */
 export type Int = number;
+
+/*
+The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.
+*/
+export type String = string;
 
 /*
 The `Boolean` scalar type represents `true` or `false`.
