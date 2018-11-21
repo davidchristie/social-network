@@ -38,6 +38,7 @@ type Mutation {
   followProfile(id: ID!): Profile!
   login(email: String!, password: String!): LoginPayload!
   signup(email: String!, name: String!, password: String!): LoginPayload!
+  unfollowProfile(id: ID!): Profile!
   updateAccount(data: AccountUpdateInput): Account!
   updatePassword(data: PasswordUpdateInput): Account!
   updateProfile(data: ProfileUpdateInput!): Profile!

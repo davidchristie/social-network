@@ -20,6 +20,9 @@ export const Mutation: MutationResolvers.Type = {
   signup: (parent, args, ctx) => {
     throw new Error("Resolver not implemented");
   },
+  unfollowProfile: (parent, args, ctx) => {
+    throw new Error("Resolver not implemented");
+  },
   updateAccount: (parent, args, ctx) => {
     throw new Error("Resolver not implemented");
   },

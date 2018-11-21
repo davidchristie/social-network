@@ -722,6 +722,10 @@ export namespace MutationResolvers {
     password: string;
   }
 
+  export interface ArgsUnfollowProfile {
+    id: string;
+  }
+
   export interface ArgsUpdateAccount {
     data: AccountUpdateInput | null;
   }
@@ -768,6 +772,13 @@ export namespace MutationResolvers {
     ctx: Context,
     info: GraphQLResolveInfo
   ) => LoginPayload | Promise<LoginPayload>;
+
+  export type UnfollowProfileResolver = (
+    parent: undefined,
+    args: ArgsUnfollowProfile,
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => Profile | Promise<Profile>;
 
   export type UpdateAccountResolver = (
     parent: undefined,
@@ -825,6 +836,13 @@ export namespace MutationResolvers {
       ctx: Context,
       info: GraphQLResolveInfo
     ) => LoginPayload | Promise<LoginPayload>;
+
+    unfollowProfile: (
+      parent: undefined,
+      args: ArgsUnfollowProfile,
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => Profile | Promise<Profile>;
 
     updateAccount: (
       parent: undefined,
