@@ -27,8 +27,23 @@ const Content: React.StatelessComponent<Props> = ({
     return followed.id === profileId;
   });
   return isFollowing
-    ? <Button onClick={() => unfollowProfile()}>Unfollow</Button>
-    : <Button onClick={() => followProfile()}>Follow</Button>;
+    ? (
+      <Button
+        onClick={() => unfollowProfile()}
+        variant="contained"
+      >
+        Unfollow
+      </Button>
+    )
+    : (
+      <Button
+        onClick={() => followProfile()}
+        style="primary"
+        variant="contained"
+      >
+        Follow
+      </Button>
+    );
 };
 
 export default Content;
