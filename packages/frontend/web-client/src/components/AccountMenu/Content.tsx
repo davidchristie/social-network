@@ -60,7 +60,7 @@ export default class Content extends React.Component<Props, State> {
       <MenuItem
         component={Link}
         onClick={this.handleClose}
-        to={`profile/${account.profile.id}`}
+        to={`/profile/${account.profile.id}`}
       >
         Profile
       </MenuItem>

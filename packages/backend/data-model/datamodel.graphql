@@ -21,6 +21,8 @@ type Post {
 type Profile {
   account: Account! @relation(name: "AccountProfile")
   avatar: Image @relation(name: "ProfileAvatar")
+  followers: [Profile!]! @relation(name: "Following")
+  following: [Profile!]! @relation(name: "Following")
   id: ID! @unique
   name: String!
   posts: [Post!]! @relation(name: "ProfilePosts")

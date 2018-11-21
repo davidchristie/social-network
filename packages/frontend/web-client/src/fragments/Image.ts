@@ -1,7 +1,7 @@
 import gql from "graphql-tag";
 
 export interface ImageData {
-  __typename: "ImageData";
+  __typename: "Image";
   id: string;
   url: string;
 }

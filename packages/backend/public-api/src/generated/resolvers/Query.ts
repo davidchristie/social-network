@@ -5,9 +5,13 @@ import { QueryResolvers } from "../graphqlgen";
 
 export const Query: QueryResolvers.Type = {
   ...QueryResolvers.defaultResolvers,
-  account: parent => null,
-  profile: (parent, args) => null,
-  profiles: (parent, args) => {
+  account: (parent, args, ctx) => {
+    throw new Error("Resolver not implemented");
+  },
+  profile: (parent, args, ctx) => {
+    throw new Error("Resolver not implemented");
+  },
+  profiles: (parent, args, ctx) => {
     throw new Error("Resolver not implemented");
   }
 };
