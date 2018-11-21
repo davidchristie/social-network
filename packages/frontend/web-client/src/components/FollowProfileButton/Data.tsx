@@ -26,11 +26,11 @@ const updateAfterFollow: MutationUpdaterFn<FollowProfileData> = (cache, { data }
   });
   if (cacheData && cacheData.account && data) {
     cacheData.account.profile.following.push(data.followProfile);
+    cache.writeQuery({
+      data: cacheData,
+      query: AccountQuery,
+    });
   }
-  cache.writeQuery({
-    data: cacheData,
-    query: AccountQuery,
-  });
 };
 
 const updateAfterUnfollow: MutationUpdaterFn<UnfollowProfileData> = (cache, { data }) => {
@@ -40,11 +40,11 @@ const updateAfterUnfollow: MutationUpdaterFn<UnfollowProfileData> = (cache, { da
   if (cacheData && cacheData.account && data) {
     cacheData.account.profile.following = cacheData.account.profile.following
       .filter(({ id }) => id !== data.unfollowProfile.id);
+    cache.writeQuery({
+      data: cacheData,
+      query: AccountQuery,
+    });
   }
-  cache.writeQuery({
-    data: cacheData,
-    query: AccountQuery,
-  });
 };
 
 const Data: React.StatelessComponent<Props> = ({ content, profileId }) => {
