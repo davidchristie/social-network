@@ -707,6 +707,10 @@ export namespace MutationResolvers {
     id: string;
   }
 
+  export interface ArgsFollowProfile {
+    id: string;
+  }
+
   export interface ArgsLogin {
     email: string;
     password: string;
@@ -743,6 +747,13 @@ export namespace MutationResolvers {
     ctx: Context,
     info: GraphQLResolveInfo
   ) => Post | Promise<Post>;
+
+  export type FollowProfileResolver = (
+    parent: undefined,
+    args: ArgsFollowProfile,
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => Profile | Promise<Profile>;
 
   export type LoginResolver = (
     parent: undefined,
@@ -793,6 +804,13 @@ export namespace MutationResolvers {
       ctx: Context,
       info: GraphQLResolveInfo
     ) => Post | Promise<Post>;
+
+    followProfile: (
+      parent: undefined,
+      args: ArgsFollowProfile,
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => Profile | Promise<Profile>;
 
     login: (
       parent: undefined,

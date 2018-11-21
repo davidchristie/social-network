@@ -1,6 +1,7 @@
 import { MutationResolvers } from "../../../generated/graphqlgen";
 import createPost from "./createPost";
 import deletePost from "./deletePost";
+import followProfile from "./followProfile";
 import login from "./login";
 import signup from "./signup";
 import updateAccount from "./updateAccount";
@@ -11,6 +12,7 @@ export const Mutation: MutationResolvers.Type = {
   ...MutationResolvers.defaultResolvers,
   createPost,
   deletePost,
+  followProfile,
   login,
   signup,
   updateAccount,

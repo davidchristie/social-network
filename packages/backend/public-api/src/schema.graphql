@@ -35,6 +35,7 @@ type LoginPayload {
 type Mutation {
   createPost(text: String!): Post!
   deletePost(id: ID!): Post!
+  followProfile(id: ID!): Profile!
   login(email: String!, password: String!): LoginPayload!
   signup(email: String!, name: String!, password: String!): LoginPayload!
   updateAccount(data: AccountUpdateInput): Account!

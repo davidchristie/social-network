@@ -11,6 +11,9 @@ export const Mutation: MutationResolvers.Type = {
   deletePost: (parent, args, ctx) => {
     throw new Error("Resolver not implemented");
   },
+  followProfile: (parent, args, ctx) => {
+    throw new Error("Resolver not implemented");
+  },
   login: (parent, args, ctx) => {
     throw new Error("Resolver not implemented");
   },
