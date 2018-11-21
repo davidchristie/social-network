@@ -12319,10 +12319,10 @@ pretty-format@^23.6.0:
     ansi-regex "^3.0.0"
     ansi-styles "^3.2.0"
 
-prisma-binding@2.2.3:
-  version "2.2.3"
-  resolved "https://registry.yarnpkg.com/prisma-binding/-/prisma-binding-2.2.3.tgz#7a6108c7af54f88e5b4f278817158797dd12dc36"
-  integrity sha512-wHqfT2HloGOVnEVldYTUpkMyLIVg41Q3M5J3AcDFvr+X1/QnwakzWHYvxD/lxQE16Djia6thzJje1MwXNacTjQ==
+prisma-binding@2.2.5:
+  version "2.2.5"
+  resolved "https://registry.yarnpkg.com/prisma-binding/-/prisma-binding-2.2.5.tgz#03c48ffc846853910025867f9847e5a997657c32"
+  integrity sha512-N+2qJcBbx3CCkc/UtlC1wkSkdRQSHuPJqEmhWeBWk6IlM53R+jQjqDQ2Y8VXWrdm9/Io78lKJ2yuRvCAr9H7ow==
   dependencies:
     apollo-link "1.2.3"
     apollo-link-error "1.1.1"
@@ -12334,7 +12334,7 @@ prisma-binding@2.2.3:
     http-link-dataloader "^0.1.6"
     jsonwebtoken "8.4.0"
     subscriptions-transport-ws "0.9.15"
-    yargs "12.0.4"
+    yargs "12.0.5"
 
 prisma-cli-core@1.20.7:
   version "1.20.7"
@@ -16424,6 +16424,14 @@ yargs-parser@^11.1.0:
     camelcase "^5.0.0"
     decamelize "^1.2.0"
 
+yargs-parser@^11.1.1:
+  version "11.1.1"
+  resolved "https://registry.yarnpkg.com/yargs-parser/-/yargs-parser-11.1.1.tgz#879a0865973bca9f6bab5cbdf3b1c67ec7d3bcf4"
+  integrity sha512-C6kB/WJDiaxONLJQnF8ccx9SEeoTTLek8RVbaOIsrAUS8VrBEXfmeSnCZxygc+XC2sNMBIwOOnfcxiynjHsVSQ==
+  dependencies:
+    camelcase "^5.0.0"
+    decamelize "^1.2.0"
+
 yargs-parser@^9.0.2:
   version "9.0.2"
   resolved "https://registry.yarnpkg.com/yargs-parser/-/yargs-parser-9.0.2.tgz#9ccf6a43460fe4ed40a9bb68f48d43b8a68cc077"
@@ -16449,10 +16457,10 @@ yargs@12.0.2, yargs@^12.0.1:
     y18n "^3.2.1 || ^4.0.0"
     yargs-parser "^10.1.0"
 
-yargs@12.0.4, yargs@^12.0.2:
-  version "12.0.4"
-  resolved "https://registry.yarnpkg.com/yargs/-/yargs-12.0.4.tgz#5ea307c6f11f11881c3bc375f9c939194e8cf4bc"
-  integrity sha512-f5esswlPO351AnejaO2A1ZZr0zesz19RehQKwiRDqWtrraWrJy16tsUIKgDXFMVytvNOHPVmTiaTh3wO67I0fQ==
+yargs@12.0.5:
+  version "12.0.5"
+  resolved "https://registry.yarnpkg.com/yargs/-/yargs-12.0.5.tgz#05f5997b609647b64f66b81e3b4b10a368e7ad13"
+  integrity sha512-Lhz8TLaYnxq/2ObqHDql8dX8CJi97oHxrjUcYtzKbbykPtVW9WB+poxI+NM2UIzsMgNCZTIf0AQwsjK5yMAqZw==
   dependencies:
     cliui "^4.0.0"
     decamelize "^1.2.0"
@@ -16465,7 +16473,7 @@ yargs@12.0.4, yargs@^12.0.2:
     string-width "^2.0.0"
     which-module "^2.0.0"
     y18n "^3.2.1 || ^4.0.0"
-    yargs-parser "^11.1.0"
+    yargs-parser "^11.1.1"
 
 yargs@^11.0.0:
   version "11.1.0"
@@ -16484,6 +16492,24 @@ yargs@^11.0.0:
     which-module "^2.0.0"
     y18n "^3.2.1"
     yargs-parser "^9.0.2"
+
+yargs@^12.0.2:
+  version "12.0.4"
+  resolved "https://registry.yarnpkg.com/yargs/-/yargs-12.0.4.tgz#5ea307c6f11f11881c3bc375f9c939194e8cf4bc"
+  integrity sha512-f5esswlPO351AnejaO2A1ZZr0zesz19RehQKwiRDqWtrraWrJy16tsUIKgDXFMVytvNOHPVmTiaTh3wO67I0fQ==
+  dependencies:
+    cliui "^4.0.0"
+    decamelize "^1.2.0"
+    find-up "^3.0.0"
+    get-caller-file "^1.0.1"
+    os-locale "^3.0.0"
+    require-directory "^2.1.1"
+    require-main-filename "^1.0.1"
+    set-blocking "^2.0.0"
+    string-width "^2.0.0"
+    which-module "^2.0.0"
+    y18n "^3.2.1 || ^4.0.0"
+    yargs-parser "^11.1.0"
 
 yauzl@2.4.1:
   version "2.4.1"
