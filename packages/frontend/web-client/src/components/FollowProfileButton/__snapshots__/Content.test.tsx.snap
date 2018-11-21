@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Content component when following the profile matches snapshot 1`] = `
+<Button$2
+  onClick={[Function]}
+  variant="contained"
+>
+  Unfollow
+</Button$2>
+`;
+
+exports[`Content component when not following the profile matches snapshot 1`] = `
+<Button$2
+  onClick={[Function]}
+  style="primary"
+  variant="contained"
+>
+  Follow
+</Button$2>
+`;
