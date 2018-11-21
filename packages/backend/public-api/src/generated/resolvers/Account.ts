@@ -6,7 +6,7 @@ import { AccountResolvers } from "../graphqlgen";
 export const Account: AccountResolvers.Type = {
   ...AccountResolvers.defaultResolvers,
 
-  profile: parent => {
+  profile: (parent, args, ctx) => {
     throw new Error("Resolver not implemented");
   }
 };

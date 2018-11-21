@@ -1,6 +1,8 @@
 # import Image from "../../data-model/generated/graphql-schema/prisma.graphql"
 # import Post from "../../data-model/generated/graphql-schema/prisma.graphql"
 # import ProfileOrderByInput from "../../data-model/generated/graphql-schema/prisma.graphql"
+# import ProfileUpdateManyWithoutFollowersInput from "../../data-model/generated/graphql-schema/prisma.graphql"
+# import ProfileUpdateManyWithoutFollowingInput from "../../data-model/generated/graphql-schema/prisma.graphql"
 # import ProfileWhereInput from "../../data-model/generated/graphql-schema/prisma.graphql"
 
 input AccountUpdateInput {
@@ -14,6 +16,8 @@ input PasswordUpdateInput {
 
 input ProfileUpdateInput {
   avatarUrl: String
+  followers: ProfileUpdateManyWithoutFollowingInput
+  following: ProfileUpdateManyWithoutFollowersInput
   name: String
 }
 
@@ -31,8 +35,10 @@ type LoginPayload {
 type Mutation {
   createPost(text: String!): Post!
   deletePost(id: ID!): Post!
+  followProfile(id: ID!): Profile!
   login(email: String!, password: String!): LoginPayload!
   signup(email: String!, name: String!, password: String!): LoginPayload!
+  unfollowProfile(id: ID!): Profile!
   updateAccount(data: AccountUpdateInput): Account!
   updatePassword(data: PasswordUpdateInput): Account!
   updateProfile(data: ProfileUpdateInput!): Profile!
@@ -40,6 +46,8 @@ type Mutation {
 
 type Profile {
   avatar: Image
+  followers: [Profile!]!
+  following: [Profile!]!
   id: ID!
   name: String!
   posts: [Post!]!

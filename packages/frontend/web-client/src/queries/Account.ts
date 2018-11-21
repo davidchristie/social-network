@@ -13,6 +13,18 @@ export interface AccountData {
     profile: {
       __typename: "Profile";
       avatar: ImageData | null;
+      followers: Array<{
+        __typename: "Profile";
+        avatar: ImageData | null;
+        id: string;
+        name: string;
+      }>;
+      following: Array<{
+        __typename: "Profile";
+        avatar: ImageData | null;
+        id: string;
+        name: string;
+      }>;
       id: string;
       name: string;
     };
@@ -31,6 +43,20 @@ const Account = gql`
       profile {
         avatar {
           ...Image
+        }
+        followers {
+          avatar {
+            ...Image
+          }
+          id
+          name
+        }
+        following {
+          avatar {
+            ...Image
+          }
+          id
+          name
         }
         id
         name

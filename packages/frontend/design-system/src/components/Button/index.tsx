@@ -5,17 +5,27 @@ interface Props {
   children?: React.ReactNode;
   className?: string;
   onClick?: (event: React.MouseEvent<HTMLElement>) => void;
+  style?: "primary" | "secondary";
   type?: string;
+  variant?: "contained" | "extendedFab" | "fab" | "flat" | "outlined" | "raised" | "text";
 }
 
 const Button: React.SFC<Props> = ({
   children,
   className,
   onClick,
+  style,
   type,
+  variant,
 }) => {
   return (
-    <MaterialButton className={className} onClick={onClick} type={type}>
+    <MaterialButton
+      className={className}
+      color={style}
+      onClick={onClick}
+      type={type}
+      variant={variant}
+    >
       {children}
     </MaterialButton>
   );

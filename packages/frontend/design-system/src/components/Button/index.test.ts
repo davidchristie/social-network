@@ -4,7 +4,7 @@ import {
   describeWithProps
 } from "test-utilities/react";
 
-import Button from "./index";
+import Button from ".";
 
 describe("Button component", () => {
   describeWithNoProps(Button);

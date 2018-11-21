@@ -1,6 +1,7 @@
 import { Avatar, Container, Section } from "design-system";
 import React from "react";
 import CreatePostForm from "../CreatePostForm";
+import FollowProfileButton from "../FollowProfileButton";
 import ProfilePosts from "../ProfilePosts";
 
 export interface Props {
@@ -28,6 +29,9 @@ const Content: React.SFC<Props> = ({ account, profile }) => {
           size="large"
         />
         <h1>{profile.name}</h1>
+        {!isOwnProfile && (
+          <FollowProfileButton profileId={profile.id} />
+        )}
       </Section>
       <Section>
         {isOwnProfile && (

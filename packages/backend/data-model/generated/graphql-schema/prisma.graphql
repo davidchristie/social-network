@@ -515,6 +515,8 @@ input PostWhereUniqueInput {
 type Profile {
   account: Account!
   avatar: Image
+  followers(where: ProfileWhereInput, orderBy: ProfileOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Profile!]
+  following(where: ProfileWhereInput, orderBy: ProfileOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Profile!]
   id: ID!
   name: String!
   posts(where: PostWhereInput, orderBy: PostOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Post!]
@@ -529,8 +531,20 @@ type ProfileConnection {
 input ProfileCreateInput {
   account: AccountCreateOneWithoutProfileInput!
   avatar: ImageCreateOneInput
+  followers: ProfileCreateManyWithoutFollowingInput
+  following: ProfileCreateManyWithoutFollowersInput
   name: String!
   posts: PostCreateManyWithoutCreatedByInput
+}
+
+input ProfileCreateManyWithoutFollowersInput {
+  create: [ProfileCreateWithoutFollowersInput!]
+  connect: [ProfileWhereUniqueInput!]
+}
+
+input ProfileCreateManyWithoutFollowingInput {
+  create: [ProfileCreateWithoutFollowingInput!]
+  connect: [ProfileWhereUniqueInput!]
 }
 
 input ProfileCreateOneWithoutAccountInput {
@@ -545,6 +559,24 @@ input ProfileCreateOneWithoutPostsInput {
 
 input ProfileCreateWithoutAccountInput {
   avatar: ImageCreateOneInput
+  followers: ProfileCreateManyWithoutFollowingInput
+  following: ProfileCreateManyWithoutFollowersInput
+  name: String!
+  posts: PostCreateManyWithoutCreatedByInput
+}
+
+input ProfileCreateWithoutFollowersInput {
+  account: AccountCreateOneWithoutProfileInput!
+  avatar: ImageCreateOneInput
+  following: ProfileCreateManyWithoutFollowersInput
+  name: String!
+  posts: PostCreateManyWithoutCreatedByInput
+}
+
+input ProfileCreateWithoutFollowingInput {
+  account: AccountCreateOneWithoutProfileInput!
+  avatar: ImageCreateOneInput
+  followers: ProfileCreateManyWithoutFollowingInput
   name: String!
   posts: PostCreateManyWithoutCreatedByInput
 }
@@ -552,6 +584,8 @@ input ProfileCreateWithoutAccountInput {
 input ProfileCreateWithoutPostsInput {
   account: AccountCreateOneWithoutProfileInput!
   avatar: ImageCreateOneInput
+  followers: ProfileCreateManyWithoutFollowingInput
+  following: ProfileCreateManyWithoutFollowersInput
   name: String!
 }
 
@@ -597,12 +631,32 @@ input ProfileSubscriptionWhereInput {
 input ProfileUpdateInput {
   account: AccountUpdateOneRequiredWithoutProfileInput
   avatar: ImageUpdateOneInput
+  followers: ProfileUpdateManyWithoutFollowingInput
+  following: ProfileUpdateManyWithoutFollowersInput
   name: String
   posts: PostUpdateManyWithoutCreatedByInput
 }
 
 input ProfileUpdateManyMutationInput {
   name: String
+}
+
+input ProfileUpdateManyWithoutFollowersInput {
+  create: [ProfileCreateWithoutFollowersInput!]
+  delete: [ProfileWhereUniqueInput!]
+  connect: [ProfileWhereUniqueInput!]
+  disconnect: [ProfileWhereUniqueInput!]
+  update: [ProfileUpdateWithWhereUniqueWithoutFollowersInput!]
+  upsert: [ProfileUpsertWithWhereUniqueWithoutFollowersInput!]
+}
+
+input ProfileUpdateManyWithoutFollowingInput {
+  create: [ProfileCreateWithoutFollowingInput!]
+  delete: [ProfileWhereUniqueInput!]
+  connect: [ProfileWhereUniqueInput!]
+  disconnect: [ProfileWhereUniqueInput!]
+  update: [ProfileUpdateWithWhereUniqueWithoutFollowingInput!]
+  upsert: [ProfileUpsertWithWhereUniqueWithoutFollowingInput!]
 }
 
 input ProfileUpdateOneRequiredWithoutAccountInput {
@@ -621,6 +675,24 @@ input ProfileUpdateOneRequiredWithoutPostsInput {
 
 input ProfileUpdateWithoutAccountDataInput {
   avatar: ImageUpdateOneInput
+  followers: ProfileUpdateManyWithoutFollowingInput
+  following: ProfileUpdateManyWithoutFollowersInput
+  name: String
+  posts: PostUpdateManyWithoutCreatedByInput
+}
+
+input ProfileUpdateWithoutFollowersDataInput {
+  account: AccountUpdateOneRequiredWithoutProfileInput
+  avatar: ImageUpdateOneInput
+  following: ProfileUpdateManyWithoutFollowersInput
+  name: String
+  posts: PostUpdateManyWithoutCreatedByInput
+}
+
+input ProfileUpdateWithoutFollowingDataInput {
+  account: AccountUpdateOneRequiredWithoutProfileInput
+  avatar: ImageUpdateOneInput
+  followers: ProfileUpdateManyWithoutFollowingInput
   name: String
   posts: PostUpdateManyWithoutCreatedByInput
 }
@@ -628,7 +700,19 @@ input ProfileUpdateWithoutAccountDataInput {
 input ProfileUpdateWithoutPostsDataInput {
   account: AccountUpdateOneRequiredWithoutProfileInput
   avatar: ImageUpdateOneInput
+  followers: ProfileUpdateManyWithoutFollowingInput
+  following: ProfileUpdateManyWithoutFollowersInput
   name: String
+}
+
+input ProfileUpdateWithWhereUniqueWithoutFollowersInput {
+  where: ProfileWhereUniqueInput!
+  data: ProfileUpdateWithoutFollowersDataInput!
+}
+
+input ProfileUpdateWithWhereUniqueWithoutFollowingInput {
+  where: ProfileWhereUniqueInput!
+  data: ProfileUpdateWithoutFollowingDataInput!
 }
 
 input ProfileUpsertWithoutAccountInput {
@@ -641,9 +725,27 @@ input ProfileUpsertWithoutPostsInput {
   create: ProfileCreateWithoutPostsInput!
 }
 
+input ProfileUpsertWithWhereUniqueWithoutFollowersInput {
+  where: ProfileWhereUniqueInput!
+  update: ProfileUpdateWithoutFollowersDataInput!
+  create: ProfileCreateWithoutFollowersInput!
+}
+
+input ProfileUpsertWithWhereUniqueWithoutFollowingInput {
+  where: ProfileWhereUniqueInput!
+  update: ProfileUpdateWithoutFollowingDataInput!
+  create: ProfileCreateWithoutFollowingInput!
+}
+
 input ProfileWhereInput {
   account: AccountWhereInput
   avatar: ImageWhereInput
+  followers_every: ProfileWhereInput
+  followers_some: ProfileWhereInput
+  followers_none: ProfileWhereInput
+  following_every: ProfileWhereInput
+  following_some: ProfileWhereInput
+  following_none: ProfileWhereInput
   id: ID
   id_not: ID
   id_in: [ID!]
