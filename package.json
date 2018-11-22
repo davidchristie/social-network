@@ -9,9 +9,6 @@
   "name": "social-network",
   "private": true,
   "repository": "git@github.com:davidchristie/social-network.git",
-  "resolutions": {
-    "@types/react": "16.4.18"
-  },
   "scripts": {
     "authentication": "yarn workspace authentication",
     "build": "yarn build-libraries && yarn build-services",
