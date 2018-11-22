@@ -5,10 +5,8 @@ import {
   UpdatePasswordData,
   UpdatePasswordVariables,
 } from "../../mutations/UpdatePassword";
-import { AccountData } from "../../queries/Account";
 
 export interface Props {
-  accountData: AccountData;
   updatePassword: MutationFn<UpdatePasswordData, UpdatePasswordVariables>;
 }
 
