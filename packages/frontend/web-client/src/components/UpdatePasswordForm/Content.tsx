@@ -7,12 +7,12 @@ import {
 } from "../../mutations/UpdatePassword";
 import { AccountData } from "../../queries/Account";
 
-interface Props {
+export interface Props {
   accountData: AccountData;
   updatePassword: MutationFn<UpdatePasswordData, UpdatePasswordVariables>;
 }
 
-interface State {
+export interface State {
   currentPassword: string;
   errorMessage: string | null;
   newPassword: string;
@@ -29,9 +29,7 @@ export default class Content extends React.Component<Props, State> {
     return (
       <Section className="UpdatePasswordForm">
         <h2>Password</h2>
-        <form
-          onSubmit={this.handleFormSubmit}
-        >
+        <form onSubmit={this.handleFormSubmit}>
           {this.state.errorMessage && (
             <Alert>Current password is incorrect</Alert>
           )}
