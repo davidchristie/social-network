@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Content component with posts matches snapshot 1`] = `
+<div
+  className="ProfilePosts"
+>
+  <PostSummary
+    key="post_id_2"
+    post={
+      Object {
+        "__typename": "Post",
+        "createdAt": "2018-10-22T01:15:47.347Z",
+        "createdBy": Object {
+          "__typename": "Profile",
+          "avatar": Object {
+            "__typename": "Image",
+            "id": "avatar_id",
+            "url": "https://avatar_url.com",
+          },
+          "id": "profile_id",
+          "name": "Profile",
+        },
+        "id": "post_id_2",
+        "text": "Post 2",
+      }
+    }
+  />
+  <PostSummary
+    key="post_id_1"
+    post={
+      Object {
+        "__typename": "Post",
+        "createdAt": "2018-10-22T01:15:47.347Z",
+        "createdBy": Object {
+          "__typename": "Profile",
+          "avatar": Object {
+            "__typename": "Image",
+            "id": "avatar_id",
+            "url": "https://avatar_url.com",
+          },
+          "id": "profile_id",
+          "name": "Profile",
+        },
+        "id": "post_id_1",
+        "text": "Post 1",
+      }
+    }
+  />
+  <PostSummary
+    key="post_id_0"
+    post={
+      Object {
+        "__typename": "Post",
+        "createdAt": "2018-10-22T01:15:47.347Z",
+        "createdBy": Object {
+          "__typename": "Profile",
+          "avatar": Object {
+            "__typename": "Image",
+            "id": "avatar_id",
+            "url": "https://avatar_url.com",
+          },
+          "id": "profile_id",
+          "name": "Profile",
+        },
+        "id": "post_id_0",
+        "text": "Post 0",
+      }
+    }
+  />
+</div>
+`;
