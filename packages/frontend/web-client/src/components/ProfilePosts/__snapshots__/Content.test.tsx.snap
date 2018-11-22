@@ -9,7 +9,7 @@ exports[`Content component with posts matches snapshot 1`] = `
     post={
       Object {
         "__typename": "Post",
-        "createdAt": "1542859226069",
+        "createdAt": "2018-10-22T01:15:47.347Z",
         "createdBy": Object {
           "__typename": "Profile",
           "avatar": Object {
@@ -30,7 +30,7 @@ exports[`Content component with posts matches snapshot 1`] = `
     post={
       Object {
         "__typename": "Post",
-        "createdAt": "1542859226069",
+        "createdAt": "2018-10-22T01:15:47.347Z",
         "createdBy": Object {
           "__typename": "Profile",
           "avatar": Object {
@@ -51,7 +51,7 @@ exports[`Content component with posts matches snapshot 1`] = `
     post={
       Object {
         "__typename": "Post",
-        "createdAt": "1542859226069",
+        "createdAt": "2018-10-22T01:15:47.347Z",
         "createdBy": Object {
           "__typename": "Profile",
           "avatar": Object {

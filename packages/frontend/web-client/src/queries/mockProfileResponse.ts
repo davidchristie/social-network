@@ -24,7 +24,7 @@ const mockProfileResponse = (variables: ProfileVariables): MockedResponse => {
           ...profile,
           posts: Array(3).fill(null).map((_, index) => ({
             __typename: "Post",
-            createdAt: Date.now().toString(),
+            createdAt: "2018-10-22T01:15:47.347Z",
             createdBy: {
               ...profile,
             },
