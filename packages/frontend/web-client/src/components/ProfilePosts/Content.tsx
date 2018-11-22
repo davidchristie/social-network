@@ -2,7 +2,7 @@ import React from "react";
 import { PostSummaryData } from "../../fragments/PostSummary";
 import PostSummary from "../PostSummary";
 
-interface Props {
+export interface Props {
   profile: {
     posts: PostSummaryData[]
   };
