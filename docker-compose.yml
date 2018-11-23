@@ -11,6 +11,16 @@ services:
     depends_on:
       - prisma
 
+  kafka:
+    image: spotify/kafka
+    ports:
+    - "2181:2181"
+    - "9092:9092"
+    environment:
+    - "ADVERTISED_HOST=kafka"
+    - "ADVERTISED_PORT=9092"
+    - "AUTO_CREATE_TOPICS=true"
+
   mysql:
     image: mysql:5.7
     restart: always
