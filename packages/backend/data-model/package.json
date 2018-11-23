@@ -5,7 +5,7 @@
     "prisma-client-lib": "1.20.7"
   },
   "devDependencies": {
-    "prisma": "1.20.7",
+    "prisma": "1.21.0",
     "rimraf": "2.6.2",
     "typescript": "3.1.6"
   },
