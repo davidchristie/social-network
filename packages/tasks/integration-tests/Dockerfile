@@ -13,8 +13,10 @@ RUN yarn --ignore-optional
 COPY ./packages/backend/kafka-client ./packages/backend/kafka-client
 COPY ./packages/tasks/integration-tests ./packages/tasks/integration-tests
 COPY ./tsconfig.json .
-
 COPY ./scripts ./scripts
+
+# Build libraries
+RUN yarn kafka-client build
 
 FROM davidchristie/puppeteer
 
