@@ -1,18 +1,17 @@
 import { KafkaClient, Producer, ProducerOptions } from "kafka-node";
+import ClientWrapper from "./wrappers/ClientWrapper";
 
 interface Arguments {
   kafkaHost: string;
 }
 
-export function createKafkaClient ({ kafkaHost }: Arguments) {
-  return new KafkaClient({
+export type Client = ClientWrapper;
+
+export function createKafkaClient ({ kafkaHost }: Arguments): Client {
+  const client = new KafkaClient({
     kafkaHost,
   });
+  return new ClientWrapper(client);
 }
 
-export function createKafkaProducer (client: KafkaClient) {
-  const options: ProducerOptions = {
-    requireAcks: 1,
-  };
-  return new Producer(client, options);
-}
+export { ProduceRequest } from "kafka-node";

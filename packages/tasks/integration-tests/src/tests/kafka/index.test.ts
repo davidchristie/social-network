@@ -1,53 +1,30 @@
-import {
-  createKafkaClient,
-  createKafkaProducer
-} from "kafka-client";
+import { Client, createKafkaClient } from "kafka-client";
 import { KAFKA_HOST } from "../../constants/hosts";
 
 describe("Kafka service", () => {
-  it(`sends "ready" event`, done => {
-    const client = createKafkaClient({
-      kafkaHost: KAFKA_HOST,
-    });
-    const producer = createKafkaProducer(client);
-    producer.on("ready", done);
-  });
+  let client: Client;
 
-  it("can create topics", done => {
-    const client = createKafkaClient({
+  beforeAll(() => {
+    client = createKafkaClient({
       kafkaHost: KAFKA_HOST,
-    });
-    const producer = createKafkaProducer(client);
-    const topics = ["topic1", "topic2", "topic3"];
-    producer.on("ready", () => {
-      producer.createTopics(topics, true, (error, data) => {
-        console.log("createTopics data", data);
-        expect(error).toBeNull();
-        done();
-      });
     });
   });
 
-  it("can send messages", done => {
-    const client = createKafkaClient({
-      kafkaHost: KAFKA_HOST,
-    });
-    const producer = createKafkaProducer(client);
-    producer.on("ready", () => {
-      const payloads = [
-        {
-          messages: [
-            "Message 1",
-            "Message 2",
-            "Message 3",
-          ],
-          topic: "test",
-        },
-      ];
-      producer.send(payloads, (error, data) => {
-        expect(error).toBeNull();
-        done();
-      });
-    });
+  afterAll(() => {
+    client.close();
+  });
+
+  it("can send messages", async () => {
+    const requests = [
+      {
+        messages: [
+          "Message 1",
+          "Message 2",
+          "Message 3",
+        ],
+        topic: "test",
+      },
+    ];
+    await client.producer().send(requests);
   });
 });
