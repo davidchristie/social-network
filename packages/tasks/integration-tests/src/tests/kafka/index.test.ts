@@ -1,7 +1,9 @@
-import { Client, createKafkaClient } from "kafka-client";
+import { Client, createKafkaClient, Message } from "kafka-client";
 import { KAFKA_HOST } from "../../constants/hosts";
 
 describe("Kafka service", () => {
+  const topic = "test";
+
   let client: Client;
 
   beforeAll(() => {
@@ -14,17 +16,26 @@ describe("Kafka service", () => {
     client.close();
   });
 
-  it("can send messages", async () => {
-    const requests = [
+  it("can send and receive messages", async done => {
+    const sentMessages = [
+      "Message 1",
+      "Message 2",
+      "Message 3",
+    ];
+    await client.producer().send([
       {
-        messages: [
-          "Message 1",
-          "Message 2",
-          "Message 3",
-        ],
+        messages: sentMessages,
         topic: "test",
       },
-    ];
-    await client.producer().send(requests);
+    ]);
+    const receivedMessages = new Set<string | Buffer>();
+    const handleMessage = jest.fn(({ value }: Message) => {
+      receivedMessages.add(value);
+      expect(sentMessages).toContain(value);
+      if (receivedMessages.size === sentMessages.length) {
+        done();
+      }
+    });
+    client.consumer([{ offset: 0, topic }]).onMessage(handleMessage);
   });
 });

@@ -1,4 +1,4 @@
-import { KafkaClient, Producer, ProducerOptions } from "kafka-node";
+import { KafkaClient, Message } from "kafka-node";
 import ClientWrapper from "./wrappers/ClientWrapper";
 
 interface Arguments {
@@ -6,6 +6,8 @@ interface Arguments {
 }
 
 export type Client = ClientWrapper;
+
+export type Message = Message;
 
 export function createKafkaClient ({ kafkaHost }: Arguments): Client {
   const client = new KafkaClient({
