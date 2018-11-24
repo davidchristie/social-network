@@ -158,7 +158,7 @@ jobs:
             - v1-images-mysql:5.7
       - restore_cache:
           keys:
-            - v1-images-prismagraphql/prisma:1.8
+            - v1-images-prismagraphql/prisma:1.21
       - setup_remote_docker
       - run:
           name: Load images from workspace
@@ -205,8 +205,8 @@ jobs:
       - run:
           name: Pull prisma image
           command: |
-              docker pull prismagraphql/prisma:1.8
-              docker save --output tmp/images/prisma.tar prismagraphql/prisma:1.8
+              docker pull prismagraphql/prisma:1.21
+              docker save --output tmp/images/prisma.tar prismagraphql/prisma:1.21
       - save_cache:
           name: Cache kafka image
           key: v1-images-spotify/kafka
@@ -219,7 +219,7 @@ jobs:
             - tmp/images/mysql.tar
       - save_cache:
           name: Cache prisma image
-          key: v1-images-prismagraphql/prisma:1.8
+          key: v1-images-prismagraphql/prisma:1.21
           paths:
             - tmp/images/prisma.tar
 
