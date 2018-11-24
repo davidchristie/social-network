@@ -7,7 +7,7 @@ COPY ./packages/backend/kafka-client/package.json ./packages/backend/kafka-clien
 COPY ./packages/tasks/integration-tests/package.json ./packages/tasks/integration-tests/package.json
 COPY ./package.json .
 COPY ./yarn.lock .
-RUN yarn
+RUN yarn --ignore-optional
 
 # Copy source code
 COPY ./packages/backend/kafka-client ./packages/backend/kafka-client
