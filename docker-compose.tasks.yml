@@ -16,7 +16,7 @@ services:
       dockerfile: packages/tasks/integration-tests/Dockerfile
     environment:
       - AUTHENTICATION_HOST=http://authentication:5000
-      - AUTHENTICATION_HOST=http://kafka:9092
+      - KAFKA_HOST=http://kafka:9092
       - PRODUCTION_API_ENDPOINT=https://api.social-network.davidchristie.io/
       - PUBLIC_API_HOST=http://public-api:4000
       - WEB_CLIENT_HOST=http://web-client:3000
