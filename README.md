@@ -11,6 +11,7 @@
 
 * [Authentication](packages/backend/authentication)
 * [Data Model](packages/backend/data-model)
+* [Kafka Client](packages/backend/kafka-client)
 * [Public API](packages/backend/public-api)
 
 ### Frontend

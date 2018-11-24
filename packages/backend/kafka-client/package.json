@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "kafka-node": "3.0.1"
+  },
+  "devDependencies": {
+    "rimraf": "2.6.2",
+    "typescript": "3.1.6"
+  },
+  "main": "./dist/index.js",
+  "name": "kafka-client",
+  "private": true,
+  "scripts": {
+    "build": "rimraf dist && tsc",
+    "lint": "tslint --project . && tsc --noEmit"
+  },
+  "version": "1.0.0"
+}
