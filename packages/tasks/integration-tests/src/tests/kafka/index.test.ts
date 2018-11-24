@@ -5,6 +5,14 @@ import {
 import { KAFKA_HOST } from "../../constants/hosts";
 
 describe("Kafka service", () => {
+  it(`sends "ready" event`, done => {
+    const client = createKafkaClient({
+      kafkaHost: KAFKA_HOST,
+    });
+    const producer = createKafkaProducer(client);
+    producer.on("ready", done);
+  });
+
   it("can create topics", done => {
     const client = createKafkaClient({
       kafkaHost: KAFKA_HOST,
