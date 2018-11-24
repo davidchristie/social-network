@@ -1,4 +1,4 @@
-import { KafkaClient, Producer } from "kafka-node";
+import { KafkaClient, Producer, ProducerOptions } from "kafka-node";
 
 interface Arguments {
   kafkaHost: string;
@@ -11,5 +11,8 @@ export function createKafkaClient ({ kafkaHost }: Arguments) {
 }
 
 export function createKafkaProducer (client: KafkaClient) {
-  return new Producer(client);
+  const options: ProducerOptions = {
+    requireAcks: 1,
+  };
+  return new Producer(client, options);
 }
