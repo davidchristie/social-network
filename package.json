@@ -20,6 +20,7 @@
     "development": "docker-compose -f docker-compose.yml -f docker-compose.development.yml",
     "infrastructure": "yarn workspace infrastructure",
     "integration-tests": "yarn workspace integration-tests",
+    "kafka-client": "yarn workspace kafka-client",
     "lint": "scripts/lint.sh",
     "production": "docker-compose -f docker-compose.yml -f docker-compose.production.yml",
     "public-api": "yarn workspace public-api",
