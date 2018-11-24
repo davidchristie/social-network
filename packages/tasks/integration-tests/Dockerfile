@@ -3,12 +3,14 @@ FROM node:10-alpine as build
 WORKDIR /app
 
 # Install dependencies
+COPY ./packages/backend/kafka-client/package.json ./packages/backend/kafka-client/package.json
 COPY ./packages/tasks/integration-tests/package.json ./packages/tasks/integration-tests/package.json
 COPY ./package.json .
 COPY ./yarn.lock .
 RUN yarn
 
 # Copy source code
+COPY ./packages/backend/kafka-client ./packages/backend/kafka-client
 COPY ./packages/tasks/integration-tests ./packages/tasks/integration-tests
 COPY ./tsconfig.json .
 
