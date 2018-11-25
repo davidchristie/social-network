@@ -2,7 +2,7 @@ import React from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 import Page from "../Page";
 
-interface Props {
+export interface Props {
   authenticated: boolean;
 }
 
