@@ -13,7 +13,7 @@ const loading = (
       alignItems: "center",
       display: "flex",
       justifyContent: "center",
-      minHeight: "100vh",
+      minHeight: "80vh",
     }}
   >
     <Loading />
