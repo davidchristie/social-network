@@ -12,7 +12,7 @@ const responses: MockedResponse[] = [
   mockAccountResponse(),
 ];
 
-describe("Data component", () => {
+describe("Routes data", () => {
   let wrapper: ReactWrapper;
 
   beforeEach(() => {
