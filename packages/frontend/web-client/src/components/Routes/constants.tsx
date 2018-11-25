@@ -15,6 +15,7 @@ export const defaultUnauthenticatedPath = "/login";
 export const routes: RouteData[] = [
   {
     load: () => import(/* webpackChunkName: "HomePage" */ "../HomePage"),
+    onlyAuthenticated: true,
     path: "/",
   },
   {

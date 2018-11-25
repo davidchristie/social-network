@@ -18,8 +18,8 @@ const unauthenticatedRoutes = routes.filter(route => {
 const unknownPath = "unknown_path";
 
 describe("Routes content", () => {
-  describe("authenticated routes", () => {
-    describe.each(authenticatedRoutes)("", route => {
+  describe("when authenticated", () => {
+    describe.each(authenticatedRoutes)("path", route => {
       describe(route.path, () => {
         it("renders without crashing", () => {
           create(
@@ -49,8 +49,8 @@ describe("Routes content", () => {
     });
   });
 
-  describe("unauthenticated routes", () => {
-    describe.each(unauthenticatedRoutes)("", route => {
+  describe("when unauthenticated", () => {
+    describe.each(unauthenticatedRoutes)("path", route => {
       describe(route.path, () => {
         it("renders without crashing", () => {
           create(
