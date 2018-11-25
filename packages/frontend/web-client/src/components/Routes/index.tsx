@@ -2,16 +2,11 @@ import { Alert, Loading } from "design-system";
 import React from "react";
 import { Query } from "react-apollo";
 import { Redirect, Route, Switch } from "react-router-dom";
-
 import AccountQuery, {
   AccountData,
   AccountVariables,
 } from "../../queries/Account";
-import AccountPage from "../AccountPage";
-import HomePage from "../HomePage";
-import LoginPage from "../LoginPage";
-import ProfilePage from "../ProfilePage";
-import SignupPage from "../SignupPage";
+import Page from "../Page";
 
 export default class Routes extends React.Component {
   public render () {
@@ -30,19 +25,19 @@ export default class Routes extends React.Component {
             ? (
               <Switch>
                 <Route
-                  component={HomePage}
                   exact={true}
                   path="/"
+                  render={() => <Page load={() => import(/* webpackChunkName: "HomePage" */ "../HomePage")} />}
                 />
                 <Route
-                  component={AccountPage}
                   exact={true}
                   path="/account"
+                  render={() => <Page load={() => import(/* webpackChunkName: "AccountPage" */ "../AccountPage")} />}
                 />
                 <Route
-                  component={ProfilePage}
                   exact={true}
                   path="/profile/:id"
+                  render={() => <Page load={() => import(/* webpackChunkName: "ProfilePage" */ "../ProfilePage")} />}
                 />
                 <Route
                   path="*"
@@ -53,14 +48,14 @@ export default class Routes extends React.Component {
             : (
               <Switch>
                 <Route
-                  component={LoginPage}
                   exact={true}
                   path="/login"
+                  render={() => <Page load={() => import(/* webpackChunkName: "LoginPage" */ "../LoginPage")} />}
                 />
                 <Route
-                  component={SignupPage}
                   exact={true}
                   path="/signup"
+                  render={() => <Page load={() => import(/* webpackChunkName: "SignupPage" */ "../SignupPage")} />}
                 />
                 <Route
                   path="*"
