@@ -11,12 +11,14 @@ describe("origin", () => {
   beforeAll(async () => {
     page = await newPage();
     await page.goto(WEB_CLIENT_HOST);
+    await page.waitForNavigation();
     await waitForLoading(page);
   });
 
   itRedirectsTo(() => page, "/login");
 
   it("renders LoginPage component", async () => {
+    await page.waitForSelector(".LoginPage");
     expect(await page.$(".LoginPage")).not.toBeNull();
   });
 });
