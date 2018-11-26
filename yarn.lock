@@ -12371,6 +12371,25 @@ prisma-client-lib@1.21.0:
     ws "^6.1.0"
     zen-observable "^0.8.10"
 
+prisma-client-lib@1.21.1:
+  version "1.21.1"
+  resolved "https://registry.yarnpkg.com/prisma-client-lib/-/prisma-client-lib-1.21.1.tgz#7699258adc4dd822a65172c629a55caf2905a4b1"
+  integrity sha512-nLv2oss0/8xt7GSvQI8HUxP8+NnyLgh9qCw3Nf42fDVSnFwYV95fSRmaou0HrgKPNUvaXFjsQqkVizDEmghQUA==
+  dependencies:
+    "@types/node" "^10.12.0"
+    "@types/prettier" "^1.13.2"
+    debug "^4.1.0"
+    graphql-tag "^2.10.0"
+    http-link-dataloader "^0.1.6"
+    jsonwebtoken "^8.3.0"
+    lodash.flatten "^4.4.0"
+    prettier "^1.14.3"
+    prisma-generate-schema "1.21.1"
+    subscriptions-transport-ws "^0.9.15"
+    uppercamelcase "^3.0.0"
+    ws "^6.1.0"
+    zen-observable "^0.8.10"
+
 prisma-db-introspection@1.21.0:
   version "1.21.0"
   resolved "https://registry.yarnpkg.com/prisma-db-introspection/-/prisma-db-introspection-1.21.0.tgz#bb4867e1b3a326939876aa966ec9ed333e4b61e2"
@@ -12401,6 +12420,16 @@ prisma-generate-schema@1.21.0:
   version "1.21.0"
   resolved "https://registry.yarnpkg.com/prisma-generate-schema/-/prisma-generate-schema-1.21.0.tgz#e8f55e6b833f7d57e4bee80386f85f4b65d0caf3"
   integrity sha512-dPvU4fukfBKab29ROaH/GSXPkwedFCJywhGv9Punu6pm3r9A9+g4s+vGHwcXNBLYk3SHGfTE/kI8/E6o/Mueug==
+  dependencies:
+    graphql "^14.0.2"
+    node-fetch "^2.2.1"
+    pluralize "^7.0.0"
+    popsicle "10"
+
+prisma-generate-schema@1.21.1:
+  version "1.21.1"
+  resolved "https://registry.yarnpkg.com/prisma-generate-schema/-/prisma-generate-schema-1.21.1.tgz#12a99f7df3919bb78396b7a0638f5de14569c420"
+  integrity sha512-mFfjknjI7lM3cuRE42NKbm37jq5a+54yL3ai0Ptdc4M5erbB2mfqCAddfrCRCegWAUemo18OYcfCN/TbJ4l9ew==
   dependencies:
     graphql "^14.0.2"
     node-fetch "^2.2.1"
