@@ -1,5 +1,4 @@
 import request, { Test } from "supertest";
-
 import { AUTHENTICATION_HOST } from "../../constants/hosts";
 import { USER_1_TOKEN } from "../../constants/login";
 import expectBodyPropertyToBeAString from "../../utilities/expectBodyPropertyToBeAString";

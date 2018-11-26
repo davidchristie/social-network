@@ -1,13 +1,3 @@
-.Header {
-  background: var(--theme-primary, white);
-  color: var(--theme-primary-contrast, black);
-  height: var(--theme-header-height, 30px);
-  position: fixed;
-  left: 0;
-  right: 0;
-  z-index: 1;
-}
-
 .Header .Container {
   align-items: center;
   display: flex;

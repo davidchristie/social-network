@@ -1,5 +1,4 @@
 import { Page } from "puppeteer";
-
 import { WEB_CLIENT_HOST } from "../../constants/hosts";
 import { USER_1_EMAIL, USER_1_PASSWORD } from "../../constants/login";
 import itRedirectsTo from "../../utilities/itRedirectsTo";
@@ -24,6 +23,7 @@ describe("on success", () => {
   itRedirectsTo(() => page, "/");
 
   it("renders HomePage component", async () => {
+    await page.waitForSelector(".HomePage");
     expect(await page.$(".HomePage")).not.toBeNull();
   });
 });

@@ -20,6 +20,7 @@ export interface Props {
 }
 
 const Content: React.SFC<Props> = ({ account, profile }) => {
+  const isAuthenticated = Boolean(account);
   const isOwnProfile = account && account.profile.id === profile.id;
   return (
     <Container>
@@ -29,7 +30,7 @@ const Content: React.SFC<Props> = ({ account, profile }) => {
           size="large"
         />
         <h1>{profile.name}</h1>
-        {!isOwnProfile && (
+        {isAuthenticated && !isOwnProfile && (
           <FollowProfileButton profileId={profile.id} />
         )}
       </Section>

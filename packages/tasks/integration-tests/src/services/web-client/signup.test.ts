@@ -1,6 +1,5 @@
 import faker from "faker";
 import { Page } from "puppeteer";
-
 import { WEB_CLIENT_HOST } from "../../constants/hosts";
 import itRedirectsTo from "../../utilities/itRedirectsTo";
 import newPage from "../../utilities/newPage";
@@ -27,6 +26,7 @@ describe("on success", () => {
   itRedirectsTo(() => page, "/");
 
   it("renders HomePage component", async () => {
+    await page.waitForSelector(".HomePage");
     expect(await page.$(".HomePage")).not.toBeNull();
   });
 });

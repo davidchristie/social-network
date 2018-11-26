@@ -319,7 +319,7 @@ exports[`Header component when logged out 1`] = `
           >
             <WithStyles(AppBar)
               color="default"
-              position="static"
+              position="fixed"
             >
               <AppBar
                 classes={
@@ -336,16 +336,16 @@ exports[`Header component when logged out 1`] = `
                   }
                 }
                 color="default"
-                position="static"
+                position="fixed"
               >
                 <WithStyles(Paper)
-                  className="MuiAppBar-root-2 MuiAppBar-positionStatic-6 MuiAppBar-colorDefault-8"
+                  className="MuiAppBar-root-2 MuiAppBar-positionFixed-3 MuiAppBar-colorDefault-8 mui-fixed"
                   component="header"
                   elevation={4}
                   square={true}
                 >
                   <Paper
-                    className="MuiAppBar-root-2 MuiAppBar-positionStatic-6 MuiAppBar-colorDefault-8"
+                    className="MuiAppBar-root-2 MuiAppBar-positionFixed-3 MuiAppBar-colorDefault-8 mui-fixed"
                     classes={
                       Object {
                         "elevation0": "MuiPaper-elevation0-13",
@@ -382,7 +382,7 @@ exports[`Header component when logged out 1`] = `
                     square={true}
                   >
                     <header
-                      className="MuiPaper-root-11 MuiPaper-elevation4-17 MuiAppBar-root-2 MuiAppBar-positionStatic-6 MuiAppBar-colorDefault-8"
+                      className="MuiPaper-root-11 MuiPaper-elevation4-17 MuiAppBar-root-2 MuiAppBar-positionFixed-3 MuiAppBar-colorDefault-8 mui-fixed"
                     >
                       <WithStyles(Toolbar)>
                         <Toolbar
@@ -1104,7 +1104,7 @@ exports[`Header component while loading 1`] = `
           >
             <WithStyles(AppBar)
               color="default"
-              position="static"
+              position="fixed"
             >
               <AppBar
                 classes={
@@ -1121,16 +1121,16 @@ exports[`Header component while loading 1`] = `
                   }
                 }
                 color="default"
-                position="static"
+                position="fixed"
               >
                 <WithStyles(Paper)
-                  className="MuiAppBar-root-2 MuiAppBar-positionStatic-6 MuiAppBar-colorDefault-8"
+                  className="MuiAppBar-root-2 MuiAppBar-positionFixed-3 MuiAppBar-colorDefault-8 mui-fixed"
                   component="header"
                   elevation={4}
                   square={true}
                 >
                   <Paper
-                    className="MuiAppBar-root-2 MuiAppBar-positionStatic-6 MuiAppBar-colorDefault-8"
+                    className="MuiAppBar-root-2 MuiAppBar-positionFixed-3 MuiAppBar-colorDefault-8 mui-fixed"
                     classes={
                       Object {
                         "elevation0": "MuiPaper-elevation0-13",
@@ -1167,7 +1167,7 @@ exports[`Header component while loading 1`] = `
                     square={true}
                   >
                     <header
-                      className="MuiPaper-root-11 MuiPaper-elevation4-17 MuiAppBar-root-2 MuiAppBar-positionStatic-6 MuiAppBar-colorDefault-8"
+                      className="MuiPaper-root-11 MuiPaper-elevation4-17 MuiAppBar-root-2 MuiAppBar-positionFixed-3 MuiAppBar-colorDefault-8 mui-fixed"
                     >
                       <WithStyles(Toolbar)>
                         <Toolbar

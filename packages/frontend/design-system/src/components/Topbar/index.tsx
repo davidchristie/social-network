@@ -16,10 +16,14 @@ const styles = {
   },
 };
 
-const Content: React.SFC<Props & WithStyles<"topbar">> = ({ children, classes, className }) => {
+const Content: React.StatelessComponent<Props & WithStyles<"topbar">> = ({
+  children,
+  classes,
+  className,
+}) => {
   return (
     <div className={classNames(classes.topbar, className)}>
-      <AppBar position="static" color="default">
+      <AppBar color="default" position="fixed">
         <Toolbar>
           {children}
         </Toolbar>
@@ -30,6 +34,6 @@ const Content: React.SFC<Props & WithStyles<"topbar">> = ({ children, classes, c
 
 const Styled = withStyles(styles)(Content);
 
-const Topbar: React.SFC<Props> = props => <Styled {...props} />;
+const Topbar: React.StatelessComponent<Props> = props => <Styled {...props} />;
 
 export default Topbar;

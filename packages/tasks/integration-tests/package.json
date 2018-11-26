@@ -41,7 +41,7 @@
   "private": true,
   "scripts": {
     "lint": "tslint --project . && tsc --noEmit",
-    "start": "jest -ci --verbose"
+    "start": "jest -ci --detectOpenHandles --verbose"
   },
   "version": "1.0.0"
 }
