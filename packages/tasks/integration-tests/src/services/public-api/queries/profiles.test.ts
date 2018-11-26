@@ -1,6 +1,5 @@
 import { ApolloClient } from "apollo-boost";
 import gql from "graphql-tag";
-
 import createPublicApiClient from "../createPublicApiClient";
 import describeQuery from "../describeQuery";
 

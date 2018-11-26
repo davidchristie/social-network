@@ -1,5 +1,4 @@
 import request from "supertest";
-
 import { AUTHENTICATION_HOST } from "../../constants/hosts";
 
 interface Arguments {

@@ -1,6 +1,5 @@
 import ApolloClient from "apollo-boost";
 import fetch from "node-fetch";
-
 import { PUBLIC_API_HOST } from "../../constants/hosts";
 
 interface Options {
