@@ -12,7 +12,7 @@ export interface UnfollowProfileVariables {
 }
 
 const UnfollowProfile = gql`
-  mutation FollowProfile($id: ID!) {
+  mutation UnfollowProfile($id: ID!) {
     unfollowProfile(id: $id) {
       id
     }
