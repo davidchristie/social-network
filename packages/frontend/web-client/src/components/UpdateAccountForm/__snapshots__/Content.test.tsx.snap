@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UpdateAccountForm content matches snapshot 1`] = `
+<Section
+  className="UpdateAccountForm"
+>
+  <h2>
+    Account
+  </h2>
+  <form
+    onSubmit={[Function]}
+  >
+    <Input$2
+      id="update-account-email"
+      label="Email Address"
+      name="email"
+      onChange={[Function]}
+      required={true}
+      type="email"
+      value="user@email.com"
+    />
+    <Button$2
+      type="submit"
+    >
+      Save
+    </Button$2>
+  </form>
+</Section>
+`;

@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Content component matches snapshot 1`] = `
+<Section
+  className="UpdatePasswordForm"
+>
+  <h2>
+    Password
+  </h2>
+  <form
+    onSubmit={[Function]}
+  >
+    <Input$2
+      id="update-password-current"
+      label="Current"
+      name="current"
+      onChange={[Function]}
+      required={true}
+      type="password"
+      value=""
+    />
+    <Input$2
+      id="update-password-new"
+      label="New"
+      name="new"
+      onChange={[Function]}
+      required={true}
+      type="password"
+      value=""
+    />
+    <Button$2
+      type="submit"
+    >
+      Save
+    </Button$2>
+  </form>
+</Section>
+`;

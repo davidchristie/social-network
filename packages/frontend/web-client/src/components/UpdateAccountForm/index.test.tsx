@@ -4,7 +4,7 @@ import { MockedProvider } from "react-apollo/test-utils";
 import UpdatePasswordForm from ".";
 import Data from "./Data";
 
-describe("UpdatePasswordForm component", () => {
+describe("UpdateAccountForm component", () => {
   it("renders data component", () => {
     const wrapper = mount(
       <MockedProvider>
