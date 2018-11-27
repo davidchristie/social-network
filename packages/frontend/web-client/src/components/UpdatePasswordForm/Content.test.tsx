@@ -8,11 +8,15 @@ describe("Content component", () => {
 
   let wrapper: ShallowWrapper<Props, State, Content>;
 
-  it("matches snapshot", () => {
+  beforeEach(() => {
     const props = {
       updatePassword,
     };
     wrapper = shallow(<Content {...props} />);
+  });
+
+  it("matches snapshot", () => {
+    expect(wrapper).toMatchSnapshot();
   });
 
   describe("on current password change", () => {

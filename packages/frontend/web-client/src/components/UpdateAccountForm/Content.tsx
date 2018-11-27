@@ -1,4 +1,4 @@
-import { Button, Input, Section } from "design-system";
+import { Alert, Button, Input, Section } from "design-system";
 import React from "react";
 import { MutationFn } from "react-apollo";
 import {
@@ -15,31 +15,41 @@ export interface Props {
 
 export interface State {
   email: string;
+  errorMessages: string[];
 }
 
 export default class UpdateAccountForm extends React.Component<Props, State> {
   public state: State = {
     email: this.props.account.email,
+    errorMessages: [],
   };
 
   public render () {
     const { updateAccount } = this.props;
-    const { email } = this.state;
+    const { email, errorMessages } = this.state;
     return (
       <Section className="UpdateAccountForm">
         <h2>Account</h2>
         <form
-          onSubmit={(event: React.FormEvent) => {
+          onSubmit={async (event: React.FormEvent) => {
             event.preventDefault();
-            updateAccount({
+            const result = await updateAccount({
               variables: {
                 data: {
                   email,
                 },
               },
             });
+            if (result && result.errors) {
+              this.setState({
+                errorMessages: result.errors.map(error => error.message),
+              });
+            }
           }}
         >
+          {errorMessages.map((errorMessage, index) => (
+            <Alert key={index}>{errorMessage}</Alert>
+          ))}
           <Input
             id="update-account-email"
             label="Email Address"
