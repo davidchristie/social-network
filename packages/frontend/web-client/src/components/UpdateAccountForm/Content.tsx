@@ -6,14 +6,14 @@ import {
   UpdateAccountVariables,
 } from "../../mutations/UpdateAccount";
 
-interface Props {
+export interface Props {
   account: {
     email: string;
   };
   updateAccount: MutationFn<UpdateAccountData, UpdateAccountVariables>;
 }
 
-interface State {
+export interface State {
   email: string;
 }
 
