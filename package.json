@@ -1,7 +1,7 @@
 {
   "author": "David Christie <davidchristie.nz@gmail.com>",
   "devDependencies": {
-    "tslint-config-prettier": "1.16.0"
+    "tslint-config-prettier": "1.17.0"
   },
   "engines": {
     "node": ">=10"
