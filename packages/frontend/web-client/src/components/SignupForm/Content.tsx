@@ -11,7 +11,7 @@ export interface Props {
 
 export interface State {
   email: string;
-  error: string | null;
+  errorMessage: string | null;
   name: string;
   password: string;
 }
@@ -19,7 +19,7 @@ export interface State {
 export default class Content extends React.Component<Props, State> {
   public state: State = {
     email: "",
-    error: null,
+    errorMessage: null,
     name: "",
     password: "",
   };
@@ -31,7 +31,7 @@ export default class Content extends React.Component<Props, State> {
           <h2>Signup</h2>
           Already have an account? <Link to="/login">Click here to log in.</Link>
           <hr />
-          {this.state.error && <Alert>{this.state.error}</Alert>}
+          {this.state.errorMessage && <Alert>{this.state.errorMessage}</Alert>}
           <Input
             autoFocus={true}
             id="signup-name"
@@ -88,7 +88,7 @@ export default class Content extends React.Component<Props, State> {
     } catch (error) {
       this.setState({
         email: "",
-        error: `An account with the email address "${this.state.email}" already exists.`,
+        errorMessage: error.message,
       });
     }
   }
