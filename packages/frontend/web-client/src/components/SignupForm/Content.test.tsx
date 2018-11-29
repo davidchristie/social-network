@@ -1,7 +1,6 @@
 import { Alert, Input } from "design-system";
 import { shallow, ShallowWrapper } from "enzyme";
 import React from "react";
-import { AUTHENTICATION_TOKEN } from "../../constants";
 import Content, { Props, State } from "./Content";
 
 const email = "user@email.com";
@@ -98,16 +97,6 @@ describe("SignupForm content", () => {
                 password,
               },
             });
-          });
-
-          it("stores the authentication token", () => {
-            expect(window.localStorage.getItem(AUTHENTICATION_TOKEN)).toEqual(token);
-          });
-        });
-
-        it("runs without crashing if mutation doesn't return any data", () => {
-          wrapper.find("form").simulate("submit", {
-            preventDefault: jest.fn(),
           });
         });
 

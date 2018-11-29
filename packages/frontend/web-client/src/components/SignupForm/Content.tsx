@@ -2,7 +2,6 @@ import { Alert, Button, Input, Section } from "design-system";
 import React from "react";
 import { MutationFn } from "react-apollo";
 import { Link } from "react-router-dom";
-import { AUTHENTICATION_TOKEN } from "../../constants";
 import { SignupData, SignupVariables } from "../../mutations/Signup";
 
 export interface Props {
@@ -74,17 +73,13 @@ export default class Content extends React.Component<Props, State> {
   private handleFormSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     try {
-      const result = await this.props.signup({
+      await this.props.signup({
         variables: {
           email: this.state.email,
           name: this.state.name,
           password: this.state.password,
         },
       });
-      if (result && result.data) {
-        const token = result.data.signup.token;
-        window.localStorage.setItem(AUTHENTICATION_TOKEN, token);
-      }
     } catch (error) {
       this.setState({
         email: "",

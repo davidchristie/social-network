@@ -1,5 +1,6 @@
 import React from "react";
 import { Mutation } from "react-apollo";
+import { AUTHENTICATION_TOKEN } from "../../constants";
 import SignupMutation, {
   SignupData,
   SignupVariables,
@@ -20,6 +21,10 @@ const Data: React.StatelessComponent<Props> = ({ content: Content }) => {
           query: AccountQuery,
         },
       ]}
+      update={(_, { data }) => {
+        const token = data!.signup.token;
+        window.localStorage.setItem(AUTHENTICATION_TOKEN, token);
+      }}
     >
       {(signup) => {
         return <Content signup={signup} />;
