@@ -11,7 +11,7 @@ export interface Props {
   content: React.ComponentType<ContentProps>;
 }
 
-const SignupForm: React.StatelessComponent<Props> = ({ content: Content }) => {
+const Data: React.StatelessComponent<Props> = ({ content: Content }) => {
   return (
     <Mutation<SignupData, SignupVariables>
       mutation={SignupMutation}
@@ -28,4 +28,4 @@ const SignupForm: React.StatelessComponent<Props> = ({ content: Content }) => {
   );
 };
 
-export default SignupForm;
+export default Data;
