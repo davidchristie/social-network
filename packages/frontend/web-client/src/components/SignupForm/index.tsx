@@ -1,27 +1,7 @@
 import React from "react";
-import { Mutation } from "react-apollo";
-import SignupMutation, {
-  SignupData,
-  SignupVariables,
-} from "../../mutations/Signup";
-import AccountQuery from "../../queries/Account";
 import Content from "./Content";
+import Data from "./Data";
 
-const SignupForm: React.StatelessComponent<{}> = () => {
-  return (
-    <Mutation<SignupData, SignupVariables>
-      mutation={SignupMutation}
-      refetchQueries={[
-        {
-          query: AccountQuery,
-        },
-      ]}
-    >
-      {(signup) => (
-        <Content signup={signup} />
-      )}
-    </Mutation>
-  );
-};
+const SignupForm: React.StatelessComponent<{}> = () => <Data content={Content} />;
 
 export default SignupForm;
