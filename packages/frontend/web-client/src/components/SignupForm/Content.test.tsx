@@ -4,15 +4,15 @@ import React from "react";
 import { AUTHENTICATION_TOKEN } from "../../constants";
 import Content, { Props, State } from "./Content";
 
-describe("SignupForm content", () => {
-  const email = "user@email.com";
-  const errorMessage = "error_message";
-  const name = "User";
-  const password = "password";
-  const preventDefault = jest.fn();
-  const signup = jest.fn();
-  const token = "token";
+const email = "user@email.com";
+const errorMessage = "error_message";
+const name = "User";
+const password = "password";
+const preventDefault = jest.fn();
+const signup = jest.fn();
+const token = "token";
 
+describe("SignupForm content", () => {
   let wrapper: ShallowWrapper<Props, State, Content>;
 
   beforeEach(() => {
