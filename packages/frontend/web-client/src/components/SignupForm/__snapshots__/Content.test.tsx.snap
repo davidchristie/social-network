@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SignupForm content matches snapshot 1`] = `
+<Section
+  className="SignupForm"
+>
+  <form
+    onSubmit={[Function]}
+  >
+    <h2>
+      Signup
+    </h2>
+    Already have an account? 
+    <Link
+      replace={false}
+      to="/login"
+    >
+      Click here to log in.
+    </Link>
+    <hr />
+    <Input$2
+      autoFocus={true}
+      id="signup-name"
+      label="Name"
+      name="name"
+      onChange={[Function]}
+      required={true}
+      value=""
+    />
+    <Input$2
+      id="signup-email"
+      label="Email Address"
+      name="email"
+      onChange={[Function]}
+      required={true}
+      type="email"
+      value=""
+    />
+    <Input$2
+      id="signup-password"
+      label="Password"
+      name="password"
+      onChange={[Function]}
+      required={true}
+      type="password"
+      value=""
+    />
+    <Button$2
+      type="submit"
+    >
+      Submit
+    </Button$2>
+  </form>
+</Section>
+`;
