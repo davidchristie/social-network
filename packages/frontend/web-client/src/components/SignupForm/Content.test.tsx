@@ -11,8 +11,27 @@ const preventDefault = jest.fn();
 const signup = jest.fn();
 const token = "token";
 
+function beforeEachSimulateInputChange (
+  getWrapper: () => ShallowWrapper<Props, State>,
+  inputName: string,
+  newValue: string
+) {
+  beforeEach(() => {
+    getWrapper()
+      .findWhere(element => {
+        return element.is(Input) && element.props().name === inputName;
+      })
+      .props()
+      .onChange({
+        target: {
+          value: newValue,
+        },
+      });
+  });
+}
+
 describe("SignupForm content", () => {
-  let wrapper: ShallowWrapper<Props, State, Content>;
+  let wrapper: ShallowWrapper<Props, State>;
 
   beforeEach(() => {
     const props = {
@@ -26,101 +45,66 @@ describe("SignupForm content", () => {
   });
 
   describe("on name change", () => {
-    beforeEach(() => {
-      wrapper
-        .findWhere(element => {
-          return element.is(Input) && element.props().name === "name";
-        })
-        .props()
-        .onChange({
-          target: {
-            value: name,
-          },
-        });
-    });
+    beforeEachSimulateInputChange(() => wrapper, "name", name);
 
     describe("on email change", () => {
-      beforeEach(() => {
-        wrapper
-          .findWhere(element => {
-            return element.is(Input) && element.props().name === "email";
-          })
-          .props()
-          .onChange({
-            target: {
-              value: email,
-            },
-          });
-      });
+      beforeEachSimulateInputChange(() => wrapper, "email", email);
 
       it("updates component state", () => {
         expect(wrapper.state().email).toEqual(email);
       });
 
-      describe("on password change", () => {
+      beforeEachSimulateInputChange(() => wrapper, "password", password);
+
+      describe("on form submit", () => {
         beforeEach(() => {
-          wrapper
-            .findWhere(element => {
-              return element.is(Input) && element.props().name === "password";
-            })
-            .props()
-            .onChange({
-              target: {
-                value: password,
+          signup.mockImplementationOnce(() => ({
+            data: {
+              signup: {
+                token,
               },
-            });
-        });
-
-        describe("on form submit", () => {
-          beforeEach(() => {
-            signup.mockImplementationOnce(() => ({
-              data: {
-                signup: {
-                  token,
-                },
-              },
-            }));
-            wrapper.find("form").simulate("submit", {
-              preventDefault,
-            });
-          });
-
-          it("prevents default action", () => {
-            expect(preventDefault).toBeCalled();
-          });
-
-          it("performs update account mutation", () => {
-            expect(signup).toBeCalledWith({
-              variables: {
-                email,
-                name,
-                password,
-              },
-            });
+            },
+          }));
+          wrapper.find("form").simulate("submit", {
+            preventDefault,
           });
         });
 
-        describe("on update account mutation error", () => {
-          beforeEach(() => {
-            signup.mockRejectedValueOnce(new Error(errorMessage));
-            wrapper.find("form").simulate("submit", {
-              preventDefault,
-            });
-          });
+        it("prevents default action", () => {
+          expect(preventDefault).toBeCalled();
+        });
 
-          it("prevents default action", () => {
-            expect(preventDefault).toBeCalled();
+        it("performs update account mutation", () => {
+          expect(signup).toBeCalledWith({
+            variables: {
+              email,
+              name,
+              password,
+            },
           });
+        });
+      });
 
-          it("updates component state", () => {
-            expect(wrapper.state().errorMessage).toEqual(errorMessage);
+      describe("on update account mutation error", () => {
+        beforeEach(() => {
+          signup.mockRejectedValueOnce(new Error(errorMessage));
+          wrapper.find("form").simulate("submit", {
+            preventDefault,
           });
+        });
 
-          it("displays error message", () => {
-            expect(
-              wrapper.containsMatchingElement(<Alert>{errorMessage}</Alert>)
-            ).toBe(true);
-          });
+        it("prevents default action", () => {
+          expect(preventDefault).toBeCalled();
+        });
+
+        it("updates component state", () => {
+          expect(wrapper.state().errorMessage).toEqual(errorMessage);
+        });
+
+        it("displays error message", () => {
+          expect(
+            wrapper.containsMatchingElement(<Alert>{errorMessage}</Alert>)
+          ).toBe(true);
         });
       });
     });

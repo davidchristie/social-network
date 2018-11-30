@@ -64,7 +64,7 @@ export default class Content extends React.Component<Props, State> {
     }
   }
 
-  private handleInputChange = (name: keyof State) => {
+  private handleInputChange = (name: "email" | "name" | "password") => {
     return (event: React.ChangeEvent<HTMLInputElement>) => {
       this.setState({
         [name as string]: event.target.value,
