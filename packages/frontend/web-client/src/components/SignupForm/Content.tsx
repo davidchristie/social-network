@@ -62,6 +62,7 @@ export default class Content extends React.Component<Props, State> {
 
   private handleInputChange = (name: "email" | "name" | "password") => {
     return (event: React.ChangeEvent<HTMLInputElement>) => {
+      event.persist();
       this.setState(previousState => ({
         ...previousState,
         [name]: event.target.value,
@@ -69,7 +70,7 @@ export default class Content extends React.Component<Props, State> {
     };
   }
 
-  private renderEmailInput () {
+  private renderEmailInput = () => {
     return (
       <Input
         id="signup-email"
@@ -83,7 +84,7 @@ export default class Content extends React.Component<Props, State> {
     );
   }
 
-  private renderNameInput () {
+  private renderNameInput = () => {
     return (
       <Input
         autoFocus={true}
@@ -97,7 +98,7 @@ export default class Content extends React.Component<Props, State> {
     );
   }
 
-  private renderPasswordInput () {
+  private renderPasswordInput = () => {
     return (
       <Input
         id="signup-password"
