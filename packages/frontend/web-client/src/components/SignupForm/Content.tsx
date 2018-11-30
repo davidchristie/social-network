@@ -40,12 +40,6 @@ export default class Content extends React.Component<Props, State> {
     );
   }
 
-  private handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    this.setState({
-      email: event.target.value,
-    });
-  }
-
   private handleFormSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     try {
@@ -57,18 +51,21 @@ export default class Content extends React.Component<Props, State> {
         },
       });
     } catch (error) {
-      this.setState({
+      this.setState(previousState => ({
+        ...previousState,
         email: "",
         errorMessage: error.message,
-      });
+        password: "",
+      }));
     }
   }
 
   private handleInputChange = (name: "email" | "name" | "password") => {
     return (event: React.ChangeEvent<HTMLInputElement>) => {
-      this.setState({
-        [name as string]: event.target.value,
-      } as Pick<State, keyof State>);
+      this.setState(previousState => ({
+        ...previousState,
+        [name]: event.target.value,
+      }));
     };
   }
 
@@ -78,7 +75,7 @@ export default class Content extends React.Component<Props, State> {
         id="signup-email"
         label="Email Address"
         name="email"
-        onChange={this.handleEmailChange}
+        onChange={this.handleInputChange("email")}
         required={true}
         type="email"
         value={this.state.email}
