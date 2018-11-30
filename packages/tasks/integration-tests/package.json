@@ -1,7 +1,7 @@
 {
   "devDependencies": {
     "@types/faker": "4.1.4",
-    "@types/jest": "23.3.9",
+    "@types/jest": "23.3.10",
     "@types/puppeteer": "1.10.0",
     "apollo-boost": "0.1.22",
     "faker": "4.1.0",
