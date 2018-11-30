@@ -31,33 +31,9 @@ export default class Content extends React.Component<Props, State> {
           Already have an account? <Link to="/login">Click here to log in.</Link>
           <hr />
           {this.state.errorMessage && <Alert>{this.state.errorMessage}</Alert>}
-          <Input
-            autoFocus={true}
-            id="signup-name"
-            label="Name"
-            name="name"
-            onChange={this.handleNameChange}
-            required={true}
-            value={this.state.name}
-          />
-          <Input
-            id="signup-email"
-            label="Email Address"
-            name="email"
-            onChange={this.handleEmailChange}
-            required={true}
-            type="email"
-            value={this.state.email}
-          />
-          <Input
-            id="signup-password"
-            label="Password"
-            name="password"
-            onChange={this.handlePasswordChange}
-            required={true}
-            type="password"
-            value={this.state.password}
-          />
+          {this.renderNameInput()}
+          {this.renderEmailInput()}
+          {this.renderPasswordInput()}
           <Button type="submit">Submit</Button>
         </form>
       </Section>
@@ -98,5 +74,47 @@ export default class Content extends React.Component<Props, State> {
     this.setState({
       password: event.target.value,
     });
+  }
+
+  private renderEmailInput () {
+    return (
+      <Input
+        id="signup-email"
+        label="Email Address"
+        name="email"
+        onChange={this.handleEmailChange}
+        required={true}
+        type="email"
+        value={this.state.email}
+      />
+    );
+  }
+
+  private renderNameInput () {
+    return (
+      <Input
+        autoFocus={true}
+        id="signup-name"
+        label="Name"
+        name="name"
+        onChange={this.handleNameChange}
+        required={true}
+        value={this.state.name}
+      />
+    );
+  }
+
+  private renderPasswordInput () {
+    return (
+      <Input
+        id="signup-password"
+        label="Password"
+        name="password"
+        onChange={this.handlePasswordChange}
+        required={true}
+        type="password"
+        value={this.state.password}
+      />
+    );
   }
 }
