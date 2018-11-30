@@ -23,6 +23,7 @@ function beforeEachSimulateInputChange (
       })
       .props()
       .onChange({
+        persist: () => undefined,
         target: {
           value: newValue,
         },
