@@ -64,16 +64,12 @@ export default class Content extends React.Component<Props, State> {
     }
   }
 
-  private handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    this.setState({
-      name: event.target.value,
-    });
-  }
-
-  private handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    this.setState({
-      password: event.target.value,
-    });
+  private handleInputChange = (name: keyof State) => {
+    return (event: React.ChangeEvent<HTMLInputElement>) => {
+      this.setState({
+        [name as string]: event.target.value,
+      } as Pick<State, keyof State>);
+    };
   }
 
   private renderEmailInput () {
@@ -97,7 +93,7 @@ export default class Content extends React.Component<Props, State> {
         id="signup-name"
         label="Name"
         name="name"
-        onChange={this.handleNameChange}
+        onChange={this.handleInputChange("name")}
         required={true}
         value={this.state.name}
       />
@@ -110,7 +106,7 @@ export default class Content extends React.Component<Props, State> {
         id="signup-password"
         label="Password"
         name="password"
-        onChange={this.handlePasswordChange}
+        onChange={this.handleInputChange("password")}
         required={true}
         type="password"
         value={this.state.password}
