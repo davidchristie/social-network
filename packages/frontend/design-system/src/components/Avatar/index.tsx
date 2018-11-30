@@ -31,7 +31,7 @@ const Content: React.SFC<Props & WithStyles<"large"> & WithStyles<"small">> = ({
   children,
   classes,
   image,
-  size = "small",
+  size = "small" as Size,
   ...attributes
 }) => {
   return (

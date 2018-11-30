@@ -12,7 +12,7 @@ export default function addComponentStory<P> (
 ) {
   const stories = storiesOf("Components", module);
   const name = getDisplayName(Component);
-  const componentProps = props || {
+  const componentProps: any = props || {
     children: name,
     onClick: action("onClick"),
   };

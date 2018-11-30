@@ -7,7 +7,7 @@
   "devDependencies": {
     "prisma": "1.21.1",
     "rimraf": "2.6.2",
-    "typescript": "3.1.6"
+    "typescript": "3.2.1"
   },
   "main": "./dist/prisma-client/index.js",
   "name": "data-model",

@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import React from "react";
 
 interface Props {
@@ -9,12 +10,13 @@ export default function elementWithClass<P extends Props> (
   tag: string,
 ) {
   const Tag = tag;
-  const Component: React.SFC<P> = ({ className, ...attributes }: Props) => (
-    <Tag
-      className={`${name}${className ? " " + className : ""}`}
-      {...attributes}
-    />
-  );
+  const Component: React.StatelessComponent<P> = ({ className, ...attributes }: Props) => {
+    const props: any = {
+      className: classNames(name, className),
+      ...attributes,
+    };
+    return <Tag {...props} />;
+  };
   Component.displayName = name;
   return Component;
 }

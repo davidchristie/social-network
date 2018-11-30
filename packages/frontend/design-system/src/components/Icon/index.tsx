@@ -3,13 +3,16 @@ import React from "react";
 
 interface Props {
   children: string;
-  size?: "inherit" | "default" | "small" | "large";
-  variant?: "action" | "disabled" | "error" | "inherit" | "primary" | "secondary";
+  size?: Size;
+  variant?: Variant;
 }
 
+type Size = "inherit" | "default" | "small" | "large";
+type Variant = "action" | "disabled" | "error" | "inherit" | "primary" | "secondary";
+
 const Icon: React.SFC<Props> = ({
-  size = "small",
-  variant = "inherit",
+  size = "small" as Size,
+  variant = "inherit" as Variant,
   ...attributes
 }) => {
   return (
