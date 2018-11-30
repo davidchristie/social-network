@@ -5,11 +5,11 @@ exports[`Input component with label and name matches snapshot 1`] = `
   fullWidth={true}
   margin="normal"
 >
-  <WithStyles(InputLabel)
+  <WithStyles(WithFormControlContext(InputLabel))
     htmlFor="id"
   >
     Label
-  </WithStyles(InputLabel)>
+  </WithStyles(WithFormControlContext(InputLabel))>
   <WithStyles(Input)
     autoComplete="name"
     id="id"
