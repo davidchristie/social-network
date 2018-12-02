@@ -24,6 +24,7 @@
     "lint": "scripts/lint.sh",
     "production": "docker-compose -f docker-compose.yml -f docker-compose.production.yml",
     "public-api": "yarn workspace public-api",
+    "style-guide": "yarn workspace style-guide",
     "tasks": "docker-compose -f docker-compose.yml -f docker-compose.tasks.yml",
     "test-utilities": "yarn workspace test-utilities",
     "wait-for-prisma": "scripts/wait-for-prisma.sh",
