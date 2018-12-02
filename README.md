@@ -17,6 +17,7 @@
 
 * [Design System](packages/frontend/design-system)
 * [Desktop Client](packages/frontend/desktop-client)
+* [Style Guide](packages/frontend/style-guide)
 * [Web Client](packages/frontend/web-client)
 
 ### Infrastructure

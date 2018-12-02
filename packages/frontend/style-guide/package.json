@@ -1,0 +1,53 @@
+{
+  "dependencies": {
+    "@material-ui/core": "3.6.0",
+    "autosuggest-highlight": "3.1.1",
+    "classnames": "2.2.6",
+    "react-autosuggest": "9.4.2"
+  },
+  "devDependencies": {
+    "@babel/core": "7.1.6",
+    "@storybook/addon-actions": "4.0.9",
+    "@storybook/addon-info": "4.0.9",
+    "@storybook/react": "4.0.9",
+    "@types/autosuggest-highlight": "3.1.0",
+    "@types/classnames": "2.2.6",
+    "@types/react-autosuggest": "9.3.6",
+    "@types/storybook__addon-actions": "3.4.1",
+    "@types/storybook__addon-info": "3.4.2",
+    "@types/storybook__react": "4.0.0",
+    "babel-loader": "8.0.4",
+    "enzyme": "3.7.0",
+    "enzyme-adapter-react-16": "1.7.0",
+    "enzyme-to-json": "3.3.4",
+    "jest": "23.6.0",
+    "react": "16.6.3",
+    "react-cosmos": "4.6.4",
+    "react-docgen-typescript-loader": "3.0.0",
+    "react-dom": "16.6.3",
+    "rimraf": "2.6.2",
+    "rollup": "0.67.3",
+    "rollup-plugin-commonjs": "9.2.0",
+    "rollup-plugin-node-resolve": "3.4.0",
+    "rollup-plugin-postcss": "1.6.3",
+    "rollup-plugin-sourcemaps": "0.4.2",
+    "rollup-plugin-typescript2": "0.18.0",
+    "ts-jest": "23.10.5",
+    "ts-loader": "5.3.1",
+    "ts-node": "7.0.1",
+    "typescript": "3.2.1"
+  },
+  "name": "style-guide",
+  "peerDependencies": {
+    "material-design-icons-iconfont": "^4.0.2",
+    "react": "^16.6.0",
+    "react-dom": "^16.6.0"
+  },
+  "private": true,
+  "scripts": {
+    "build": "build-storybook -o dist",
+    "lint": "tslint --project . && tsc --noEmit",
+    "start": "start-storybook --port 3333"
+  },
+  "version": "1.0.0"
+}
