@@ -7,7 +7,7 @@
   "devDependencies": {
     "@types/jest": "23.3.10",
     "@types/node-fetch": "2.1.4",
-    "@types/supertest": "2.0.6",
+    "@types/supertest": "2.0.7",
     "graphqlgen": "0.4.0",
     "jest": "23.6.0",
     "nodemon": "1.18.7",
