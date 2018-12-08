@@ -1,7 +1,6 @@
 import { Container } from "design-system";
+import { SignupForm } from "domain-model";
 import React from "react";
-
-import SignupForm from "../SignupForm";
 
 export default class SignupPage extends React.Component {
   public render () {
