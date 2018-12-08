@@ -1,5 +1,5 @@
 import { Avatar, Container, Topbar } from "design-system";
-import { AccountMenu } from "domain-model";
+import { AccountMenu, ProfileSearch } from "domain-model";
 import React from "react";
 import { Query, QueryResult } from "react-apollo";
 import { Link } from "react-router-dom";
@@ -8,7 +8,6 @@ import AccountQuery, {
   AccountVariables,
 } from "../../queries/Account";
 import ButtonLink from "../ButtonLink";
-import ProfileSearch from "../ProfileSearch";
 import GitHub from "./GitHub.png";
 import "./index.css";
 
