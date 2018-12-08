@@ -7,7 +7,9 @@ import typescript from "rollup-plugin-typescript2";
 const pkg = require("./package.json");
 
 export default {
-  external: [],
+  external: [
+    "react-apollo",
+  ],
   input: `src/index.ts`,
   output: [
     {
@@ -28,7 +30,13 @@ export default {
     typescript({
       tsconfig: "tsconfig.json",
     }),
-    commonjs(),
+    commonjs({
+      namedExports: {
+        "../../../node_modules/graphql/error/index.js": [
+          "syntaxError",
+        ],
+      },
+    }),
     resolve(),
     sourceMaps(),
   ],

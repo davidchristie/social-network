@@ -1,7 +1,6 @@
 import { Container } from "design-system";
+import { LoginForm } from "domain-model";
 import React from "react";
-
-import LoginForm from "../LoginForm";
 
 export default class LoginPage extends React.Component {
   public render () {
