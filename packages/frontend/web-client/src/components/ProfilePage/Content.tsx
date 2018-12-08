@@ -1,7 +1,6 @@
 import { Avatar, Container, Section } from "design-system";
-import { FollowProfileButton } from "domain-model";
+import { CreatePostForm, FollowProfileButton } from "domain-model";
 import React from "react";
-import CreatePostForm from "../CreatePostForm";
 import ProfilePosts from "../ProfilePosts";
 
 export interface Props {

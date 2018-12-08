@@ -1,4 +1,5 @@
 export { default as AccountMenu } from "./components/AccountMenu";
+export { default as CreatePostForm } from "./components/CreatePostForm";
 export { default as FollowProfileButton } from "./components/FollowProfileButton";
 export { default as LoginForm } from "./components/LoginForm";
 export { default as SignupForm } from "./components/SignupForm";
