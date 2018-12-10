@@ -10,7 +10,7 @@
     "@types/supertest": "2.0.7",
     "graphqlgen": "0.4.0",
     "jest": "23.6.0",
-    "nodemon": "1.18.7",
+    "nodemon": "1.18.8",
     "rimraf": "2.6.2",
     "supertest": "3.3.0",
     "ts-jest": "23.10.5",
