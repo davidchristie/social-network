@@ -18,7 +18,7 @@
     "@types/storybook__react": "4.0.0",
     "babel-loader": "8.0.4",
     "enzyme": "3.7.0",
-    "enzyme-adapter-react-16": "1.7.0",
+    "enzyme-adapter-react-16": "1.7.1",
     "enzyme-to-json": "3.3.5",
     "jest": "23.6.0",
     "react": "16.6.3",
