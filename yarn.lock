@@ -5011,13 +5011,13 @@ cross-fetch@2.2.2:
     node-fetch "2.1.2"
     whatwg-fetch "2.0.4"
 
-cross-fetch@2.2.3:
-  version "2.2.3"
-  resolved "https://registry.yarnpkg.com/cross-fetch/-/cross-fetch-2.2.3.tgz#e8a0b3c54598136e037f8650f8e823ccdfac198e"
-  integrity sha512-PrWWNH3yL2NYIb/7WF/5vFG3DCQiXDOVf8k3ijatbrtnwNuhMWLC7YF7uqf53tbTFDzHIUD8oITw4Bxt8ST3Nw==
+cross-fetch@3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/cross-fetch/-/cross-fetch-3.0.0.tgz#fb7fa6906f39c7233aa7ab8de1785e980532b899"
+  integrity sha512-P8HyKlMwT1ed9LqEWlJu+zfcxfn0KI4Nl4nxyvu1a8sg4vgtHdwhElZOgSNzoar44zQMdliZcve4QG/04AUi9Q==
   dependencies:
-    node-fetch "2.1.2"
-    whatwg-fetch "2.0.4"
+    node-fetch "2.3.0"
+    whatwg-fetch "3.0.0"
 
 cross-spawn@5.1.0, cross-spawn@^5.0.1, cross-spawn@^5.1.0:
   version "5.1.0"
@@ -7362,11 +7362,12 @@ graphql-anywhere@^4.1.0-alpha.0:
   dependencies:
     apollo-utilities "^1.0.26"
 
-graphql-binding@2.3.5:
-  version "2.3.5"
-  resolved "https://registry.yarnpkg.com/graphql-binding/-/graphql-binding-2.3.5.tgz#b3a7ee91f82f94f044c9902b08f888ef4bf0c6a9"
-  integrity sha512-COtcQzRIJU3MLJ+NOiVtN0UrLS/ZknZRbAqPIRmK4oAQlvBhY4M903m6RoS4kRW1uk/aFuQyEqyj4lbzHoLjfw==
+graphql-binding@2.3.7:
+  version "2.3.7"
+  resolved "https://registry.yarnpkg.com/graphql-binding/-/graphql-binding-2.3.7.tgz#2480d9ae4582ab1fbedb3ab1ae67963f82a8b028"
+  integrity sha512-fhvNySzmPHdqyjS73Rrr12RfJ2IehhFz7Ql7qYkls5KHwdktCg2E3MZroLiLkNQOx9uKIPq9AfibgIM7wecYKw==
   dependencies:
+    graphql "^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0"
     graphql-import "^0.7.1"
     graphql-tools "4.0.3"
     iterall "1.2.2"
@@ -12555,16 +12556,17 @@ pretty-hrtime@^1.0.3:
   resolved "https://registry.yarnpkg.com/pretty-hrtime/-/pretty-hrtime-1.0.3.tgz#b7e3ea42435a4c9b2759d99e0f201eb195802ee1"
   integrity sha1-t+PqQkNaTJsnWdmeDyAesZWALuE=
 
-prisma-binding@2.2.8:
-  version "2.2.8"
-  resolved "https://registry.yarnpkg.com/prisma-binding/-/prisma-binding-2.2.8.tgz#e4c6d194a3b504b232c203d4832ebacada659b91"
-  integrity sha512-TTT+1bJx4swwJTIINevc7PxodbgWiL3C8iYbIvxvwYGfrK83J/kM7chBpPC3Hnk4a6bIfm7gnP1g/q2Jug+uSw==
+prisma-binding@2.2.10:
+  version "2.2.10"
+  resolved "https://registry.yarnpkg.com/prisma-binding/-/prisma-binding-2.2.10.tgz#c8af90ea14bdb5f76146699b6e7e1186f723779e"
+  integrity sha512-s89xmkbQUqXsA4rTepXMNtxNqfzAVnIvsXB7tYlQp/UnZVeTyZNT80IYggadPzNJ1PfsGUbgMae0YRiP9G+N0Q==
   dependencies:
     apollo-link "1.2.4"
     apollo-link-error "1.1.2"
     apollo-link-ws "1.0.10"
-    cross-fetch "2.2.3"
-    graphql-binding "2.3.5"
+    cross-fetch "3.0.0"
+    graphql "^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0"
+    graphql-binding "2.3.7"
     graphql-import "0.7.1"
     graphql-tools "4.0.3"
     http-link-dataloader "^0.1.6"
