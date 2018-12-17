@@ -2,7 +2,6 @@ import { Alert, Button, Input, Section } from "design-system";
 import React from "react";
 import { Mutation } from "react-apollo";
 import { Link } from "react-router-dom";
-
 import { AUTHENTICATION_TOKEN } from "../../constants";
 import LoginMutation, {
   LoginData,

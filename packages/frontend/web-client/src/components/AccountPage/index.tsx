@@ -1,9 +1,6 @@
 import { Container, Section } from "design-system";
+import { UpdateAccountForm, UpdatePasswordForm, UpdateProfileForm } from "domain-model";
 import React from "react";
-
-import UpdateAccountForm from "../UpdateAccountForm";
-import UpdatePasswordForm from "../UpdatePasswordForm";
-import UpdateProfileForm from "../UpdateProfileForm";
 
 export default class AccountPage extends React.Component {
   public render () {

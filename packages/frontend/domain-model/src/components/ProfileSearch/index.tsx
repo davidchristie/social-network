@@ -2,7 +2,6 @@ import { Search } from "design-system";
 import React from "react";
 import { Query } from "react-apollo";
 import { RouteComponentProps, withRouter } from "react-router-dom";
-
 import ProfilesQuery, {
   ProfilesData,
   ProfilesVariables

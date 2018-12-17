@@ -8,6 +8,7 @@ WORKDIR /app
 
 # Install dependencies
 COPY ./packages/frontend/design-system/package.json ./packages/frontend/design-system/package.json
+COPY ./packages/frontend/domain-model/package.json ./packages/frontend/domain-model/package.json
 COPY ./packages/frontend/web-client/package.json ./packages/frontend/web-client/package.json
 COPY ./packages/libraries/test-utilities/package.json ./packages/libraries/test-utilities/package.json
 COPY ./package.json .
@@ -16,6 +17,7 @@ RUN yarn
 
 # Copy source code
 COPY ./packages/frontend/design-system ./packages/frontend/design-system
+COPY ./packages/frontend/domain-model ./packages/frontend/domain-model
 COPY ./packages/frontend/web-client ./packages/frontend/web-client
 COPY ./packages/libraries/test-utilities ./packages/libraries/test-utilities
 COPY ./tsconfig.json .

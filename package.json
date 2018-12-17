@@ -18,6 +18,7 @@
     "design-system": "yarn workspace design-system",
     "desktop-client": "yarn workspace desktop-client",
     "development": "docker-compose -f docker-compose.yml -f docker-compose.development.yml",
+    "domain-model": "yarn workspace domain-model",
     "infrastructure": "yarn workspace infrastructure",
     "integration-tests": "yarn workspace integration-tests",
     "kafka-client": "yarn workspace kafka-client",

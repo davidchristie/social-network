@@ -3,6 +3,7 @@ import React from "react";
 import { MockedProvider } from "react-apollo/test-utils";
 import { AUTHENTICATION_TOKEN } from "../../constants";
 import mockSignup from "../../mutations/mockSignup";
+import mockAccountResponse from "../../queries/mockAccountResponse";
 import { Props as ContentProps } from "./Content";
 import Data, { Props } from "./Data";
 
@@ -14,6 +15,7 @@ const variables = {
 };
 const mockSignupResponse = mockSignup(variables);
 const responses = [
+  mockAccountResponse(),
   mockSignupResponse,
 ];
 

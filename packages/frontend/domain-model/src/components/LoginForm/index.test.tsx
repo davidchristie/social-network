@@ -3,7 +3,6 @@ import { mount, ReactWrapper } from "enzyme";
 import React from "react";
 import { MockedProvider } from "react-apollo/test-utils";
 import { MemoryRouter } from "react-router-dom";
-
 import LoginForm, { State } from ".";
 
 function getInputWithName (wrapper: ReactWrapper, name: string) {
