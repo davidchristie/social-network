@@ -1,10 +1,8 @@
-import { Avatar } from "design-system";
+import { Avatar, RelativeDate } from "design-system";
 import React from "react";
 import { Link } from "react-router-dom";
-
 import { PostSummaryData } from "../../fragments/PostSummary";
 import PostMenu from "../PostMenu";
-import RelativeDate from "../RelativeDate";
 import "./index.css";
 
 interface Props {
