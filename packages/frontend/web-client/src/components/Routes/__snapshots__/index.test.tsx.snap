@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Routes component matches snapshot 1`] = `
+<Fragment>
+  <Authenticated>
+    <Switch>
+      <Route
+        exact={true}
+        key="/"
+        path="/"
+        render={[Function]}
+      />
+      <Route
+        exact={true}
+        key="/account"
+        path="/account"
+        render={[Function]}
+      />
+      <Route
+        exact={true}
+        key="/profile/:id"
+        path="/profile/:id"
+        render={[Function]}
+      />
+      <Route
+        path="*"
+        render={[Function]}
+      />
+    </Switch>
+  </Authenticated>
+  <Unauthenticated>
+    <Switch>
+      <Route
+        exact={true}
+        key="/login"
+        path="/login"
+        render={[Function]}
+      />
+      <Route
+        exact={true}
+        key="/profile/:id"
+        path="/profile/:id"
+        render={[Function]}
+      />
+      <Route
+        exact={true}
+        key="/signup"
+        path="/signup"
+        render={[Function]}
+      />
+      <Route
+        path="*"
+        render={[Function]}
+      />
+    </Switch>
+  </Unauthenticated>
+</Fragment>
+`;
