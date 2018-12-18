@@ -1,14 +1,12 @@
-import { Alert, Loading, MenuItem } from "design-system";
+import { Alert, ConfirmationModal, Loading, MenuItem } from "design-system";
 import React from "react";
 import { Mutation } from "react-apollo";
-
 import DeletePostMutation, {
   DeletePostData,
   DeletePostVariables,
 } from "../../mutations/DeletePost";
 import ProfileQuery from "../../queries/Profile";
 import AccountQuery from "../AccountQuery";
-import ConfirmationModal from "../ConfirmationModal";
 
 interface Props {
   onCancel?: () => void;
