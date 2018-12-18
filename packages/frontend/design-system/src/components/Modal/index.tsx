@@ -1,6 +1,6 @@
 import Dialog from "@material-ui/core/Dialog";
-import { Section } from "design-system";
 import React from "react";
+import Section from "../Section";
 
 interface Props {
   onClose: () => void;

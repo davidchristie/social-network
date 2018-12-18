@@ -1,7 +1,5 @@
-import { Button } from "design-system";
+import { Button, Modal } from "design-system";
 import React from "react";
-
-import Modal from "../Modal";
 
 interface Props {
   onCancel: () => void;

@@ -8,6 +8,7 @@ export { default as Input } from "./components/Input";
 export { default as Loading } from "./components/Loading";
 export { default as Menu } from "./components/Menu";
 export { default as MenuItem } from "./components/MenuItem";
+export { default as Modal } from "./components/Modal";
 export { default as RelativeDate } from "./components/RelativeDate";
 export { default as Section } from "./components/Section";
 export { default as Search } from "./components/Search";
