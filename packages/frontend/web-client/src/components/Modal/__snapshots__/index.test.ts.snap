@@ -3,13 +3,11 @@
 exports[`Modal component when closed matches snapshot 1`] = `""`;
 
 exports[`Modal component when open matches snapshot 1`] = `
-<Overlay
-  dark={true}
-  onClick={[Function]}
+<WithStyles(Dialog)
+  className="Modal"
+  onClose={[Function]}
+  open={true}
 >
-  <div
-    className="Modal"
-    onClick={[Function]}
-  />
-</Overlay>
+  <Section />
+</WithStyles(Dialog)>
 `;

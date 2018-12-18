@@ -11,13 +11,28 @@ exports[`PostMenu component with post ID matches snapshot 1`] = `
       more_horiz
     </Icon$2>
   </Button$2>
-  <Dropdown
+  <Menu$2
+    anchorElement={null}
+    anchorOrigin={
+      Object {
+        "horizontal": "right",
+        "vertical": "top",
+      }
+    }
     onClose={[Function]}
     open={false}
+    transformOrigin={
+      Object {
+        "horizontal": "right",
+        "vertical": "top",
+      }
+    }
   >
-    <DeletePostButton
+    <DeletePostMenuItem
+      onCancel={[Function]}
+      onConfirm={[Function]}
       postId="xxxx-xxxx-xxxx-xxxx"
     />
-  </Dropdown>
+  </Menu$2>
 </div>
 `;

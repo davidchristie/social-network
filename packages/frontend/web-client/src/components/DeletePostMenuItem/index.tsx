@@ -1,4 +1,4 @@
-import { Alert, Button, Loading } from "design-system";
+import { Alert, Loading, MenuItem } from "design-system";
 import React from "react";
 import { Mutation } from "react-apollo";
 
@@ -11,6 +11,8 @@ import AccountQuery from "../AccountQuery";
 import ConfirmationModal from "../ConfirmationModal";
 
 interface Props {
+  onCancel?: () => void;
+  onConfirm?: () => void;
   postId: string;
 }
 
@@ -18,7 +20,7 @@ interface State {
   isConfirmationModalOpen: boolean;
 }
 
-export default class DeletePostButton extends React.Component<Props, State> {
+export default class DeletePostMenuItem extends React.Component<Props, State> {
   public state = {
     isConfirmationModalOpen: false,
   };
@@ -51,12 +53,23 @@ export default class DeletePostButton extends React.Component<Props, State> {
             >
               {(deletePost) => (
                 <React.Fragment>
-                  <Button onClick={this.openConfirmationModal}>
+                  <MenuItem onClick={this.openConfirmationModal}>
                     Delete
-                  </Button>
+                  </MenuItem>
                   <ConfirmationModal
-                    onClose={this.closeConfirmationModal}
-                    onConfirm={() => deletePost()}
+                    onCancel={() => {
+                      this.closeConfirmationModal();
+                      if (this.props.onCancel) {
+                        this.props.onCancel();
+                      }
+                    }}
+                    onConfirm={() => {
+                      this.closeConfirmationModal();
+                      deletePost();
+                      if (this.props.onConfirm) {
+                        this.props.onConfirm();
+                      }
+                    }}
                     open={this.state.isConfirmationModalOpen}
                   >
                     Are you sure you want to delete this post?

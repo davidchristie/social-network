@@ -7,27 +7,27 @@ import ConfirmationModal from ".";
 
 describe("ConfirmationModal component", () => {
   describeWithProps("when open", ConfirmationModal, {
-    onClose: () => { return; },
+    onCancel: () => { return; },
     onConfirm: () => { return; },
     open: false,
   });
 
   describeWithProps("when closed", ConfirmationModal, {
-    onClose: () => { return; },
+    onCancel: () => { return; },
     onConfirm: () => { return; },
     open: false,
   });
 
-  it(`closes modal when "Confirm" button is clicked`, () => {
-    const onClose = jest.fn();
+  it(`calls onConfirm when "Confirm" button is clicked`, () => {
+    const onConfirm = jest.fn();
     const props = {
-      onClose,
-      onConfirm: () => { return; },
+      onCancel: () => { return; },
+      onConfirm,
       open: true,
     };
     const wrapper = shallow(<ConfirmationModal {...props} />);
     const confirmButton = wrapper.find(Button).first();
     confirmButton.simulate("click");
-    expect(onClose).toBeCalledTimes(1);
+    expect(onConfirm).toBeCalledTimes(1);
   });
 });

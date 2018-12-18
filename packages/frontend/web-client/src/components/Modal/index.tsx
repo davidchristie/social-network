@@ -1,7 +1,6 @@
+import Dialog from "@material-ui/core/Dialog";
+import { Section } from "design-system";
 import React from "react";
-
-import Overlay from "../Overlay";
-import "./index.css";
 
 interface Props {
   onClose: () => void;
@@ -14,18 +13,15 @@ export default class Modal extends React.Component<Props> {
       return null;
     }
     return (
-      <Overlay dark={true} onClick={this.props.onClose}>
-        <div
+        <Dialog
           className="Modal"
-          onClick={this.stopPropagation}
+          onClose={this.props.onClose}
+          open={true}
         >
+          <Section>
           {this.props.children}
-        </div>
-      </Overlay>
+          </Section>
+        </Dialog>
     );
-  }
-
-  private stopPropagation = (event: React.MouseEvent) => {
-    event.stopPropagation();
   }
 }

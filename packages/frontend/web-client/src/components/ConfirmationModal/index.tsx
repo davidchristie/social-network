@@ -4,7 +4,7 @@ import React from "react";
 import Modal from "../Modal";
 
 interface Props {
-  onClose: () => void;
+  onCancel: () => void;
   onConfirm: () => void;
   open: boolean;
 }
@@ -14,22 +14,25 @@ export default class ConfirmationModal extends React.Component<Props> {
     return (
       <Modal
         open={this.props.open}
-        onClose={this.props.onClose}
+        onClose={this.handleCancel}
       >
         {this.props.children}
         <hr />
-        <Button onClick={this.handleConfirmClick}>
+        <Button onClick={this.handleConfirm}>
           Confirm
         </Button>
-        <Button onClick={this.props.onClose}>
+        <Button onClick={this.handleCancel}>
           Cancel
         </Button>
       </Modal>
     );
   }
 
-  private handleConfirmClick = () => {
-    this.props.onClose();
+  private handleCancel = () => {
+    this.props.onCancel();
+  }
+
+  private handleConfirm = () => {
     this.props.onConfirm();
   }
 }

@@ -1,48 +1,58 @@
-import { Button, Icon } from "design-system";
+import { Button, Icon, Menu } from "design-system";
 import React from "react";
-
-import DeletePostButton from "../DeletePostButton";
-import Dropdown from "../Dropdown";
-import "./index.css";
+import DeletePostMenuItem from "../DeletePostMenuItem";
 
 interface Props {
   postId: string;
 }
 
 interface State {
-  isDropdownOpen: boolean;
+  anchorElement: EventTarget | null;
 }
 
 export default class PostMenu extends React.Component<Props, State> {
   public state = {
-    isDropdownOpen: false,
+    anchorElement: null,
   };
 
   public render () {
     return (
       <div className="PostMenu">
-        <Button onClick={this.openDropdown}>
+        <Button onClick={this.handleButtonClick}>
           <Icon>more_horiz</Icon>
         </Button>
-        <Dropdown
-          onClose={this.closeDropdown}
-          open={this.state.isDropdownOpen}
+        <Menu
+          anchorElement={this.state.anchorElement}
+          anchorOrigin={{
+            horizontal: "right",
+            vertical: "top",
+          }}
+          onClose={this.closeMenu}
+          open={Boolean(this.state.anchorElement)}
+          transformOrigin={{
+            horizontal: "right",
+            vertical: "top",
+          }}
         >
-          <DeletePostButton postId={this.props.postId} />
-        </Dropdown>
+          <DeletePostMenuItem
+            onCancel={this.closeMenu}
+            onConfirm={this.closeMenu}
+            postId={this.props.postId}
+          />
+        </Menu>
       </div>
     );
   }
 
-  private closeDropdown = () => {
+  private closeMenu = () => {
     this.setState({
-      isDropdownOpen: false,
+      anchorElement: null,
     });
   }
 
-  private openDropdown = () => {
+  private handleButtonClick = (event: React.MouseEvent<HTMLElement>) => {
     this.setState({
-      isDropdownOpen: true,
+      anchorElement: event.target,
     });
   }
 }
