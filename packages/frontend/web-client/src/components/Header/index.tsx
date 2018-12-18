@@ -1,9 +1,8 @@
-import { Avatar, Container, Topbar } from "design-system";
+import { Avatar, ButtonLink, Container, Topbar } from "design-system";
 import { AccountMenu, ProfileSearch } from "domain-model";
 import { Authenticated, Unauthenticated } from "domain-model";
 import React from "react";
 import { Link } from "react-router-dom";
-import ButtonLink from "../ButtonLink";
 import GitHub from "./GitHub.png";
 import "./index.css";
 

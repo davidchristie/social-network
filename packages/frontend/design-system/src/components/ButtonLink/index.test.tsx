@@ -1,7 +1,6 @@
 import { shallow, ShallowWrapper } from "enzyme";
 import React from "react";
-
-import ButtonLink from "./index";
+import ButtonLink from ".";
 
 describe("ButtonLink component", () => {
   const TO = "/test-route";

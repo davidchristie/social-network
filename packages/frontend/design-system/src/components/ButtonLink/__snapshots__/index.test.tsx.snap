@@ -6,7 +6,7 @@ exports[`ButtonLink component matches snapshot 1`] = `
   replace={false}
   to="/test-route"
 >
-  <Button$2 />
+  <Button />
 </Link>
 `;
 
@@ -16,6 +16,6 @@ exports[`ButtonLink component with custom class matches snapshot 1`] = `
   replace={false}
   to="/test-route"
 >
-  <Button$2 />
+  <Button />
 </Link>
 `;
