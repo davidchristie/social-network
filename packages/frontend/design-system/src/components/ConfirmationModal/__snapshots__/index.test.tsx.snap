@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ConfirmationModal component when closed matches snapshot 1`] = `
+<Modal
+  onClose={[Function]}
+  open={false}
+>
+  <hr />
+  <Button
+    onClick={[Function]}
+  >
+    Confirm
+  </Button>
+  <Button
+    onClick={[Function]}
+  >
+    Cancel
+  </Button>
+</Modal>
+`;
+
+exports[`ConfirmationModal component when open matches snapshot 1`] = `
+<Modal
+  onClose={[Function]}
+  open={true}
+>
+  <hr />
+  <Button
+    onClick={[Function]}
+  >
+    Confirm
+  </Button>
+  <Button
+    onClick={[Function]}
+  >
+    Cancel
+  </Button>
+</Modal>
+`;

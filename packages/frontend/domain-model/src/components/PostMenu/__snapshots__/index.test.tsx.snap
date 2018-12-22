@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PostMenu component with post ID matches snapshot 1`] = `
+<div
+  className="PostMenu"
+>
+  <Button$2
+    onClick={[Function]}
+  >
+    <Icon$2>
+      more_horiz
+    </Icon$2>
+  </Button$2>
+  <Menu$2
+    anchorElement={null}
+    anchorOrigin={
+      Object {
+        "horizontal": "right",
+        "vertical": "top",
+      }
+    }
+    onClose={[Function]}
+    open={false}
+    transformOrigin={
+      Object {
+        "horizontal": "right",
+        "vertical": "top",
+      }
+    }
+  >
+    <DeletePostMenuItem
+      onCancel={[Function]}
+      onConfirm={[Function]}
+      postId="xxxx-xxxx-xxxx-xxxx"
+    />
+  </Menu$2>
+</div>
+`;

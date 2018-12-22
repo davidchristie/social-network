@@ -1,12 +1,15 @@
 export { default as Alert } from "./components/Alert";
 export { default as Avatar } from "./components/Avatar";
 export { default as Button } from "./components/Button";
+export { default as ButtonLink } from "./components/ButtonLink";
+export { default as ConfirmationModal } from "./components/ConfirmationModal";
 export { default as Container } from "./components/Container";
 export { default as Icon } from "./components/Icon";
 export { default as Input } from "./components/Input";
 export { default as Loading } from "./components/Loading";
 export { default as Menu } from "./components/Menu";
 export { default as MenuItem } from "./components/MenuItem";
+export { default as Modal } from "./components/Modal";
 export { default as RelativeDate } from "./components/RelativeDate";
 export { default as Section } from "./components/Section";
 export { default as Search } from "./components/Search";

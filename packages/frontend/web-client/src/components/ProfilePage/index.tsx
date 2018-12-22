@@ -1,7 +1,21 @@
+import { Container, Section } from "design-system";
+import { CreatePostForm, ProfileHeader, ProfilePosts } from "domain-model";
 import React from "react";
-import Connected from "./Connected";
-import Content from "./Content";
+import { RouteComponentProps, withRouter } from "react-router-dom";
 
-const ProfilePage: React.SFC<{}> = () => <Connected content={Content} />;
+interface Props extends RouteComponentProps<{ id: string }> {}
 
-export default ProfilePage;
+const ProfilePage: React.StatelessComponent<Props> = ({ match }) => {
+  const profileId = match.params.id;
+  return (
+    <Container>
+      <ProfileHeader profileId={profileId} />
+      <Section>
+        <CreatePostForm profileId={profileId} />
+        <ProfilePosts profileId={profileId} />
+      </Section>
+    </Container>
+  );
+};
+
+export default withRouter(ProfilePage);

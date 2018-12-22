@@ -12,10 +12,10 @@ exports[`Page component renders loading state 1`] = `
   }
 >
   <div
-    className="Content-1-loading-1"
+    className="Content-2-loading-1"
   >
     <div
-      className="MuiCircularProgress-root-3 MuiCircularProgress-colorPrimary-6 MuiCircularProgress-indeterminate-5 Content-1-progress-2"
+      className="MuiCircularProgress-root-3 MuiCircularProgress-colorPrimary-6 MuiCircularProgress-indeterminate-5 Content-2-progress-2"
       role="progressbar"
       style={
         Object {

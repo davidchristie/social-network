@@ -1,9 +1,0 @@
-.Modal {
-  background: white;
-  border: 1px solid black;
-  box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.4);
-  margin: 15vh auto;
-  max-width: 600px;
-  padding: 1em;
-  width: 80%;
-}
