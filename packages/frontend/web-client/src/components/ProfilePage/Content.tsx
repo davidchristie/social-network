@@ -1,7 +1,6 @@
 import { Avatar, Container, Section } from "design-system";
-import { CreatePostForm, FollowProfileButton } from "domain-model";
+import { CreatePostForm, FollowProfileButton, ProfilePosts } from "domain-model";
 import React from "react";
-import ProfilePosts from "../ProfilePosts";
 
 export interface Props {
   account: {
@@ -18,7 +17,7 @@ export interface Props {
   };
 }
 
-const Content: React.SFC<Props> = ({ account, profile }) => {
+const Content: React.StatelessComponent<Props> = ({ account, profile }) => {
   const isAuthenticated = Boolean(account);
   const isOwnProfile = account && account.profile.id === profile.id;
   return (

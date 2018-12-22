@@ -1,7 +1,7 @@
 import React from "react";
-import Connected from "./Connected";
 import Content from "./Content";
+import Data from "./Data";
 
-const ProfilePage: React.SFC<{}> = () => <Connected content={Content} />;
+const ProfilePage: React.StatelessComponent<{}> = () => <Data content={Content} />;
 
 export default ProfilePage;

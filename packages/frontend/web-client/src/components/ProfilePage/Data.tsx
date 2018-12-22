@@ -16,7 +16,7 @@ interface Props extends RouteComponentProps<{ id: string }> {
   content: React.ComponentType<ContentProps>;
 }
 
-const Connected: React.SFC<Props> = ({ content, match }) => {
+const Connected: React.StatelessComponent<Props> = ({ content, match }) => {
   return (
     <Query<AccountData, AccountVariables>
       query={AccountQuery}
