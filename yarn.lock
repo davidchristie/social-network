@@ -2957,7 +2957,7 @@ apollo-storybook-core@^0.5.2:
   resolved "https://registry.yarnpkg.com/apollo-storybook-core/-/apollo-storybook-core-0.5.2.tgz#494dc0fcaeec236cea86fc8c8453db20eb614418"
   integrity sha512-8CbKUbRMIxGnz5Ci1jx7dOSDmCcktykfID96wji+E/vFVzE+dvGunuvEJexiVjCOebXJinXe6dqWJZuETot+Sw==
 
-apollo-storybook-react@^0.1.8:
+apollo-storybook-react@0.1.8:
   version "0.1.8"
   resolved "https://registry.yarnpkg.com/apollo-storybook-react/-/apollo-storybook-react-0.1.8.tgz#6118f6084e0b14066f0190751306b524d1af753c"
   integrity sha512-M82DKKBJtmJOgsOr4r8itVWwFfrbDDg5IbFpgclFONh/yczeaoJQmqXTPtKDAtJdWY0FTQ0maAkstki5evuF/Q==
