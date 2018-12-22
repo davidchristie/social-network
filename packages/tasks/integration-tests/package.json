@@ -3,7 +3,7 @@
     "@types/faker": "4.1.4",
     "@types/jest": "23.3.10",
     "@types/puppeteer": "1.11.1",
-    "apollo-boost": "0.1.22",
+    "apollo-boost": "0.1.23",
     "faker": "4.1.0",
     "graphql": "14.0.2",
     "graphql-tag": "2.10.0",
