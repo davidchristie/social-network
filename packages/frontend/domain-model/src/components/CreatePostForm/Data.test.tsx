@@ -16,7 +16,7 @@ describe("Data component", () => {
   let wrapper: ReactWrapper;
 
   beforeEach(() => {
-    wrapper = mountWithMockedResponses(<Data content={Content} />, responses);
+    wrapper = mountWithMockedResponses(<Data content={Content} profileId="profile_id" />, responses);
   });
 
   describe("loading state", () => {
@@ -46,7 +46,7 @@ describe("Data component", () => {
             },
           ]}
         >
-          <Data content={Content} />;
+          <Data content={Content} profileId="profile_id" />;
         </MockedProvider>
       );
     });

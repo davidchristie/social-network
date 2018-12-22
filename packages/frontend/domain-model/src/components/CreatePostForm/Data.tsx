@@ -14,9 +14,10 @@ import { Props as ContentProps } from "./Content";
 
 interface Props {
   content: React.ComponentType<ContentProps>;
+  profileId: string;
 }
 
-const Data: React.ComponentType<Props> = ({ content }) => {
+const Data: React.ComponentType<Props> = ({ content, profileId }) => {
   const Content = content;
   return (
     <Query<AccountData, AccountVariables>
@@ -30,6 +31,10 @@ const Data: React.ComponentType<Props> = ({ content }) => {
           return <Loading />;
         }
         const { account } = data;
+        const isOwnProfile = account.profile.id === profileId;
+        if (!isOwnProfile) {
+          return null;
+        }
         return (
           <Mutation<CreatePostData, CreatePostVariables>
             mutation={CreatePostMutation}
