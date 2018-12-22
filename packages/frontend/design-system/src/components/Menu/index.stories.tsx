@@ -53,7 +53,7 @@ class MenuExample extends React.Component<{}, State> {
   }
 }
 
-const stories = storiesOf("Components", module);
+const stories = storiesOf("Design System", module);
 stories.addDecorator(getStory => <Theme>{getStory()}</Theme>);
 stories.addDecorator(withInfo({
   inline: true,

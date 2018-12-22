@@ -10,7 +10,7 @@ export default function addComponentStory<P> (
   Component: React.ComponentType<P>,
   props?: P
 ) {
-  const stories = storiesOf("Components", module);
+  const stories = storiesOf("Design System", module);
   const name = getDisplayName(Component);
   const componentProps: any = props || {
     children: name,
