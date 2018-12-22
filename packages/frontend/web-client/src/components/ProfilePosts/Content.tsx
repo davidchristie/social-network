@@ -1,6 +1,6 @@
+import { PostSummary } from "domain-model";
 import React from "react";
 import { PostSummaryData } from "../../fragments/PostSummary";
-import PostSummary from "../PostSummary";
 
 export interface Props {
   profile: {

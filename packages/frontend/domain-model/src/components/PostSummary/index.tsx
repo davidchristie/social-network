@@ -1,8 +1,8 @@
 import { Avatar, RelativeDate } from "design-system";
-import { PostMenu } from "domain-model";
 import React from "react";
 import { Link } from "react-router-dom";
 import { PostSummaryData } from "../../fragments/PostSummary";
+import PostMenu from "../PostMenu";
 import "./index.css";
 
 interface Props {
@@ -50,4 +50,3 @@ export default class PostSummary extends React.Component<Props> {
     );
   }
 }
-
