@@ -1,5 +1,10 @@
 {
+  "automerge": true,
   "extends": [
     "config:base"
-  ]
+  ],
+  "major": {
+    "automerge": false
+  },
+  "prConcurrentLimit": 2
 }
