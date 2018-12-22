@@ -6,34 +6,34 @@ exports[`ConfirmationModal component when closed matches snapshot 1`] = `
   open={false}
 >
   <hr />
-  <Button$2
+  <Button
     onClick={[Function]}
   >
     Confirm
-  </Button$2>
-  <Button$2
+  </Button>
+  <Button
     onClick={[Function]}
   >
     Cancel
-  </Button$2>
+  </Button>
 </Modal>
 `;
 
 exports[`ConfirmationModal component when open matches snapshot 1`] = `
 <Modal
   onClose={[Function]}
-  open={false}
+  open={true}
 >
   <hr />
-  <Button$2
+  <Button
     onClick={[Function]}
   >
     Confirm
-  </Button$2>
-  <Button$2
+  </Button>
+  <Button
     onClick={[Function]}
   >
     Cancel
-  </Button$2>
+  </Button>
 </Modal>
 `;

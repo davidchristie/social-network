@@ -1,7 +1,7 @@
-import { Button } from "design-system";
 import { shallow } from "enzyme";
 import React from "react";
 import { describeWithProps } from "test-utilities/react";
+import Button from "../Button";
 
 import ConfirmationModal from ".";
 
@@ -9,7 +9,7 @@ describe("ConfirmationModal component", () => {
   describeWithProps("when open", ConfirmationModal, {
     onCancel: () => { return; },
     onConfirm: () => { return; },
-    open: false,
+    open: true,
   });
 
   describeWithProps("when closed", ConfirmationModal, {
