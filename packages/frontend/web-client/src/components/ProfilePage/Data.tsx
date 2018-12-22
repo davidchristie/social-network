@@ -16,7 +16,7 @@ interface Props extends RouteComponentProps<{ id: string }> {
   content: React.ComponentType<ContentProps>;
 }
 
-const Connected: React.StatelessComponent<Props> = ({ content, match }) => {
+const Data: React.StatelessComponent<Props> = ({ content, match }) => {
   return (
     <Query<AccountData, AccountVariables>
       query={AccountQuery}
@@ -45,4 +45,4 @@ const Connected: React.StatelessComponent<Props> = ({ content, match }) => {
   );
 };
 
-export default withRouter(Connected);
+export default withRouter(Data);
