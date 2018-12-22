@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Content component with own profile with avatar matches snapshot 1`] = `
+<Section>
+  <Avatar$2
+    image="avatar_url"
+    size="large"
+  />
+  <h1>
+    Profile
+  </h1>
+</Section>
+`;
+
+exports[`Content component with own profile without avatar matches snapshot 1`] = `
+<Section>
+  <Avatar$2
+    size="large"
+  />
+  <h1>
+    Profile
+  </h1>
+</Section>
+`;
