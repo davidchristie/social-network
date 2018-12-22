@@ -7,7 +7,9 @@ import typescript from "rollup-plugin-typescript2";
 const pkg = require("./package.json");
 
 export default {
-  external: [],
+  external: [
+    "react",
+  ],
   input: `src/index.ts`,
   output: [
     {

@@ -1,7 +1,6 @@
 import "material-design-icons-iconfont/dist/material-design-icons.css";
 import React from "react";
 import ReactDOM from "react-dom";
-
 import Application from "./components/Application";
 import "./index.css";
 import * as serviceWorker from "./serviceWorker";
