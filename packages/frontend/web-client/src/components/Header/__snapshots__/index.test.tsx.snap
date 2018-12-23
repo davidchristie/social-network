@@ -15,8 +15,8 @@ exports[`Header component matches snapshot 1`] = `
     <div
       className="items"
     >
+      <withRouter(ProfileSearch) />
       <Authenticated>
-        <withRouter(ProfileSearch) />
         <AccountMenu />
       </Authenticated>
       <Unauthenticated>
