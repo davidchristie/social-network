@@ -2,12 +2,12 @@
   "dependencies": {
     "graphql": "14.0.2",
     "prisma-binding": "2.2.11",
-    "prisma-client-lib": "1.23.2"
+    "prisma-client-lib": "1.23.1"
   },
   "devDependencies": {
-    "prisma": "1.23.2",
+    "prisma": "1.23.1",
     "rimraf": "2.6.2",
-    "typescript": "3.2.2"
+    "typescript": "3.1.6"
   },
   "main": "./dist/prisma-client/index.js",
   "name": "data-model",

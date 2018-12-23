@@ -6,7 +6,7 @@ import React from "react";
 import Icon from ".";
 import Theme from "../Theme";
 
-const stories = storiesOf("Components", module);
+const stories = storiesOf("Design System", module);
 stories.addDecorator(getStory => <Theme>{getStory()}</Theme>);
 stories.addDecorator(withInfo({
   inline: true,

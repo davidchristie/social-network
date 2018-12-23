@@ -27,6 +27,7 @@
     "public-api": "yarn workspace public-api",
     "style-guide": "yarn workspace style-guide",
     "tasks": "docker-compose -f docker-compose.yml -f docker-compose.tasks.yml",
+    "test": "scripts/test.sh",
     "test-utilities": "yarn workspace test-utilities",
     "wait-for-prisma": "scripts/wait-for-prisma.sh",
     "wait-for-web-client": "scripts/wait-for-web-client.sh",
