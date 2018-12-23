@@ -26,8 +26,8 @@ export default class Header extends React.Component {
   private renderMenuItems () {
     return (
       <div className="items">
+        <ProfileSearch />
         <Authenticated>
-          <ProfileSearch />
           <AccountMenu />
         </Authenticated>
         <Unauthenticated>
