@@ -13,7 +13,7 @@ export default class PostSummary extends React.Component<Props> {
   public render () {
     const { post } = this.props;
     return (
-      <div className="Post">
+      <div className="PostSummary">
         <div className="header">
           {this.renderProfile()}
           <div>
