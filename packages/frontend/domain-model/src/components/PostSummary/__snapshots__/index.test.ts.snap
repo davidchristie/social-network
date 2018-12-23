@@ -2,7 +2,7 @@
 
 exports[`PostSummary component with avatar image matches snapshot 1`] = `
 <div
-  className="Post"
+  className="PostSummary"
 >
   <div
     className="header"
@@ -57,7 +57,7 @@ exports[`PostSummary component with avatar image matches snapshot 1`] = `
 
 exports[`PostSummary component without avatar image matches snapshot 1`] = `
 <div
-  className="Post"
+  className="PostSummary"
 >
   <div
     className="header"
