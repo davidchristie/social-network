@@ -24,6 +24,7 @@
     "@types/storybook__addon-actions": "3.4.1",
     "@types/storybook__addon-info": "3.4.2",
     "@types/storybook__react": "4.0.0",
+    "apollo-codegen": "^0.20.2",
     "babel-loader": "8.0.4",
     "enzyme": "3.8.0",
     "enzyme-adapter-react-16": "1.7.1",
@@ -88,6 +89,7 @@
   "private": true,
   "scripts": {
     "build": "rimraf dist && rollup -c rollup.ts",
+    "download-schema": "apollo-codegen introspect-schema https://api.social-network.davidchristie.io --insecure --output schema.json",
     "lint": "tslint --project . && tsc --noEmit",
     "storybook": "start-storybook --port 3333",
     "test": "jest --coverage --maxWorkers 2 --verbose"
