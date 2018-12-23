@@ -1,26 +1,26 @@
-.Post {
+.PostSummary {
   border: 1px solid black;
   margin-top: 1em;
   padding: 2em;
 }
 
-.Post .header {
+.PostSummary .header {
   display: flex;
   justify-content: space-between;
 }
 
-.Post .profile {
+.PostSummary .profile {
   display: flex;
 }
 
-.Post .profile a {
+.PostSummary .profile a {
   text-decoration: none;
 }
 
-.Post .profile a:hover {
+.PostSummary .profile a:hover {
   text-decoration: underline;
 }
 
-.Post .profile .Avatar {
+.PostSummary .profile .Avatar {
   margin-right: 5px;
 }

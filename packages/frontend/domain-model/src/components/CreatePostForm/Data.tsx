@@ -27,10 +27,13 @@ const Data: React.ComponentType<Props> = ({ content, profileId }) => {
         if (error) {
           return <Alert>{error.message}</Alert>;
         }
-        if (loading || !data || !data.account) {
+        if (loading || !data) {
           return <Loading />;
         }
         const { account } = data;
+        if (!account) {
+          return null;
+        }
         const isOwnProfile = account.profile.id === profileId;
         if (!isOwnProfile) {
           return null;
