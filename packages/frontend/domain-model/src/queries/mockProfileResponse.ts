@@ -11,6 +11,7 @@ const mockProfileResponse = (variables: ProfileVariables): MockedResponse => {
   const profile = {
     __typename: "Profile",
     avatar,
+    following: [],
     id: variables.id,
     name: "Profile",
   };
