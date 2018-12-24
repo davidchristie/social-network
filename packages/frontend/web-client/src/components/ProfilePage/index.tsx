@@ -1,5 +1,10 @@
 import { Container, Section } from "design-system";
-import { CreatePostForm, ProfileHeader, ProfilePosts } from "domain-model";
+import {
+  CreatePostForm,
+  ProfileFollowing,
+  ProfileHeader,
+  ProfilePosts
+} from "domain-model";
 import React from "react";
 import { RouteComponentProps, withRouter } from "react-router-dom";
 
@@ -10,6 +15,7 @@ const ProfilePage: React.StatelessComponent<Props> = ({ match }) => {
   return (
     <Container>
       <ProfileHeader profileId={profileId} />
+      <ProfileFollowing profileId={profileId} />
       <Section>
         <CreatePostForm profileId={profileId} />
         <ProfilePosts profileId={profileId} />

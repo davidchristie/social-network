@@ -6,6 +6,7 @@ export { default as FollowProfileButton } from "./components/FollowProfileButton
 export { default as LoginForm } from "./components/LoginForm";
 export { default as PostMenu } from "./components/PostMenu";
 export { default as PostSummary } from "./components/PostSummary";
+export { default as ProfileFollowing } from "./components/ProfileFollowing";
 export { default as ProfileHeader } from "./components/ProfileHeader";
 export { default as ProfilePosts } from "./components/ProfilePosts";
 export { default as ProfileSearch } from "./components/ProfileSearch";
