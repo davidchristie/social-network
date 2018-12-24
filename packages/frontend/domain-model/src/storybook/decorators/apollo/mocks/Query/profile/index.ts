@@ -1,4 +1,4 @@
-import { ProfileVariables } from "../../../../../generated/types";
+import { ProfileVariables } from "../../../../../../generated/types";
 import followers from "./followers";
 import following from "./following";
 
