@@ -284,6 +284,19 @@ export interface Profile_profile_avatar {
   url: string;
 }
 
+export interface Profile_profile_followers_avatar {
+  __typename: "Image";
+  id: string;
+  url: string;
+}
+
+export interface Profile_profile_followers {
+  __typename: "Profile";
+  avatar: Profile_profile_followers_avatar | null;
+  id: string;
+  name: string;
+}
+
 export interface Profile_profile_following_avatar {
   __typename: "Image";
   id: string;
@@ -322,6 +335,7 @@ export interface Profile_profile {
   __typename: "Profile";
   avatar: Profile_profile_avatar | null;
   id: string;
+  followers: Profile_profile_followers[];
   following: Profile_profile_following[];
   name: string;
   posts: Profile_profile_posts[];

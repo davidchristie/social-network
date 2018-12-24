@@ -5,7 +5,7 @@ import { Theme } from "design-system";
 import "material-design-icons-iconfont/dist/material-design-icons.css";
 import React from "react";
 import { MemoryRouter } from "react-router-dom";
-import ProfileFollowing from ".";
+import ProfileFollowers from ".";
 import { ProfileVariables } from "../../generated/types";
 
 const typeDefs = `
@@ -44,24 +44,24 @@ const mocks = {
     return {
       profile: ({ id }: ProfileVariables) => ({
         avatar: () => null,
-        followers: () => ([]),
-        following: () => ([
+        followers: () => ([
           {
             avatar: () => null,
-            id: "following_profile_1",
-            name: "Following Profile 1",
+            id: "follower_profile_1",
+            name: "Follower Profile 1",
           },
           {
             avatar: () => null,
-            id: "following_profile_2",
-            name: "Following Profile 2",
+            id: "follower_profile_2",
+            name: "Follower Profile 2",
           },
           {
             avatar: () => null,
-            id: "following_profile_3",
-            name: "Following Profile 3",
+            id: "follower_profile_3",
+            name: "Follower Profile 3",
           },
         ]),
+        following: () => ([]),
         id,
         name: "Profile",
       }),
@@ -87,6 +87,6 @@ stories.addDecorator(withInfo({
   ],
 }));
 stories.add(
-  "ProfileFollowing",
-  () => <ProfileFollowing profileId="profile_id_1" />
+  "ProfileFollowers",
+  () => <ProfileFollowers profileId="profile_id_1" />
 );

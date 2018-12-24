@@ -11,6 +11,14 @@ const Profile = gql`
         ...Image
       }
       id
+      followers {
+        avatar {
+          id
+          url
+        }
+        id
+        name
+      }
       following {
         avatar {
           id

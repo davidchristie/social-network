@@ -1,6 +1,7 @@
 import { Container, Section } from "design-system";
 import {
   CreatePostForm,
+  ProfileFollowers,
   ProfileFollowing,
   ProfileHeader,
   ProfilePosts
@@ -15,6 +16,7 @@ const ProfilePage: React.StatelessComponent<Props> = ({ match }) => {
   return (
     <Container>
       <ProfileHeader profileId={profileId} />
+      <ProfileFollowers profileId={profileId} />
       <ProfileFollowing profileId={profileId} />
       <Section>
         <CreatePostForm profileId={profileId} />

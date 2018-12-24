@@ -3,25 +3,25 @@ import Content from "./Content";
 
 describe("Content component", () => {
   describeWithProps(
-    "renders following profiles",
+    "renders follower profiles",
     Content,
     {
       profile: {
-        following: [
+        followers: [
           {
             avatar: null,
-            id: "following_profile_id_1",
-            name: "Following Profile 1",
+            id: "follower_profile_id_1",
+            name: "Follower Profile 1",
           },
           {
             avatar: null,
-            id: "following_profile_id_2",
-            name: "Following Profile 2",
+            id: "follower_profile_id_2",
+            name: "Follower Profile 2",
           },
           {
             avatar: null,
-            id: "following_profile_id_3",
-            name: "Following Profile 3",
+            id: "follower_profile_id_3",
+            name: "Follower Profile 3",
           },
         ],
       },
