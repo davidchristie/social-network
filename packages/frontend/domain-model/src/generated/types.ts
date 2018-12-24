@@ -336,7 +336,7 @@ export interface Profiles_profiles {
 }
 
 export interface Profiles {
-  profiles: (Profiles_profiles | null)[];
+  profiles: Profiles_profiles[];
 }
 
 export interface ProfilesVariables {
