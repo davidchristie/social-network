@@ -1,14 +1,9 @@
 import { Alert, Loading } from "design-system";
 import React from "react";
-import { Mutation, Query } from "react-apollo";
-import UpdateProfileMutation, {
-  UpdateProfileData,
-  UpdateProfileVariables,
-} from "../../mutations/UpdateProfile";
-import AccountQuery, {
-  AccountData,
-  AccountVariables
-} from "../../queries/Account";
+import { Mutation } from "react-apollo";
+import { UpdateProfile, UpdateProfileVariables, } from "../../generated/types";
+import UPDATE_PROFILE_MUTATION from "../../mutations/UpdateProfile";
+import AccountQuery from "../AccountQuery";
 import { Props as ContentProps } from "./Content";
 
 interface Props {
@@ -17,13 +12,11 @@ interface Props {
 
 const Data: React.ComponentType<Props> = ({ content }) => {
   return (
-    <Query<AccountData, AccountVariables>
-      query={AccountQuery}
-    >
+    <AccountQuery>
       {({ data, error, loading }) => {
         return (
-          <Mutation<UpdateProfileData, UpdateProfileVariables>
-            mutation={UpdateProfileMutation}
+          <Mutation<UpdateProfile, UpdateProfileVariables>
+            mutation={UPDATE_PROFILE_MUTATION}
           >
             {(updateProfile) => {
               if (error) {
@@ -39,7 +32,7 @@ const Data: React.ComponentType<Props> = ({ content }) => {
           </Mutation>
         );
       }}
-    </Query>
+    </AccountQuery>
   );
 };
 

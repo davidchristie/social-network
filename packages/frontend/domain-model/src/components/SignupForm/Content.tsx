@@ -2,10 +2,10 @@ import { Alert, Button, Input, Section } from "design-system";
 import React from "react";
 import { MutationFn } from "react-apollo";
 import { Link } from "react-router-dom";
-import { SignupData, SignupVariables } from "../../mutations/Signup";
+import { Signup, SignupVariables } from "../../generated/types";
 
 export interface Props {
-  signup: MutationFn<SignupData, SignupVariables>;
+  signup: MutationFn<Signup, SignupVariables>;
 }
 
 export interface State {

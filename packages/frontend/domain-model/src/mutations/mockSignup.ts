@@ -1,9 +1,10 @@
 import { MockedResponse } from "react-apollo/test-utils";
-import Signup, { SignupVariables } from "./Signup";
+import { SignupVariables } from "../generated/types";
+import SIGN_MUTATION from "./Signup";
 
 const mockSignup = (variables: SignupVariables): MockedResponse => ({
   request: {
-    query: Signup,
+    query: SIGN_MUTATION,
     variables,
   },
   result: {

@@ -1,10 +1,10 @@
 import { Button, Section, TextArea } from "design-system";
 import React from "react";
 import { MutationFn } from "react-apollo";
-import { CreatePostData, CreatePostVariables } from "../../mutations/CreatePost";
+import { CreatePost, CreatePostVariables } from "../../generated/types";
 
 export interface Props {
-  createPost: MutationFn<CreatePostData, CreatePostVariables>;
+  createPost: MutationFn<CreatePost, CreatePostVariables>;
 }
 
 export interface State {

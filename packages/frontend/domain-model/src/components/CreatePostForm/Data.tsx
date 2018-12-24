@@ -1,15 +1,10 @@
 import { Alert, Loading } from "design-system";
 import React from "react";
-import { Mutation, Query } from "react-apollo";
-import CreatePostMutation, {
-  CreatePostData,
-  CreatePostVariables,
-} from "../../mutations/CreatePost";
-import AccountQuery, {
-  AccountData,
-  AccountVariables
-} from "../../queries/Account";
+import { Mutation } from "react-apollo";
+import { CreatePost, CreatePostVariables } from "../../generated/types";
+import CREATE_POST_MUTATION from "../../mutations/CreatePost";
 import ProfileQuery from "../../queries/Profile";
+import AccountQuery from "../AccountQuery";
 import { Props as ContentProps } from "./Content";
 
 interface Props {
@@ -20,9 +15,7 @@ interface Props {
 const Data: React.ComponentType<Props> = ({ content, profileId }) => {
   const Content = content;
   return (
-    <Query<AccountData, AccountVariables>
-      query={AccountQuery}
-    >
+    <AccountQuery>
       {({ data, error, loading }) => {
         if (error) {
           return <Alert>{error.message}</Alert>;
@@ -39,8 +32,8 @@ const Data: React.ComponentType<Props> = ({ content, profileId }) => {
           return null;
         }
         return (
-          <Mutation<CreatePostData, CreatePostVariables>
-            mutation={CreatePostMutation}
+          <Mutation<CreatePost, CreatePostVariables>
+            mutation={CREATE_POST_MUTATION}
             refetchQueries={[
               {
                 query: ProfileQuery,
@@ -56,7 +49,7 @@ const Data: React.ComponentType<Props> = ({ content, profileId }) => {
           </Mutation>
         );
       }}
-    </Query>
+    </AccountQuery>
   );
 };
 

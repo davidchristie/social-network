@@ -1,5 +1,6 @@
 import { MockedResponse } from "react-apollo/test-utils";
-import ProfileQuery, { ProfileVariables } from "./Profile";
+import { ProfileVariables } from "../generated/types";
+import PROFILE_QUERY from "./Profile";
 
 const mockProfileResponse = (variables: ProfileVariables): MockedResponse => {
   const avatar = {
@@ -15,7 +16,7 @@ const mockProfileResponse = (variables: ProfileVariables): MockedResponse => {
   };
   return {
     request: {
-      query: ProfileQuery,
+      query: PROFILE_QUERY,
       variables,
     },
     result: {

@@ -1,7 +1,7 @@
 import { Button, Input, Section } from "design-system";
 import React from "react";
 import { MutationFn } from "react-apollo";
-import { UpdateProfileData, UpdateProfileVariables } from "../../mutations/UpdateProfile";
+import { UpdateProfile, UpdateProfileVariables } from "../../generated/types";
 
 export interface Props {
   account: {
@@ -12,7 +12,7 @@ export interface Props {
       name;
     }
   };
-  updateProfile: MutationFn<UpdateProfileData, UpdateProfileVariables>;
+  updateProfile: MutationFn<UpdateProfile, UpdateProfileVariables>;
 }
 
 export interface State {

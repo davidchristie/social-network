@@ -2,15 +2,15 @@ import { Alert, Button, Input, Section } from "design-system";
 import React from "react";
 import { MutationFn } from "react-apollo";
 import {
-  UpdateAccountData,
+  UpdateAccount,
   UpdateAccountVariables,
-} from "../../mutations/UpdateAccount";
+} from "../../generated/types";
 
 export interface Props {
   account: {
     email: string;
   };
-  updateAccount: MutationFn<UpdateAccountData, UpdateAccountVariables>;
+  updateAccount: MutationFn<UpdateAccount, UpdateAccountVariables>;
 }
 
 export interface State {

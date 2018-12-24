@@ -1,8 +1,9 @@
 import { FetchResult } from "react-apollo";
 import { MockedResponse } from "react-apollo/test-utils";
-import AccountQuery, { AccountData, AccountVariables } from "./Account";
+import { Account } from "../generated/types";
+import ACCOUNT_QUERY from "./Account";
 
-const accountResult: FetchResult<AccountData, AccountVariables> = {
+const accountResult: FetchResult<Account> = {
   data: {
     account: {
       __typename: "Account",
@@ -41,7 +42,7 @@ const accountResult: FetchResult<AccountData, AccountVariables> = {
 
 const mockAccountResponse = (): MockedResponse => ({
   request: {
-    query: AccountQuery,
+    query: ACCOUNT_QUERY,
   },
   result: accountResult,
 });

@@ -1,10 +1,8 @@
 import { Alert, Loading } from "design-system";
 import React from "react";
 import { Query } from "react-apollo";
-import ProfileQuery, {
-  ProfileData,
-  ProfileVariables
-} from "../../queries/Profile";
+import { Profile, ProfileVariables} from "../../generated/types";
+import PROFILE_QUERY from "../../queries/Profile";
 import { Props as ContentProps } from "./Content";
 
 interface Props {
@@ -17,17 +15,17 @@ const Data: React.StatelessComponent<Props> = ({
   profileId,
 }) => {
   return (
-    <Query<ProfileData, ProfileVariables>
+    <Query<Profile, ProfileVariables>
       variables={{
         id: profileId,
       }}
-      query={ProfileQuery}
+      query={PROFILE_QUERY}
     >
       {({ data, error, loading }) => {
         if (error) {
           return <Alert>{error.message}</Alert>;
         }
-        if (!data || loading) {
+        if (!data || !data.profile || loading) {
           return <Loading />;
         }
         const { profile } = data;

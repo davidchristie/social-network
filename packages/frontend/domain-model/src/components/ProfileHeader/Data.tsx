@@ -1,14 +1,9 @@
 import { Loading } from "design-system";
 import React from "react";
 import { Query } from "react-apollo";
-import AccountQuery, {
-  AccountData,
-  AccountVariables
-} from "../../queries/Account";
-import ProfileQuery, {
-  ProfileData,
-  ProfileVariables
-} from "../../queries/Profile";
+import { Profile, ProfileVariables} from "../../generated/types";
+import PROFILE_QUERY from "../../queries/Profile";
+import AccountQuery from "../AccountQuery";
 import { Props as ContentProps } from "./Content";
 
 interface Props {
@@ -18,15 +13,13 @@ interface Props {
 
 const Data: React.StatelessComponent<Props> = ({ content, profileId }) => {
   return (
-    <Query<AccountData, AccountVariables>
-      query={AccountQuery}
-    >
+    <AccountQuery>
       {accountResult => (
-        <Query<ProfileData, ProfileVariables>
+        <Query<Profile, ProfileVariables>
           variables={{
             id: profileId,
           }}
-          query={ProfileQuery}
+          query={PROFILE_QUERY}
         >
           {profileResult => {
             if (!accountResult.data || !profileResult.data || !profileResult.data.profile) {
@@ -41,7 +34,7 @@ const Data: React.StatelessComponent<Props> = ({ content, profileId }) => {
           }}
         </Query>
       )}
-    </Query>
+    </AccountQuery>
   );
 };
 

@@ -1,10 +1,8 @@
 import React from "react";
 import { Mutation } from "react-apollo";
 import { AUTHENTICATION_TOKEN } from "../../constants";
-import SignupMutation, {
-  SignupData,
-  SignupVariables,
-} from "../../mutations/Signup";
+import { Signup, SignupVariables } from "../../generated/types";
+import SIGNUP_MUTATION from "../../mutations/Signup";
 import AccountQuery from "../../queries/Account";
 import { Props as ContentProps } from "./Content";
 
@@ -14,8 +12,8 @@ export interface Props {
 
 const Data: React.StatelessComponent<Props> = ({ content: Content }) => {
   return (
-    <Mutation<SignupData, SignupVariables>
-      mutation={SignupMutation}
+    <Mutation<Signup, SignupVariables>
+      mutation={SIGNUP_MUTATION}
       refetchQueries={[
         {
           query: AccountQuery,

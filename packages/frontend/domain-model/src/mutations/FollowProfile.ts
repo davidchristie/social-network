@@ -1,18 +1,5 @@
 import gql from "graphql-tag";
-import ImageFragment, { ImageData } from "../fragments/Image";
-
-export interface FollowProfileData {
-  followProfile: {
-    __typename: "Profile";
-    avatar: ImageData | null;
-    id: string;
-    name;
-  };
-}
-
-export interface FollowProfileVariables {
-  id: string;
-}
+import ImageFragment from "../fragments/Image";
 
 const FollowProfile = gql`
   ${ImageFragment}

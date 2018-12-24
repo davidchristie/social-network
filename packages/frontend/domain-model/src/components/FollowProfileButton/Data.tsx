@@ -1,18 +1,17 @@
 import { Alert, Loading } from "design-system";
 import React from "react";
-import { Mutation, MutationUpdaterFn, Query } from "react-apollo";
-import FollowProfileMutation, {
-  FollowProfileData,
-  FollowProfileVariables
-} from "../../mutations/FollowProfile";
-import UnfollowProfileMutation, {
-  UnfollowProfileData,
+import { Mutation, MutationUpdaterFn } from "react-apollo";
+import {
+  Account,
+  FollowProfile,
+  FollowProfileVariables,
+  UnfollowProfile,
   UnfollowProfileVariables
-} from "../../mutations/UnfollowProfile";
-import AccountQuery, {
-  AccountData,
-  AccountVariables
-} from "../../queries/Account";
+} from "../../generated/types";
+import FOLLOW_PROFILE_MUTATION from "../../mutations/FollowProfile";
+import UNFOLLOW_PROFILE_MUTATION from "../../mutations/UnfollowProfile";
+import ACCOUNT_QUERY from "../../queries/Account";
+import AccountQuery from "../AccountQuery";
 import { Props as ContentProps } from "./Content";
 
 interface Props {
@@ -20,29 +19,29 @@ interface Props {
   profileId: string;
 }
 
-const updateAfterFollow: MutationUpdaterFn<FollowProfileData> = (cache, { data }) => {
-  const cacheData = cache.readQuery<AccountData>({
-    query: AccountQuery,
+const updateAfterFollow: MutationUpdaterFn<FollowProfile> = (cache, { data }) => {
+  const cacheData = cache.readQuery<Account>({
+    query: ACCOUNT_QUERY,
   });
   if (cacheData && cacheData.account && data) {
     cacheData.account.profile.following.push(data.followProfile);
     cache.writeQuery({
       data: cacheData,
-      query: AccountQuery,
+      query: ACCOUNT_QUERY,
     });
   }
 };
 
-const updateAfterUnfollow: MutationUpdaterFn<UnfollowProfileData> = (cache, { data }) => {
-  const cacheData = cache.readQuery<AccountData>({
-    query: AccountQuery,
+const updateAfterUnfollow: MutationUpdaterFn<UnfollowProfile> = (cache, { data }) => {
+  const cacheData = cache.readQuery<Account>({
+    query: ACCOUNT_QUERY,
   });
   if (cacheData && cacheData.account && data) {
     cacheData.account.profile.following = cacheData.account.profile.following
       .filter(({ id }) => id !== data.unfollowProfile.id);
     cache.writeQuery({
       data: cacheData,
-      query: AccountQuery,
+      query: ACCOUNT_QUERY,
     });
   }
 };
@@ -50,9 +49,7 @@ const updateAfterUnfollow: MutationUpdaterFn<UnfollowProfileData> = (cache, { da
 const Data: React.StatelessComponent<Props> = ({ content, profileId }) => {
   const Content = content;
   return (
-    <Query<AccountData, AccountVariables>
-      query={AccountQuery}
-    >
+    <AccountQuery>
       {({ data, error, loading }) => {
         if (error) {
           return <Alert>{error.message}</Alert>;
@@ -62,16 +59,16 @@ const Data: React.StatelessComponent<Props> = ({ content, profileId }) => {
         }
         const { account } = data;
         return (
-          <Mutation<FollowProfileData, FollowProfileVariables>
-            mutation={FollowProfileMutation}
+          <Mutation<FollowProfile, FollowProfileVariables>
+            mutation={FOLLOW_PROFILE_MUTATION}
             update={updateAfterFollow}
             variables={{
               id: profileId,
             }}
           >
             {followProfile => (
-              <Mutation<UnfollowProfileData, UnfollowProfileVariables>
-                mutation={UnfollowProfileMutation}
+              <Mutation<UnfollowProfile, UnfollowProfileVariables>
+                mutation={UNFOLLOW_PROFILE_MUTATION}
                 update={updateAfterUnfollow}
                 variables={{
                   id: profileId,
@@ -90,7 +87,7 @@ const Data: React.StatelessComponent<Props> = ({ content, profileId }) => {
           </Mutation>
         );
       }}
-    </Query>
+    </AccountQuery>
   );
 };
 
