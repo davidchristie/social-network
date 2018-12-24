@@ -56,5 +56,5 @@ type Profile {
 type Query {
   account: Account
   profile(id: String!): Profile
-  profiles(after: String, before: String, first: Int, last: Int, orderBy: ProfileOrderByInput, skip: Int, where: ProfileWhereInput): [Profile]!
+  profiles(after: String, before: String, first: Int, last: Int, orderBy: ProfileOrderByInput, skip: Int, where: ProfileWhereInput): [Profile!]!
 }
