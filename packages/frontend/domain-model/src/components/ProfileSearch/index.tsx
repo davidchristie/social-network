@@ -2,15 +2,13 @@ import { Search } from "design-system";
 import React from "react";
 import { Query } from "react-apollo";
 import { RouteComponentProps, withRouter } from "react-router-dom";
-import ProfilesQuery, {
-  ProfilesData,
-  ProfilesVariables
-} from "../../queries/Profiles";
+import { Profiles, ProfilesVariables } from "../../generated/types";
+import ProfilesQuery from "../../queries/Profiles";
 
 type Props = RouteComponentProps<any>;
 
-const ProfileSearch: React.SFC<Props> = ({ history }) => (
-  <Query<ProfilesData, ProfilesVariables> query={ProfilesQuery}>
+const ProfileSearch: React.StatelessComponent<Props> = ({ history }) => (
+  <Query<Profiles, ProfilesVariables> query={ProfilesQuery}>
     {({ refetch }) => {
       return (
         <Search

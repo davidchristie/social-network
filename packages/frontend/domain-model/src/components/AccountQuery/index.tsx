@@ -1,20 +1,17 @@
 import React from "react";
 import { Query, QueryResult } from "react-apollo";
+import { Account } from "../../generated/types";
+import ACCOUNT_QUERY from "../../queries/Account";
 
-import Account, {
-  AccountData,
-  AccountVariables
-} from "../../queries/Account";
-
-export type Result = QueryResult<AccountData, AccountVariables>;
+export type Result = QueryResult<Account>;
 
 interface Props {
-  children: (result: QueryResult<AccountData, AccountVariables>) => React.ReactNode;
+  children: (result: QueryResult<Account>) => React.ReactNode;
 }
 
-const AccountQuery = ({ children }: Props) => (
-  <Query<AccountData, AccountVariables>
-    query={Account}
+const AccountQuery: React.StatelessComponent<Props> = ({ children }) => (
+  <Query<Account>
+    query={ACCOUNT_QUERY}
   >
     {children}
   </Query>

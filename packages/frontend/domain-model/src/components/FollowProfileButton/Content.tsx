@@ -1,8 +1,12 @@
 import { Button } from "design-system";
 import React from "react";
 import { MutationFn } from "react-apollo";
-import { FollowProfileData, FollowProfileVariables } from "../../mutations/FollowProfile";
-import { UnfollowProfileData, UnfollowProfileVariables } from "../../mutations/UnfollowProfile";
+import {
+  FollowProfile,
+  FollowProfileVariables,
+  UnfollowProfile,
+  UnfollowProfileVariables
+} from "../../generated/types";
 
 export interface Props {
   account: {
@@ -12,9 +16,9 @@ export interface Props {
       }>;
     };
   };
-  followProfile: MutationFn<FollowProfileData, FollowProfileVariables>;
+  followProfile: MutationFn<FollowProfile, FollowProfileVariables>;
   profileId: string;
-  unfollowProfile: MutationFn<UnfollowProfileData, UnfollowProfileVariables>;
+  unfollowProfile: MutationFn<UnfollowProfile, UnfollowProfileVariables>;
 }
 
 const Content: React.StatelessComponent<Props> = ({

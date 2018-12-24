@@ -1,9 +1,7 @@
 import React from "react";
 import { Mutation } from "react-apollo";
-import UpdatePasswordMutation, {
-  UpdatePasswordData,
-  UpdatePasswordVariables,
-} from "../../mutations/UpdatePassword";
+import { UpdatePassword, UpdatePasswordVariables } from "../../generated/types";
+import UPDATE_PASSWORD_MUTATION from "../../mutations/UpdatePassword";
 import { Props as ContentProps } from "./Content";
 
 interface Props {
@@ -14,8 +12,8 @@ const Data: React.StatelessComponent<Props> = ({
   content: Content,
 }) => {
   return (
-    <Mutation<UpdatePasswordData, UpdatePasswordVariables>
-      mutation={UpdatePasswordMutation}
+    <Mutation<UpdatePassword, UpdatePasswordVariables>
+      mutation={UPDATE_PASSWORD_MUTATION}
     >
       {(updatePassword) => (
         <Content updatePassword={updatePassword} />

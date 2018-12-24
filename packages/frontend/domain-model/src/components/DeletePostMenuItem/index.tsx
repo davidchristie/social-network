@@ -1,10 +1,8 @@
 import { Alert, ConfirmationModal, Loading, MenuItem } from "design-system";
 import React from "react";
 import { Mutation } from "react-apollo";
-import DeletePostMutation, {
-  DeletePostData,
-  DeletePostVariables,
-} from "../../mutations/DeletePost";
+import { DeletePost, DeletePostVariables } from "../../generated/types";
+import DELETE_POST_MUTATION from "../../mutations/DeletePost";
 import ProfileQuery from "../../queries/Profile";
 import AccountQuery from "../AccountQuery";
 
@@ -35,8 +33,8 @@ export default class DeletePostMenuItem extends React.Component<Props, State> {
           }
           const { account } = data;
           return (
-            <Mutation<DeletePostData, DeletePostVariables>
-              mutation={DeletePostMutation}
+            <Mutation<DeletePost, DeletePostVariables>
+              mutation={DELETE_POST_MUTATION}
               refetchQueries={[
                 {
                   query: ProfileQuery,

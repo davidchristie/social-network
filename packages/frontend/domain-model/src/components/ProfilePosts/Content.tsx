@@ -1,5 +1,5 @@
 import React from "react";
-import { PostSummaryData } from "../../fragments/PostSummary";
+import { PostSummary as PostSummaryData } from "../../generated/types";
 import PostSummary from "../PostSummary";
 
 export interface Props {

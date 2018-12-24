@@ -3,7 +3,7 @@ import { shallow, ShallowWrapper } from "enzyme";
 import React from "react";
 import { MutationFn } from "react-apollo";
 import { describeWithProps } from "test-utilities/react";
-import { UpdateProfileData, UpdateProfileVariables } from "../../mutations/UpdateProfile";
+import { UpdateProfile, UpdateProfileVariables } from "../../generated/types";
 import Content, { Props, State } from "./Content";
 
 const accountWithProfileAvatar = {
@@ -22,7 +22,7 @@ const accountWithoutProfileAvatar = {
 };
 
 describe("Content component", () => {
-  const updateProfile = jest.fn() as MutationFn<UpdateProfileData, UpdateProfileVariables>;
+  const updateProfile = jest.fn() as MutationFn<UpdateProfile, UpdateProfileVariables>;
 
   describeWithProps<Props>("with avatar", Content, {
     account: accountWithProfileAvatar,

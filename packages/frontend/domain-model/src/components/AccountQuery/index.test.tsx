@@ -4,18 +4,18 @@ import {
   MockedProvider,
   MockedResponse
 } from "react-apollo/test-utils";
-
-import Account, { AccountData } from "../../queries/Account";
+import { Account } from "../../generated/types";
+import ACCOUNT_QUERY from "../../queries/Account";
 import AccountQuery from "./index";
 
-const mockData: AccountData = {
+const mockData: Account = {
   account: null,
 };
 
 const mocks: ReadonlyArray<MockedResponse> = [
   {
     request: {
-      query: Account,
+      query: ACCOUNT_QUERY,
     },
     result: {
       data: mockData,

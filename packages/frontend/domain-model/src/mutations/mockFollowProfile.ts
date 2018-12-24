@@ -1,9 +1,10 @@
 import { MockedResponse } from "react-apollo/test-utils";
-import FollowProfile, { FollowProfileVariables } from "./FollowProfile";
+import { FollowProfileVariables } from "../generated/types";
+import FOLLOW_PROFILE_MUTATION from "./FollowProfile";
 
 const mockFollowProfile = (variables: FollowProfileVariables): MockedResponse => ({
   request: {
-    query: FollowProfile,
+    query: FOLLOW_PROFILE_MUTATION,
     variables,
   },
   result: {

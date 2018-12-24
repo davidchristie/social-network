@@ -2,12 +2,12 @@ import { Alert, Button, Input, Section } from "design-system";
 import React from "react";
 import { MutationFn } from "react-apollo";
 import {
-  UpdatePasswordData,
+  UpdatePassword,
   UpdatePasswordVariables,
-} from "../../mutations/UpdatePassword";
+} from "../../generated/types";
 
 export interface Props {
-  updatePassword: MutationFn<UpdatePasswordData, UpdatePasswordVariables>;
+  updatePassword: MutationFn<UpdatePassword, UpdatePasswordVariables>;
 }
 
 export interface State {

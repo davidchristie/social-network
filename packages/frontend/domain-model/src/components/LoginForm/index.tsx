@@ -3,10 +3,8 @@ import React from "react";
 import { Mutation } from "react-apollo";
 import { Link } from "react-router-dom";
 import { AUTHENTICATION_TOKEN } from "../../constants";
-import LoginMutation, {
-  LoginData,
-  LoginVariables,
-} from "../../mutations/Login";
+import { Login, LoginVariables } from "../../generated/types";
+import LOGIN_MUTATION from "../../mutations/Login";
 import AccountQuery from "../../queries/Account";
 
 export interface State {
@@ -25,8 +23,8 @@ export default class LoginForm extends React.Component<{}, State> {
   public render () {
     const { email, password } = this.state;
     return (
-      <Mutation<LoginData, LoginVariables>
-        mutation={LoginMutation}
+      <Mutation<Login, LoginVariables>
+        mutation={LOGIN_MUTATION}
         onError={() => {
           this.setState({
             email: "",

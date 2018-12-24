@@ -1,7 +1,7 @@
 import { Avatar, RelativeDate } from "design-system";
 import React from "react";
 import { Link } from "react-router-dom";
-import { PostSummaryData } from "../../fragments/PostSummary";
+import { PostSummary as PostSummaryData } from "../../generated/types";
 import PostMenu from "../PostMenu";
 import "./index.css";
 

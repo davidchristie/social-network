@@ -1,10 +1,8 @@
 import { Alert, Loading } from "design-system";
 import React from "react";
 import { Mutation } from "react-apollo";
-import UpdateAccountMutation, {
-  UpdateAccountData,
-  UpdateAccountVariables,
-} from "../../mutations/UpdateAccount";
+import { UpdateAccount, UpdateAccountVariables } from "../../generated/types";
+import UPDATE_ACCOUNT_MUTATION from "../../mutations/UpdateAccount";
 import AccountQuery from "../AccountQuery";
 import { Props as ContentProps } from "./Content";
 
@@ -24,8 +22,8 @@ const Data: React.StatelessComponent<Props> = ({ content }) => {
         }
         const { account } = data;
         return (
-          <Mutation<UpdateAccountData, UpdateAccountVariables>
-            mutation={UpdateAccountMutation}
+          <Mutation<UpdateAccount, UpdateAccountVariables>
+            mutation={UPDATE_ACCOUNT_MUTATION}
           >
             {updateAccount => {
               const Content = content;

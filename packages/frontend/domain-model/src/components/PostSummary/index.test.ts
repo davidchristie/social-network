@@ -1,10 +1,12 @@
 import { describeWithProps } from "test-utilities/react";
 import PostSummary from ".";
-import { PostSummaryData } from "../../fragments/PostSummary";
+import { PostSummary as PostSummaryData } from "../../generated/types";
 
 const post: PostSummaryData = {
+  __typename: "Post",
   createdAt: "2018-10-12T07:48:03.948Z",
   createdBy: {
+    __typename: "Profile",
     avatar: {
       __typename: "Image",
       id: "cjn5pxfvg001h0a42hqjvgo11",
