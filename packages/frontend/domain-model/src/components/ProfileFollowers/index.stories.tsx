@@ -1,8 +1,8 @@
 import React from "react";
-import AccountMenu from ".";
+import ProfileFollowers from ".";
 import createStories from "../../storybook/createStories";
 
 createStories().add(
-  "AccountMenu",
-  () => <AccountMenu />
+  "ProfileFollowers",
+  () => <ProfileFollowers profileId="profile_id_1" />
 );

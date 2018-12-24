@@ -44,7 +44,8 @@
     "collectCoverageFrom": [
       "src/**/*.{ts,tsx}",
       "!src/**/*.stories.{ts,tsx}",
-      "!src/utilities/storybook/**",
+      "!src/generated/**",
+      "!src/storybook/**",
       "!src/setupTests.ts",
       "!src/mocks/**"
     ],

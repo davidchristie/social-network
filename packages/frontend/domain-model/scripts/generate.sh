@@ -1,6 +1,6 @@
 set -e
 
-npx apollo-codegen generate \
+apollo-codegen generate \
   src/fragments/*.ts \
   src/mutations/*.ts \
   src/queries/*.ts \

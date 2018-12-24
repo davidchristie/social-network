@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Content component renders followed profiles matches snapshot 1`] = `
+exports[`Content component renders following profiles matches snapshot 1`] = `
 <Section
   className="ProfileFollowing"
 >
@@ -9,44 +9,44 @@ exports[`Content component renders followed profiles matches snapshot 1`] = `
   </h2>
   <div
     className="ProfileFollowing__profile"
-    key="followed_profile_id_1"
+    key="following_profile_id_1"
   >
     <Avatar$2
       size="small"
     />
     <Link
       replace={false}
-      to="/profile/followed_profile_id_1"
+      to="/profile/following_profile_id_1"
     >
-      Followed Profile 1
+      Following Profile 1
     </Link>
   </div>
   <div
     className="ProfileFollowing__profile"
-    key="followed_profile_id_2"
+    key="following_profile_id_2"
   >
     <Avatar$2
       size="small"
     />
     <Link
       replace={false}
-      to="/profile/followed_profile_id_2"
+      to="/profile/following_profile_id_2"
     >
-      Followed Profile 2
+      Following Profile 2
     </Link>
   </div>
   <div
     className="ProfileFollowing__profile"
-    key="followed_profile_id_3"
+    key="following_profile_id_3"
   >
     <Avatar$2
       size="small"
     />
     <Link
       replace={false}
-      to="/profile/followed_profile_id_3"
+      to="/profile/following_profile_id_3"
     >
-      Followed Profile 3
+      Following Profile 3
     </Link>
   </div>
 </Section>
