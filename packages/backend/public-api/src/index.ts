@@ -10,7 +10,7 @@ const options: Options = {
       onComplete: cost => {
         console.log(`Cost analysis score: ${cost}`);
       },
-      variables: request.query.variables,
+      variables: request.body.variables,
     }),
   ],
 };
