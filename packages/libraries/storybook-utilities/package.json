@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "apollo-storybook-react": "^0.1.8"
+    "apollo-storybook-react": "0.1.8"
   },
   "module": "dist/index.js",
   "name": "storybook-utilities",
