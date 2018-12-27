@@ -23,6 +23,7 @@
     "integration-tests": "yarn workspace integration-tests",
     "kafka-client": "yarn workspace kafka-client",
     "lint": "scripts/lint.sh",
+    "page-layouts": "yarn workspace page-layouts",
     "production": "docker-compose -f docker-compose.yml -f docker-compose.production.yml",
     "public-api": "yarn workspace public-api",
     "style-guide": "yarn workspace style-guide",

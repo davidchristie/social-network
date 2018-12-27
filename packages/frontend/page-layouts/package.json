@@ -1,18 +1,13 @@
 {
   "dependencies": {
-    "@material-ui/core": "3.7.1",
-    "autosuggest-highlight": "3.1.1",
     "classnames": "2.2.6",
-    "date-fns": "1.30.1",
-    "react-autosuggest": "9.4.2"
+    "react": "16.7.0"
   },
   "devDependencies": {
     "@storybook/addon-actions": "4.1.4",
     "@storybook/addon-info": "4.1.4",
     "@storybook/react": "4.1.4",
-    "@types/autosuggest-highlight": "3.1.0",
     "@types/classnames": "2.2.6",
-    "@types/react-autosuggest": "9.3.6",
     "@types/storybook__addon-actions": "3.4.1",
     "@types/storybook__addon-info": "3.4.2",
     "@types/storybook__react": "4.0.0",
@@ -72,7 +67,7 @@
   },
   "main": "dist/cjs/index.js",
   "module": "dist/es/index.js",
-  "name": "design-system",
+  "name": "page-layouts",
   "peerDependencies": {
     "material-design-icons-iconfont": "^4.0.2",
     "react": "^16.6.0",
