@@ -242,6 +242,9 @@ jobs:
           name: Test domain-model
           command: yarn domain-model test --coverage
       - run:
+          name: Test page-layouts
+          command: yarn page-layouts test --coverage
+      - run:
           name: Test public-api
           command: yarn public-api test --coverage
       - run:
@@ -269,6 +272,10 @@ jobs:
                   packages/frontend/domain-model/coverage/lcov.info
 
             ./tmp/test-reporter format-coverage -t lcov \
+                  -o tmp/coverage.page-layouts.json \
+                  packages/frontend/page-layouts/coverage/lcov.info
+
+            ./tmp/test-reporter format-coverage -t lcov \
                   -o tmp/coverage.public-api.json \
                   packages/backend/public-api/coverage/lcov.info
 
@@ -277,7 +284,7 @@ jobs:
                   packages/frontend/web-client/coverage/lcov.info
 
             ./tmp/test-reporter sum-coverage tmp/coverage.*.json \
-              --parts 5 \
+              --parts 6 \
               --output tmp/coverage.total.json
       - run:
           name: Upload report
