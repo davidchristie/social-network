@@ -2,8 +2,7 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 import Page from "../Page";
 
-const ProfilePage = (props) => {
-  console.log(props.match);
+const ProfilePage = () => {
   return <Page load={() => import("./Content")} />;
 };
 

@@ -24,7 +24,6 @@
     "enzyme-to-json": "3.3.5",
     "jest": "23.6.0",
     "react": "16.7.0",
-    "react-cosmos": "4.6.4",
     "react-docgen-typescript-loader": "3.0.0",
     "react-dom": "16.7.0",
     "rimraf": "2.6.2",
