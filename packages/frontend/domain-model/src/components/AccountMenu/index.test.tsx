@@ -1,12 +1,12 @@
 import React from "react";
 import { MockedProvider } from "react-apollo/test-utils";
 import { itRendersWithoutCrashing } from "test-utilities/dist/react";
-import FollowProfileButton from ".";
+import AccountMenu from ".";
 
-describe("FollowProfileButton component", () => {
+describe("AccountMenu component", () => {
   itRendersWithoutCrashing(
     <MockedProvider>
-      <FollowProfileButton profileId="profile_id" />
+      <AccountMenu />
     </MockedProvider>
   );
 });

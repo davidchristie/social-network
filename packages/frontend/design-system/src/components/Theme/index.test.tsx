@@ -1,6 +1,7 @@
+import React from "react";
 import { itRendersWithoutCrashing } from "test-utilities/react";
-import Theme from "./index";
+import Theme from ".";
 
 describe("Theme component", () => {
-  itRendersWithoutCrashing(Theme);
+  itRendersWithoutCrashing(<Theme />);
 });
