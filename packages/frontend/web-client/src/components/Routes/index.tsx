@@ -1,7 +1,6 @@
 import { Authenticated, Unauthenticated } from "domain-model";
 import React from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
-import Page from "../Page";
 import {
   defaultAuthenticatedPath,
   defaultUnauthenticatedPath,
@@ -18,10 +17,10 @@ const Routes: React.StatelessComponent = () => {
           {authenticatedRoutes.map(route => {
             return (
               <Route
+                component={route.component}
                 exact={true}
                 key={route.path}
                 path={route.path}
-                render={() => <Page load={route.load} />}
               />
             );
           })}
@@ -36,10 +35,10 @@ const Routes: React.StatelessComponent = () => {
           {unauthenticatedRoutes.map(route => {
             return (
               <Route
+                component={route.component}
                 exact={true}
                 key={route.path}
                 path={route.path}
-                render={() => <Page load={route.load} />}
               />
             );
           })}
