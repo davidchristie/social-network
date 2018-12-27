@@ -9,6 +9,7 @@ const pkg = require("./package.json");
 export default {
   external: [
     "react",
+    "react-apollo",
   ],
   input: `src/index.ts`,
   output: [
