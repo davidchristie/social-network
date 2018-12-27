@@ -23,8 +23,8 @@ exports[`Routes component matches snapshot 1`] = `
         path="/profile/:id"
       />
       <Route
+        component={[Function]}
         path="*"
-        render={[Function]}
       />
     </Switch>
   </Authenticated>
@@ -49,8 +49,8 @@ exports[`Routes component matches snapshot 1`] = `
         path="/signup"
       />
       <Route
+        component={[Function]}
         path="*"
-        render={[Function]}
       />
     </Switch>
   </Unauthenticated>

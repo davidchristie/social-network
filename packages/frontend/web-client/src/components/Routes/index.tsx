@@ -1,11 +1,8 @@
 import { Authenticated, Unauthenticated } from "domain-model";
+import { NotFoundPage } from "page-layouts";
 import React from "react";
-import { Redirect, Route, Switch } from "react-router-dom";
-import {
-  defaultAuthenticatedPath,
-  defaultUnauthenticatedPath,
-  routes
-} from "./constants";
+import { Route, Switch } from "react-router-dom";
+import { routes } from "./constants";
 
 const Routes: React.StatelessComponent = () => {
   const authenticatedRoutes = routes.filter(route => !route.onlyUnauthenticated);
@@ -24,10 +21,7 @@ const Routes: React.StatelessComponent = () => {
               />
             );
           })}
-          <Route
-            path="*"
-            render={() => <Redirect to={defaultAuthenticatedPath} />}
-          />
+          <Route component={NotFoundPage} path="*" />
         </Switch>
       </Authenticated>
       <Unauthenticated>
@@ -42,10 +36,7 @@ const Routes: React.StatelessComponent = () => {
               />
             );
           })}
-          <Route
-            path="*"
-            render={() => <Redirect to={defaultUnauthenticatedPath} />}
-          />
+          <Route component={NotFoundPage} path="*" />
         </Switch>
       </Unauthenticated>
     </React.Fragment>

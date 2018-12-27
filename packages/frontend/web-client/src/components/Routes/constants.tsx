@@ -14,9 +14,6 @@ export interface RouteData {
   path: string;
 }
 
-export const defaultAuthenticatedPath = "/";
-export const defaultUnauthenticatedPath = "/login";
-
 export const routes: RouteData[] = [
   {
     component: HomePage,
