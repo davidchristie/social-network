@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AccountPage component matches snapshot 1`] = `
+exports[`AccountPage content matches snapshot 1`] = `
 <Container>
   <Section>
     <h1>

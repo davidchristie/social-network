@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SignupPage component matches snapshot 1`] = `
+exports[`SignupPage content matches snapshot 1`] = `
 <Container>
   <SignupForm />
 </Container>
