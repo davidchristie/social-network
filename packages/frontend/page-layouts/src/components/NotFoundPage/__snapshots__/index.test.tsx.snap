@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NotFoundPage component matches snapshot 1`] = `
+<Fragment>
+  <Authenticated>
+    <Redirect
+      push={false}
+      to="/"
+    />
+  </Authenticated>
+  <Unauthenticated>
+    <Redirect
+      push={false}
+      to="/login"
+    />
+  </Unauthenticated>
+</Fragment>
+`;

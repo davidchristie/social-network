@@ -1,12 +1,8 @@
 import { Authenticated, Unauthenticated } from "domain-model";
+import { NotFoundPage } from "page-layouts";
 import React from "react";
-import { Redirect, Route, Switch } from "react-router-dom";
-import Page from "../Page";
-import {
-  defaultAuthenticatedPath,
-  defaultUnauthenticatedPath,
-  routes
-} from "./constants";
+import { Route, Switch } from "react-router-dom";
+import { routes } from "./constants";
 
 const Routes: React.StatelessComponent = () => {
   const authenticatedRoutes = routes.filter(route => !route.onlyUnauthenticated);
@@ -18,17 +14,14 @@ const Routes: React.StatelessComponent = () => {
           {authenticatedRoutes.map(route => {
             return (
               <Route
+                component={route.component}
                 exact={true}
                 key={route.path}
                 path={route.path}
-                render={() => <Page load={route.load} />}
               />
             );
           })}
-          <Route
-            path="*"
-            render={() => <Redirect to={defaultAuthenticatedPath} />}
-          />
+          <Route component={NotFoundPage} path="*" />
         </Switch>
       </Authenticated>
       <Unauthenticated>
@@ -36,17 +29,14 @@ const Routes: React.StatelessComponent = () => {
           {unauthenticatedRoutes.map(route => {
             return (
               <Route
+                component={route.component}
                 exact={true}
                 key={route.path}
                 path={route.path}
-                render={() => <Page load={route.load} />}
               />
             );
           })}
-          <Route
-            path="*"
-            render={() => <Redirect to={defaultUnauthenticatedPath} />}
-          />
+          <Route component={NotFoundPage} path="*" />
         </Switch>
       </Unauthenticated>
     </React.Fragment>

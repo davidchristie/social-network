@@ -1,0 +1,84 @@
+{
+  "dependencies": {
+    "classnames": "2.2.6",
+    "react": "16.7.0"
+  },
+  "devDependencies": {
+    "@storybook/addon-actions": "4.1.4",
+    "@storybook/addon-info": "4.1.4",
+    "@storybook/react": "4.1.4",
+    "@types/classnames": "2.2.6",
+    "@types/storybook__addon-actions": "3.4.1",
+    "@types/storybook__addon-info": "3.4.2",
+    "@types/storybook__react": "4.0.0",
+    "enzyme": "3.8.0",
+    "enzyme-adapter-react-16": "1.7.1",
+    "enzyme-to-json": "3.3.5",
+    "jest": "23.6.0",
+    "react": "16.7.0",
+    "react-docgen-typescript-loader": "3.0.0",
+    "react-dom": "16.7.0",
+    "rimraf": "2.6.2",
+    "rollup": "0.68.2",
+    "rollup-plugin-commonjs": "9.2.0",
+    "rollup-plugin-node-resolve": "4.0.0",
+    "rollup-plugin-postcss": "1.6.3",
+    "rollup-plugin-sourcemaps": "0.4.2",
+    "rollup-plugin-typescript2": "0.18.1",
+    "ts-jest": "23.10.5",
+    "ts-loader": "5.3.2",
+    "ts-node": "7.0.1",
+    "typescript": "3.1.6"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{ts,tsx}",
+      "!src/**/*.stories.{ts,tsx}",
+      "!src/utilities/storybook/**",
+      "!src/setupTests.ts",
+      "!src/mocks/**"
+    ],
+    "globals": {
+      "ts-jest": {
+        "tsConfig": "tsconfig.json"
+      }
+    },
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts",
+      "tsx"
+    ],
+    "moduleNameMapper": {
+      "\\.css$": "<rootDir>/src/mocks/style.ts"
+    },
+    "setupFiles": [
+      "<rootDir>/src/setupTests.ts"
+    ],
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
+    "testMatch": [
+      "**/*.test.+(js|ts|tsx)"
+    ],
+    "transform": {
+      ".+\\.(ts|tsx)$": "ts-jest"
+    }
+  },
+  "main": "dist/cjs/index.js",
+  "module": "dist/es/index.js",
+  "name": "page-layouts",
+  "peerDependencies": {
+    "material-design-icons-iconfont": "^4.0.2",
+    "react": "^16.6.0",
+    "react-dom": "^16.6.0"
+  },
+  "private": true,
+  "scripts": {
+    "build": "rimraf dist && rollup -c rollup.ts",
+    "lint": "tslint --project . && tsc --noEmit",
+    "storybook": "start-storybook --port 3333",
+    "test": "jest --coverage --maxWorkers 2 --verbose"
+  },
+  "version": "1.0.0"
+}

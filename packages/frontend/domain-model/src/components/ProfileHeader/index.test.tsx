@@ -1,9 +1,12 @@
-import { shallow } from "enzyme";
 import React from "react";
+import { MockedProvider } from "react-apollo/test-utils";
+import { itRendersWithoutCrashing } from "test-utilities/dist/react";
 import ProfileHeader from ".";
 
 describe("ProfileHeader component", () => {
-  it("renders without crashing", () => {
-    shallow(<ProfileHeader profileId="xxxx-xxxx-xxxx-xxxx" />);
-  });
+  itRendersWithoutCrashing(
+    <MockedProvider>
+      <ProfileHeader profileId="xxxx-xxxx-xxxx-xxxx" />
+    </MockedProvider>
+  );
 });

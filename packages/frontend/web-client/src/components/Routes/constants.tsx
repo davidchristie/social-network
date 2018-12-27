@@ -1,39 +1,41 @@
+import {
+  AccountPage,
+  HomePage,
+  LoginPage,
+  ProfilePage,
+  SignupPage,
+} from "page-layouts";
 import React from "react";
 
 export interface RouteData {
-  load: () => Promise<{
-    default: React.ComponentType
-  }>;
+  component: React.ComponentType;
   onlyAuthenticated?: boolean;
   onlyUnauthenticated?: boolean;
   path: string;
 }
 
-export const defaultAuthenticatedPath = "/";
-export const defaultUnauthenticatedPath = "/login";
-
 export const routes: RouteData[] = [
   {
-    load: () => import(/* webpackChunkName: "HomePage" */ "../HomePage"),
+    component: HomePage,
     onlyAuthenticated: true,
     path: "/",
   },
   {
-    load: () => import(/* webpackChunkName: "AccountPage" */ "../AccountPage"),
+    component: AccountPage,
     onlyAuthenticated: true,
     path: "/account",
   },
   {
-    load: () => import(/* webpackChunkName: "LoginPage" */ "../LoginPage"),
+    component: LoginPage,
     onlyUnauthenticated: true,
     path: "/login",
   },
   {
-    load: () => import(/* webpackChunkName: "ProfilePage" */ "../ProfilePage"),
+    component: ProfilePage,
     path: "/profile/:id",
   },
   {
-    load: () => import(/* webpackChunkName: "SignupPage" */ "../SignupPage"),
+    component: SignupPage,
     onlyUnauthenticated: true,
     path: "/signup",
   },

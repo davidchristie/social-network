@@ -5,52 +5,52 @@ exports[`Routes component matches snapshot 1`] = `
   <Authenticated>
     <Switch>
       <Route
+        component={[Function]}
         exact={true}
         key="/"
         path="/"
-        render={[Function]}
       />
       <Route
+        component={[Function]}
         exact={true}
         key="/account"
         path="/account"
-        render={[Function]}
       />
       <Route
+        component={[Function]}
         exact={true}
         key="/profile/:id"
         path="/profile/:id"
-        render={[Function]}
       />
       <Route
+        component={[Function]}
         path="*"
-        render={[Function]}
       />
     </Switch>
   </Authenticated>
   <Unauthenticated>
     <Switch>
       <Route
+        component={[Function]}
         exact={true}
         key="/login"
         path="/login"
-        render={[Function]}
       />
       <Route
+        component={[Function]}
         exact={true}
         key="/profile/:id"
         path="/profile/:id"
-        render={[Function]}
       />
       <Route
+        component={[Function]}
         exact={true}
         key="/signup"
         path="/signup"
-        render={[Function]}
       />
       <Route
+        component={[Function]}
         path="*"
-        render={[Function]}
       />
     </Switch>
   </Unauthenticated>

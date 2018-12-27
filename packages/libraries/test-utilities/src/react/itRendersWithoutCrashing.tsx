@@ -1,13 +1,10 @@
-import { mount } from "enzyme";
 import React from "react";
-import { MockedProvider } from "react-apollo/test-utils";
+import TestRenderer from "react-test-renderer";
 
-export default function itRendersWithoutCrashing (Component: React.ComponentType) {
+export default function itRendersWithoutCrashing (
+  element: React.ReactElement<any>
+) {
   it("renders without crashing", () => {
-    mount(
-      <MockedProvider>
-        <Component />
-      </MockedProvider>
-    );
+    TestRenderer.create(element);
   });
 }

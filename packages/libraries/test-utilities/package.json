@@ -1,4 +1,7 @@
 {
+  "devDependencies": {
+    "react-test-renderer": "16.7.0"
+  },
   "name": "test-utilities",
   "private": true,
   "scripts": {
