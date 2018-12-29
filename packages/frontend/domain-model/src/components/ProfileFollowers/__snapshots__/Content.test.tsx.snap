@@ -12,12 +12,12 @@ exports[`Content component renders follower profiles matches snapshot 1`] = `
   >
     <Grid$2
       item={true}
+      key="follower_profile_id_1"
       sm={4}
       xs={12}
     >
       <div
         className="ProfileFollowers__profile"
-        key="follower_profile_id_1"
       >
         <Avatar$2
           size="small"
@@ -32,12 +32,12 @@ exports[`Content component renders follower profiles matches snapshot 1`] = `
     </Grid$2>
     <Grid$2
       item={true}
+      key="follower_profile_id_2"
       sm={4}
       xs={12}
     >
       <div
         className="ProfileFollowers__profile"
-        key="follower_profile_id_2"
       >
         <Avatar$2
           size="small"
@@ -52,12 +52,12 @@ exports[`Content component renders follower profiles matches snapshot 1`] = `
     </Grid$2>
     <Grid$2
       item={true}
+      key="follower_profile_id_3"
       sm={4}
       xs={12}
     >
       <div
         className="ProfileFollowers__profile"
-        key="follower_profile_id_3"
       >
         <Avatar$2
           size="small"

@@ -27,8 +27,8 @@ export default class Content extends React.Component<Props, State> {
         <Grid container={true} >
           {profile.followers.map(({ avatar, id, name }) => {
             return (
-              <Grid item={true} sm={4} xs={12}>
-                <div className="ProfileFollowers__profile" key={id}>
+              <Grid item={true} key={id} sm={4} xs={12}>
+                <div className="ProfileFollowers__profile">
                   <Avatar
                     image={avatar ? avatar.url : undefined}
                     size="small"
