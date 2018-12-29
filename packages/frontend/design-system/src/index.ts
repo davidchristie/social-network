@@ -16,3 +16,4 @@ export { default as Search } from "./components/Search";
 export { default as TextArea } from "./components/TextArea";
 export { default as Theme } from "./components/Theme";
 export { default as Topbar } from "./components/Topbar";
+export { default as Typography } from "./components/Typography";
