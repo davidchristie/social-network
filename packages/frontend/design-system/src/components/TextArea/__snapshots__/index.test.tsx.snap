@@ -1,13 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`TextArea component with custom class matches snapshot 1`] = `
-<textarea
-  className="TextArea CUSTOM_CLASS"
+<TextField
+  className="CUSTOM_CLASS"
+  fullWidth={true}
+  margin="normal"
+  multiline={true}
+  required={false}
+  select={false}
+  variant="standard"
 />
 `;
 
 exports[`TextArea component with no props matches snapshot 1`] = `
-<textarea
-  className="TextArea"
+<TextField
+  fullWidth={true}
+  margin="normal"
+  multiline={true}
+  required={false}
+  select={false}
+  variant="standard"
 />
 `;
