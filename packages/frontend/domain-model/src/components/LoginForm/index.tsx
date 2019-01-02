@@ -1,4 +1,4 @@
-import { Alert, Button, Input, Section } from "design-system";
+import { Alert, Button, Input, Section, Typography } from "design-system";
 import React from "react";
 import { Mutation } from "react-apollo";
 import { Link } from "react-router-dom";
@@ -56,8 +56,10 @@ export default class LoginForm extends React.Component<{}, State> {
                 login();
               }}
             >
-              <h2>Login</h2>
-              Don't have an account? <Link to="/signup">Click here to sign up.</Link>
+              <Typography variant="headline">Login</Typography>
+              <Typography variant="subheading">
+                Don't have an account? <Link to="/signup">Click here to sign up.</Link>
+              </Typography>
               <hr />
               {
                 this.state.error && (

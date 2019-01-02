@@ -7,16 +7,22 @@ exports[`SignupForm content matches snapshot 1`] = `
   <form
     onSubmit={[Function]}
   >
-    <h2>
-      Signup
-    </h2>
-    Already have an account? 
-    <Link
-      replace={false}
-      to="/login"
+    <Typography$2
+      variant="headline"
     >
-      Click here to log in.
-    </Link>
+      Signup
+    </Typography$2>
+    <Typography$2
+      variant="subheading"
+    >
+      Already have an account? 
+      <Link
+        replace={false}
+        to="/login"
+      >
+        Click here to log in.
+      </Link>
+    </Typography$2>
     <hr />
     <Input$2
       autoFocus={true}
