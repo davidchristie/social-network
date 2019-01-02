@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "apollo-storybook-react": "0.1.8"
+  },
+  "module": "dist/index.js",
+  "name": "storybook-utilities",
+  "private": true,
+  "scripts": {
+    "build": "rimraf dist && tsc",
+    "lint": "tslint --project . && tsc --noEmit"
+  },
+  "types": "dist/index.d.ts",
+  "version": "1.0.0"
+}

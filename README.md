@@ -18,6 +18,7 @@
 * [Design System](packages/frontend/design-system)
 * [Desktop Client](packages/frontend/desktop-client)
 * [Domain Model](packages/frontend/domain-model)
+* [Page Layouts](packages/frontend/page-layouts)
 * [Style Guide](packages/frontend/style-guide)
 * [Web Client](packages/frontend/web-client)
 
@@ -27,6 +28,7 @@
 
 ### Libraries
 
+* [Storybook Utilities](packages/libraries/storybook-utilities)
 * [Test Utilities](packages/libraries/test-utilities)
 
 ### Tasks
