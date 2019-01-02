@@ -1,8 +1,8 @@
 import React from "react";
+import { createStories } from "storybook-utilities";
 import ProfileFollowing from ".";
-import createStories from "../../storybook/createStories";
 
-createStories().add(
+createStories("Domain Model").add(
   "ProfileFollowing",
   () => <ProfileFollowing profileId="profile_id_1" />
 );
