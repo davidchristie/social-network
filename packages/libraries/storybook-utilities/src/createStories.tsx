@@ -6,8 +6,8 @@ import React from "react";
 import { MemoryRouter } from "react-router-dom";
 import apollo from "./decorators/apollo";
 
-export default function createStories () {
-  const stories = storiesOf("Domain Model", module);
+export default function createStories (name: string) {
+  const stories = storiesOf(name, module);
   stories.addDecorator(getStory => <MemoryRouter>{getStory()}</MemoryRouter>);
   stories.addDecorator(apollo);
   stories.addDecorator(getStory => <Theme>{getStory()}</Theme>);

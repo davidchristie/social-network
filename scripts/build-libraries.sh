@@ -6,4 +6,5 @@ yarn design-system build
 yarn domain-model build
 yarn kafka-client build
 yarn page-layouts build
+yarn storybook-utilities build
 yarn test-utilities build
