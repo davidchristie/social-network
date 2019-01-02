@@ -26,6 +26,7 @@
     "page-layouts": "yarn workspace page-layouts",
     "production": "docker-compose -f docker-compose.yml -f docker-compose.production.yml",
     "public-api": "yarn workspace public-api",
+    "storybook-utilities": "yarn workspace storybook-utilities",
     "style-guide": "yarn workspace style-guide",
     "tasks": "docker-compose -f docker-compose.yml -f docker-compose.tasks.yml",
     "test": "scripts/test.sh",
