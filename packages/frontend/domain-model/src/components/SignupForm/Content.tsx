@@ -1,4 +1,4 @@
-import { Alert, Button, Input, Section } from "design-system";
+import { Alert, Button, Input, Section, Typography } from "design-system";
 import React from "react";
 import { MutationFn } from "react-apollo";
 import { Link } from "react-router-dom";
@@ -27,8 +27,10 @@ export default class Content extends React.Component<Props, State> {
     return (
       <Section className="SignupForm">
         <form onSubmit={this.handleFormSubmit}>
-          <h2>Signup</h2>
-          Already have an account? <Link to="/login">Click here to log in.</Link>
+          <Typography variant="headline">Signup</Typography>
+          <Typography variant="subheading">
+            Already have an account? <Link to="/login">Click here to log in.</Link>
+          </Typography>
           <hr />
           {this.state.errorMessage && <Alert>{this.state.errorMessage}</Alert>}
           {this.renderNameInput()}
