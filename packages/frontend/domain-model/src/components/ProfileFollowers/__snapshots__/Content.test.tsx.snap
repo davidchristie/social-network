@@ -7,47 +7,69 @@ exports[`Content component renders follower profiles matches snapshot 1`] = `
   <h2>
     Followers
   </h2>
-  <div
-    className="ProfileFollowers__profile"
-    key="follower_profile_id_1"
+  <Grid$2
+    container={true}
   >
-    <Avatar$2
-      size="small"
-    />
-    <Link
-      replace={false}
-      to="/profile/follower_profile_id_1"
+    <Grid$2
+      item={true}
+      key="follower_profile_id_1"
+      sm={4}
+      xs={12}
     >
-      Follower Profile 1
-    </Link>
-  </div>
-  <div
-    className="ProfileFollowers__profile"
-    key="follower_profile_id_2"
-  >
-    <Avatar$2
-      size="small"
-    />
-    <Link
-      replace={false}
-      to="/profile/follower_profile_id_2"
+      <div
+        className="ProfileFollowers__profile"
+      >
+        <Avatar$2
+          size="small"
+        />
+        <Link
+          replace={false}
+          to="/profile/follower_profile_id_1"
+        >
+          Follower Profile 1
+        </Link>
+      </div>
+    </Grid$2>
+    <Grid$2
+      item={true}
+      key="follower_profile_id_2"
+      sm={4}
+      xs={12}
     >
-      Follower Profile 2
-    </Link>
-  </div>
-  <div
-    className="ProfileFollowers__profile"
-    key="follower_profile_id_3"
-  >
-    <Avatar$2
-      size="small"
-    />
-    <Link
-      replace={false}
-      to="/profile/follower_profile_id_3"
+      <div
+        className="ProfileFollowers__profile"
+      >
+        <Avatar$2
+          size="small"
+        />
+        <Link
+          replace={false}
+          to="/profile/follower_profile_id_2"
+        >
+          Follower Profile 2
+        </Link>
+      </div>
+    </Grid$2>
+    <Grid$2
+      item={true}
+      key="follower_profile_id_3"
+      sm={4}
+      xs={12}
     >
-      Follower Profile 3
-    </Link>
-  </div>
+      <div
+        className="ProfileFollowers__profile"
+      >
+        <Avatar$2
+          size="small"
+        />
+        <Link
+          replace={false}
+          to="/profile/follower_profile_id_3"
+        >
+          Follower Profile 3
+        </Link>
+      </div>
+    </Grid$2>
+  </Grid$2>
 </Section>
 `;
