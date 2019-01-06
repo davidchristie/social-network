@@ -3,7 +3,18 @@ import { mount, ReactWrapper } from "enzyme";
 import React from "react";
 import { MockedProvider } from "react-apollo/test-utils";
 import { MemoryRouter } from "react-router-dom";
-import LoginForm, { State } from ".";
+import LoginForm from ".";
+import Content, { State } from "./Content";
+
+function itContainsInputWithName (
+  getWrapper: () => ReactWrapper,
+  name: string
+) {
+  it(`contains ${name} input`, () => {
+    const input = getInputWithName(getWrapper(), name);
+    expect(input.exists()).toBe(true);
+  });
+}
 
 function getInputWithName (wrapper: ReactWrapper, name: string) {
   return wrapper
@@ -15,30 +26,20 @@ function getInputWithName (wrapper: ReactWrapper, name: string) {
     .first();
 }
 
-function itContainsInputWithName (
+function itUpdatesStateWhenInputIsChanged (
   getWrapper: () => ReactWrapper<any, any>,
   name: string
 ) {
   it(`updates state when ${name} is changed`, () => {
     const wrapper = getWrapper();
-    const passwordInput = getInputWithName(wrapper, "password");
+    const input = getInputWithName(wrapper, name);
     const newValue = "new_value";
-    passwordInput.simulate("change", {
+    input.simulate("change", {
       target: {
         value: newValue,
       },
     });
-    expect(wrapper.state().password).toEqual(newValue);
-  });
-}
-
-function itUpdatesStateWhenInputIsChanged (
-  getWrapper: () => ReactWrapper,
-  name: string
-) {
-  it(`contains ${name} input`, () => {
-    const input = getInputWithName(getWrapper(), name);
-    expect(input.exists()).toBe(true);
+    expect(wrapper.state()[name]).toEqual(newValue);
   });
 }
 
@@ -52,7 +53,7 @@ describe("LoginForm component", () => {
           <LoginForm />
         </MockedProvider>
       </MemoryRouter>
-    ).find(LoginForm);
+    ).find(Content);
   });
 
   itContainsInputWithName(() => wrapper, "email");
