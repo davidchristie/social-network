@@ -1,4 +1,4 @@
-import { Avatar, Section } from "design-system";
+import { Avatar, Grid, Section } from "design-system";
 import React from "react";
 import { Link } from "react-router-dom";
 
@@ -24,19 +24,23 @@ export default class Content extends React.Component<Props, State> {
     return (
       <Section className="ProfileFollowing">
         <h2>Following</h2>
-        {profile.following.map(({ avatar, id, name }) => {
-          return (
-            <div className="ProfileFollowing__profile" key={id}>
-              <Avatar
-                image={avatar ? avatar.url : undefined}
-                size="small"
-              />
-              <Link to={`/profile/${id}`}>
-                {name}
-              </Link>
-            </div>
-          );
-        })}
+        <Grid container={true}>
+          {profile.following.map(({ avatar, id, name }) => {
+            return (
+              <Grid item={true} key={id} sm={4} xs={12}>
+                <div className="ProfileFollowing__profile">
+                  <Avatar
+                    image={avatar ? avatar.url : undefined}
+                    size="small"
+                  />
+                  <Link to={`/profile/${id}`}>
+                    {name}
+                  </Link>
+                </div>
+              </Grid>
+            );
+          })}
+        </Grid>
       </Section>
     );
   }
