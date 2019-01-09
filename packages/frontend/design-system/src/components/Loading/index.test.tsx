@@ -1,6 +1,7 @@
 import React from "react";
-import { describeMountedElement } from "test-utilities/react";
-
+import { itRendersWithoutCrashing } from "test-utilities/react";
 import Loading from ".";
 
-describeMountedElement("Loading component", <Loading />);
+describe("Loading component", () => {
+  itRendersWithoutCrashing(<Loading />);
+});

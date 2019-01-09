@@ -1,13 +1,8 @@
-import CircularProgress from "@material-ui/core/CircularProgress";
 import withStyles, {
-  StyleRulesCallback,
-  WithStyles
+  StyleRulesCallback
 } from "@material-ui/core/styles/withStyles";
 import React from "react";
-
-interface Props {
-  className?: string;
-}
+import Content from "./Content";
 
 const styles: StyleRulesCallback = theme => ({
   loading: {
@@ -18,16 +13,8 @@ const styles: StyleRulesCallback = theme => ({
   },
 });
 
-const Content: React.SFC<Props & WithStyles<"loading"> & WithStyles<"progress">> = ({ classes }) => {
-  return (
-    <div className={classes.loading}>
-      <CircularProgress className={classes.progress} />
-    </div>
-  );
-};
+const Style = withStyles(styles)(Content);
 
-const Styled = withStyles(styles)(Content);
-
-const Loading: React.SFC<Props> = props => <Styled {...props} />;
+const Loading: React.StatelessComponent<{}> = props => <Style {...props} />;
 
 export default Loading;

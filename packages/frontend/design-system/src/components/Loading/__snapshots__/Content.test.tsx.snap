@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loading content matches snapshot 1`] = `
+<div
+  className="loading"
+>
+  <WithStyles(CircularProgress)
+    className="progress"
+  />
+</div>
+`;

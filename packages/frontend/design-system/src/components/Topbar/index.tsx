@@ -1,10 +1,6 @@
-import AppBar from "@material-ui/core/AppBar";
-import withStyles, {
-  WithStyles
-} from "@material-ui/core/styles/withStyles";
-import Toolbar from "@material-ui/core/Toolbar";
-import classNames from "classnames";
+import withStyles from "@material-ui/core/styles/withStyles";
 import React from "react";
+import Content from "./Content";
 
 interface Props {
   className?: string;
@@ -16,24 +12,8 @@ const styles = {
   },
 };
 
-const Content: React.StatelessComponent<Props & WithStyles<"topbar">> = ({
-  children,
-  classes,
-  className,
-}) => {
-  return (
-    <div className={classNames(classes.topbar, className)}>
-      <AppBar color="default" position="fixed">
-        <Toolbar>
-          {children}
-        </Toolbar>
-      </AppBar>
-    </div>
-  );
-};
+const Style = withStyles(styles)(Content);
 
-const Styled = withStyles(styles)(Content);
-
-const Topbar: React.StatelessComponent<Props> = props => <Styled {...props} />;
+const Topbar: React.StatelessComponent<Props> = props => <Style {...props} />;
 
 export default Topbar;
