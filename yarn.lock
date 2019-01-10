@@ -7607,10 +7607,10 @@ graphql-anywhere@^4.1.0-alpha.0:
   dependencies:
     apollo-utilities "^1.0.26"
 
-graphql-binding@2.3.8:
-  version "2.3.8"
-  resolved "https://registry.yarnpkg.com/graphql-binding/-/graphql-binding-2.3.8.tgz#7434d6ae95bf6d26ea566390c780d8b318009443"
-  integrity sha512-lW9HnQsD4HV8P2pon53j31b2ySmoP8UgudRYw9L8vGcjvjwh9Rietg9lCMNB4zMwC6crnWO7Rtl6Rj3EWWyBuQ==
+graphql-binding@2.4.1:
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/graphql-binding/-/graphql-binding-2.4.1.tgz#5880b78670b5910b3589a6fa76441e9a7d8c289c"
+  integrity sha512-UHSVM2bfB4gGtwRcUXwejo2R825Rm8vnJGA6+IB+NquObXBdw6YvDSTIwgavsNM6I6qRlyl0CUaAf/r15YYqwQ==
   dependencies:
     graphql "^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0"
     graphql-import "^0.7.1"
@@ -12797,17 +12797,17 @@ pretty-hrtime@^1.0.3:
   resolved "https://registry.yarnpkg.com/pretty-hrtime/-/pretty-hrtime-1.0.3.tgz#b7e3ea42435a4c9b2759d99e0f201eb195802ee1"
   integrity sha1-t+PqQkNaTJsnWdmeDyAesZWALuE=
 
-prisma-binding@2.2.12:
-  version "2.2.12"
-  resolved "https://registry.yarnpkg.com/prisma-binding/-/prisma-binding-2.2.12.tgz#574b0ba92d08eafa45d4608b90921f0b856789db"
-  integrity sha512-7OJpeSrAAPmK+PZrvcDWV4kcyUDAQVpW/MAZiyCjb7dDsd9+lQIyR3vLLTsE5on4vu8cRRx5MijXiDYvw6XDfw==
+prisma-binding@2.2.14:
+  version "2.2.14"
+  resolved "https://registry.yarnpkg.com/prisma-binding/-/prisma-binding-2.2.14.tgz#f21ce8e4fb0034c9dec8b39919cec241bbdf74df"
+  integrity sha512-CQLSwfk7QU9ruyQEWmJ0KmDBeFK1ppYBrggLbYJ3zz1qGahrsVGD0+hzrSnfyItGE2AqfASL0LaPj3isaTgbvw==
   dependencies:
     apollo-link "1.2.6"
     apollo-link-error "1.1.5"
     apollo-link-ws "1.0.12"
     cross-fetch "3.0.0"
     graphql "^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0"
-    graphql-binding "2.3.8"
+    graphql-binding "2.4.1"
     graphql-import "0.7.1"
     graphql-tools "4.0.3"
     http-link-dataloader "^0.1.6"
