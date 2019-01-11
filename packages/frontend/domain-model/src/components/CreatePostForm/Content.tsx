@@ -22,6 +22,8 @@ export default class Content extends React.Component<Props, State> {
         <form onSubmit={this.handleFormSubmitted}>
           <div>
             <TextArea
+              id="text"
+              label="Text"
               name="text"
               onChange={this.handleTextChanged}
               required={true}

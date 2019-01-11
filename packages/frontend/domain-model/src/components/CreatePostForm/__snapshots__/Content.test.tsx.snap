@@ -7,6 +7,8 @@ exports[`Content component matches snapshot 1`] = `
   >
     <div>
       <TextArea
+        id="text"
+        label="Text"
         name="text"
         onChange={[Function]}
         required={true}
