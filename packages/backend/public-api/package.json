@@ -9,7 +9,7 @@
     "@types/jest": "23.3.12",
     "@types/node-fetch": "2.1.4",
     "@types/supertest": "2.0.7",
-    "graphqlgen": "0.4.0",
+    "graphqlgen": "0.5.0",
     "jest": "23.6.0",
     "nodemon": "1.18.9",
     "rimraf": "2.6.3",
