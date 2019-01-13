@@ -11,6 +11,7 @@ export default {
     "react",
     "react-apollo",
   ],
+  inlineDynamicImports: true,
   input: `src/index.ts`,
   output: [
     {
